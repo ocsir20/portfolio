@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Airwallet Operator Insights</title>
+    <style>
+      :root {
+        --bg: #f6f8fb;
+        --card: #ffffff;
+        --ink: #1f2340;
+        --muted: #66708f;
+        --line: #d8deea;
+        --accent: #2a9d8f;
+        --danger: #e63946;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        font-family: Inter, "Segoe UI", Arial, sans-serif;
+        background: var(--bg);
+        color: var(--ink);
+      }
+
+      .container {
+        width: min(1120px, 94%);
+        margin: 0 auto;
+      }
+
+      .topbar {
+        padding: 1rem 0;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .topbar a {
+        color: #2f3e75;
+        text-decoration: none;
+        font-weight: 600;
+      }
+
+      h1 {
+        margin: 0;
+        font-size: 1.6rem;
+      }
+
+      .sub {
+        margin: 0.35rem 0 1.1rem;
+        color: var(--muted);
+      }
+
+      .panel {
+        background: var(--card);
+        border: 1px solid var(--line);
+        border-radius: 14px;
+        padding: 1rem;
+      }
+
+      .filters {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(210px, 280px));
+        gap: 0.75rem;
+      }
+
+      label {
+        display: grid;
+        gap: 0.35rem;
+        font-size: 0.86rem;
+        color: var(--muted);
+        font-weight: 600;
+      }
+
+      select {
+        border: 1px solid var(--line);
+        border-radius: 10px;
+        padding: 0.58rem 0.65rem;
+        background: white;
+        color: #2a3059;
+      }
+
+      .charts {
+        margin-top: 1rem;
+        display: grid;
+        gap: 1rem;
+      }
+
+      .chart-card {
+        background: var(--card);
+        border: 1px solid var(--line);
+        border-radius: 14px;
+        padding: 1rem;
+      }
+
+      .chart-head {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        margin-bottom: 0.75rem;
+      }
+
+      .chart-head h2 {
+        margin: 0;
+        font-size: 1.08rem;
+      }
+
+      .legend {
+        font-size: 0.82rem;
+        color: var(--muted);
+      }
+
+      .legend span {
+        margin-left: 0.6rem;
+      }
+
+      .line-normal::before,
+      .line-high::before {
+        content: "";
+        width: 12px;
+        height: 2px;
+        display: inline-block;
+        margin-right: 0.2rem;
+        vertical-align: middle;
+      }
+
+      .line-normal::before {
+        background: var(--accent);
+      }
+
+      .line-high::before {
+        background: var(--danger);
+      }
+
+      .chart-wrap {
+        overflow-x: auto;
+      }
+
+      .income-chip {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.35rem;
+        border: 1px solid var(--line);
+        background: #f8faff;
+        border-radius: 999px;
+        padding: 0.35rem 0.6rem;
+        font-size: 0.82rem;
+        color: #2a315b;
+      }
+
+      .income-chip strong {
+        color: #1f2340;
+      }
+
+      .status {
+        margin-top: 0.8rem;
+        color: var(--muted);
+        font-size: 0.9rem;
+      }
+
+      .status.error {
+        color: #b02a37;
+      }
+
+      .chart-tooltip {
+        position: fixed;
+        z-index: 50;
+        pointer-events: none;
+        background: #1f2340;
+        color: #fff;
+        border-radius: 8px;
+        padding: 0.5rem 0.6rem;
+        font-size: 0.78rem;
+        line-height: 1.35;
+        box-shadow: 0 10px 24px rgba(12, 18, 40, 0.25);
+        opacity: 0;
+        transform: translate(-50%, -120%);
+        transition: opacity 120ms ease;
+        white-space: nowrap;
+      }
+
+      @media (max-width: 760px) {
+        .filters {
+          grid-template-columns: 1fr;
+        }
+
+        .chart-head {
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 0.45rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="container">
+      <div class="topbar">
+        <h1>Operator Insights Dashboard</h1>
+
+      </div>
+      <p class="sub">
+        Usage over time from <code>transactions_customer_feb_w1_2026.csv</code>.
+      </p>
+
+      <section class="panel">
+        <div class="filters">
+          <label>
+            Filter by location
+            <select id="locationFilter">
+              <option value="all">All locations</option>
+            </select>
+          </label>
+          <label>
+            Filter by device
+            <select id="deviceFilter">
+              <option value="all">All devices</option>
+            </select>
+          </label>
+        </div>
+        <p id="status" class="status">Loading data...</p>
+      </section>
+
+      <section class="charts">
+        <article class="chart-card">
+          <div class="chart-head">
+            <h2>Washing Machines Usage</h2>
+            <div style="display:flex; align-items:center; gap:0.6rem; flex-wrap:wrap;">
+              <div class="income-chip">Income/day: <strong id="washerIncome">EUR 0.00</strong></div>
+              <div class="legend">
+                <span class="line-normal">Normal usage</span>
+                <span class="line-high">High usage (80%+)</span>
+              </div>
+            </div>
+          </div>
+          <div class="chart-wrap"><svg id="washerChart" width="980" height="280" role="img" aria-label="Washing machine usage chart"></svg></div>
+        </article>
+
+        <article class="chart-card">
+          <div class="chart-head">
+            <h2>Dryers Usage</h2>
+            <div style="display:flex; align-items:center; gap:0.6rem; flex-wrap:wrap;">
+              <div class="income-chip">Income/day: <strong id="dryerIncome">EUR 0.00</strong></div>
+              <div class="legend">
+                <span class="line-normal">Normal usage</span>
+                <span class="line-high">High usage (80%+)</span>
+              </div>
+            </div>
+          </div>
+          <div class="chart-wrap"><svg id="dryerChart" width="980" height="280" role="img" aria-label="Dryer usage chart"></svg></div>
+        </article>
+      </section>
+    </main>
+    <div id="chartTooltip" class="chart-tooltip" aria-hidden="true"></div>
+
+    <script>
+      const CSV_FILE = "transactions_customer_feb_w1_2026.csv";
+      const HIGH_USAGE_THRESHOLD = 80;
+      const state = { rows: [], filteredRows: [], deviceTypeByDevice: {}, splitAmount: null };
+
+      const locationFilter = document.querySelector("#locationFilter");
+      const deviceFilter = document.querySelector("#deviceFilter");
+      const statusEl = document.querySelector("#status");
+      const chartTooltip = document.querySelector("#chartTooltip");
+      const washerIncomeEl = document.querySelector("#washerIncome");
+      const dryerIncomeEl = document.querySelector("#dryerIncome");
+
+      function parseCSV(text) {
+        const lines = text.trim().split(/\r?\n/);
+        if (lines.length < 2) return [];
+        const headers = lines[0].split(",").map((h) => h.trim());
+        return lines.slice(1).map((line) => {
+          const values = line.split(",");
+          const row = {};
+          headers.forEach((header, i) => {
+            row[header] = (values[i] || "").trim();
+          });
+          return row;
+        });
+      }
+
+      function formatEURFromCents(cents) {
+        return `EUR ${(Number(cents || 0) / 100).toFixed(2)}`;
+      }
+
+      function buildDeviceTypeModel(rows) {
+        const perDevice = new Map();
+        rows.forEach((row) => {
+          if (String(row.refund).toLowerCase() === "true") return;
+          const amount = Number(row.amount || 0);
+          if (!Number.isFinite(amount) || amount <= 0 || !row.device_id) return;
+          if (!perDevice.has(row.device_id)) perDevice.set(row.device_id, []);
+          perDevice.get(row.device_id).push(amount);
+        });
+
+        const medians = Array.from(perDevice.entries())
+          .map(([deviceId, values]) => {
+            const sorted = values.slice().sort((a, b) => a - b);
+            const middle = Math.floor(sorted.length / 2);
+            const median =
+              sorted.length % 2 === 0
+                ? (sorted[middle - 1] + sorted[middle]) / 2
+                : sorted[middle];
+            return { deviceId, median };
+          })
+          .filter((item) => Number.isFinite(item.median));
+
+        if (medians.length < 2) {
+          state.deviceTypeByDevice = {};
+          state.splitAmount = 290;
+          return;
+        }
+
+        let c1 = Math.min(...medians.map((d) => d.median));
+        let c2 = Math.max(...medians.map((d) => d.median));
+
+        for (let i = 0; i < 12; i += 1) {
+          const left = [];
+          const right = [];
+          medians.forEach((item) => {
+            const d1 = Math.abs(item.median - c1);
+            const d2 = Math.abs(item.median - c2);
+            if (d1 <= d2) left.push(item.median);
+            else right.push(item.median);
+          });
+          if (left.length) c1 = left.reduce((sum, value) => sum + value, 0) / left.length;
+          if (right.length) c2 = right.reduce((sum, value) => sum + value, 0) / right.length;
+        }
+
+        const split = (c1 + c2) / 2;
+        state.splitAmount = split;
+        state.deviceTypeByDevice = Object.fromEntries(
+          medians.map((item) => [item.deviceId, item.median <= split ? "dryer" : "washer"])
+        );
+      }
+
+      function inferDeviceType(row) {
+        const deviceId = row.device_id;
+        const value = String(deviceId || "").toLowerCase();
+        const amount = Number(row.amount || 0);
+        if (deviceId && state.deviceTypeByDevice[deviceId]) return state.deviceTypeByDevice[deviceId];
+        if (!Number.isNaN(amount) && amount > 0) {
+          const splitAmount = Number.isFinite(state.splitAmount) ? state.splitAmount : 290;
+          return amount <= splitAmount ? "dryer" : "washer";
+        }
+        if (value.includes("dry")) return "dryer";
+        if (value.includes("wash")) return "washer";
+        if (/^d[-_0-9a-z]/.test(value)) return "dryer";
+        if (/^w[-_0-9a-z]/.test(value)) return "washer";
+        let hash = 0;
+        for (let i = 0; i < value.length; i += 1) hash += value.charCodeAt(i);
+        return hash % 2 === 0 ? "washer" : "dryer";
+      }
+
+      function detectTimeColumn(headers) {
+        const candidates = [
+          "created_at",
+          "timestamp",
+          "transaction_time",
+          "time",
+          "date",
+          "datetime",
+        ];
+        return candidates.find((name) => headers.includes(name)) || null;
+      }
+
+      function toHourBucket(row, timeColumn, index, totalRows) {
+        if (!timeColumn) {
+          const bucketSize = Math.max(1, Math.ceil(totalRows / 24));
+          return Math.min(23, Math.floor(index / bucketSize));
+        }
+        const raw = row[timeColumn];
+        const dt = new Date(raw);
+        if (Number.isNaN(dt.getTime())) return Math.min(23, Math.floor(index / Math.max(1, Math.ceil(totalRows / 24))));
+        return dt.getHours();
+      }
+
+      function bucketUsage(rows, type, timeColumn) {
+        const map = new Map(Array.from({ length: 24 }, (_, hour) => [hour, { count: 0, revenueCents: 0 }]));
+        rows.forEach((row, index) => {
+          if (inferDeviceType(row) !== type) return;
+          if (String(row.refund).toLowerCase() === "true") return;
+          const key = toHourBucket(row, timeColumn, index, rows.length);
+          const amount = Number(row.amount || 0);
+          const current = map.get(key) || { count: 0, revenueCents: 0 };
+          map.set(key, {
+            count: current.count + 1,
+            revenueCents: current.revenueCents + (Number.isFinite(amount) ? amount : 0),
+          });
+        });
+        const series = Array.from(map.entries())
+          .sort((a, b) => a[0] - b[0])
+          .map(([hour, values]) => ({
+          time: hour === 23 ? "23:59" : `${String(hour).padStart(2, "0")}:00`,
+          count: values.count,
+          revenueCents: values.revenueCents,
+        }));
+        const maxCount = Math.max(1, ...series.map((item) => item.count));
+        return series.map((item) => ({
+          ...item,
+          usage: Math.round((item.count / maxCount) * 100),
+        }));
+      }
+
+      function showTooltip(event, chartTitle, point) {
+        chartTooltip.innerHTML = `${chartTitle}<br>${point.label}<br>Usage: ${point.usage}%<br>Revenue: ${formatEURFromCents(
+          point.revenueCents
+        )}`;
+        chartTooltip.style.left = `${event.clientX}px`;
+        chartTooltip.style.top = `${event.clientY - 8}px`;
+        chartTooltip.style.opacity = "1";
+      }
+
+      function hideTooltip() {
+        chartTooltip.style.opacity = "0";
+      }
+
+      function renderChart(svgId, series, chartTitle) {
+        const svg = document.querySelector(svgId);
+        const width = Number(svg.getAttribute("width"));
+        const height = Number(svg.getAttribute("height"));
+        const m = { top: 20, right: 16, bottom: 48, left: 44 };
+        const plotW = width - m.left - m.right;
+        const plotH = height - m.top - m.bottom;
+        const points = series.length
+          ? series.map((item, i) => ({
+              x: m.left + (series.length === 1 ? plotW / 2 : (i / (series.length - 1)) * plotW),
+              y: m.top + ((100 - item.usage) / 100) * plotH,
+              usage: item.usage,
+              label: item.time,
+              revenueCents: item.revenueCents,
+            }))
+          : [];
+
+        const yTicks = [0, 20, 40, 60, 80, 100];
+        let markup = "";
+
+        yTicks.forEach((tick) => {
+          const y = m.top + ((100 - tick) / 100) * plotH;
+          markup += `<line x1="${m.left}" y1="${y}" x2="${width - m.right}" y2="${y}" stroke="#e6ecf3" />`;
+          markup += `<text x="${m.left - 8}" y="${y + 4}" text-anchor="end" font-size="11" fill="#7682a0">${tick}%</text>`;
+        });
+
+        markup += `<line x1="${m.left}" y1="${m.top}" x2="${m.left}" y2="${height - m.bottom}" stroke="#b8c4d8" />`;
+        markup += `<line x1="${m.left}" y1="${height - m.bottom}" x2="${width - m.right}" y2="${height - m.bottom}" stroke="#b8c4d8" />`;
+
+        if (!points.length) {
+          markup += `<text x="${width / 2}" y="${height / 2}" text-anchor="middle" font-size="13" fill="#8a93ad">No data for selected filters</text>`;
+          svg.innerHTML = markup;
+          return;
+        }
+
+        for (let i = 0; i < points.length - 1; i += 1) {
+          const p1 = points[i];
+          const p2 = points[i + 1];
+          const segmentHigh = p1.usage >= HIGH_USAGE_THRESHOLD || p2.usage >= HIGH_USAGE_THRESHOLD;
+          markup += `<line x1="${p1.x}" y1="${p1.y}" x2="${p2.x}" y2="${p2.y}" stroke="${segmentHigh ? "#e63946" : "#2a9d8f"}" stroke-width="3" stroke-linecap="round" />`;
+        }
+
+        points.forEach((point, i) => {
+          markup += `<circle cx="${point.x}" cy="${point.y}" r="3.5" fill="${
+            point.usage >= HIGH_USAGE_THRESHOLD ? "#e63946" : "#2a9d8f"
+          }"></circle>`;
+          markup += `<circle cx="${point.x}" cy="${point.y}" r="12" fill="transparent" data-point-index="${i}" style="cursor:pointer;"></circle>`;
+        });
+
+        const labelStep = Math.max(1, Math.ceil(points.length / 7));
+        points.forEach((point, i) => {
+          if (i !== 0 && i !== points.length - 1 && i % labelStep !== 0) return;
+          markup += `<text x="${point.x}" y="${height - m.bottom + 16}" text-anchor="middle" font-size="10" fill="#7e89a5">${point.label}</text>`;
+        });
+
+        svg.innerHTML = markup;
+        svg.querySelectorAll("[data-point-index]").forEach((node) => {
+          node.addEventListener("mousemove", (event) => {
+            const point = points[Number(node.getAttribute("data-point-index"))];
+            if (!point) return;
+            showTooltip(event, chartTitle, point);
+          });
+          node.addEventListener("mouseleave", hideTooltip);
+        });
+      }
+
+      function getUnique(rows, key) {
+        return Array.from(new Set(rows.map((r) => r[key]).filter(Boolean))).sort();
+      }
+
+      function calculateDailyIncomeCents(rows, type) {
+        return rows.reduce((sum, row) => {
+          if (String(row.refund).toLowerCase() === "true") return sum;
+          if (inferDeviceType(row) !== type) return sum;
+          const amount = Number(row.amount || 0);
+          if (!Number.isFinite(amount) || amount <= 0) return sum;
+          return sum + amount;
+        }, 0);
+      }
+
+      function getDeviceLabel(deviceId) {
+        const sample = state.rows.find((row) => row.device_id === deviceId);
+        const type = sample ? inferDeviceType(sample) : "washer";
+        return `${deviceId} (${type === "washer" ? "Washing machine" : "Dryer"})`;
+      }
+
+      function updateDeviceOptionsByLocation() {
+        const locationId = locationFilter.value;
+        const currentDeviceValue = deviceFilter.value;
+        const rowsAtLocation =
+          locationId === "all"
+            ? state.rows
+            : state.rows.filter((row) => row.location_id === locationId);
+        const devices = getUnique(rowsAtLocation, "device_id");
+        deviceFilter.innerHTML = `<option value="all">All devices</option>${devices
+          .map((device) => `<option value="${device}">${getDeviceLabel(device)}</option>`)
+          .join("")}`;
+
+        if (currentDeviceValue !== "all" && devices.includes(currentDeviceValue)) {
+          deviceFilter.value = currentDeviceValue;
+        } else {
+          deviceFilter.value = "all";
+        }
+      }
+
+      function applyFilters() {
+        const locationId = locationFilter.value;
+        const deviceId = deviceFilter.value;
+        state.filteredRows = state.rows.filter((row) => {
+          if (locationId !== "all" && row.location_id !== locationId) return false;
+          if (deviceId !== "all" && row.device_id !== deviceId) return false;
+          return true;
+        });
+
+        const headers = Object.keys(state.rows[0] || {});
+        const timeColumn = detectTimeColumn(headers);
+        const washerSeries = bucketUsage(state.filteredRows, "washer", timeColumn);
+        const dryerSeries = bucketUsage(state.filteredRows, "dryer", timeColumn);
+        const washerIncome = calculateDailyIncomeCents(state.filteredRows, "washer");
+        const dryerIncome = calculateDailyIncomeCents(state.filteredRows, "dryer");
+        washerIncomeEl.textContent = formatEURFromCents(washerIncome);
+        dryerIncomeEl.textContent = formatEURFromCents(dryerIncome);
+        renderChart("#washerChart", washerSeries, "Washing Machines");
+        renderChart("#dryerChart", dryerSeries, "Dryers");
+      }
+
+      function hydrateFilters() {
+        const locations = getUnique(state.rows, "location_id");
+        locationFilter.innerHTML = `<option value="all">All locations</option>${locations
+          .map((loc) => `<option value="${loc}">${loc}</option>`)
+          .join("")}`;
+        updateDeviceOptionsByLocation();
+      }
+
+      async function loadData() {
+        try {
+          const response = await fetch(CSV_FILE);
+          if (!response.ok) throw new Error("File not found");
+          const text = await response.text();
+          const parsed = parseCSV(text);
+          if (!parsed.length) throw new Error("CSV is empty");
+          state.rows = parsed;
+          buildDeviceTypeModel(parsed);
+          hydrateFilters();
+          applyFilters();
+          statusEl.textContent = `Loaded ${parsed.length} transactions.`;
+          if (Number.isFinite(state.splitAmount)) {
+            statusEl.textContent += ` Device split tuned at ~${Math.round(state.splitAmount)} cents.`;
+          }
+          const timeColumn = detectTimeColumn(Object.keys(parsed[0] || {}));
+          if (!timeColumn) {
+            statusEl.textContent +=
+              " No timestamp column detected, so X axis uses sequence-based time buckets.";
+          }
+        } catch (error) {
+          statusEl.classList.add("error");
+          statusEl.textContent =
+            "Could not load transactions_customer_feb_w1_2026.csv. Place the file next to this page and refresh.";
+          renderChart("#washerChart", []);
+          renderChart("#dryerChart", []);
+        }
+      }
+
+      locationFilter.addEventListener("change", () => {
+        updateDeviceOptionsByLocation();
+        applyFilters();
+      });
+      deviceFilter.addEventListener("change", applyFilters);
+      loadData();
+    </script>
+  </body>
+</html>
