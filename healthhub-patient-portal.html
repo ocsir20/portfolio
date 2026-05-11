@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HealthHub Patient Portal | Octavia Sirbu</title>
+    <script src="theme-init.js"></script>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <nav class="nav container">
+        <a class="logo" href="index.html">Octavia</a>
+        <div class="nav-right">
+          <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a class="active" href="work.html">Work</a></li>
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+          <button
+            type="button"
+            class="theme-toggle"
+            id="themeToggle"
+            aria-label="Switch to dark mode"
+            aria-pressed="false"
+            title="Light or dark mode"
+          >
+            <span class="theme-toggle-track">
+              <span class="theme-icon theme-icon-sun" aria-hidden="true">&#9728;</span>
+              <span class="theme-icon theme-icon-moon" aria-hidden="true">&#9790;</span>
+              <span class="theme-toggle-thumb" aria-hidden="true"></span>
+            </span>
+          </button>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <section class="page-hero page-hero--texture">
+        <div class="container">
+          <h1>HealthHub Patient Portal</h1>
+          <p class="intro">
+            Built an accessible patient experience for bookings, records, and doctor communication.
+          </p>
+        </div>
+      </section>
+
+      <article class="container section project-page-content">
+        <p>
+          HealthHub brings appointments, documents, and messaging into one calm interface. Patients
+          needed predictable paths, strong contrast, and language that matched how care teams speak
+          in real life.
+        </p>
+
+        <h2>Research and information architecture</h2>
+        <p>
+          Interviews highlighted anxiety around rescheduling and confusion about preparation steps.
+          We reorganized tasks by intent—book, prepare, follow up—and surfaced status on the home
+          surface instead of burying it in nested menus.
+        </p>
+
+        <div class="project-media project-media--single">
+          <a
+            href="assets/texture-gradient-bg.png"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="project-media-landscape-link"
+            aria-label="Open full size: portal home landscape"
+          >
+            <img src="assets/texture-gradient-bg.png" alt="" loading="lazy" decoding="async" />
+          </a>
+        </div>
+
+        <h3>Accessibility and UI patterns</h3>
+        <p>
+          Form patterns follow consistent error placement, live regions for async updates, and
+          keyboard-friendly date pickers. Components reuse spacing and type scales so the portal
+          feels coherent across mobile and desktop widths.
+        </p>
+
+        <div class="project-media project-media--quad">
+          <a href="assets/texture-gradient-bg.png" target="_blank" rel="noopener noreferrer" class="project-media-thumb-link" aria-label="Open full size: component state 1"><img src="assets/texture-gradient-bg.png" alt="" loading="lazy" decoding="async" /></a>
+          <a href="assets/texture-gradient-bg.png" target="_blank" rel="noopener noreferrer" class="project-media-thumb-link" aria-label="Open full size: component state 2"><img src="assets/texture-gradient-bg.png" alt="" loading="lazy" decoding="async" /></a>
+          <a href="assets/texture-gradient-bg.png" target="_blank" rel="noopener noreferrer" class="project-media-thumb-link" aria-label="Open full size: component state 3"><img src="assets/texture-gradient-bg.png" alt="" loading="lazy" decoding="async" /></a>
+          <a href="assets/texture-gradient-bg.png" target="_blank" rel="noopener noreferrer" class="project-media-thumb-link" aria-label="Open full size: component state 4"><img src="assets/texture-gradient-bg.png" alt="" loading="lazy" decoding="async" /></a>
+        </div>
+
+        <h4>Next steps</h4>
+        <p>
+          The next iteration would connect analytics to completion funnels and run moderated tests
+          on the messaging module with clinicians in the loop.
+        </p>
+      </article>
+
+      <section class="more-projects" data-more-projects aria-labelledby="more-projects-heading">
+        <div class="container">
+          <div class="more-projects__header">
+            <h2 id="more-projects-heading">View more projects</h2>
+            <div class="more-projects__nav">
+              <button type="button" class="more-projects__btn" data-scroll-prev aria-label="Previous projects">&#8249;</button>
+              <button type="button" class="more-projects__btn" data-scroll-next aria-label="Next projects">&#8250;</button>
+            </div>
+          </div>
+          <div class="more-projects__track">
+            <a class="more-project-card" href="airwallet-multi-device-checkout.html">
+              <div class="more-project-card__visual">
+                <div class="thumb thumb-one" role="presentation"></div>
+              </div>
+              <div class="more-project-card__body">
+                <h3>Airwallet Multi-Device Checkout</h3>
+                <p>Multi-machine booking with a single bundled payment flow.</p>
+              </div>
+            </a>
+            <a class="more-project-card" href="nova-ecommerce-redesign.html">
+              <div class="more-project-card__visual">
+                <div class="thumb thumb-three" role="presentation"></div>
+              </div>
+              <div class="more-project-card__body">
+                <h3>Nova eCommerce Redesign</h3>
+                <p>Clearer navigation and hierarchy for discovery and checkout.</p>
+              </div>
+            </a>
+            <a class="more-project-card" href="airwallet-operator-insights.html">
+              <div class="more-project-card__visual">
+                <div class="thumb thumb-four" role="presentation"></div>
+              </div>
+              <div class="more-project-card__body">
+                <h3>Airwallet Operator Insights</h3>
+                <p>Dashboard concept for usage and revenue with filters.</p>
+              </div>
+            </a>
+            <a class="more-project-card" href="nextmove-travel-app.html">
+              <div class="more-project-card__visual">
+                <div class="thumb thumb-five" role="presentation"></div>
+              </div>
+              <div class="more-project-card__body">
+                <h3>NextMove Travel App</h3>
+                <p>Trip planning journey with faster booking and cleaner details.</p>
+              </div>
+            </a>
+            <a class="more-project-card" href="caresync-dashboard.html">
+              <div class="more-project-card__visual">
+                <div class="thumb thumb-six" role="presentation"></div>
+              </div>
+              <div class="more-project-card__body">
+                <h3>CareSync Dashboard</h3>
+                <p>Operational data structured for faster team decisions.</p>
+              </div>
+            </a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container">
+        <p>© 2026 Octavia Sirbu - UX/UI Designer</p>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>

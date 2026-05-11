@@ -3,30 +3,52 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Blog | Alex Morgan</title>
+    <title>Blog | Octavia Sirbu</title>
+    <script src="theme-init.js"></script>
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
     <header class="site-header">
       <nav class="nav container">
-        <a class="logo" href="index.html">Alex Morgan</a>
-        <ul class="nav-links">
-          <li><a href="index.html">Home</a></li>
-          <li><a href="work.html">Work</a></li>
-          <li><a class="active" href="blog.html">Blog</a></li>
-          <li><a href="contact.html">Contact</a></li>
-        </ul>
+        <a class="logo" href="index.html">Octavia</a>
+        <div class="nav-right">
+          <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="work.html">Work</a></li>
+            <li><a class="active" href="blog.html">Blog</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+          <button
+            type="button"
+            class="theme-toggle"
+            id="themeToggle"
+            aria-label="Switch to dark mode"
+            aria-pressed="false"
+            title="Light or dark mode"
+          >
+            <span class="theme-toggle-track">
+              <span class="theme-icon theme-icon-sun" aria-hidden="true">&#9728;</span>
+              <span class="theme-icon theme-icon-moon" aria-hidden="true">&#9790;</span>
+              <span class="theme-toggle-thumb" aria-hidden="true"></span>
+            </span>
+          </button>
+        </div>
       </nav>
     </header>
 
-    <main class="container section">
-      <h1>Blog</h1>
-      <p class="intro">
-        Thoughts on UX strategy, interface design, and creating better digital
-        experiences.
-      </p>
+    <main>
+      <section class="page-hero page-hero--texture">
+        <div class="container">
+          <h1>Blog</h1>
+          <p class="intro">
+            Thoughts on UX strategy, interface design, and creating better digital
+            experiences.
+          </p>
+        </div>
+      </section>
 
-      <section class="grid three cards-grid">
+      <section class="container section">
+        <div class="grid three cards-grid">
         <a class="blog-card" href="blogs/onboarding-converts.html">
           <div class="thumb thumb-two"></div>
           <h3>How to Design Onboarding That Converts</h3>
@@ -57,12 +79,13 @@
           <h3>Common UX Audit Mistakes</h3>
           <p>What to avoid when reviewing an existing digital product.</p>
         </a>
+        </div>
       </section>
     </main>
 
     <footer class="site-footer">
       <div class="container">
-        <p>© 2026 Alex Morgan - UX/UI Designer</p>
+        <p>© 2026 Octavia Sirbu - UX/UI Designer</p>
       </div>
     </footer>
 

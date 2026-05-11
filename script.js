@@ -1,5 +1,7 @@
-const contactForm = document.querySelector("#contactForm");
-const formMessage = document.querySelector("#formMessage");
+const themeToggle = document.querySelector("#themeToggle");
+const copyEmailCard = document.querySelector("#copyEmailCard");
+const copyFeedback = document.querySelector("#copyFeedback");
+const emailValue = document.querySelector("#emailValue");
 const serviceTabs = document.querySelectorAll(".service-tab");
 const serviceModal = document.querySelector("#serviceModal");
 const serviceModalClose = document.querySelector("#serviceModalClose");
@@ -33,12 +35,62 @@ const serviceProjectMap = {
   },
 };
 
-if (contactForm && formMessage) {
-  contactForm.addEventListener("submit", (event) => {
-    event.preventDefault();
-    formMessage.textContent =
-      "Thanks! Your message has been sent. I will contact you shortly.";
-    contactForm.reset();
+if (themeToggle) {
+  const syncThemeToggle = () => {
+    const isDark = document.documentElement.getAttribute("data-theme") === "dark";
+    themeToggle.setAttribute("aria-label", isDark ? "Switch to light mode" : "Switch to dark mode");
+    themeToggle.setAttribute("aria-pressed", isDark ? "true" : "false");
+  };
+
+  syncThemeToggle();
+
+  themeToggle.addEventListener("click", () => {
+    const isDark = document.documentElement.getAttribute("data-theme") === "dark";
+    if (isDark) {
+      document.documentElement.removeAttribute("data-theme");
+      try {
+        localStorage.setItem("portfolio-theme", "light");
+      } catch (e) {
+        /* ignore */
+      }
+    } else {
+      document.documentElement.setAttribute("data-theme", "dark");
+      try {
+        localStorage.setItem("portfolio-theme", "dark");
+      } catch (e) {
+        /* ignore */
+      }
+    }
+    syncThemeToggle();
+  });
+}
+
+if (copyEmailCard && copyFeedback && emailValue) {
+  const emailText = emailValue.textContent.trim();
+
+  const writeClipboard = async (text) => {
+    if (navigator.clipboard && window.isSecureContext) {
+      await navigator.clipboard.writeText(text);
+      return;
+    }
+    const helperInput = document.createElement("textarea");
+    helperInput.value = text;
+    helperInput.setAttribute("readonly", "");
+    helperInput.style.position = "absolute";
+    helperInput.style.left = "-9999px";
+    document.body.appendChild(helperInput);
+    helperInput.select();
+    document.execCommand("copy");
+    helperInput.remove();
+  };
+
+  copyEmailCard.addEventListener("click", async () => {
+    try {
+      await writeClipboard(emailText);
+      copyFeedback.textContent = "Email copied to clipboard.";
+    } catch (error) {
+      copyFeedback.textContent = "Could not copy email. Please copy it manually.";
+    }
   });
 }
 
@@ -104,3 +156,20 @@ if (
     }
   });
 }
+
+document.querySelectorAll("[data-more-projects]").forEach((root) => {
+  const track = root.querySelector(".more-projects__track");
+  const prev = root.querySelector("[data-scroll-prev]");
+  const next = root.querySelector("[data-scroll-next]");
+  if (!track || !prev || !next) return;
+
+  const step = () => Math.max(260, Math.min(420, track.clientWidth * 0.45));
+
+  prev.addEventListener("click", () => {
+    track.scrollBy({ left: -step(), behavior: "smooth" });
+  });
+
+  next.addEventListener("click", () => {
+    track.scrollBy({ left: step(), behavior: "smooth" });
+  });
+});
