@@ -30,8 +30,12 @@
             title="Light or dark mode"
           >
             <span class="theme-toggle-track">
-              <span class="theme-icon theme-icon-sun" aria-hidden="true">&#9728;</span>
-              <span class="theme-icon theme-icon-moon" aria-hidden="true">&#9790;</span>
+              <span class="theme-icon theme-icon-sun" aria-hidden="true">
+                <img src="../assets/icons/sun-03.svg" alt="" width="14" height="14" decoding="async" />
+              </span>
+              <span class="theme-icon theme-icon-moon" aria-hidden="true">
+                <img src="../assets/icons/moon.svg" alt="" width="14" height="14" decoding="async" />
+              </span>
               <span class="theme-toggle-thumb" aria-hidden="true"></span>
             </span>
           </button>
@@ -65,8 +69,45 @@
     </main>
 
     <footer class="site-footer">
-      <div class="container">
-        <p>© 2026 Octavia Sirbu - UX/UI Designer</p>
+      <div class="container site-footer__inner">
+        <div class="site-footer__brand">
+          <img
+            class="site-footer__logo"
+            src="../assets/portfolio-logo.svg"
+            alt=""
+            width="130"
+            height="114"
+            decoding="async"
+          />
+          <p class="site-footer__tagline">Turning complexity into clear experiences</p>
+          <p>© 2026 Octavia Sirbu - Product Designer</p>
+        </div>
+        <nav class="site-footer__nav" aria-label="Main pages">
+          <ul class="site-footer__list">
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="../work.html">Work</a></li>
+            <li><a href="../blog.html">Blog</a></li>
+            <li><a href="../contact.html">Contact</a></li>
+          </ul>
+        </nav>
+        <div class="site-footer__social">
+          <a
+            class="site-footer__linkedin"
+            href="https://www.linkedin.com/in/octaviasirbu/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <img
+              class="site-footer__linkedin-icon"
+              src="../assets/icons/linkedin-02.svg"
+              alt=""
+              width="24"
+              height="24"
+              decoding="async"
+            />
+            <span>My LinkedIn</span>
+          </a>
+        </div>
       </div>
     </footer>
     <script src="../script.js"></script>

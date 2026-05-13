@@ -7,7 +7,7 @@
     <script src="theme-init.js"></script>
     <link rel="stylesheet" href="styles.css" />
   </head>
-  <body class="page-home">
+  <body>
     <header class="site-header">
       <nav class="nav container">
         <a class="logo" href="index.html">
@@ -30,8 +30,12 @@
             title="Light or dark mode"
           >
             <span class="theme-toggle-track">
-              <span class="theme-icon theme-icon-sun" aria-hidden="true">&#9728;</span>
-              <span class="theme-icon theme-icon-moon" aria-hidden="true">&#9790;</span>
+              <span class="theme-icon theme-icon-sun" aria-hidden="true">
+                <img src="assets/icons/sun-03.svg" alt="" width="14" height="14" decoding="async" />
+              </span>
+              <span class="theme-icon theme-icon-moon" aria-hidden="true">
+                <img src="assets/icons/moon.svg" alt="" width="14" height="14" decoding="async" />
+              </span>
               <span class="theme-toggle-thumb" aria-hidden="true"></span>
             </span>
           </button>
@@ -48,7 +52,13 @@
             I am a full-stack designer covering UX, UI, and graphic design with
             project management experience.
           </p>
-          <a class="btn hero-cta" href="work.html">See My Projects</a>
+          <div class="hero-cta-row">
+            <a class="btn hero-cta" href="work.html">See My Projects</a>
+            <a class="btn hero-cta-connect" href="contact.html">
+              <span class="hero-cta-connect__emoji" aria-hidden="true">☕</span>
+              Let's connect
+            </a>
+          </div>
         </div>
 
         <div class="hero-visual hero-visual--portrait">
@@ -109,73 +119,135 @@
       <section class="container section">
         <h2 class="section-title--texture">Services</h2>
         <div class="services-layout">
-          <div class="service-tabs" role="list">
+          <div class="service-tabs" role="tablist" aria-label="Services">
             <button
               class="service-tab active"
               type="button"
+              role="tab"
+              aria-selected="true"
+              aria-controls="servicePanel"
+              data-service-id="ai-design"
+              data-title="AI-Enhanced Product Design"
+              data-description="Pairing human judgment with AI tooling to explore concepts, tighten flows, and ship interfaces faster without losing quality or accessibility."
+            >
+              <img
+                class="service-tab__icon"
+                src="assets/icons/artificial-intelligence-08.svg"
+                alt=""
+                width="24"
+                height="24"
+                decoding="async"
+              />
+              <span class="service-tab__label">AI-Enhanced Product Design</span>
+            </button>
+            <button
+              class="service-tab"
+              type="button"
+              role="tab"
+              aria-selected="false"
+              aria-controls="servicePanel"
               data-service-id="ui-ai"
-              data-title="UI Design & AI"
-              data-description="Designing modern interfaces and AI-assisted workflows for products that need speed, consistency, and accessibility."
+              data-title="UI Design and Design Systems"
+              data-description="Designing modern interfaces, reusable components, and documentation so products stay consistent as teams and features scale."
             >
-              UI Design & AI
+              <img
+                class="service-tab__icon"
+                src="assets/icons/web-design-01.svg"
+                alt=""
+                width="24"
+                height="24"
+                decoding="async"
+              />
+              <span class="service-tab__label">UI Design and Design Systems</span>
             </button>
             <button
               class="service-tab"
               type="button"
+              role="tab"
+              aria-selected="false"
+              aria-controls="servicePanel"
               data-service-id="ux-metrics"
-              data-title="UX Research & Product Metrics"
-              data-description="Combining interviews, usability testing, and product analytics to reveal what users need and where conversions drop."
+              data-title="UX Research and UX Writing"
+              data-description="Combining interviews, usability testing, and clear microcopy so journeys feel obvious, trustworthy, and grounded in real user behavior."
             >
-              UX Research & Product Metrics
+              <img
+                class="service-tab__icon"
+                src="assets/icons/structure-04.svg"
+                alt=""
+                width="24"
+                height="24"
+                decoding="async"
+              />
+              <span class="service-tab__label">UX Research and UX Writing</span>
             </button>
             <button
               class="service-tab"
               type="button"
+              role="tab"
+              aria-selected="false"
+              aria-controls="servicePanel"
               data-service-id="pm"
-              data-title="Project & Stakeholder Management"
-              data-description="Keeping design and delivery aligned through planning, stakeholder workshops, and clear cross-team communication."
+              data-title="Project Management and Metrics"
+              data-description="Keeping design and delivery aligned through planning, stakeholder workshops, and measurable goals so teams know what shipped and why."
             >
-              Project & Stakeholder Management
+              <img
+                class="service-tab__icon"
+                src="assets/icons/chart-line-data-02.svg"
+                alt=""
+                width="24"
+                height="24"
+                decoding="async"
+              />
+              <span class="service-tab__label">Project Management and Metrics</span>
             </button>
             <button
               class="service-tab"
               type="button"
+              role="tab"
+              aria-selected="false"
+              aria-controls="servicePanel"
               data-service-id="branding"
-              data-title="Branding & Graphic Design"
+              data-title="Branding and Graphic Design"
               data-description="Building visual identities, social assets, and marketing graphics that strengthen brand recognition across channels."
             >
-              Branding & Graphic Design
+              <img
+                class="service-tab__icon"
+                src="assets/icons/brush.svg"
+                alt=""
+                width="24"
+                height="24"
+                decoding="async"
+              />
+              <span class="service-tab__label">Branding and Graphic Design</span>
             </button>
           </div>
-          <div class="service-cta">
-            <h3>Let's elevate your product and brand</h3>
-            <p>
-              Tap a service tab to view details and a related project from my
-              work.
+          <div
+            class="service-cta"
+            id="servicePanel"
+            role="region"
+            aria-label="Selected service details"
+            aria-live="polite"
+          >
+            <h3 id="servicePanelTitle">AI-Enhanced Product Design</h3>
+            <p class="service-panel__desc" id="servicePanelDescription">
+              Pairing human judgment with AI tooling to explore concepts, tighten flows, and ship
+              interfaces faster without losing quality or accessibility.
             </p>
-            <a class="btn" href="contact.html">Book a Discovery Call</a>
+            <a class="project-card service-panel__project" id="servicePanelProject" href="work.html">
+              <div class="thumb thumb-four" id="servicePanelThumb"></div>
+              <h3 id="servicePanelProjectTitle">NextMove Travel App</h3>
+              <p class="project-desc" id="servicePanelProjectDesc">
+                Product flows shaped with rapid exploration, clear hierarchy, and polish for travelers
+                on the go.
+              </p>
+              <div class="project-labels">
+                <span>View project</span>
+                <span>Work</span>
+              </div>
+            </a>
           </div>
         </div>
       </section>
-
-      <div class="service-modal" id="serviceModal" aria-hidden="true">
-        <div class="service-modal-panel" role="dialog" aria-modal="true" aria-labelledby="serviceModalTitle">
-          <button class="modal-close" id="serviceModalClose" type="button" aria-label="Close">
-            ×
-          </button>
-          <h3 id="serviceModalTitle"></h3>
-          <p id="serviceModalDescription"></p>
-          <a class="project-card modal-project-card" id="serviceModalProject" href="work.html">
-            <div class="thumb" id="serviceModalThumb"></div>
-            <h3 id="serviceModalProjectTitle"></h3>
-            <p class="project-desc" id="serviceModalProjectDesc"></p>
-            <div class="project-labels">
-              <span>View Project</span>
-              <span>Work Page</span>
-            </div>
-          </a>
-        </div>
-      </div>
 
       <section class="container section">
         <div class="section-heading section-heading--texture">
@@ -202,25 +274,67 @@
         <h2 class="section-title--center">Testimonials</h2>
         <div class="grid three">
           <article class="card quote">
-            <p>
+            <p class="quote__text">
               "Alex transformed our onboarding flow and increased completion
               rates by 38% in less than two months."
             </p>
-            <span>- Product Manager, FinTrack</span>
+            <footer class="quote__footer">
+              <img
+                class="quote__avatar"
+                src="assets/testimonials/testimonial-avatar-1.png"
+                alt=""
+                width="48"
+                height="48"
+                loading="lazy"
+                decoding="async"
+              />
+              <div class="quote__byline">
+                <span class="quote__name">Morgan Ellis</span>
+                <span class="quote__role">Product Manager at FinTrack</span>
+              </div>
+            </footer>
           </article>
           <article class="card quote">
-            <p>
+            <p class="quote__text">
               "Clear process, excellent communication, and beautiful results.
               Our users noticed the difference immediately."
             </p>
-            <span>- Founder, HealthHub</span>
+            <footer class="quote__footer">
+              <img
+                class="quote__avatar"
+                src="assets/octavia-portrait.png"
+                alt=""
+                width="48"
+                height="48"
+                loading="lazy"
+                decoding="async"
+              />
+              <div class="quote__byline">
+                <span class="quote__name">Avery Park</span>
+                <span class="quote__role">Founder at HealthHub</span>
+              </div>
+            </footer>
           </article>
           <article class="card quote">
-            <p>
+            <p class="quote__text">
               "From discovery to final UI, the work was strategic and
               pixel-perfect. Exactly what we needed."
             </p>
-            <span>- Head of Product, Nova</span>
+            <footer class="quote__footer">
+              <img
+                class="quote__avatar"
+                src="assets/octavia-portrait.png"
+                alt=""
+                width="48"
+                height="48"
+                loading="lazy"
+                decoding="async"
+              />
+              <div class="quote__byline">
+                <span class="quote__name">Riley Santos</span>
+                <span class="quote__role">Head of Product at Nova</span>
+              </div>
+            </footer>
           </article>
         </div>
       </section>
@@ -333,8 +447,45 @@
     </main>
 
     <footer class="site-footer">
-      <div class="container">
-        <p>© 2026 Octavia Sirbu - UX/UI Designer</p>
+      <div class="container site-footer__inner">
+        <div class="site-footer__brand">
+          <img
+            class="site-footer__logo"
+            src="assets/portfolio-logo.svg"
+            alt=""
+            width="130"
+            height="114"
+            decoding="async"
+          />
+          <p class="site-footer__tagline">Turning complexity into clear experiences</p>
+          <p>© 2026 Octavia Sirbu - Product Designer</p>
+        </div>
+        <nav class="site-footer__nav" aria-label="Main pages">
+          <ul class="site-footer__list">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="work.html">Work</a></li>
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </nav>
+        <div class="site-footer__social">
+          <a
+            class="site-footer__linkedin"
+            href="https://www.linkedin.com/in/octaviasirbu/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <img
+              class="site-footer__linkedin-icon"
+              src="assets/icons/linkedin-02.svg"
+              alt=""
+              width="24"
+              height="24"
+              decoding="async"
+            />
+            <span>My LinkedIn</span>
+          </a>
+        </div>
       </div>
     </footer>
 

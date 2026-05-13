@@ -3,16 +3,19 @@ const copyEmailCard = document.querySelector("#copyEmailCard");
 const copyFeedback = document.querySelector("#copyFeedback");
 const emailValue = document.querySelector("#emailValue");
 const serviceTabs = document.querySelectorAll(".service-tab");
-const serviceModal = document.querySelector("#serviceModal");
-const serviceModalClose = document.querySelector("#serviceModalClose");
-const serviceModalTitle = document.querySelector("#serviceModalTitle");
-const serviceModalDescription = document.querySelector("#serviceModalDescription");
-const serviceModalProject = document.querySelector("#serviceModalProject");
-const serviceModalProjectTitle = document.querySelector("#serviceModalProjectTitle");
-const serviceModalProjectDesc = document.querySelector("#serviceModalProjectDesc");
-const serviceModalThumb = document.querySelector("#serviceModalThumb");
+const servicePanelTitle = document.querySelector("#servicePanelTitle");
+const servicePanelDescription = document.querySelector("#servicePanelDescription");
+const servicePanelProject = document.querySelector("#servicePanelProject");
+const servicePanelProjectTitle = document.querySelector("#servicePanelProjectTitle");
+const servicePanelProjectDesc = document.querySelector("#servicePanelProjectDesc");
+const servicePanelThumb = document.querySelector("#servicePanelThumb");
 
 const serviceProjectMap = {
+  "ai-design": {
+    title: "NextMove Travel App",
+    desc: "Product flows shaped with rapid exploration, clear hierarchy, and polish for travelers on the go.",
+    thumbClass: "thumb-four",
+  },
   "ui-ai": {
     title: "FinTrack Mobile Banking",
     desc: "A mobile-first interface redesign focused on clarity and speed.",
@@ -96,65 +99,48 @@ if (copyEmailCard && copyFeedback && emailValue) {
 
 if (
   serviceTabs.length &&
-  serviceModal &&
-  serviceModalClose &&
-  serviceModalTitle &&
-  serviceModalDescription &&
-  serviceModalProject &&
-  serviceModalProjectTitle &&
-  serviceModalProjectDesc &&
-  serviceModalThumb
+  servicePanelTitle &&
+  servicePanelDescription &&
+  servicePanelProject &&
+  servicePanelProjectTitle &&
+  servicePanelProjectDesc &&
+  servicePanelThumb
 ) {
-  const thumbClasses = Object.values(serviceProjectMap).map(
-    (project) => project.thumbClass
-  );
+  const thumbClasses = Object.values(serviceProjectMap).map((project) => project.thumbClass);
 
-  const openServiceModal = (tab) => {
-    serviceTabs.forEach((item) => item.classList.remove("active"));
+  const applyServiceTab = (tab) => {
+    serviceTabs.forEach((item) => {
+      item.classList.remove("active");
+      item.setAttribute("aria-selected", "false");
+    });
     tab.classList.add("active");
+    tab.setAttribute("aria-selected", "true");
 
     const title = tab.dataset.title || "Service";
     const description = tab.dataset.description || "";
     const serviceId = tab.dataset.serviceId || "";
     const project = serviceProjectMap[serviceId];
 
-    serviceModalTitle.textContent = title;
-    serviceModalDescription.textContent = description;
+    servicePanelTitle.textContent = title;
+    servicePanelDescription.textContent = description;
 
     if (project) {
-      serviceModalProjectTitle.textContent = project.title;
-      serviceModalProjectDesc.textContent = project.desc;
-      serviceModalThumb.classList.remove(...thumbClasses);
-      serviceModalThumb.classList.add(project.thumbClass);
-      serviceModalProject.href = "work.html";
+      servicePanelProjectTitle.textContent = project.title;
+      servicePanelProjectDesc.textContent = project.desc;
+      servicePanelThumb.classList.remove(...thumbClasses);
+      servicePanelThumb.classList.add(project.thumbClass);
+      servicePanelProject.href = "work.html";
     }
-
-    serviceModal.classList.add("open");
-    serviceModal.setAttribute("aria-hidden", "false");
-  };
-
-  const closeServiceModal = () => {
-    serviceModal.classList.remove("open");
-    serviceModal.setAttribute("aria-hidden", "true");
   };
 
   serviceTabs.forEach((tab) => {
-    tab.addEventListener("click", () => openServiceModal(tab));
+    tab.addEventListener("click", () => applyServiceTab(tab));
   });
 
-  serviceModalClose.addEventListener("click", closeServiceModal);
-
-  serviceModal.addEventListener("click", (event) => {
-    if (event.target === serviceModal) {
-      closeServiceModal();
-    }
-  });
-
-  document.addEventListener("keydown", (event) => {
-    if (event.key === "Escape" && serviceModal.classList.contains("open")) {
-      closeServiceModal();
-    }
-  });
+  const initial = document.querySelector(".service-tab.active");
+  if (initial) {
+    applyServiceTab(initial);
+  }
 }
 
 document.querySelectorAll("[data-more-projects]").forEach((root) => {
@@ -173,3 +159,42 @@ document.querySelectorAll("[data-more-projects]").forEach((root) => {
     track.scrollBy({ left: step(), behavior: "smooth" });
   });
 });
+
+/* Back-to-top control (all pages; icon path differs under /blogs/) */
+(function initBackToTop() {
+  const iconSrc = document.location.pathname.includes("/blogs/")
+    ? "../assets/icons/arrow-up-02.svg"
+    : "assets/icons/arrow-up-02.svg";
+
+  const btn = document.createElement("button");
+  btn.type = "button";
+  btn.className = "back-to-top";
+  btn.setAttribute("aria-label", "Back to top");
+
+  const img = document.createElement("img");
+  img.src = iconSrc;
+  img.alt = "";
+  img.width = 24;
+  img.height = 24;
+  img.decoding = "async";
+  btn.appendChild(img);
+
+  document.body.appendChild(btn);
+
+  const toggleVisible = () => {
+    if (window.scrollY > 320) {
+      btn.classList.add("back-to-top--visible");
+    } else {
+      btn.classList.remove("back-to-top--visible");
+    }
+  };
+
+  window.addEventListener("scroll", toggleVisible, { passive: true });
+  toggleVisible();
+
+  btn.addEventListener("click", () => {
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    window.scrollTo({ top: 0, behavior: reduceMotion ? "auto" : "smooth" });
+    btn.blur();
+  });
+})();
