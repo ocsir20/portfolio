@@ -7,10 +7,13 @@
     <script src="theme-init.js"></script>
     <link rel="stylesheet" href="styles.css" />
   </head>
-  <body>
+  <body class="page-home">
     <header class="site-header">
       <nav class="nav container">
-        <a class="logo" href="index.html">Octavia</a>
+        <a class="logo" href="index.html">
+          <span class="logo-mark" aria-hidden="true"><img class="logo-mark-img" src="assets/portfolio-logo.svg" alt="" width="130" height="114" decoding="async" /></span>
+          <span class="logo-text">Octavia Sirbu</span>
+        </a>
         <div class="nav-right">
           <ul class="nav-links">
             <li><a class="active" href="index.html">Home</a></li>
@@ -45,6 +48,7 @@
             I am a full-stack designer covering UX, UI, and graphic design with
             project management experience.
           </p>
+          <a class="btn hero-cta" href="work.html">See My Projects</a>
         </div>
 
         <div class="hero-visual hero-visual--portrait">
@@ -75,7 +79,30 @@
             <p>NN Group</p>
             <span>Qualified UX Designer</span>
           </article>
-          <a class="btn hero-cta-overlay" href="work.html">See My Projects</a>
+        </div>
+      </section>
+
+      <section class="container section home-collage" aria-labelledby="home-collage-heading">
+        <div class="home-collage__grid">
+          <div class="home-collage__media">
+            <img
+              class="home-collage__img"
+              src="assets/collage portfolio.png"
+              alt="Collage of selected UX and UI design work"
+              width="960"
+              height="720"
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+          <div class="home-collage__copy">
+            <h2 id="home-collage-heading">From research to shipped UI</h2>
+            <p class="intro home-collage__intro">
+              A snapshot of how I partner with teams: clarifying problems, shaping
+              flows and components, and polishing interfaces so products feel clear,
+              consistent, and ready for real users.
+            </p>
+          </div>
         </div>
       </section>
 
@@ -171,8 +198,8 @@
         </div>
       </section>
 
-      <section class="container section">
-        <h2>Testimonials</h2>
+      <section class="container section section--testimonials">
+        <h2 class="section-title--center">Testimonials</h2>
         <div class="grid three">
           <article class="card quote">
             <p>
@@ -198,14 +225,109 @@
         </div>
       </section>
 
-      <section class="container section">
-        <h2>Trusted By</h2>
-        <div class="logo-row">
-          <span>FinTrack</span>
-          <span>HealthHub</span>
-          <span>Nova</span>
-          <span>BrightPath</span>
-          <span>NextMove</span>
+      <section class="container section section--trusted">
+        <h2 class="section-title--center">Trusted by</h2>
+        <div class="trusted-by-logos" role="list">
+          <div class="trusted-by-logo" role="listitem">
+            <img
+              class="trusted-by-logo__img trusted-by-logo__img--light"
+              src="assets/universal-robots-logo-color.png"
+              alt="Universal Robots"
+              width="200"
+              height="80"
+              loading="lazy"
+              decoding="async"
+            />
+            <img
+              class="trusted-by-logo__img trusted-by-logo__img--dark"
+              src="assets/Universal-Robots-White+copy.webp"
+              alt="Universal Robots"
+              width="200"
+              height="80"
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+          <div class="trusted-by-logo trusted-by-logo--sdu" role="listitem">
+            <img
+              class="trusted-by-logo__img trusted-by-logo__img--light"
+              src="assets/sdu-logo-color.png"
+              alt="University of Southern Denmark (SDU)"
+              width="200"
+              height="80"
+              loading="lazy"
+              decoding="async"
+            />
+            <img
+              class="trusted-by-logo__img trusted-by-logo__img--dark"
+              src="assets/sdu-white-til-logo-790x433px 1.png"
+              alt="University of Southern Denmark (SDU)"
+              width="200"
+              height="80"
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+          <div class="trusted-by-logo" role="listitem">
+            <img
+              class="trusted-by-logo__img trusted-by-logo__img--light"
+              src="assets/nbg logo color.svg"
+              alt="NBG"
+              width="200"
+              height="80"
+              loading="lazy"
+              decoding="async"
+            />
+            <img
+              class="trusted-by-logo__img trusted-by-logo__img--dark"
+              src="assets/nbg logo white.svg"
+              alt="NBG"
+              width="200"
+              height="80"
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+          <div class="trusted-by-logo" role="listitem">
+            <img
+              class="trusted-by-logo__img trusted-by-logo__img--light"
+              src="assets/Danfoss-Logo.svg.png"
+              alt="Danfoss"
+              width="200"
+              height="80"
+              loading="lazy"
+              decoding="async"
+            />
+            <img
+              class="trusted-by-logo__img trusted-by-logo__img--dark"
+              src="assets/Danfoss-logo-white.png"
+              alt="Danfoss"
+              width="200"
+              height="80"
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+          <div class="trusted-by-logo trusted-by-logo--bosch" role="listitem">
+            <img
+              class="trusted-by-logo__img trusted-by-logo__img--light"
+              src="assets/BOSCH color.png"
+              alt="Bosch"
+              width="200"
+              height="80"
+              loading="lazy"
+              decoding="async"
+            />
+            <img
+              class="trusted-by-logo__img trusted-by-logo__img--dark"
+              src="assets/bosch white.png"
+              alt="Bosch"
+              width="200"
+              height="80"
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
         </div>
       </section>
     </main>
