@@ -20,7 +20,7 @@ const serviceProjectMap = {
     labels: ["Design System", "Storybook"],
   },
   "ui-ai": {
-    title: "Desining a Website and Webshop for EdTech startup Rotoy ApS",
+    title: "Designing a Website and Webshop for EdTech Startup Rotoy ApS",
     desc: "Marketing site and webshop experience with clear storytelling and a purchase flow parents can trust.",
     thumbClass: "thumb-rotoy",
     href: "rotoy-project.html",
