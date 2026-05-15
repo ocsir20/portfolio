@@ -7,7 +7,7 @@
     <script src="theme-init.js"></script>
     <link rel="stylesheet" href="styles.css" />
   </head>
-  <body>
+  <body class="page-home">
     <header class="site-header">
       <nav class="nav container">
         <a class="logo" href="index.html">
@@ -17,7 +17,7 @@
         <div class="nav-right">
           <ul class="nav-links">
             <li><a class="active" href="index.html">Home</a></li>
-            <li><a href="work.html">Work</a></li>
+            <li><a href="work.html">Projects</a></li>
             <li><a href="blog.html">Blog</a></li>
             <li><a href="contact.html">Contact</a></li>
           </ul>
@@ -46,13 +46,13 @@
     <main>
       <section class="hero container">
         <div class="hero-copy">
-          <p class="tag">UX/UI DESIGNER</p>
-          <h1>Hi! I am Octavia</h1>
-          <p class="intro">
+          <p class="tag" data-reveal data-reveal-hero>UX/UI DESIGNER</p>
+          <h1 data-reveal data-reveal-hero>Hi! I am Octavia</h1>
+          <p class="intro" data-reveal data-reveal-hero>
             I am a full-stack designer covering UX, UI, and graphic design with
             project management experience.
           </p>
-          <div class="hero-cta-row">
+          <div class="hero-cta-row" data-reveal data-reveal-hero>
             <a class="btn hero-cta" href="work.html">See My Projects</a>
             <a class="btn hero-cta-connect" href="contact.html">
               <span class="hero-cta-connect__emoji" aria-hidden="true">☕</span>
@@ -61,7 +61,7 @@
           </div>
         </div>
 
-        <div class="hero-visual hero-visual--portrait">
+        <div class="hero-visual hero-visual--portrait" data-reveal data-reveal-hero>
           <div class="portrait-frame">
             <img
               class="hero-portrait-img"
@@ -73,31 +73,31 @@
               decoding="async"
             />
           </div>
-          <article class="hero-stat top-left">
+          <article class="hero-stat top-left" data-reveal data-reveal-hero>
             <p>MSc in IT</p>
             <span>Product Design</span>
           </article>
-          <article class="hero-stat top-right">
+          <article class="hero-stat top-right" data-reveal data-reveal-hero>
             <p>Worked in 4 EU countries</p>
             <span>Remote + onsite</span>
           </article>
-          <article class="hero-stat right-middle">
+          <article class="hero-stat right-middle" data-reveal data-reveal-hero>
             <p>5+ years</p>
             <span>Experience</span>
           </article>
-          <article class="hero-stat bottom-left">
+          <article class="hero-stat bottom-left" data-reveal data-reveal-hero>
             <p>NN Group</p>
             <span>Qualified UX Designer</span>
           </article>
         </div>
       </section>
 
-      <section class="container section home-collage" aria-labelledby="home-collage-heading">
+      <section class="container section home-collage" aria-labelledby="home-collage-heading" data-reveal>
         <div class="home-collage__grid">
           <div class="home-collage__media">
             <img
               class="home-collage__img"
-              src="assets/collage portfolio.png"
+              src="assets/collage portfolio 2.png"
               alt="Collage of selected UX and UI design work"
               width="960"
               height="720"
@@ -116,7 +116,7 @@
         </div>
       </section>
 
-      <section class="container section">
+      <section class="container section" data-reveal>
         <h2 class="section-title--texture">Services</h2>
         <div class="services-layout">
           <div class="service-tabs" role="tablist" aria-label="Services">
@@ -228,52 +228,65 @@
             aria-label="Selected service details"
             aria-live="polite"
           >
+            <div class="service-panel__content" id="servicePanelContent">
             <h3 id="servicePanelTitle">AI-Enhanced Product Design</h3>
             <p class="service-panel__desc" id="servicePanelDescription">
               Pairing human judgment with AI tooling to explore concepts, tighten flows, and ship
               interfaces faster without losing quality or accessibility.
             </p>
-            <a class="project-card service-panel__project" id="servicePanelProject" href="work.html">
-              <div class="thumb thumb-four" id="servicePanelThumb"></div>
-              <h3 id="servicePanelProjectTitle">NextMove Travel App</h3>
+            <a class="project-card service-panel__project" id="servicePanelProject" href="nbg-designsystem.html">
+              <div class="thumb thumb-nabogo-designsystem" id="servicePanelThumb"></div>
+              <h3 id="servicePanelProjectTitle">AI-powered Design System for Nabogo ApS</h3>
               <p class="project-desc" id="servicePanelProjectDesc">
-                Product flows shaped with rapid exploration, clear hierarchy, and polish for travelers
-                on the go.
+                Tokens, components, and Storybook documentation for a consistent product surface across teams.
               </p>
-              <div class="project-labels">
-                <span>View project</span>
-                <span>Work</span>
+              <div class="project-labels" id="servicePanelLabels">
+                <span>Design System</span>
+                <span>Storybook</span>
               </div>
             </a>
+            </div>
           </div>
         </div>
       </section>
 
-      <section class="container section">
+      <section class="container section" data-reveal>
         <div class="section-heading section-heading--texture">
           <h2>Featured Projects</h2>
-          <a class="text-link" href="work.html">See all projects</a>
+          <a class="text-link text-link--animated" href="work.html">See all projects</a>
         </div>
-        <div class="grid three">
-          <a class="project-card" href="work.html">
-            <div class="thumb thumb-one"></div>
-            <h3>FinTrack Mobile Banking</h3>
+        <div class="grid three home-featured-grid">
+          <a class="project-card" href="nbg-project.html" data-reveal data-reveal-stagger>
+            <div class="thumb thumb-airwallet-checkout"></div>
+            <h3>Leading Product UX for a SaaS Platform Nabogo ApS </h3>
+            <p class="project-desc">
+              Interactive prototype for selecting multiple laundry machines and
+              paying in one bundled transaction.
+            </p>
+            <div class="project-labels">
+              <span>UX Prototype</span>
+              <span>Mobile Payments</span>
+            </div>
           </a>
-          <a class="project-card" href="work.html">
-            <div class="thumb thumb-two"></div>
-            <h3>HealthHub Patient Portal</h3>
-          </a>
-          <a class="project-card" href="work.html">
-            <div class="thumb thumb-three"></div>
-            <h3>Nova eCommerce Redesign</h3>
+          <a class="project-card" href="nbg-designsystem.html" data-reveal data-reveal-stagger>
+            <div class="thumb thumb-nabogo-designsystem"></div>
+            <h3>AI-powered Design System for Nabogo ApS</h3>
+            <p class="project-desc">
+              Tokens, components, and Storybook documentation for a consistent
+              product surface across teams.
+            </p>
+            <div class="project-labels">
+              <span>Design System</span>
+              <span>Storybook</span>
+            </div>
           </a>
         </div>
       </section>
 
-      <section class="container section section--testimonials">
+      <section class="container section section--testimonials" data-reveal>
         <h2 class="section-title--center">Testimonials</h2>
-        <div class="grid three">
-          <article class="card quote">
+        <div class="grid three home-testimonials-grid">
+          <article class="card quote" data-reveal data-reveal-stagger>
             <p class="quote__text">
               "Alex transformed our onboarding flow and increased completion
               rates by 38% in less than two months."
@@ -294,7 +307,7 @@
               </div>
             </footer>
           </article>
-          <article class="card quote">
+          <article class="card quote" data-reveal data-reveal-stagger>
             <p class="quote__text">
               "Clear process, excellent communication, and beautiful results.
               Our users noticed the difference immediately."
@@ -315,7 +328,7 @@
               </div>
             </footer>
           </article>
-          <article class="card quote">
+          <article class="card quote" data-reveal data-reveal-stagger>
             <p class="quote__text">
               "From discovery to final UI, the work was strategic and
               pixel-perfect. Exactly what we needed."
@@ -339,9 +352,9 @@
         </div>
       </section>
 
-      <section class="container section section--trusted">
+      <section class="container section section--trusted" data-reveal>
         <h2 class="section-title--center">Trusted by</h2>
-        <div class="trusted-by-logos" role="list">
+        <div class="trusted-by-logos" role="list" data-reveal data-reveal-stagger>
           <div class="trusted-by-logo" role="listitem">
             <img
               class="trusted-by-logo__img trusted-by-logo__img--light"
@@ -463,7 +476,7 @@
         <nav class="site-footer__nav" aria-label="Main pages">
           <ul class="site-footer__list">
             <li><a href="index.html">Home</a></li>
-            <li><a href="work.html">Work</a></li>
+            <li><a href="work.html">Projects</a></li>
             <li><a href="blog.html">Blog</a></li>
             <li><a href="contact.html">Contact</a></li>
           </ul>

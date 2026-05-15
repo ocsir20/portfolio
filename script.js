@@ -9,32 +9,43 @@ const servicePanelProject = document.querySelector("#servicePanelProject");
 const servicePanelProjectTitle = document.querySelector("#servicePanelProjectTitle");
 const servicePanelProjectDesc = document.querySelector("#servicePanelProjectDesc");
 const servicePanelThumb = document.querySelector("#servicePanelThumb");
+const servicePanelLabels = document.querySelector("#servicePanelLabels");
 
 const serviceProjectMap = {
   "ai-design": {
-    title: "NextMove Travel App",
-    desc: "Product flows shaped with rapid exploration, clear hierarchy, and polish for travelers on the go.",
-    thumbClass: "thumb-four",
+    title: "AI-powered Design System for Nabogo ApS",
+    desc: "Tokens, components, and Storybook documentation for a consistent product surface across teams.",
+    thumbClass: "thumb-nabogo-designsystem",
+    href: "nbg-designsystem.html",
+    labels: ["Design System", "Storybook"],
   },
   "ui-ai": {
-    title: "FinTrack Mobile Banking",
-    desc: "A mobile-first interface redesign focused on clarity and speed.",
-    thumbClass: "thumb-one",
+    title: "Desining a Website and Webshop for EdTech startup Rotoy ApS",
+    desc: "Marketing site and webshop experience with clear storytelling and a purchase flow parents can trust.",
+    thumbClass: "thumb-rotoy",
+    href: "rotoy-project.html",
+    labels: ["EdTech", "Webshop"],
   },
   "ux-metrics": {
-    title: "HealthHub Patient Portal",
-    desc: "User-tested portal flows with measurable improvements in completion.",
-    thumbClass: "thumb-two",
+    title: "Leading Product UX for a SaaS Platform Nabogo ApS",
+    desc: "End-to-end product design for a carpooling platform focused on sustainable mobility.",
+    thumbClass: "thumb-airwallet-checkout",
+    href: "nbg-project.html",
+    labels: ["UX Prototype", "Mobile Payments"],
   },
   pm: {
-    title: "CareSync Dashboard",
-    desc: "Cross-team project delivery for a data-heavy product dashboard.",
-    thumbClass: "thumb-six",
+    title: "Airwallet Operator Insights",
+    desc: "Dashboard concept with washer and dryer usage-over-time charts and device filters.",
+    thumbClass: "thumb-four",
+    href: "airwallet-operator-insights.html",
+    labels: ["Dashboard", "Analytics"],
   },
   branding: {
-    title: "Nova eCommerce Redesign",
-    desc: "Visual identity refresh paired with a conversion-ready store UI.",
-    thumbClass: "thumb-three",
+    title: "Leading Product UX for a SaaS Platform Nabogo ApS",
+    desc: "UX strategy, research, and scalable UI for intuitive experiences aligned with business goals.",
+    thumbClass: "thumb-airwallet-checkout",
+    href: "nbg-project.html",
+    labels: ["UX Prototype", "Mobile Payments"],
   },
 };
 
@@ -108,14 +119,11 @@ if (
 ) {
   const thumbClasses = Object.values(serviceProjectMap).map((project) => project.thumbClass);
 
-  const applyServiceTab = (tab) => {
-    serviceTabs.forEach((item) => {
-      item.classList.remove("active");
-      item.setAttribute("aria-selected", "false");
-    });
-    tab.classList.add("active");
-    tab.setAttribute("aria-selected", "true");
+  const servicePanelContent = document.querySelector("#servicePanelContent");
+  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const usePanelFade = document.body.classList.contains("page-home") && servicePanelContent && !reduceMotion;
 
+  const updateServicePanel = (tab) => {
     const title = tab.dataset.title || "Service";
     const description = tab.dataset.description || "";
     const serviceId = tab.dataset.serviceId || "";
@@ -129,8 +137,35 @@ if (
       servicePanelProjectDesc.textContent = project.desc;
       servicePanelThumb.classList.remove(...thumbClasses);
       servicePanelThumb.classList.add(project.thumbClass);
-      servicePanelProject.href = "work.html";
+      servicePanelProject.href = project.href || "work.html";
+
+      if (servicePanelLabels && project.labels) {
+        const labelSpans = servicePanelLabels.querySelectorAll("span");
+        project.labels.forEach((label, index) => {
+          if (labelSpans[index]) labelSpans[index].textContent = label;
+        });
+      }
     }
+  };
+
+  const applyServiceTab = (tab) => {
+    serviceTabs.forEach((item) => {
+      item.classList.remove("active");
+      item.setAttribute("aria-selected", "false");
+    });
+    tab.classList.add("active");
+    tab.setAttribute("aria-selected", "true");
+
+    if (!usePanelFade) {
+      updateServicePanel(tab);
+      return;
+    }
+
+    servicePanelContent.classList.add("is-switching");
+    window.setTimeout(() => {
+      updateServicePanel(tab);
+      servicePanelContent.classList.remove("is-switching");
+    }, 160);
   };
 
   serviceTabs.forEach((tab) => {
@@ -159,6 +194,67 @@ document.querySelectorAll("[data-more-projects]").forEach((root) => {
     track.scrollBy({ left: step(), behavior: "smooth" });
   });
 });
+
+/* Home page: scroll reveal, hero entrance, header shadow */
+(function initHomePage() {
+  if (!document.body.classList.contains("page-home")) return;
+
+  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const revealEls = document.querySelectorAll("[data-reveal]");
+  const header = document.querySelector(".site-header");
+
+  const revealNow = (el, delayMs = 0) => {
+    window.setTimeout(() => {
+      el.classList.add("is-revealed");
+    }, delayMs);
+  };
+
+  if (reduceMotion) {
+    revealEls.forEach((el) => el.classList.add("is-revealed"));
+    return;
+  }
+
+  const heroEls = document.querySelectorAll("[data-reveal-hero]");
+  heroEls.forEach((el, index) => {
+    el.style.setProperty("--reveal-delay", `${index * 65}ms`);
+    revealNow(el, 80 + index * 65);
+  });
+
+  const staggerIndex = (el) => {
+    const group = el.parentElement;
+    if (!group) return 0;
+    const siblings = group.querySelectorAll("[data-reveal-stagger]");
+    return Math.max(0, Array.from(siblings).indexOf(el));
+  };
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        const el = entry.target;
+        if (el.hasAttribute("data-reveal-stagger")) {
+          el.style.setProperty("--reveal-delay", `${staggerIndex(el) * 85}ms`);
+        }
+        el.classList.add("is-revealed");
+        observer.unobserve(el);
+      });
+    },
+    { threshold: 0.14, rootMargin: "0px 0px -48px 0px" }
+  );
+
+  revealEls.forEach((el) => {
+    if (el.hasAttribute("data-reveal-hero")) return;
+    observer.observe(el);
+  });
+
+  if (header) {
+    const onScroll = () => {
+      header.classList.toggle("is-scrolled", window.scrollY > 12);
+    };
+    window.addEventListener("scroll", onScroll, { passive: true });
+    onScroll();
+  }
+})();
 
 /* Back-to-top control (all pages; icon path differs under /blogs/) */
 (function initBackToTop() {
