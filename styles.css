@@ -1046,7 +1046,15 @@ body.page-blog .blog-card .thumb {
 
 .thumb-sdu {
   background-color: #45404c;
-  background-image: url("assets/projects/sdu/sdu-cover.png");
+  background-image: url("assets/projects/sdu/Cover.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.thumb-makerspace {
+  background-color: #45404c;
+  background-image: url("assets/projects/makerspace/overview%20page.jpg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -1086,6 +1094,38 @@ body.page-blog .blog-card .thumb {
 }
 
 .project-page-content--rotoy .project-rotoy-figures {
+  gap: 0;
+  margin-bottom: 2rem;
+}
+
+.project-page-content .project-sdu-figures {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  margin: 1.5rem 0 2rem;
+}
+
+.project-page-content .project-sdu-figures .article-image {
+  margin-bottom: 0;
+}
+
+.project-page-content--sdu .project-sdu-figures {
+  gap: 0;
+  margin-bottom: 2rem;
+}
+
+.project-page-content .project-makerspace-figures {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  margin: 1.5rem 0 2rem;
+}
+
+.project-page-content .project-makerspace-figures .article-image {
+  margin-bottom: 0;
+}
+
+.project-page-content--makerspace .project-makerspace-figures {
   gap: 0;
   margin-bottom: 2rem;
 }
