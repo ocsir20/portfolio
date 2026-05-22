@@ -9,7 +9,6 @@ const servicePanelProject = document.querySelector("#servicePanelProject");
 const servicePanelProjectTitle = document.querySelector("#servicePanelProjectTitle");
 const servicePanelProjectDesc = document.querySelector("#servicePanelProjectDesc");
 const servicePanelThumb = document.querySelector("#servicePanelThumb");
-const servicePanelLabels = document.querySelector("#servicePanelLabels");
 
 const serviceProjectMap = {
   "ai-design": {
@@ -17,35 +16,30 @@ const serviceProjectMap = {
     desc: "Tokens, components, and Storybook documentation for a consistent product surface across teams.",
     thumbClass: "thumb-nabogo-designsystem",
     href: "nbg-designsystem.html",
-    labels: ["Design System", "Storybook"],
   },
   "ui-ai": {
-    title: "Designing a Website and Webshop for EdTech Startup Rotoy ApS",
-    desc: "Marketing site and webshop experience with clear storytelling and a purchase flow parents can trust.",
-    thumbClass: "thumb-rotoy",
-    href: "rotoy-project.html",
-    labels: ["EdTech", "Webshop"],
+    title: "AI-powered Design System for Nabogo ApS",
+    desc: "Tokens, components, and Storybook documentation for a consistent product surface across teams.",
+    thumbClass: "thumb-nabogo-designsystem",
+    href: "nbg-designsystem.html",
   },
   "ux-metrics": {
     title: "Leading Product UX for a SaaS Platform Nabogo ApS",
-    desc: "End-to-end product design for a carpooling platform focused on sustainable mobility.",
+    desc: "Interactive prototype for selecting multiple laundry machines and paying in one bundled transaction.",
     thumbClass: "thumb-airwallet-checkout",
     href: "nbg-project.html",
-    labels: ["UX Prototype", "Mobile Payments"],
   },
   pm: {
-    title: "Airwallet Operator Insights",
-    desc: "Dashboard concept with washer and dryer usage-over-time charts and device filters.",
-    thumbClass: "thumb-four",
-    href: "airwallet-operator-insights.html",
-    labels: ["Dashboard", "Analytics"],
+    title: "University Intranet Re-design based on UX Insights",
+    desc: "Research-led intranet redesign for a large university—clearer structure, navigation, and interfaces shaped by staff and student needs.",
+    thumbClass: "thumb-sdu",
+    href: "sdu-intranet-project.html",
   },
   branding: {
-    title: "Leading Product UX for a SaaS Platform Nabogo ApS",
-    desc: "UX strategy, research, and scalable UI for intuitive experiences aligned with business goals.",
-    thumbClass: "thumb-airwallet-checkout",
-    href: "nbg-project.html",
-    labels: ["UX Prototype", "Mobile Payments"],
+    title: "Designing a Website and Webshop for EdTech Startup Rotoy ApS",
+    desc: "Marketing site and webshop experience for an EdTech startup—clear storytelling, product discovery, and a purchase flow parents can trust.",
+    thumbClass: "thumb-rotoy",
+    href: "rotoy-project.html",
   },
 };
 
@@ -138,13 +132,6 @@ if (
       servicePanelThumb.classList.remove(...thumbClasses);
       servicePanelThumb.classList.add(project.thumbClass);
       servicePanelProject.href = project.href || "work.html";
-
-      if (servicePanelLabels && project.labels) {
-        const labelSpans = servicePanelLabels.querySelectorAll("span");
-        project.labels.forEach((label, index) => {
-          if (labelSpans[index]) labelSpans[index].textContent = label;
-        });
-      }
     }
   };
 

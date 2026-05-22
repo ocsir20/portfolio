@@ -3,11 +3,11 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Design Systems That Scale | Octavia Sirbu</title>
+    <title>Designing Scalable Design Systems in the Age of AI | Octavia Sirbu</title>
     <script src="../theme-init.js"></script>
     <link rel="stylesheet" href="../styles.css" />
   </head>
-  <body>
+  <body class="page-blog">
     <header class="site-header">
       <nav class="nav container">
         <a class="logo" href="../index.html">
@@ -43,24 +43,239 @@
       </nav>
     </header>
 
-    <main class="container section">
+    <main class="container section blog-post-page">
       <a class="text-link" href="../blog.html">← Back to Blog</a>
-      <h1>Design Systems That Scale</h1>
-      <p class="intro">
-        Building reusable UI foundations for growing product teams.
-      </p>
-      <div class="card">
+
+      <article class="blog-post">
+        <h1>Designing Scalable Design Systems in the Age of AI</h1>
+        <p class="intro">
+          How structured systems, Atomic Design, and AI-assisted workflows help teams ship
+          consistent products at scale.
+        </p>
+
         <p>
-          Scalable systems start with clear tokens, component states, and
-          usage rules. Prioritize high-frequency patterns first, then expand
-          through documented variants instead of one-off components.
+          As digital products grow, so does their complexity. Features expand, teams scale, and
+          maintaining consistency across platforms becomes increasingly difficult. This is where
+          design systems become essential — not just as UI libraries, but as operational frameworks
+          that help teams design, build, and scale products more efficiently.
         </p>
         <p>
-          Pair design libraries with engineering ownership and release cadence.
-          Shared governance keeps velocity high while preventing visual drift
-          across products.
+          A strong design system creates shared rules, reusable components, and a consistent visual
+          language that connects design, development, and product strategy. When implemented
+          correctly, it reduces duplication, speeds up delivery, and improves the overall user
+          experience.
         </p>
-      </div>
+
+        <h2>What Makes a Design System “Scalable”?</h2>
+        <p>
+          A scalable design system is not simply a collection of components. It is a structured
+          system that can evolve alongside a product without becoming inconsistent or difficult to
+          maintain.
+        </p>
+        <p>Scalable systems typically include:</p>
+        <ul>
+          <li>Design tokens for colors, spacing, typography, and elevation</li>
+          <li>Reusable UI components</li>
+          <li>Clear naming conventions</li>
+          <li>Documentation and usage guidelines</li>
+          <li>Accessibility standards</li>
+          <li>Shared patterns between design and development</li>
+        </ul>
+        <p>
+          The goal is not only visual consistency, but also operational clarity. Teams should be
+          able to make decisions faster because the system already defines many of the rules.
+        </p>
+
+        <h2>Using Atomic Design as a Foundation</h2>
+        <p>
+          One of the most effective frameworks for structuring scalable design systems is Atomic
+          Design, introduced by Brad Frost.
+        </p>
+        <p>Atomic Design organizes interfaces into smaller reusable building blocks:</p>
+
+        <h3>Atoms</h3>
+        <p>The smallest UI elements:</p>
+        <ul>
+          <li>buttons</li>
+          <li>labels</li>
+          <li>icons</li>
+          <li>input fields</li>
+          <li>typography styles</li>
+        </ul>
+        <p>These form the foundation of the system.</p>
+
+        <h3>Molecules</h3>
+        <p>Groups of atoms working together:</p>
+        <ul>
+          <li>search bars</li>
+          <li>form fields</li>
+          <li>navigation items</li>
+          <li>cards</li>
+        </ul>
+
+        <h3>Organisms</h3>
+        <p>More complex interface sections composed of multiple molecules:</p>
+        <ul>
+          <li>headers</li>
+          <li>bottom navigation</li>
+          <li>profile sections</li>
+          <li>ride cards</li>
+        </ul>
+
+        <h3>Templates &amp; Pages</h3>
+        <p>Full layouts and real user-facing screens built from reusable structures.</p>
+        <p>
+          This method creates modularity and predictability. Instead of designing screens from
+          scratch each time, teams assemble experiences from reusable pieces — making products
+          easier to scale and maintain over time.
+        </p>
+
+        <h2>Why Design Systems Matter More Than Ever</h2>
+        <p>
+          Modern digital products move fast. Teams ship features continuously, support multiple
+          platforms, and collaborate across disciplines. Without a design system, inconsistency
+          grows quickly:
+        </p>
+        <ul>
+          <li>duplicate components</li>
+          <li>mismatched UI patterns</li>
+          <li>accessibility issues</li>
+          <li>slower development</li>
+          <li>fragmented user experiences</li>
+        </ul>
+        <p>A design system creates alignment between:</p>
+        <ul>
+          <li>designers</li>
+          <li>developers</li>
+          <li>product managers</li>
+          <li>stakeholders</li>
+        </ul>
+        <p>It becomes a shared language for building products.</p>
+
+        <h2>How AI Is Changing Design System Workflows</h2>
+        <p>
+          AI is rapidly transforming how design systems are created, maintained, and documented.
+          Instead of replacing designers, AI acts as a collaborator that accelerates repetitive and
+          operational tasks.
+        </p>
+        <p>The biggest advantage is speed combined with consistency.</p>
+
+        <h3>AI-Assisted Token Naming &amp; Structure</h3>
+        <p>Naming tokens consistently is one of the hardest parts of scaling a system. AI can help generate:</p>
+        <ul>
+          <li>semantic token structures</li>
+          <li>Tailwind-compatible naming</li>
+          <li>scalable color hierarchies</li>
+          <li>state naming conventions</li>
+        </ul>
+        <p>Example:</p>
+        <ul class="blog-post__token-list">
+          <li><code>text-primary</code></li>
+          <li><code>text-secondary</code></li>
+          <li><code>surface-success</code></li>
+          <li><code>border-warning</code></li>
+          <li><code>bg-brand-primary</code></li>
+        </ul>
+        <p>
+          AI is especially useful when creating semantic systems that need to work across design
+          and code.
+        </p>
+
+        <h3>AI for Documentation</h3>
+        <p>One of the most time-consuming parts of a design system is writing documentation.</p>
+        <p>AI can help generate:</p>
+        <ul>
+          <li>component descriptions</li>
+          <li>accessibility guidelines</li>
+          <li>usage rules</li>
+          <li>behavior documentation</li>
+          <li>content hierarchy explanations</li>
+        </ul>
+        <p>
+          This allows teams to spend more time improving the product itself rather than manually
+          writing repetitive documentation.
+        </p>
+
+        <h3>AI for UX Writing &amp; Component States</h3>
+        <p>AI is also highly effective for generating:</p>
+        <ul>
+          <li>button labels</li>
+          <li>error messages</li>
+          <li>empty states</li>
+          <li>onboarding copy</li>
+          <li>success and warning messaging</li>
+        </ul>
+        <p>
+          This is particularly valuable when systems contain many states and variations. Instead of
+          manually writing every possible state, designers can use AI to quickly generate multiple
+          variations and refine the best options.
+        </p>
+
+        <h3>AI as a Design QA Partner</h3>
+        <p>AI-assisted workflows can also help identify:</p>
+        <ul>
+          <li>inconsistent spacing</li>
+          <li>naming mismatches</li>
+          <li>accessibility concerns</li>
+          <li>missing component states</li>
+          <li>duplicate patterns</li>
+        </ul>
+        <p>
+          As systems scale, maintaining consistency becomes increasingly difficult. AI can support
+          teams by reducing manual auditing work.
+        </p>
+
+        <h2>The Future of Design Systems</h2>
+        <p>Design systems are no longer static UI libraries. They are evolving into intelligent operational systems that connect:</p>
+        <ul>
+          <li>design</li>
+          <li>code</li>
+          <li>content</li>
+          <li>accessibility</li>
+          <li>product strategy</li>
+        </ul>
+        <p>
+          The teams that scale successfully will not only create reusable components, but also build
+          workflows that make consistency easier to maintain over time.
+        </p>
+        <p>AI is becoming a key part of that process.</p>
+
+        <h2>Final Thoughts</h2>
+        <p>
+          The best design systems are not the biggest — they are the clearest. Simplicity,
+          structure, and consistency create products that are easier to understand, maintain, and
+          scale.
+        </p>
+        <p>
+          By combining structured methodologies like Atomic Design with AI-assisted workflows,
+          teams can reduce operational friction, improve collaboration, and focus more energy on
+          creating meaningful user experiences.
+        </p>
+
+        <h2>Explore the Nabogo Design System</h2>
+        <p>
+          At Nabogo ApS, I worked on building and scaling a design system for a mobility platform
+          operating across multiple Northern European markets. The project focused on scalable UI
+          patterns, semantic tokens, UX consistency, accessibility, and improving collaboration
+          between design and development.
+        </p>
+
+        <a class="project-card blog-post__project-card project-card--landscape" href="../nbg-designsystem.html">
+          <div class="blog-post__project-card-visual project-card--landscape__visual">
+            <div class="thumb thumb-nabogo-designsystem"></div>
+          </div>
+          <div class="blog-post__project-card-body project-card--landscape__body">
+            <h3>AI-powered Design System for Nabogo ApS</h3>
+            <p class="project-desc">
+              Tokens, components, and Storybook documentation for a consistent product surface across teams.
+            </p>
+            <div class="project-labels">
+              <span>Design System</span>
+              <span>Storybook</span>
+            </div>
+          </div>
+        </a>
+      </article>
     </main>
 
     <footer class="site-footer">
