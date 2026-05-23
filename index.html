@@ -297,77 +297,125 @@
         </div>
       </section>
 
-      <section class="container section section--testimonials" data-reveal>
+      <section
+        class="container section section--testimonials"
+        data-reveal
+        data-testimonials-carousel
+        aria-label="Testimonials"
+      >
         <h2 class="section-title--center">Testimonials</h2>
-        <div class="grid three home-testimonials-grid">
-          <article class="card quote" data-reveal data-reveal-stagger>
-            <p class="quote__text">
-              "The project demonstrated Octavia's UX professional know-how regarding user
-              research (interviews and workshops), translating user insights, designing
-              prototypes, and visual design. The resulting web intranet portal is today a widely accepted 
-              reference project at SDU among reserchers and staff."
-            </p>
-            <footer class="quote__footer">
-              <img
-                class="quote__avatar"
-                src="assets/pictures/Esben.png"
-                alt="Esben Flindt"
-                width="48"
-                height="48"
-                loading="lazy"
-                decoding="async"
-              />
-              <div class="quote__byline">
-                <span class="quote__name">Esben Flindt</span>
-                <span class="quote__role">Manager at the University of Southern Denmark</span>
-              </div>
-            </footer>
-          </article>
-          <article class="card quote" data-reveal data-reveal-stagger>
-            <p class="quote__text">
-              "Octavia is an excellent designer by trade, with a strong eye for detail, but what
-              truly sets her apart is her product design leadership. She takes full ownership of
-              complex initiatives and steers them safely from early discovery through design and
-              implementation, always ensuring a smooth and well-aligned process."
-            </p>
-            <footer class="quote__footer">
-              <img
-                class="quote__avatar"
-                src="assets/pictures/Kasper.png"
-                alt="Kasper Sørensen"
-                width="48"
-                height="48"
-                loading="lazy"
-                decoding="async"
-              />
-              <div class="quote__byline">
-                <span class="quote__name">Kasper Sørensen</span>
-                <span class="quote__role">Product Manager at Nabogo ApS</span>
-              </div>
-            </footer>
-          </article>
-          <article class="card quote" data-reveal data-reveal-stagger>
-            <p class="quote__text">
-              "Octavia has a great eagerness to improve her skills and always aims to create the
-              best solutions. She has been working with many stakeholders at Universal Robots and
-              has built a strong network."
-            </p>
-            <footer class="quote__footer">
-              <img
-                class="quote__avatar"
-                src="assets/pictures/Anja.png"
-                alt="Anja Saabye"
-                width="48"
-                height="48"
-                loading="lazy"
-                decoding="async"
-              />
-              <div class="quote__byline">
-                <span class="quote__name">Anja Saabye</span>
-                <span class="quote__role">Head of Product Design at Universal Robots</span>
-              </div>
-            </footer>
-          </article>
+        <div class="testimonials-carousel">
+          <button
+            type="button"
+            class="testimonials-carousel__btn"
+            data-testimonials-prev
+            aria-label="Previous testimonials"
+          >
+            &#8249;
+          </button>
+          <div class="testimonials-carousel__viewport">
+            <div class="testimonials-carousel__track">
+              <article class="card quote testimonials-carousel__slide">
+                <p class="quote__text">
+                  "The project demonstrated Octavia's UX professional know-how regarding user
+                  research (interviews and workshops), translating user insights, designing
+                  prototypes, and visual design. The resulting web intranet portal is today a widely accepted
+                  reference project at SDU among reserchers and staff."
+                </p>
+                <footer class="quote__footer">
+                  <img
+                    class="quote__avatar"
+                    src="assets/pictures/Esben.png"
+                    alt="Esben Flindt"
+                    width="48"
+                    height="48"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                  <div class="quote__byline">
+                    <span class="quote__name">Esben Flindt</span>
+                    <span class="quote__role">Manager at the University of Southern Denmark</span>
+                  </div>
+                </footer>
+              </article>
+              <article class="card quote testimonials-carousel__slide">
+                <p class="quote__text">
+                  "Octavia is an excellent designer by trade, with a strong eye for detail, but what
+                  truly sets her apart is her product design leadership. She takes full ownership of
+                  complex initiatives and steers them safely from early discovery through design and
+                  implementation, always ensuring a smooth and well-aligned process."
+                </p>
+                <footer class="quote__footer">
+                  <img
+                    class="quote__avatar"
+                    src="assets/pictures/Kasper.png"
+                    alt="Kasper Sørensen"
+                    width="48"
+                    height="48"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                  <div class="quote__byline">
+                    <span class="quote__name">Kasper Sørensen</span>
+                    <span class="quote__role">Product Manager at Nabogo ApS</span>
+                  </div>
+                </footer>
+              </article>
+              <article class="card quote testimonials-carousel__slide">
+                <p class="quote__text">
+                  "Octavia has a great eagerness to improve her skills and always aims to create the
+                  best solutions. She has been working with many stakeholders at Universal Robots and
+                  has built a strong network."
+                </p>
+                <footer class="quote__footer">
+                  <img
+                    class="quote__avatar"
+                    src="assets/pictures/Anja.png"
+                    alt="Anja Saabye"
+                    width="48"
+                    height="48"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                  <div class="quote__byline">
+                    <span class="quote__name">Anja Saabye</span>
+                    <span class="quote__role">Head of Product Design at Universal Robots</span>
+                  </div>
+                </footer>
+              </article>
+              <article class="card quote testimonials-carousel__slide">
+                <p class="quote__text">
+                  "Octavia brings strong product thinking, a clear UX vision, and is very effective at turning
+                  ideas into concrete, well-designed solutions. She is also a strong communicator, clear,
+                  thoughtful, and easy to work with, which made collaboration across teams smooth and
+                  efficient. I really valued working with her and would happily do so again."
+                </p>
+                <footer class="quote__footer">
+                  <img
+                    class="quote__avatar"
+                    src="assets/pictures/Chris.png"
+                    alt="Krzysztof Zielinski"
+                    width="48"
+                    height="48"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                  <div class="quote__byline">
+                    <span class="quote__name">Krzysztof Zielinski</span>
+                    <span class="quote__role">CTO at Rotoy ApS</span>
+                  </div>
+                </footer>
+              </article>
+            </div>
+          </div>
+          <button
+            type="button"
+            class="testimonials-carousel__btn"
+            data-testimonials-next
+            aria-label="Next testimonials"
+          >
+            &#8250;
+          </button>
         </div>
       </section>
 

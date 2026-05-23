@@ -1037,8 +1037,41 @@ body.page-blog .blog-card .thumb {
   max-width: min(720px, 100%);
 }
 
+.blog-post-meta {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  margin: 0 0 1.5rem;
+}
+
+.blog-post-meta__avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+  border: 1px solid var(--border);
+}
+
+.blog-post-meta__text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.blog-post-meta__author {
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: var(--text);
+}
+
+.blog-post-meta__date {
+  font-size: 0.88rem;
+  color: var(--muted);
+}
+
 .blog-post > .intro {
-  margin-bottom: 1.5rem;
+  margin-bottom: 1rem;
 }
 
 .blog-post h2 {
@@ -1148,9 +1181,27 @@ body.page-blog .blog-card .thumb {
   background-repeat: no-repeat;
 }
 
+/* Unlisted: Leading Product UX for a SaaS Platform Nabogo ApS (nbg-project.html) */
+a.project-card[href="nbg-project.html"],
+a.more-project-card[href="nbg-project.html"] {
+  display: none !important;
+}
+
+body.page-project--unlisted main {
+  display: none;
+}
+
 .thumb-nabogo-designsystem {
   background-color: #45404c;
-  background-image: url("assets/projects/nabogo/cover%20design%20system.jpg");
+  background-image: url("assets/projects/nabogo/nbg%20design%20system%20cover.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.thumb-nabogo-onboarding {
+  background-color: #45404c;
+  background-image: url("assets/projects/nabogo/Onboarding%20cover.jpg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -1506,24 +1557,32 @@ body.page-blog .blog-card .thumb {
 }
 
 .project-onboarding-lead {
+  width: 100%;
+  max-width: none;
   margin-bottom: 2rem;
 }
 
 .project-onboarding-lead .article-image {
-  margin-bottom: 1.25rem;
+  margin-bottom: clamp(2rem, 4vw, 3rem);
 }
 
 .project-onboarding-lead__title {
   margin: 0 0 0.85rem;
   font-size: clamp(1.35rem, 3vw, 1.65rem);
   line-height: 1.25;
+  max-width: none;
 }
 
 .project-onboarding-lead__subtitle {
   margin: 0 0 0.55rem;
+  max-width: none;
   font-size: 1.05rem;
   line-height: 1.45;
   color: var(--muted);
+}
+
+.project-onboarding-lead__subtitle + .article-image {
+  margin-top: 1.25rem;
 }
 
 .project-onboarding-lead__subtitle:last-child {
@@ -1718,6 +1777,64 @@ body.page-blog .blog-card .thumb {
 
 .section.section--testimonials {
   padding-bottom: clamp(3.5rem, 6vw, 5rem);
+}
+
+.testimonials-carousel {
+  display: flex;
+  align-items: center;
+  gap: clamp(0.5rem, 1.5vw, 1rem);
+}
+
+.testimonials-carousel__btn {
+  flex-shrink: 0;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text);
+  font-size: 1.35rem;
+  line-height: 1;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.15s ease, border-color 0.15s ease, opacity 0.15s ease;
+}
+
+.testimonials-carousel__btn:hover:not(:disabled) {
+  border-color: var(--accent);
+  background: var(--tab-hover-bg);
+}
+
+.testimonials-carousel__btn:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+.testimonials-carousel__viewport {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+}
+
+.testimonials-carousel__track {
+  display: flex;
+  gap: 1rem;
+  will-change: transform;
+  transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.testimonials-carousel__slide {
+  flex: 0 0 auto;
+  min-width: 0;
+  box-sizing: border-box;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .testimonials-carousel__track {
+    transition: none;
+  }
 }
 
 .section.section--trusted {
@@ -2161,6 +2278,16 @@ html[data-theme="dark"] .back-to-top img {
 
 /* === Project case study pages === */
 .project-page-content {
+  max-width: min(1100px, 98vw);
+  margin: 0 auto;
+}
+
+.project-page-testimonial {
+  padding-top: 0;
+  padding-bottom: clamp(2rem, 4vw, 3rem);
+}
+
+.project-page-testimonial .card.quote {
   max-width: min(1100px, 98vw);
   margin: 0 auto;
 }

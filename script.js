@@ -24,10 +24,10 @@ const serviceProjectMap = {
     href: "nbg-designsystem.html",
   },
   "ux-metrics": {
-    title: "Leading Product UX for a SaaS Platform Nabogo ApS",
-    desc: "Interactive prototype for selecting multiple laundry machines and paying in one bundled transaction.",
-    thumbClass: "thumb-airwallet-checkout",
-    href: "nbg-project.html",
+    title: "Designing Onboardings that convert - Nabogo ApS",
+    desc: "UX strategy and onboarding flow improvements to help new carpoolers start faster.",
+    thumbClass: "thumb-nabogo-onboarding",
+    href: "nbg-onboarding.html",
   },
   pm: {
     title: "University Intranet Re-design based on UX Insights",
@@ -164,6 +164,71 @@ if (
     applyServiceTab(initial);
   }
 }
+
+document.querySelectorAll("[data-testimonials-carousel]").forEach((root) => {
+  const track = root.querySelector(".testimonials-carousel__track");
+  const prev = root.querySelector("[data-testimonials-prev]");
+  const next = root.querySelector("[data-testimonials-next]");
+  const slides = track ? [...track.querySelectorAll(".testimonials-carousel__slide")] : [];
+  if (!track || !prev || !next || slides.length === 0) return;
+
+  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  let index = 0;
+
+  const getVisibleCount = () => {
+    if (window.matchMedia("(max-width: 640px)").matches) return 1;
+    if (window.matchMedia("(max-width: 1024px)").matches) return 2;
+    return 3;
+  };
+
+  const viewport = root.querySelector(".testimonials-carousel__viewport");
+
+  const layoutSlides = () => {
+    if (!viewport) return { step: 0, maxIndex: 0 };
+    const gap = parseFloat(getComputedStyle(track).columnGap || getComputedStyle(track).gap) || 16;
+    const visible = getVisibleCount();
+    const slideWidth = (viewport.clientWidth - gap * (visible - 1)) / visible;
+    slides.forEach((slide) => {
+      slide.style.flexBasis = `${slideWidth}px`;
+    });
+    const step = slideWidth + gap;
+    const maxIndex = Math.max(0, slides.length - visible);
+    return { step, maxIndex };
+  };
+
+  const update = () => {
+    const { step, maxIndex } = layoutSlides();
+    index = Math.min(index, maxIndex);
+    track.style.transform = `translateX(-${index * step}px)`;
+    prev.disabled = index <= 0;
+    next.disabled = index >= maxIndex;
+  };
+
+  prev.addEventListener("click", () => {
+    if (index > 0) {
+      index -= 1;
+      update();
+    }
+  });
+
+  next.addEventListener("click", () => {
+    const { maxIndex } = layoutSlides();
+    if (index < maxIndex) {
+      index += 1;
+      update();
+    }
+  });
+
+  window.addEventListener("resize", () => {
+    window.requestAnimationFrame(update);
+  });
+
+  if (reduceMotion) {
+    track.style.transition = "none";
+  }
+
+  update();
+});
 
 document.querySelectorAll("[data-more-projects]").forEach((root) => {
   const track = root.querySelector(".more-projects__track");
