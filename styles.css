@@ -538,7 +538,7 @@ html[data-theme="dark"] .btn.hero-cta-connect {
 }
 
 .top-left {
-  top: 0.9rem;
+  top: calc(0.9rem + 60px);
   left: 0.9rem;
 }
 
@@ -2372,13 +2372,38 @@ html[data-theme="dark"] .site-footer__linkedin-icon {
 
 @media (max-width: 720px) {
   .site-footer .container.site-footer__inner {
-    grid-template-columns: 1fr;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
     gap: 1.35rem;
   }
 
+  .site-footer__brand {
+    display: contents;
+  }
+
+  .site-footer__logo {
+    order: 1;
+  }
+
+  .site-footer__tagline {
+    order: 2;
+  }
+
+  .site-footer__nav {
+    order: 3;
+  }
+
   .site-footer__social {
+    order: 4;
     margin-left: 0;
-    margin-top: 20px;
+    margin-top: 0;
+  }
+
+  .site-footer__brand > p:not(.site-footer__tagline) {
+    order: 5;
+    max-width: none;
+    width: 100%;
   }
 }
 
@@ -2993,9 +3018,14 @@ html[data-theme="dark"] .more-project-card__visual {
 @media (max-width: 700px) {
   .nav {
     flex-direction: column;
-    align-items: flex-start;
+    align-items: stretch;
     gap: 0.65rem;
     padding: 0.8rem 0;
+  }
+
+  .logo {
+    align-self: center;
+    justify-content: center;
   }
 
   .nav-right {
