@@ -1037,6 +1037,29 @@ body.page-blog .blog-card .thumb {
   max-width: min(720px, 100%);
 }
 
+.blog-post-cover {
+  margin: 1.25rem 0 1.75rem;
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+}
+
+.blog-post-cover img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+}
+
+.blog-post-cover--fill .thumb {
+  width: 100%;
+  min-height: 11rem;
+  aspect-ratio: 16 / 9;
+  margin: 0;
+  border-radius: 0;
+}
+
 .blog-post-meta {
   display: flex;
   align-items: center;
@@ -1199,6 +1222,14 @@ body.page-project--unlisted main {
   background-repeat: no-repeat;
 }
 
+.thumb-blog-design-systems {
+  background-color: #45404c;
+  background-image: url("assets/blogs/0CF18804-C456-4893-804F-6CC8BB46A75F.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
 .thumb-nabogo-onboarding {
   background-color: #45404c;
   background-image: url("assets/projects/nabogo/Onboarding%20cover.jpg");
@@ -1235,6 +1266,14 @@ body.page-project--unlisted main {
   background-image: url("assets/accessibility-gradient.png");
   background-size: cover;
   background-position: center;
+}
+
+.thumb-portfolio {
+  background-color: #45404c;
+  background-image: url("assets/blogs/portfolio%20design.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 .project-page-content .project-nabogo-figures {
@@ -1811,8 +1850,18 @@ body.page-project--unlisted main {
 }
 
 @media (max-width: 768px) {
-  .project-onboarding-role__layout {
+  .project-onboarding-role__layout,
+  .project-page-content--rotoy .project-onboarding-role__layout,
+  .project-page-content--nabogo .project-onboarding-role__layout {
     grid-template-columns: 1fr;
+  }
+
+  .project-page-content--rotoy .project-onboarding-role__copy {
+    order: 1;
+  }
+
+  .project-page-content--rotoy .project-onboarding-role__visual {
+    order: 2;
   }
 }
 

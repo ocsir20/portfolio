@@ -12,10 +12,10 @@ const servicePanelThumb = document.querySelector("#servicePanelThumb");
 
 const serviceProjectMap = {
   "ai-design": {
-    title: "AI-powered Design System for Nabogo ApS",
-    desc: "Tokens, components, and Storybook documentation for a consistent product surface across teams.",
-    thumbClass: "thumb-nabogo-designsystem",
-    href: "nbg-designsystem.html",
+    title: "Coded my portfolio with AI assistance",
+    desc: "Building a case-study portfolio in HTML with Cursor — structure, craft, and what stayed human-led.",
+    thumbClass: "thumb-portfolio",
+    href: "blogs/portfolio-ai-coded.html",
   },
   "ui-ai": {
     title: "AI-powered Design System for Nabogo ApS",

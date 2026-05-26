@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Coded my portfolio with AI assistance | Octavia Sirbu</title>
+    <script src="../theme-init.js"></script>
+    <link rel="stylesheet" href="../styles.css" />
+  </head>
+  <body class="page-blog">
+    <header class="site-header">
+      <nav class="nav container">
+        <a class="logo" href="../index.html">
+          <span class="logo-mark" aria-hidden="true"><img class="logo-mark-img" src="../assets/portfolio-logo.svg" alt="" width="130" height="114" decoding="async" /></span>
+          <span class="logo-text">Octavia Sirbu</span>
+        </a>
+        <div class="nav-right">
+          <ul class="nav-links">
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="../work.html">Projects</a></li>
+            <li><a class="active" href="../blog.html">Blog</a></li>
+            <li><a href="../contact.html">Contact</a></li>
+          </ul>
+          <button
+            type="button"
+            class="theme-toggle"
+            id="themeToggle"
+            aria-label="Switch to dark mode"
+            aria-pressed="false"
+            title="Light or dark mode"
+          >
+            <span class="theme-toggle-track">
+              <span class="theme-icon theme-icon-sun" aria-hidden="true">
+                <img src="../assets/icons/sun-03.svg" alt="" width="14" height="14" decoding="async" />
+              </span>
+              <span class="theme-icon theme-icon-moon" aria-hidden="true">
+                <img src="../assets/icons/moon.svg" alt="" width="14" height="14" decoding="async" />
+              </span>
+              <span class="theme-toggle-thumb" aria-hidden="true"></span>
+            </span>
+          </button>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container section blog-post-page">
+      <a class="text-link" href="../blog.html">← Back to Blog</a>
+
+      <figure class="blog-post-cover">
+        <img
+          src="../assets/blogs/portfolio%20design.jpg"
+          alt="Portfolio site design cover"
+          loading="lazy"
+          decoding="async"
+        />
+      </figure>
+
+      <article class="blog-post">
+        <h1>Coded my portfolio with AI assistance</h1>
+        <p class="intro">
+          A step-by-step look at how I built this portfolio — starting with a Figma UI kit and design
+          tokens, then translating the system into HTML and CSS with AI assistance in Cursor.
+        </p>
+        <div class="blog-post-meta">
+          <img
+            class="blog-post-meta__avatar"
+            src="../assets/pictures/Octavia.png"
+            alt="Octavia Sirbu"
+            width="48"
+            height="48"
+            loading="lazy"
+            decoding="async"
+          />
+          <div class="blog-post-meta__text">
+            <span class="blog-post-meta__author">Octavia Sirbu</span>
+            <time class="blog-post-meta__date" datetime="2026-05-20">May 20, 2026</time>
+          </div>
+        </div>
+
+        <p>
+          I wanted a portfolio that could carry long case studies, real project imagery, and a consistent
+          visual identity without locking myself into a generic template. The build followed a clear
+          process: define the system in Figma first, Make sketches in Excalidraw of the pages' structure, then implement pages in code, with Cursor helping
+          on repetitive implementation work along the way.
+        </p>
+        <p>
+          Below is how that process unfolded, from tokens to shipped pages.
+        </p>
+
+        <h2>The process</h2>
+        <p>
+          Each step built on the previous one. I created a quick UI Kit in Figma for reference and that I fed to the AI when I started building. This way the AI knew the design system and could help me with the implementation.;
+          AI sped up markup and CSS once the design tokens and structure (sketches) were already defined.
+        </p>
+
+        <h3>Step 1 — Design tokens</h3>
+        <p>
+          Before writing any code, I created a UI kit in Figma grounded in design tokens. This became the
+          single source of truth for how the portfolio should look in both light and dark mode.
+        </p>
+        <p>The kit included:</p>
+        <ul>
+          <li><strong>Colors</strong> — backgrounds, surfaces, text, muted text, accents, and borders for light and dark themes</li>
+          <li><strong>Typography</strong> — font families, sizes and weights, body copy, and UI labels</li>
+          <li><strong>Icons</strong> — navigation, theme toggle, footer, and section accents used consistently across pages</li>
+          <li><strong>Buttons</strong> — primary actions, text links, and theme toggle states</li>
+          <li><strong>Corner radius</strong> — shared radiuses for cards, images, avatars, and inputs so nothing felt one-off</li>
+          <li><strong>Spacing &amp; elevation</strong> — padding scales and subtle shadows for cards and header</li>
+        </ul>
+        <img
+          class="article-image"
+          src="../assets/blogs/portfolio%20ui%20kit.jpg"
+          alt="Figma UI kit for the portfolio: design tokens, colors, typography, icons, and components"
+          loading="lazy"
+          decoding="async"
+        />
+        <p>
+          Treating the portfolio like a small product design system meant every later page — home, work,
+          blog, contact, and case studies could reuse the same building blocks instead of reinventing
+          styles screen by screen.
+        </p>
+
+        <h3>Step 2 — Layouts &amp; structure in Excalidraw</h3>
+        <p>
+          With tokens in place, I designed key templates: hero, project cards, blog cards, testimonials,
+          navigation, and footer. Case-study layouts were sketched with repeatable sections (overview, role,
+          media galleries, outcomes, testimonial, related projects).
+        </p>
+        <p>
+          Before the building phase, I used Excalidraw to quickly sketch the page structure, then fed
+          those sketches to AI. This helped avoid a generic AI-generated layout and made it much easier
+          to steer the design toward the exact section order and hierarchy I wanted.
+        </p>
+        <p>
+          The goal was not pixel-perfect mock ups for every screen, but enough structure that implementation
+          in code had a clear target.
+        </p>
+        <img
+          class="article-image"
+          src="../assets/blogs/portfolio%20sketches.png"
+          alt="Sketches and layout explorations for portfolio pages and components in Figma"
+          loading="lazy"
+          decoding="async"
+        />
+
+        <h3>Step 3 — Tokens in CSS</h3>
+        <p>
+          I translated the Figma token set into CSS custom properties in <code>styles.css</code> — one
+          palette for light mode and a matching set for <code>data-theme="dark"</code> on the
+          <code>html</code> element.
+        </p>
+        <p>Examples mapped from Figma to code:</p>
+        <ul class="blog-post__token-list">
+          <li><code>--bg</code> and <code>--surface</code> for page and card backgrounds</li>
+          <li><code>--accent</code> and <code>--accent-secondary</code> for links and highlights</li>
+          <li><code>--text</code> and <code>--muted</code> for hierarchy</li>
+          <li>Shared border radiuses and spacing through component classes (cards, thumbs, quotes)</li>
+        </ul>
+        <p>
+          Keeping naming aligned between Figma and CSS made handoff — including AI-assisted edits — much
+          faster: “use the muted surface token” was unambiguous.
+        </p>
+
+        <h3>Step 4 — AI assistance in Cursor</h3>
+        <p>
+          I used my previosu expereince with coding to built the site as static website: home, work, blog, contact, and individual project pages with
+          long-form content, GIFs, and testimonials. Each case study follows the same skeleton but keeps
+          project-specific copy and imagery (Nabogo, Rotoy, SDU, makerspace, and more). Shared header,
+          footer, and section patterns were copied from a reference page so new files stayed consistent
+          with the UI kit.
+        </p>
+        <p>
+          Cursor acted as a pair programmer for implementation, not as a replacement for design direction or structure of code.
+          Typical tasks I delegated:
+        </p>
+        <ul>
+          <li>Scaffolding new project or blog pages from an existing template</li>
+          <li>Responsive CSS (mobile nav, footer order, stacked “My role” media)</li>
+          <li>Refactoring repeated blocks across many HTML files</li>
+          <li>Fixing asset paths, semantic markup, and lazy-loading attributes</li>
+        </ul>
+        <p>
+          I still owned project selection, narratives, image choices, quotes, and visual QA in the browser
+          for both themes.
+        </p>
+
+        <h3>Step 5 — QA testing &amp; launch</h3>
+        <p>
+          The last pass focused on real-device checks, light/dark consistency, performance (lean CSS, lazy
+          images), and tying the blog back to the live portfolio with a project card at the end of each
+          post.
+        </p>
+        <p>
+          Small JavaScript additions: theme toggle, testimonials carousel, “view more projects” scroll —
+          supported the experience without turning the site into a heavy app.
+        </p>
+
+        <h2>Final thoughts</h2>
+        <p>
+          Starting with design tokens in Figma kept the portfolio coherent. AI in Cursor shortened the
+          gap between that system and working pages.
+          <strong>The combination fits how I work on product teams:
+          systems first, clear documentation, then fast iteration toward something shippable.</strong>
+        </p>
+        <p>
+          If you are a designer exploring the same path, you do not need to abandon Figma, you just need a
+          token-backed kit, a simple static stack, and enough code literacy to create a basic structure and review what the tools
+          generate.
+        </p>
+
+        <h2>Explore the portfolio</h2>
+        <p>
+          The live site brings together home, work, blog, and contact — with case studies for Nabogo,
+          Rotoy, SDU, makerspace, and more. Browse the projects and testimonials to see the full
+          picture of how I work.
+        </p>
+
+        <a class="project-card blog-post__project-card project-card--landscape" href="../index.html">
+          <div class="blog-post__project-card-visual project-card--landscape__visual">
+            <div class="thumb thumb-portfolio" role="presentation"></div>
+          </div>
+          <div class="blog-post__project-card-body project-card--landscape__body">
+            <h3>Octavia Sirbu — Product Designer Portfolio</h3>
+            <p class="project-desc">
+              Case studies, testimonials, and project work — built as a fast static site with design-led craft.
+            </p>
+            <div class="project-labels">
+              <span>HTML &amp; CSS</span>
+              <span>AI-assisted build</span>
+            </div>
+          </div>
+        </a>
+      </article>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container site-footer__inner">
+        <div class="site-footer__brand">
+          <img
+            class="site-footer__logo"
+            src="../assets/portfolio-logo.svg"
+            alt=""
+            width="130"
+            height="114"
+            decoding="async"
+          />
+          <p class="site-footer__tagline">Turning complexity into clear experiences</p>
+          <p>© 2026 Octavia Sirbu - Product Designer</p>
+        </div>
+        <nav class="site-footer__nav" aria-label="Main pages">
+          <ul class="site-footer__list">
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="../work.html">Projects</a></li>
+            <li><a href="../blog.html">Blog</a></li>
+            <li><a href="../contact.html">Contact</a></li>
+          </ul>
+        </nav>
+        <div class="site-footer__social">
+          <a
+            class="site-footer__linkedin"
+            href="https://www.linkedin.com/in/octaviasirbu/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <img
+              class="site-footer__linkedin-icon"
+              src="../assets/icons/linkedin-02.svg"
+              alt=""
+              width="24"
+              height="24"
+              decoding="async"
+            />
+            <span>My LinkedIn</span>
+          </a>
+        </div>
+      </div>
+    </footer>
+    <script src="../script.js"></script>
+  </body>
+</html>
