@@ -80,7 +80,7 @@
         <p>
           As digital products grow, so does their complexity. Features expand, teams scale, and
           maintaining consistency across platforms becomes increasingly difficult. This is where
-          design systems become essential — not just as UI libraries, but as operational frameworks
+          design systems become essential not just as UI libraries, but as operational frameworks
           that help teams design, build, and scale products more efficiently.
         </p>
         <p>
@@ -113,8 +113,8 @@
         <h2>A Token-Based Foundation</h2>
         <p>
           For Nabogo and similar product work, I structured the design system around
-          <strong>design tokens</strong> — named values for color, type, spacing, and interaction
-          that stay consistent in Figma and in code. Tokens are the foundation; components and
+          <strong>design tokens</strong> which are named values for color, type, spacing, and interaction
+          that stay consistent in Figma and in code. Tokens are the foundation while components and
           screens are built from them, not the other way around.
         </p>
         <p>A token-based system typically layers like this:</p>
@@ -128,18 +128,31 @@
           <li>elevation and border weights</li>
         </ul>
 
-        <h3>Semantic tokens</h3>
-        <p>Names that describe <em>purpose</em>, not appearance:</p>
-        <ul>
-          <li><code>text-primary</code>, <code>text-secondary</code>, <code>text-disabled</code></li>
-          <li><code>surface-default</code>, <code>surface-elevated</code>, <code>surface-success</code></li>
-          <li><code>border-subtle</code>, <code>border-focus</code></li>
-          <li><code>action-primary</code>, <code>action-destructive</code></li>
-        </ul>
-        <p>
-          Semantic tokens make theme changes and accessibility fixes easier — update the mapping once,
-          and buttons, inputs, and cards stay aligned.
-        </p>
+        <div class="blog-post__media-row">
+          <div class="blog-post__media-copy">
+            <h3>Semantic tokens</h3>
+            <p>Names that describe <em>purpose</em>, not appearance:</p>
+            <ul>
+              <li><code>text-primary</code>, <code>text-secondary</code>, <code>text-disabled</code></li>
+              <li><code>surface-default</code>, <code>surface-elevated</code>, <code>surface-success</code></li>
+              <li><code>border-subtle</code>, <code>border-focus</code></li>
+              <li><code>action-primary</code>, <code>action-destructive</code></li>
+            </ul>
+            <p>
+              Semantic tokens make theme changes and accessibility fixes easier. If you update the mapping once,
+              and buttons, inputs, and cards stay aligned.
+            </p>
+          </div>
+          <figure class="blog-post__media-visual">
+            <img
+              class="article-image"
+              src="../assets/projects/nabogo/nbg-semantic.jpg"
+              alt="Nabogo semantic design tokens in Figma"
+              loading="lazy"
+              decoding="async"
+            />
+          </figure>
+        </div>
 
         <h3>Component tokens</h3>
         <p>Component-level decisions that reference semantics:</p>
@@ -154,7 +167,7 @@
         <p>
           Tokens are documented in Figma variables, Storybook, and code so designers and developers
           share one vocabulary. Instead of debating hex codes per screen, teams reference
-          <code>surface-success</code> or <code>spacing-md</code> — making products easier to scale
+          <code>surface-success</code> or <code>spacing-md</code> making products easier to scale
           and maintain over time.
         </p>
 
@@ -172,8 +185,9 @@
           <li>fragmented user experiences</li>
         </ul>
         <p>
-          A design system creates alignment between designers, developers, product managers, and
-          stakeholders — it becomes a shared language for building products.
+          All of these were problems at Nabogo ApS due to lack of a design system and product 
+          design direction. A design system creates alignment between designers, developers, 
+          product managers, and stakeholders and it becomes a shared language for building products.
         </p>
 
         <h2>How AI Is Changing Design System Workflows</h2>
@@ -181,7 +195,7 @@
           AI is rapidly transforming how design systems are created, maintained, and documented.
           Instead of replacing designers, AI acts as a collaborator that accelerates repetitive and
           operational tasks. The shift is not only <em>what</em> we document, but <em>who</em> we
-          document it for — increasingly, for AI agents as much as for human teammates.
+          document it for. For example, increasingly, for AI agents as much as for human teammates.
         </p>
         <p>The biggest advantage is speed combined with consistency, as long as the system’s rules are explicit.</p>
 
@@ -193,7 +207,7 @@
           tools can read.
         </p>
         <p>
-          I write this documentation in <strong>Markdown</strong> — plain, structured files that are easy
+          I write this documentation in <strong>Markdown</strong> which are plain, structured files that are easy
           to version in Git and feed directly into <strong>Cursor</strong> or <strong>Claude</strong> as
           context. When an agent starts a task, it already knows your semantic tokens, layout conventions,
           and accessibility expectations instead of guessing from screenshots alone.
@@ -208,14 +222,14 @@
         </ul>
         <p>
           AI can draft first versions of component descriptions, accessibility notes, and usage
-          guidelines — then designers refine them into the Markdown files agents rely on.
+          guidelines then designers refine them into the Markdown files agents rely on.
         </p>
 
         <h3>Design-to-code sync with Figma MCP</h3>
         <p>
           <strong>Design-to-code sync:</strong> tools that use <strong>Figma MCP</strong> (Model Context
           Protocol) connect Figma with your codebase. An AI agent can read your design screens and your
-          actual repository at the same time — comparing components, spacing, and token usage so
+          actual repository at the same time comparing components, spacing, and token usage so
           implementation stays in parity with the file designers approved.
         </p>
         <p>
@@ -227,8 +241,8 @@
 
         <h3>Rule-based AI in Cursor</h3>
         <p>
-          <strong>Rule-based AI:</strong> configure exact rules in tools like Cursor — for example,
-          guidelines for base components, spacing, token usage, and folder structure — so AI-generated
+          <strong>Rule-based AI:</strong> configure exact rules in tools like Cursor (for example,
+          guidelines for base components, spacing, token usage, and folder structure) so AI-generated
           features follow your architectural standards by default.
         </p>
         <p>
@@ -285,14 +299,14 @@
         </ul>
         <p>
           The teams that scale successfully will not only create reusable components, but also build
-          workflows — Markdown docs for agents, Figma MCP for design-to-code parity, and Cursor rules
-          for architecture — that make consistency easier to maintain over time.
+          workflows: Markdown docs for agents, Figma MCP for design-to-code parity, and Cursor rules
+          for architecture. That makes consistency easier to maintain over time.
         </p>
         <p>AI is becoming a key part of that process when the system itself is written to be understood.</p>
 
         <h2>Final Thoughts</h2>
         <p>
-          The best design systems are not the biggest — they are the clearest. Simplicity,
+          The best design systems are not the biggest but they are the clearest. Simplicity,
           structure, and consistency create products that are easier to understand, maintain, and
           scale.
         </p>

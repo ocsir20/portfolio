@@ -432,6 +432,10 @@ main.container.section > p.intro {
   line-height: 1.55;
 }
 
+.home-collage__intro--follow {
+  margin-top: 1.25rem;
+}
+
 .hero {
   padding: 4rem 0 3rem;
   display: grid;
@@ -1142,6 +1146,34 @@ body.page-blog .blog-card .thumb {
 
 .blog-post__project-card.project-card--landscape .thumb {
   min-height: 11rem;
+}
+
+.blog-post__media-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, min(44%, 300px));
+  gap: clamp(1rem, 3vw, 1.5rem);
+  align-items: start;
+  margin: 0 0 1rem;
+}
+
+.blog-post__media-copy h3 {
+  margin-top: 0;
+}
+
+.blog-post__media-visual {
+  margin: 0;
+}
+
+.blog-post__media-visual .article-image {
+  margin-bottom: 0;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+}
+
+@media (max-width: 640px) {
+  .blog-post__media-row {
+    grid-template-columns: 1fr;
+  }
 }
 
 @media (max-width: 560px) {
