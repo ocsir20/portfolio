@@ -58,8 +58,8 @@
       <article class="blog-post">
         <h1>Designing Scalable Design Systems in the Age of AI</h1>
         <p class="intro">
-          How structured systems, Atomic Design, and AI-assisted workflows help teams ship
-          consistent products at scale.
+          How token-based design systems and AI-assisted workflows help teams ship consistent
+          products at scale.
         </p>
         <div class="blog-post-meta">
           <img
@@ -110,48 +110,52 @@
           able to make decisions faster because the system already defines many of the rules.
         </p>
 
-        <h2>Using Atomic Design as a Foundation</h2>
+        <h2>A Token-Based Foundation</h2>
         <p>
-          One of the most effective frameworks for structuring scalable design systems is Atomic
-          Design, introduced by Brad Frost.
+          For Nabogo and similar product work, I structured the design system around
+          <strong>design tokens</strong> — named values for color, type, spacing, and interaction
+          that stay consistent in Figma and in code. Tokens are the foundation; components and
+          screens are built from them, not the other way around.
         </p>
-        <p>Atomic Design organizes interfaces into smaller reusable building blocks:</p>
+        <p>A token-based system typically layers like this:</p>
 
-        <h3>Atoms</h3>
-        <p>The smallest UI elements:</p>
+        <h3>Primitive tokens</h3>
+        <p>Raw values the brand owns:</p>
         <ul>
-          <li>buttons</li>
-          <li>labels</li>
-          <li>icons</li>
-          <li>input fields</li>
-          <li>typography styles</li>
-        </ul>
-        <p>These form the foundation of the system.</p>
-
-        <h3>Molecules</h3>
-        <p>Groups of atoms working together:</p>
-        <ul>
-          <li>search bars</li>
-          <li>form fields</li>
-          <li>navigation items</li>
-          <li>cards</li>
+          <li>color ramps (brand greens, neutrals, semantic reds and ambers)</li>
+          <li>font families and base sizes</li>
+          <li>spacing scale and corner radii</li>
+          <li>elevation and border weights</li>
         </ul>
 
-        <h3>Organisms</h3>
-        <p>More complex interface sections composed of multiple molecules:</p>
+        <h3>Semantic tokens</h3>
+        <p>Names that describe <em>purpose</em>, not appearance:</p>
         <ul>
-          <li>headers</li>
-          <li>bottom navigation</li>
-          <li>profile sections</li>
-          <li>ride cards</li>
+          <li><code>text-primary</code>, <code>text-secondary</code>, <code>text-disabled</code></li>
+          <li><code>surface-default</code>, <code>surface-elevated</code>, <code>surface-success</code></li>
+          <li><code>border-subtle</code>, <code>border-focus</code></li>
+          <li><code>action-primary</code>, <code>action-destructive</code></li>
         </ul>
-
-        <h3>Templates &amp; Pages</h3>
-        <p>Full layouts and real user-facing screens built from reusable structures.</p>
         <p>
-          This method creates modularity and predictability. Instead of designing screens from
-          scratch each time, teams assemble experiences from reusable pieces — making products
-          easier to scale and maintain over time.
+          Semantic tokens make theme changes and accessibility fixes easier — update the mapping once,
+          and buttons, inputs, and cards stay aligned.
+        </p>
+
+        <h3>Component tokens</h3>
+        <p>Component-level decisions that reference semantics:</p>
+        <ul>
+          <li>button padding, label styles, and icon sizes</li>
+          <li>input heights, focus rings, and error states</li>
+          <li>card backgrounds, chip styles, and bottom navigation</li>
+          <li>ride cards, headers, and profile sections for the mobility product</li>
+        </ul>
+
+        <h3>Documentation &amp; handoff</h3>
+        <p>
+          Tokens are documented in Figma variables, Storybook, and code so designers and developers
+          share one vocabulary. Instead of debating hex codes per screen, teams reference
+          <code>surface-success</code> or <code>spacing-md</code> — making products easier to scale
+          and maintain over time.
         </p>
 
         <h2>Why Design Systems Matter More Than Ever</h2>
@@ -167,24 +171,74 @@
           <li>slower development</li>
           <li>fragmented user experiences</li>
         </ul>
-        <p>A design system creates alignment between:</p>
-        <ul>
-          <li>designers</li>
-          <li>developers</li>
-          <li>product managers</li>
-          <li>stakeholders</li>
-        </ul>
-        <p>It becomes a shared language for building products.</p>
+        <p>
+          A design system creates alignment between designers, developers, product managers, and
+          stakeholders — it becomes a shared language for building products.
+        </p>
 
         <h2>How AI Is Changing Design System Workflows</h2>
         <p>
           AI is rapidly transforming how design systems are created, maintained, and documented.
           Instead of replacing designers, AI acts as a collaborator that accelerates repetitive and
-          operational tasks.
+          operational tasks. The shift is not only <em>what</em> we document, but <em>who</em> we
+          document it for — increasingly, for AI agents as much as for human teammates.
         </p>
-        <p>The biggest advantage is speed combined with consistency.</p>
+        <p>The biggest advantage is speed combined with consistency, as long as the system’s rules are explicit.</p>
 
-        <h3>AI-Assisted Token Naming &amp; Structure</h3>
+        <h3>Writing docs for AI</h3>
+        <p>
+          Instead of writing complex design handoffs aimed only at humans, I document the design system
+          so AI agents can understand it: spacing scales, token names, component rules, do’s and don’ts,
+          and when to use which pattern. The goal is a single source of truth that both designers and
+          tools can read.
+        </p>
+        <p>
+          I write this documentation in <strong>Markdown</strong> — plain, structured files that are easy
+          to version in Git and feed directly into <strong>Cursor</strong> or <strong>Claude</strong> as
+          context. When an agent starts a task, it already knows your semantic tokens, layout conventions,
+          and accessibility expectations instead of guessing from screenshots alone.
+        </p>
+        <p>Typical topics in AI-ready docs include:</p>
+        <ul>
+          <li>primitive and semantic token tables (color, type, spacing, radius)</li>
+          <li>component anatomy and allowed variants</li>
+          <li>layout grids, breakpoints, and section patterns</li>
+          <li>content and UX writing tone</li>
+          <li>folder structure and naming conventions for code</li>
+        </ul>
+        <p>
+          AI can draft first versions of component descriptions, accessibility notes, and usage
+          guidelines — then designers refine them into the Markdown files agents rely on.
+        </p>
+
+        <h3>Design-to-code sync with Figma MCP</h3>
+        <p>
+          <strong>Design-to-code sync:</strong> tools that use <strong>Figma MCP</strong> (Model Context
+          Protocol) connect Figma with your codebase. An AI agent can read your design screens and your
+          actual repository at the same time — comparing components, spacing, and token usage so
+          implementation stays in parity with the file designers approved.
+        </p>
+        <p>
+          That matters for design systems because drift happens quietly: a button radius changes in Figma
+          but not in Storybook, or a new semantic color ships in code before it exists in variables. MCP
+          bridges that gap by giving agents live context from both sides of the handoff, not just a static
+          PNG export.
+        </p>
+
+        <h3>Rule-based AI in Cursor</h3>
+        <p>
+          <strong>Rule-based AI:</strong> configure exact rules in tools like Cursor — for example,
+          guidelines for base components, spacing, token usage, and folder structure — so AI-generated
+          features follow your architectural standards by default.
+        </p>
+        <p>
+          In practice, that means project rules or skill files that spell out “use semantic tokens, not
+          raw hex,” “match existing case-study layout,” or “never invent a new card style without checking
+          the design system.” Combined with Markdown docs and Figma MCP, the agent works inside your
+          system instead of producing generic UI.
+        </p>
+
+        <h3>AI-assisted token naming &amp; structure</h3>
         <p>Naming tokens consistently is one of the hardest parts of scaling a system. AI can help generate:</p>
         <ul>
           <li>semantic token structures</li>
@@ -205,22 +259,7 @@
           and code.
         </p>
 
-        <h3>AI for Documentation</h3>
-        <p>One of the most time-consuming parts of a design system is writing documentation.</p>
-        <p>AI can help generate:</p>
-        <ul>
-          <li>component descriptions</li>
-          <li>accessibility guidelines</li>
-          <li>usage rules</li>
-          <li>behavior documentation</li>
-          <li>content hierarchy explanations</li>
-        </ul>
-        <p>
-          This allows teams to spend more time improving the product itself rather than manually
-          writing repetitive documentation.
-        </p>
-
-        <h3>AI for UX Writing &amp; Component States</h3>
+        <h3>AI for UX writing &amp; component states</h3>
         <p>AI is also highly effective for generating:</p>
         <ul>
           <li>button labels</li>
@@ -235,20 +274,6 @@
           variations and refine the best options.
         </p>
 
-        <h3>AI as a Design QA Partner</h3>
-        <p>AI-assisted workflows can also help identify:</p>
-        <ul>
-          <li>inconsistent spacing</li>
-          <li>naming mismatches</li>
-          <li>accessibility concerns</li>
-          <li>missing component states</li>
-          <li>duplicate patterns</li>
-        </ul>
-        <p>
-          As systems scale, maintaining consistency becomes increasingly difficult. AI can support
-          teams by reducing manual auditing work.
-        </p>
-
         <h2>The Future of Design Systems</h2>
         <p>Design systems are no longer static UI libraries. They are evolving into intelligent operational systems that connect:</p>
         <ul>
@@ -260,9 +285,10 @@
         </ul>
         <p>
           The teams that scale successfully will not only create reusable components, but also build
-          workflows that make consistency easier to maintain over time.
+          workflows — Markdown docs for agents, Figma MCP for design-to-code parity, and Cursor rules
+          for architecture — that make consistency easier to maintain over time.
         </p>
-        <p>AI is becoming a key part of that process.</p>
+        <p>AI is becoming a key part of that process when the system itself is written to be understood.</p>
 
         <h2>Final Thoughts</h2>
         <p>
@@ -271,9 +297,9 @@
           scale.
         </p>
         <p>
-          By combining structured methodologies like Atomic Design with AI-assisted workflows,
-          teams can reduce operational friction, improve collaboration, and focus more energy on
-          creating meaningful user experiences.
+          By combining a token-based system with AI-assisted workflows, teams can reduce operational
+          friction, improve collaboration, and focus more energy on creating meaningful user
+          experiences.
         </p>
 
         <h2>Explore the Nabogo Design System</h2>
@@ -286,7 +312,7 @@
 
         <a class="project-card blog-post__project-card project-card--landscape" href="../nbg-designsystem.html">
           <div class="blog-post__project-card-visual project-card--landscape__visual">
-            <div class="thumb thumb-blog-design-systems" role="presentation"></div>
+            <div class="thumb thumb-nabogo-designsystem" role="presentation"></div>
           </div>
           <div class="blog-post__project-card-body project-card--landscape__body">
             <h3>AI-powered Design System for Nabogo ApS</h3>
