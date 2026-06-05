@@ -306,16 +306,28 @@
         data-testimonials-carousel
         aria-label="Testimonials"
       >
-        <h2 class="section-title--center">Testimonials</h2>
+        <div class="testimonials-carousel__header">
+          <h2 class="testimonials-carousel__title">Testimonials</h2>
+          <div class="testimonials-carousel__nav">
+            <button
+              type="button"
+              class="testimonials-carousel__btn"
+              data-testimonials-prev
+              aria-label="Previous testimonials"
+            >
+              &#8249;
+            </button>
+            <button
+              type="button"
+              class="testimonials-carousel__btn"
+              data-testimonials-next
+              aria-label="Next testimonials"
+            >
+              &#8250;
+            </button>
+          </div>
+        </div>
         <div class="testimonials-carousel">
-          <button
-            type="button"
-            class="testimonials-carousel__btn"
-            data-testimonials-prev
-            aria-label="Previous testimonials"
-          >
-            &#8249;
-          </button>
           <div class="testimonials-carousel__viewport">
             <div class="testimonials-carousel__track">
               <article class="card quote testimonials-carousel__slide">
@@ -434,14 +446,6 @@
               </article>
             </div>
           </div>
-          <button
-            type="button"
-            class="testimonials-carousel__btn"
-            data-testimonials-next
-            aria-label="Next testimonials"
-          >
-            &#8250;
-          </button>
         </div>
       </section>
 

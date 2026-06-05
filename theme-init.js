@@ -2,11 +2,7 @@
   try {
     var stored = localStorage.getItem("portfolio-theme");
     var theme =
-      stored === "light" || stored === "dark"
-        ? stored
-        : window.matchMedia("(prefers-color-scheme: dark)").matches
-          ? "dark"
-          : "light";
+      stored === "light" || stored === "dark" ? stored : "light";
     if (theme === "dark") {
       document.documentElement.setAttribute("data-theme", "dark");
     } else {
