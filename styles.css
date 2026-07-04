@@ -1144,6 +1144,20 @@ body.page-blog .blog-card .thumb {
   margin-bottom: 0.25rem;
 }
 
+.blog-post__workflow-diagram {
+  margin: 0 0 1.25rem;
+  padding: 1rem 1.15rem;
+  overflow-x: auto;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+  font-size: 0.78rem;
+  line-height: 1.45;
+  color: var(--text);
+  background: var(--surface-muted);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  white-space: pre;
+}
+
 .blog-post__project-card.project-card--landscape .thumb {
   min-height: 11rem;
 }
