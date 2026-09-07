@@ -254,6 +254,39 @@ document.querySelectorAll("[data-more-projects]").forEach((root) => {
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   const revealEls = document.querySelectorAll("[data-reveal]");
   const header = document.querySelector(".site-header");
+  const heroPortrait = document.querySelector(
+    ".home-stack > .stack-card.hero .hero-visual--portrait"
+  );
+
+  /* Grey → orange + stats: on hover (CSS) or the moment scroll starts
+     (next stack card begins moving up toward the sticky hero). */
+  const updateHeroLit = () => {
+    if (!heroPortrait) return;
+    if (reduceMotion) {
+      heroPortrait.classList.add("is-lit");
+      return;
+    }
+    heroPortrait.classList.toggle("is-lit", window.scrollY > 2);
+  };
+
+  let litRaf = 0;
+  const onScrollOrResize = () => {
+    if (litRaf) return;
+    litRaf = window.requestAnimationFrame(() => {
+      litRaf = 0;
+      updateHeroLit();
+      if (header) {
+        header.classList.toggle("is-scrolled", window.scrollY > 12);
+      }
+    });
+  };
+
+  window.addEventListener("scroll", onScrollOrResize, { passive: true });
+  window.addEventListener("resize", onScrollOrResize, { passive: true });
+  updateHeroLit();
+  if (header) {
+    header.classList.toggle("is-scrolled", window.scrollY > 12);
+  }
 
   const revealNow = (el, delayMs = 0) => {
     window.setTimeout(() => {
@@ -298,14 +331,6 @@ document.querySelectorAll("[data-more-projects]").forEach((root) => {
     if (el.hasAttribute("data-reveal-hero")) return;
     observer.observe(el);
   });
-
-  if (header) {
-    const onScroll = () => {
-      header.classList.toggle("is-scrolled", window.scrollY > 12);
-    };
-    window.addEventListener("scroll", onScroll, { passive: true });
-    onScroll();
-  }
 })();
 
 /* Back-to-top control (all pages; icon path differs under /blogs/) */

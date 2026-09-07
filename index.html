@@ -6,7 +6,7 @@
     <link rel="icon" href="assets/portfolio-logo.svg" type="image/svg+xml" />
     <title>Octavia Sirbu | Senior Product Designer</title>
     <script src="theme-init.js"></script>
-    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="styles.css?v=hero-lit-4" />
   </head>
   <body class="page-home">
     <header class="site-header">
@@ -49,7 +49,7 @@
       <section class="hero container stack-card">
         <div class="hero-copy">
           <p class="tag" data-reveal data-reveal-hero>SENIOR PRODUCT DESIGNER</p>
-          <h1 data-reveal data-reveal-hero>Hi! I am Octavia</h1>
+          <h1 data-reveal data-reveal-hero>Hi! It's Octavia</h1>
           <p class="intro" data-reveal data-reveal-hero>
             I am a full-stack designer who turns complexity into clear experiences
           </p>
@@ -74,19 +74,19 @@
               decoding="async"
             />
           </div>
-          <article class="hero-stat top-left" data-reveal data-reveal-hero>
+          <article class="hero-stat top-left">
             <p> 🎓 MSc in IT</p>
             <span>Product Design</span>
           </article>
-          <article class="hero-stat top-right" data-reveal data-reveal-hero>
+          <article class="hero-stat top-right">
             <p>International experience</p>
             <span>Remote + onsite 🇩🇰 🇫🇷</span>
           </article>
-          <article class="hero-stat right-middle" data-reveal data-reveal-hero>
+          <article class="hero-stat right-middle">
             <p>👩🏻‍💻 UX/UI design projects</p>
             <span>since 2018</span>
           </article>
-          <article class="hero-stat bottom-left" data-reveal data-reveal-hero>
+          <article class="hero-stat bottom-left">
             <p>NN Group</p>
             <span>Qualified UX Designer ✅</span>
           </article>
@@ -95,17 +95,49 @@
 
       <section class="container section home-collage stack-card" aria-labelledby="home-collage-heading" data-reveal>
         <div class="home-collage__grid">
-          <div class="home-collage__media">
-            <img
-              class="home-collage__img"
-              src="assets/collage portfolio 2.png"
-              alt="Collage of selected UX and UI design work"
-              width="960"
-              height="720"
-              loading="lazy"
-              decoding="async"
-            />
+          <div class="home-bento" aria-label="Highlights">
+            <article class="home-bento__tile home-bento__tile--years">
+              <p class="home-bento__years-value">7+</p>
+              <p class="home-bento__years-label">years of experience</p>
+            </article>
+
+            <article class="home-bento__tile home-bento__tile--nng">
+              <img
+                class="home-bento__nng-logo"
+                src="assets/pictures/nng-logo.png"
+                alt="Nielsen Norman Group"
+                width="160"
+                height="64"
+                loading="lazy"
+                decoding="async"
+              />
+              <p class="home-bento__nng-label">Certified</p>
+            </article>
+
+            <a class="home-bento__tile home-bento__tile--media home-bento__tile--cv" href="cv.html">
+              <img
+                class="home-bento__media-img"
+                src="assets/pictures/octavia-profile-cv.png"
+                alt="Octavia Sirbu"
+                width="640"
+                height="800"
+                loading="lazy"
+                decoding="async"
+              />
+              <span class="home-bento__overlay">
+                <span class="home-bento__overlay-text">See CV</span>
+                <img
+                  class="home-bento__overlay-icon"
+                  src="assets/icons/link-square-02.svg"
+                  alt=""
+                  width="18"
+                  height="18"
+                  decoding="async"
+                />
+              </span>
+            </a>
           </div>
+
           <div class="home-collage__copy">
             <h2 id="home-collage-heading">Scandi Senior Product Designer</h2>
             <p class="intro home-collage__intro">
@@ -122,6 +154,51 @@
               <span class="home-collage__cv-arrow" aria-hidden="true">→</span>
             </a>
           </div>
+        </div>
+      </section>
+
+      <section class="container section stack-card" data-reveal>
+        <div class="section-heading section-heading--texture">
+          <h2>Featured Projects</h2>
+          <a class="text-link text-link--animated" href="work.html">See all projects</a>
+        </div>
+        <div class="grid three home-featured-grid">
+          <a class="project-card" href="nbg-designsystem.html" data-reveal data-reveal-stagger>
+            <div class="thumb thumb-nabogo-designsystem"></div>
+            <h3>AI-powered Design System for Nabogo ApS</h3>
+            <p class="project-desc">
+              Tokens, components, and Storybook documentation for a consistent
+              product surface across teams.
+            </p>
+            <div class="project-labels">
+              <span>Design System</span>
+              <span>Storybook</span>
+            </div>
+          </a>
+          <a class="project-card" href="sdu-intranet-project.html" data-reveal data-reveal-stagger>
+            <div class="thumb thumb-sdu"></div>
+            <h3>University Intranet Re-design based on UX Insights</h3>
+            <p class="project-desc">
+              Research-led intranet redesign for a large university—clearer structure,
+              navigation, and interfaces shaped by staff and student needs.
+            </p>
+            <div class="project-labels">
+              <span>Intranet</span>
+              <span>UX Research</span>
+            </div>
+          </a>
+          <a class="project-card" href="rotoy-project.html" data-reveal data-reveal-stagger>
+            <div class="thumb thumb-rotoy"></div>
+            <h3>Designing a Website and Webshop for EdTech Startup Rotoy ApS</h3>
+            <p class="project-desc">
+              Marketing site and webshop experience for an EdTech startup—clear
+              storytelling, product discovery, and a purchase flow parents can trust.
+            </p>
+            <div class="project-labels">
+              <span>EdTech</span>
+              <span>Webshop</span>
+            </div>
+          </a>
         </div>
       </section>
 
@@ -258,51 +335,6 @@
               </a>
             </div>
           </div>
-        </div>
-      </section>
-
-      <section class="container section stack-card" data-reveal>
-        <div class="section-heading section-heading--texture">
-          <h2>Featured Projects</h2>
-          <a class="text-link text-link--animated" href="work.html">See all projects</a>
-        </div>
-        <div class="grid three home-featured-grid">
-          <a class="project-card" href="nbg-designsystem.html" data-reveal data-reveal-stagger>
-            <div class="thumb thumb-nabogo-designsystem"></div>
-            <h3>AI-powered Design System for Nabogo ApS</h3>
-            <p class="project-desc">
-              Tokens, components, and Storybook documentation for a consistent
-              product surface across teams.
-            </p>
-            <div class="project-labels">
-              <span>Design System</span>
-              <span>Storybook</span>
-            </div>
-          </a>
-          <a class="project-card" href="sdu-intranet-project.html" data-reveal data-reveal-stagger>
-            <div class="thumb thumb-sdu"></div>
-            <h3>University Intranet Re-design based on UX Insights</h3>
-            <p class="project-desc">
-              Research-led intranet redesign for a large university—clearer structure,
-              navigation, and interfaces shaped by staff and student needs.
-            </p>
-            <div class="project-labels">
-              <span>Intranet</span>
-              <span>UX Research</span>
-            </div>
-          </a>
-          <a class="project-card" href="rotoy-project.html" data-reveal data-reveal-stagger>
-            <div class="thumb thumb-rotoy"></div>
-            <h3>Designing a Website and Webshop for EdTech Startup Rotoy ApS</h3>
-            <p class="project-desc">
-              Marketing site and webshop experience for an EdTech startup—clear
-              storytelling, product discovery, and a purchase flow parents can trust.
-            </p>
-            <div class="project-labels">
-              <span>EdTech</span>
-              <span>Webshop</span>
-            </div>
-          </a>
         </div>
       </section>
 
@@ -785,6 +817,6 @@
     </footer>
 
     <script src="balloon-dog.js"></script>
-    <script src="script.js"></script>
+    <script src="script.js?v=hero-lit-3"></script>
   </body>
 </html>
