@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" href="assets/portfolio-logo.svg" type="image/svg+xml" />
-    <title>Octavia Sirbu | UX/UI Designer</title>
+    <title>Octavia Sirbu | Senior Product Designer</title>
     <script src="theme-init.js"></script>
     <link rel="stylesheet" href="styles.css" />
   </head>
@@ -18,6 +18,7 @@
         <div class="nav-right">
           <ul class="nav-links">
             <li><a class="active" href="index.html">Home</a></li>
+            <li><a href="cv.html">CV</a></li>
             <li><a href="work.html">Projects</a></li>
             <li><a href="blog.html">Blog</a></li>
             <li><a href="contact.html">Contact</a></li>
@@ -44,10 +45,10 @@
       </nav>
     </header>
 
-    <main>
-      <section class="hero container">
+    <main class="home-stack">
+      <section class="hero container stack-card">
         <div class="hero-copy">
-          <p class="tag" data-reveal data-reveal-hero>UX/UI DESIGNER</p>
+          <p class="tag" data-reveal data-reveal-hero>SENIOR PRODUCT DESIGNER</p>
           <h1 data-reveal data-reveal-hero>Hi! I am Octavia</h1>
           <p class="intro" data-reveal data-reveal-hero>
             I am a full-stack designer who turns complexity into clear experiences
@@ -92,7 +93,7 @@
         </div>
       </section>
 
-      <section class="container section home-collage" aria-labelledby="home-collage-heading" data-reveal>
+      <section class="container section home-collage stack-card" aria-labelledby="home-collage-heading" data-reveal>
         <div class="home-collage__grid">
           <div class="home-collage__media">
             <img
@@ -106,7 +107,7 @@
             />
           </div>
           <div class="home-collage__copy">
-            <h2 id="home-collage-heading">From research to shipped UI</h2>
+            <h2 id="home-collage-heading">Scandi Senior Product Designer</h2>
             <p class="intro home-collage__intro">
               A snapshot of how I partner with teams: gathering feedback from users, defining problems, shaping
               flows and components, and polishing interfaces so products feel clear,
@@ -116,11 +117,15 @@
               I'm using AI as a partner but I keep the human touch in products to ensure they are not just
               technically sound but also fixing new problems for real users.
             </p>
+            <a class="btn home-collage__cv" href="cv.html">
+              See full CV
+              <span class="home-collage__cv-arrow" aria-hidden="true">→</span>
+            </a>
           </div>
         </div>
       </section>
 
-      <section class="container section" data-reveal>
+      <section class="container section stack-card" data-reveal>
         <h2 class="section-title--texture">Services</h2>
         <div class="services-layout">
           <div class="service-tabs" role="tablist" aria-label="Services">
@@ -256,7 +261,7 @@
         </div>
       </section>
 
-      <section class="container section" data-reveal>
+      <section class="container section stack-card" data-reveal>
         <div class="section-heading section-heading--texture">
           <h2>Featured Projects</h2>
           <a class="text-link text-link--animated" href="work.html">See all projects</a>
@@ -302,7 +307,7 @@
       </section>
 
       <section
-        class="container section section--testimonials"
+        class="container section section--testimonials stack-card"
         data-reveal
         data-testimonials-carousel
         aria-label="Testimonials"
@@ -450,7 +455,7 @@
         </div>
       </section>
 
-      <section class="container section section--trusted" data-reveal>
+      <section class="container section section--trusted stack-card" data-reveal>
         <h2 class="section-title--center">Trusted by</h2>
         <div class="trusted-by-logos" role="list" data-reveal data-reveal-stagger>
           <div class="trusted-by-logo" role="listitem">
@@ -555,6 +560,184 @@
           </div>
         </div>
       </section>
+
+      <section
+        class="container section section--balloon-dog stack-card"
+        data-reveal
+        aria-labelledby="balloon-dog-heading"
+        data-balloon-dog
+      >
+        <div class="balloon-dog">
+          <div class="balloon-dog__play" data-balloon-play>
+            <p class="tag balloon-dog__eyebrow">A little fun</p>
+            <h2 id="balloon-dog-heading" class="section-title--center">
+              Pump the balloon dog
+            </h2>
+            <p class="balloon-dog__lede">
+              Inflate until it pops — contact details are waiting underneath.
+            </p>
+
+            <div class="balloon-dog__stage" data-balloon-stage>
+              <div class="balloon-dog__fx" data-balloon-fx aria-hidden="true"></div>
+
+              <svg
+                class="balloon-dog__hose"
+                data-balloon-hose
+                aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  class="balloon-dog__hose-path"
+                  data-balloon-hose-path
+                  fill="none"
+                  stroke="#1a1a1a"
+                  stroke-width="3.5"
+                  stroke-linecap="round"
+                />
+              </svg>
+
+              <button
+                type="button"
+                class="balloon-dog__dog"
+                data-balloon-pump-trigger
+                aria-label="Pump the balloon dog"
+              >
+                <span class="balloon-dog__dog-scale" data-balloon-dog-scale>
+                  <span class="balloon-dog__imgs">
+                    <img
+                      class="balloon-dog__img is-active"
+                      data-dog-layer="beige"
+                      src="assets/balloon-dog-beige.svg"
+                      alt=""
+                      width="130"
+                      height="114"
+                      decoding="async"
+                      draggable="false"
+                    />
+                    <img
+                      class="balloon-dog__img"
+                      data-dog-layer="beige2"
+                      src="assets/balloon-dog-beige2.svg"
+                      alt=""
+                      width="130"
+                      height="114"
+                      decoding="async"
+                      draggable="false"
+                    />
+                    <img
+                      class="balloon-dog__img"
+                      data-dog-layer="mid"
+                      src="assets/balloon-dog-mid.svg"
+                      alt=""
+                      width="130"
+                      height="114"
+                      decoding="async"
+                      draggable="false"
+                    />
+                    <img
+                      class="balloon-dog__img"
+                      data-dog-layer="red"
+                      src="assets/balloon-dog-red.svg"
+                      alt=""
+                      width="194"
+                      height="169"
+                      decoding="async"
+                      draggable="false"
+                    />
+                  </span>
+                  <span
+                    class="balloon-dog__tail-anchor"
+                    data-hose-tail
+                    aria-hidden="true"
+                  ></span>
+                </span>
+              </button>
+
+              <button
+                type="button"
+                class="balloon-dog__pump-wrap"
+                data-balloon-pump-trigger
+                aria-label="Pump with the hand pump"
+              >
+                <span class="balloon-dog__pump" data-balloon-pump-visual>
+                  <img
+                    class="balloon-dog__pump-img"
+                    src="assets/balloon-pump.png"
+                    alt=""
+                    width="433"
+                    height="962"
+                    decoding="async"
+                    draggable="false"
+                  />
+                  <span
+                    class="balloon-dog__pump-nozzle"
+                    data-hose-nozzle
+                    aria-hidden="true"
+                  ></span>
+                </span>
+              </button>
+            </div>
+
+            <p class="visually-hidden" data-balloon-status aria-live="polite"></p>
+            <a class="visually-hidden" href="contact.html">Contact Octavia Sirbu</a>
+          </div>
+
+          <div
+            class="balloon-dog__reveal"
+            data-balloon-reveal
+            hidden
+            aria-hidden="true"
+          >
+            <p class="tag balloon-dog__eyebrow">You found me</p>
+            <h2 class="section-title--center" data-balloon-contact-name>Octavia Sirbu</h2>
+            <p class="balloon-dog__role" data-balloon-contact-role>Senior Product Designer</p>
+            <ul class="balloon-dog__links">
+              <li style="--stagger: 0">
+                <a
+                  class="balloon-dog__link"
+                  data-balloon-contact-linkedin
+                  href="https://www.linkedin.com/in/octaviasirbu/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <img
+                    src="assets/icons/linkedin-02.svg"
+                    alt=""
+                    width="22"
+                    height="22"
+                    decoding="async"
+                  />
+                  <span>LinkedIn</span>
+                </a>
+              </li>
+              <li style="--stagger: 1">
+                <a
+                  class="balloon-dog__link"
+                  data-balloon-contact-email
+                  href="mailto:octaviasirbu@gmail.com"
+                >
+                  <img
+                    src="assets/icons/copy-01.svg"
+                    alt=""
+                    width="22"
+                    height="22"
+                    decoding="async"
+                  />
+                  <span data-balloon-contact-email-label>octaviasirbu@gmail.com</span>
+                </a>
+              </li>
+              <li style="--stagger: 2">
+                <a class="balloon-dog__link" href="contact.html">
+                  <span>Full contact page</span>
+                </a>
+              </li>
+            </ul>
+            <button type="button" class="btn balloon-dog__replay" data-balloon-replay>
+              Inflate again
+            </button>
+          </div>
+        </div>
+      </section>
     </main>
 
     <footer class="site-footer">
@@ -569,11 +752,12 @@
             decoding="async"
           />
           <p class="site-footer__tagline">Turning complexity into clear experiences</p>
-          <p>© 2026 Octavia Sirbu - Product Designer</p>
+          <p>© 2026 Octavia Sirbu - Senior Product Designer</p>
         </div>
         <nav class="site-footer__nav" aria-label="Main pages">
           <ul class="site-footer__list">
             <li><a href="index.html">Home</a></li>
+            <li><a href="cv.html">CV</a></li>
             <li><a href="work.html">Projects</a></li>
             <li><a href="blog.html">Blog</a></li>
             <li><a href="contact.html">Contact</a></li>
@@ -600,6 +784,7 @@
       </div>
     </footer>
 
+    <script src="balloon-dog.js"></script>
     <script src="script.js"></script>
   </body>
 </html>
