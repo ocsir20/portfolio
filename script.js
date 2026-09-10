@@ -399,11 +399,10 @@ document.querySelectorAll("[data-more-projects]").forEach((root) => {
       btn.addEventListener("click", () => {
         const target = cards[segIndex];
         if (!target) return;
-        const stickyTop = parseFloat(getComputedStyle(target).top) || 0;
-        const y = window.scrollY + target.getBoundingClientRect().top - stickyTop - 4;
-        window.scrollTo({
-          top: Math.max(0, y),
+        target.scrollIntoView({
           behavior: reduceMotion.matches ? "auto" : "smooth",
+          block: "start",
+          inline: "nearest",
         });
       });
     });
@@ -463,4 +462,98 @@ document.querySelectorAll("[data-more-projects]").forEach((root) => {
   window.addEventListener("scroll", onScroll, { passive: true });
   window.addEventListener("resize", onScroll);
   update();
+})();
+
+/* Home + CV mobile: tappable section pager + swipe between cards */
+(function initMobileStackPager() {
+  const isHome = document.body.classList.contains("page-home");
+  const isCv = document.body.classList.contains("page-cv");
+  if (!isHome && !isCv) return;
+
+  const stack = document.querySelector(isHome ? ".home-stack" : ".cv-stack");
+  if (!stack) return;
+
+  const cards = Array.from(stack.children).filter((el) =>
+    el.classList.contains(isHome ? "stack-card" : "cv-card")
+  );
+  if (cards.length < 2) return;
+
+  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+  const mobileMq = window.matchMedia("(max-width: 820px)");
+
+  let pager = null;
+  let dots = [];
+
+  const goTo = (index) => {
+    const target = cards[Math.max(0, Math.min(cards.length - 1, index))];
+    if (!target) return;
+    target.scrollIntoView({
+      behavior: reduceMotion.matches ? "auto" : "smooth",
+      block: "start",
+      inline: "nearest",
+    });
+  };
+
+  const currentIndex = () => {
+    const header = document.querySelector(".site-header");
+    const headerH = header ? header.offsetHeight : 0;
+    const marker = headerH + Math.min(140, window.innerHeight * 0.18);
+    let active = 0;
+    cards.forEach((card, i) => {
+      if (card.getBoundingClientRect().top <= marker + 8) active = i;
+    });
+    return active;
+  };
+
+  const syncDots = () => {
+    if (!dots.length) return;
+    const active = currentIndex();
+    dots.forEach((dot, i) => {
+      dot.classList.toggle("is-active", i === active);
+      if (i === active) dot.setAttribute("aria-current", "true");
+      else dot.removeAttribute("aria-current");
+    });
+  };
+
+  const mountPager = () => {
+    if (pager || !isHome) return;
+    pager = document.createElement("nav");
+    pager.className = "stack-pager";
+    pager.setAttribute("aria-label", "Page sections");
+    cards.forEach((card, index) => {
+      const heading = card.querySelector("h1, h2");
+      const name = heading ? heading.textContent.trim() : `Section ${index + 1}`;
+      const dot = document.createElement("button");
+      dot.type = "button";
+      dot.className = "stack-pager__dot";
+      if (index === 0) dot.classList.add("is-active");
+      dot.setAttribute("aria-label", `Go to ${name}`);
+      dot.addEventListener("click", () => goTo(index));
+      pager.appendChild(dot);
+    });
+    document.body.appendChild(pager);
+    dots = Array.from(pager.querySelectorAll(".stack-pager__dot"));
+  };
+
+  const unmountPager = () => {
+    if (!pager) return;
+    pager.remove();
+    pager = null;
+    dots = [];
+  };
+
+  const applyMode = () => {
+    if (mobileMq.matches) mountPager();
+    else unmountPager();
+    syncDots();
+  };
+
+  window.addEventListener("scroll", syncDots, { passive: true });
+  window.addEventListener("resize", applyMode);
+  if (typeof mobileMq.addEventListener === "function") {
+    mobileMq.addEventListener("change", applyMode);
+  } else if (typeof mobileMq.addListener === "function") {
+    mobileMq.addListener(applyMode);
+  }
+  applyMode();
 })();
