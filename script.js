@@ -557,20 +557,31 @@ document.querySelectorAll("[data-more-projects]").forEach((root) => {
   const applyCvMobileSplit = () => {
     if (!isCv) return;
     stack.innerHTML = originalCvHtml;
-    if (!mobileMq.matches || stack.clientHeight < 80) return;
+    stack.classList.remove("cv-stack--measuring");
+    if (!mobileMq.matches) return;
+    stack.classList.add("cv-stack--measuring");
+    void stack.offsetHeight;
     Array.from(stack.children)
       .filter((el) => el.classList.contains("cv-card"))
       .forEach((card) => splitCvCard(card));
+    stack.classList.remove("cv-stack--measuring");
   };
 
   const collectCards = () => {
     cards = Array.from(stack.children).filter((el) => el.classList.contains(cardClass));
-    if (isHome || isCv) rebuildStoryBars();
-    cards.forEach(wrapCardBody);
+    const cvStoriesOff = isCv && mobileMq.matches;
+    if (cvStoriesOff) {
+      cards.forEach((card) => {
+        card.querySelectorAll(".cv-card__stories").forEach((nav) => nav.remove());
+      });
+    } else if (isHome || isCv) {
+      rebuildStoryBars();
+    }
+    if (!cvStoriesOff) cards.forEach(wrapCardBody);
     storyNavs = cards.map((card) => card.querySelector(navSelector)).filter(Boolean);
   };
 
-  const isStorySwipe = () => mobileMq.matches;
+  const isStorySwipe = () => mobileMq.matches && isHome;
 
   const resetCardTop = (card) => {
     if (!card) return;
@@ -809,7 +820,8 @@ document.querySelectorAll("[data-more-projects]").forEach((root) => {
   const bootStories = () => {
     applyCvMobileSplit();
     collectCards();
-    if (cards.length < 2 || !storyNavs.length) return false;
+    if (cards.length < 2) return false;
+    if (!isCv && !storyNavs.length) return false;
     stack.scrollTo({ left: 0, top: 0 });
     update();
     return true;
