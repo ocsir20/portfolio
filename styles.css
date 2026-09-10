@@ -3869,6 +3869,11 @@ html[data-theme="dark"] .cv-cert__logo {
     align-items: center;
   }
 
+  .page-home .quote__text {
+    font-size: 1.05rem;
+    line-height: 1.55;
+  }
+
   .stack-pager {
     display: none;
   }

@@ -656,16 +656,18 @@
     let path;
 
     if (stacked) {
-      /* Mobile: pump sits under the dog, so bow the hose around the rear
-         instead of a midpoint that cuts through the body. */
-      const pad = Math.max(28, dogBox.width * 0.22);
+      /* Mobile: pump sits under the dog. One cubic keeps a round hose
+         around the rear instead of two quadratics meeting at a corner. */
+      const pad = Math.max(36, dogBox.width * 0.28);
       const aroundRight = x2 >= dogLeft + dogBox.width * 0.5;
-      const pull = pumping ? 5 : 0;
-      const wayX = aroundRight ? dogRight + pad : dogLeft - pad;
-      const wayY = dogBottom + 6 - pull;
-      const mid1x = (x1 + wayX) / 2;
-      const mid2y = (y2 + wayY) / 2;
-      path = `M ${x1.toFixed(1)} ${y1.toFixed(1)} Q ${mid1x.toFixed(1)} ${(wayY + 10).toFixed(1)} ${wayX.toFixed(1)} ${wayY.toFixed(1)} Q ${wayX.toFixed(1)} ${mid2y.toFixed(1)} ${x2.toFixed(1)} ${y2.toFixed(1)}`;
+      const pull = pumping ? 6 : 0;
+      const outX = aroundRight ? dogRight + pad : dogLeft - pad;
+      const lowY = Math.max(y1, dogBottom) + 24 - pull;
+      const c1x = x1 + (outX - x1) * 0.12;
+      const c1y = y1 + (lowY - y1) * 0.78;
+      const c2x = outX + (aroundRight ? 22 : -22);
+      const c2y = lowY * 0.42 + y2 * 0.58;
+      path = `M ${x1.toFixed(1)} ${y1.toFixed(1)} C ${c1x.toFixed(1)} ${c1y.toFixed(1)} ${c2x.toFixed(1)} ${c2y.toFixed(1)} ${x2.toFixed(1)} ${y2.toFixed(1)}`;
     } else {
       const midX = (x1 + x2) / 2;
       const midY = Math.min(y1, y2) - (pumping ? 10 : 22) - Math.abs(x2 - x1) * 0.08;
