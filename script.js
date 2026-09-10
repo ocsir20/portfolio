@@ -438,15 +438,15 @@ document.querySelectorAll("[data-more-projects]").forEach((root) => {
 
   const collectCards = () => {
     cards = Array.from(stack.children).filter((el) => el.classList.contains(cardClass));
-    const cvStoriesOff = isCv && mobileMq.matches;
-    if (!cvStoriesOff) {
+    const storiesOff = mobileMq.matches;
+    if (!storiesOff) {
       rebuildStoryBars();
       cards.forEach(wrapCardBody);
     }
     storyNavs = cards.map((card) => card.querySelector(navSelector)).filter(Boolean);
   };
 
-  const isStorySwipe = () => mobileMq.matches && isHome;
+  const isStorySwipe = () => false;
 
   const resetCardTop = (card) => {
     if (!card) return;
@@ -671,7 +671,7 @@ document.querySelectorAll("[data-more-projects]").forEach((root) => {
   const bootStories = () => {
     collectCards();
     if (cards.length < 2) return false;
-    if (!isCv && !storyNavs.length) return false;
+    if (!mobileMq.matches && !storyNavs.length) return false;
     stack.scrollTo({ left: 0, top: 0 });
     update();
     return true;
