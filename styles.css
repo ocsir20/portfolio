@@ -4888,6 +4888,27 @@ body.page-cv .cv-card__body {
   display: contents;
 }
 
+@media (max-width: 820px) {
+  .page-home .stack-card__body,
+  body.page-cv .cv-card__body {
+    display: block;
+    flex: 1 1 auto;
+    min-height: 0;
+    overflow-x: hidden;
+    overflow-y: hidden;
+  }
+
+  body.page-cv .cv-card--split .cv-skills-tools {
+    grid-template-columns: 1fr;
+  }
+
+  body.page-cv .cv-stack > .cv-card .cv-media-img {
+    max-height: min(34vh, 16rem);
+    width: 100%;
+    object-fit: cover;
+  }
+}
+
 .page-home .site-footer {
   position: relative;
   z-index: 10;

@@ -382,43 +382,21 @@ document.querySelectorAll("[data-more-projects]").forEach((root) => {
   if (!stack) return;
 
   const cardClass = isHome ? "stack-card" : "cv-card";
-  const cards = Array.from(stack.children).filter((el) => el.classList.contains(cardClass));
-  if (cards.length < 2) return;
-
+  const originalCvHtml = isCv ? stack.innerHTML : "";
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
   const mobileMq = window.matchMedia("(max-width: 820px)");
   const navSelector = isHome ? ".stack-card__stories" : ".cv-card__stories";
   const segSelector = isHome ? ".stack-card__stories-seg" : ".cv-card__stories-seg";
   const fillSelector = isHome ? ".stack-card__stories-fill" : ".cv-card__stories-fill";
 
+  let cards = [];
+  let storyNavs = [];
+
   const labelFor = (card, index) => {
     const heading = card.querySelector("h1, h2");
     const name = heading ? heading.textContent.trim() : `Section ${index + 1}`;
     return `Go to ${name}`;
   };
-
-  if (isHome) {
-    cards.forEach((card) => {
-      if (card.querySelector(navSelector)) return;
-      const nav = document.createElement("div");
-      nav.className = "stack-card__stories";
-      nav.setAttribute("role", "navigation");
-      nav.setAttribute("aria-label", "Home sections");
-      cards.forEach((target, index) => {
-        const btn = document.createElement("button");
-        btn.type = "button";
-        btn.className = "stack-card__stories-seg";
-        btn.setAttribute("data-story-index", String(index));
-        const fill = document.createElement("span");
-        fill.className = "stack-card__stories-fill";
-        fill.style.setProperty("--fill", index === 0 ? "1" : "0");
-        fill.setAttribute("aria-hidden", "true");
-        btn.appendChild(fill);
-        nav.appendChild(btn);
-      });
-      card.insertBefore(nav, card.firstChild);
-    });
-  }
 
   const wrapCardBody = (card) => {
     const bodyClass = isHome ? "stack-card__body" : "cv-card__body";
@@ -431,10 +409,166 @@ document.querySelectorAll("[data-more-projects]").forEach((root) => {
     });
     card.appendChild(body);
   };
-  cards.forEach(wrapCardBody);
 
-  const storyNavs = cards.map((card) => card.querySelector(navSelector)).filter(Boolean);
-  if (!storyNavs.length) return;
+  const rebuildStoryBars = () => {
+    cards.forEach((card) => {
+      let nav = card.querySelector(navSelector);
+      if (!nav) {
+        nav = document.createElement("div");
+        nav.className = isHome ? "stack-card__stories" : "cv-card__stories";
+        nav.setAttribute("role", "navigation");
+        nav.setAttribute("aria-label", isHome ? "Home sections" : "CV sections");
+        card.insertBefore(nav, card.firstChild);
+      }
+      nav.innerHTML = "";
+      cards.forEach((target, index) => {
+        const btn = document.createElement("button");
+        btn.type = "button";
+        btn.className = isHome ? "stack-card__stories-seg" : "cv-card__stories-seg";
+        btn.setAttribute(isHome ? "data-story-index" : "data-cv-story", String(index));
+        btn.setAttribute("aria-label", labelFor(target, index));
+        const fill = document.createElement("span");
+        fill.className = isHome ? "stack-card__stories-fill" : "cv-card__stories-fill";
+        fill.style.setProperty("--fill", index === 0 ? "1" : "0");
+        fill.setAttribute("aria-hidden", "true");
+        btn.appendChild(fill);
+        nav.appendChild(btn);
+      });
+    });
+  };
+
+  const cardOverflows = (card) => {
+    const box = card.querySelector(".cv-card__body") || card;
+    void box.offsetHeight;
+    return box.scrollHeight > box.clientHeight + 8;
+  };
+
+  const unitsFor = (card) => {
+    const q = (sel) => Array.from(card.querySelectorAll(sel));
+    const entries = q(".cv-entries > .cv-entry");
+    if (entries.length > 1) return entries;
+    const skills = q(".cv-skills-tools > div");
+    if (skills.length > 1) return skills;
+    const certs = q(".cv-certs > .cv-cert");
+    if (certs.length > 1) return certs;
+    const langs = q(".cv-languages > .cv-language");
+    if (langs.length > 1) return langs;
+    const bullets = q(".cv-bullets > li");
+    if (bullets.length > 1) return bullets;
+    return [];
+  };
+
+  const makeCvContinuation = (sourceCard) => {
+    const section = document.createElement("section");
+    section.className = "cv-card stack-card cv-card--split";
+    const labelled = sourceCard.getAttribute("aria-labelledby");
+    if (labelled) section.setAttribute("aria-labelledby", labelled);
+    const nav = document.createElement("div");
+    nav.className = "cv-card__stories";
+    nav.setAttribute("role", "navigation");
+    nav.setAttribute("aria-label", "CV sections");
+    section.appendChild(nav);
+    const heading = sourceCard.querySelector("h1, h2");
+    if (heading) {
+      const clone = heading.cloneNode(true);
+      clone.removeAttribute("id");
+      section.appendChild(clone);
+    }
+    return section;
+  };
+
+  const prependEntryContext = (continuation, item) => {
+    if (!item || !item.closest || !item.closest(".cv-bullets")) return;
+    if (continuation.querySelector(".cv-entry__header")) return;
+    const entry = item.closest(".cv-entry");
+    if (!entry) return;
+    [".cv-entry__header", ".cv-entry__org"].forEach((sel) => {
+      const el = entry.querySelector(sel);
+      if (el) continuation.appendChild(el.cloneNode(true));
+    });
+  };
+
+  const fillHost = (card, host, remaining) => {
+    const nextRemaining = remaining.slice();
+    const taken = [];
+    while (nextRemaining.length) {
+      const item = nextRemaining[0];
+      host.appendChild(item);
+      taken.push(item);
+      nextRemaining.shift();
+      if (!cardOverflows(card)) continue;
+      if (taken.length > 1) {
+        host.removeChild(item);
+        nextRemaining.unshift(item);
+        taken.pop();
+        break;
+      }
+      const nestedBullets = item.querySelectorAll ? item.querySelectorAll(".cv-bullets > li") : [];
+      if (nestedBullets.length > 1) break;
+      const chrome = card.querySelector(".cv-media-layout, .cv-media-figure, .cv-media, .cv-card__lead");
+      if (chrome) {
+        host.removeChild(item);
+        nextRemaining.unshift(item);
+        taken.pop();
+        break;
+      }
+      break;
+    }
+    return nextRemaining;
+  };
+
+  const packUnits = (card, units) => {
+    if (units.length < 1) return;
+    const parent = units[0].parentElement;
+    if (!parent) return;
+    units.forEach((unit) => unit.remove());
+    let remaining = fillHost(card, parent, units);
+    let last = card;
+    let guard = 0;
+    while (remaining.length && guard < 24) {
+      guard += 1;
+      const cont = makeCvContinuation(card);
+      prependEntryContext(cont, remaining[0]);
+      const host = parent.cloneNode(false);
+      cont.appendChild(host);
+      last.after(cont);
+      last = cont;
+      const before = remaining.length;
+      remaining = fillHost(cont, host, remaining);
+      if (remaining.length === before) host.appendChild(remaining.shift());
+    }
+  };
+
+  const splitCvCard = (card) => {
+    if (!cardOverflows(card)) return;
+    const units = unitsFor(card);
+    if (units.length) packUnits(card, units);
+    if (cardOverflows(card)) {
+      const bullets = Array.from(card.querySelectorAll(".cv-bullets > li"));
+      if (bullets.length > 1) packUnits(card, bullets);
+    }
+    if (cardOverflows(card)) {
+      const entries = Array.from(card.querySelectorAll(".cv-entries > .cv-entry"));
+      const chrome = card.querySelector(".cv-media-layout, .cv-media-figure, .cv-card__lead");
+      if (chrome && entries.length) packUnits(card, entries);
+    }
+  };
+
+  const applyCvMobileSplit = () => {
+    if (!isCv) return;
+    stack.innerHTML = originalCvHtml;
+    if (!mobileMq.matches || stack.clientHeight < 80) return;
+    Array.from(stack.children)
+      .filter((el) => el.classList.contains("cv-card"))
+      .forEach((card) => splitCvCard(card));
+  };
+
+  const collectCards = () => {
+    cards = Array.from(stack.children).filter((el) => el.classList.contains(cardClass));
+    if (isHome || isCv) rebuildStoryBars();
+    cards.forEach(wrapCardBody);
+    storyNavs = cards.map((card) => card.querySelector(navSelector)).filter(Boolean);
+  };
 
   const isStorySwipe = () => mobileMq.matches;
 
@@ -464,15 +598,15 @@ document.querySelectorAll("[data-more-projects]").forEach((root) => {
     });
   };
 
-  storyNavs.forEach((nav) => {
-    const segs = Array.from(nav.querySelectorAll(segSelector));
-    segs.forEach((btn, segIndex) => {
-      btn.setAttribute("aria-label", labelFor(cards[segIndex], segIndex));
-      btn.addEventListener("click", (event) => {
-        event.stopPropagation();
-        goTo(segIndex);
-      });
-    });
+  stack.addEventListener("click", (event) => {
+    const btn = event.target.closest(segSelector);
+    if (!btn || !stack.contains(btn)) return;
+    const nav = btn.closest(navSelector);
+    if (!nav) return;
+    const index = Array.from(nav.querySelectorAll(segSelector)).indexOf(btn);
+    if (index < 0) return;
+    event.stopPropagation();
+    goTo(index);
   });
 
   const currentIndex = () => {
@@ -658,12 +792,36 @@ document.querySelectorAll("[data-more-projects]").forEach((root) => {
     else goTo(active - 1);
   });
 
+  const waitStackImages = (ms = 1800) =>
+    Promise.race([
+      Promise.all(
+        Array.from(stack.querySelectorAll("img")).map((img) => {
+          if (img.complete) return Promise.resolve();
+          return new Promise((resolve) => {
+            img.addEventListener("load", resolve, { once: true });
+            img.addEventListener("error", resolve, { once: true });
+          });
+        })
+      ),
+      new Promise((resolve) => window.setTimeout(resolve, ms)),
+    ]);
+
+  const bootStories = () => {
+    applyCvMobileSplit();
+    collectCards();
+    if (cards.length < 2 || !storyNavs.length) return false;
+    stack.scrollTo({ left: 0, top: 0 });
+    update();
+    return true;
+  };
+
   if (typeof mobileMq.addEventListener === "function") {
     mobileMq.addEventListener("change", () => {
-      stack.scrollTo({ left: 0, top: 0 });
-      update();
+      bootStories();
+      waitStackImages().then(() => bootStories());
     });
   }
 
-  update();
+  bootStories();
+  waitStackImages().then(() => bootStories());
 })();
