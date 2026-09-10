@@ -420,18 +420,47 @@ document.querySelectorAll("[data-more-projects]").forEach((root) => {
     });
   }
 
+  const wrapCardBody = (card) => {
+    const bodyClass = isHome ? "stack-card__body" : "cv-card__body";
+    if (card.querySelector(`:scope > .${bodyClass}`)) return;
+    const body = document.createElement("div");
+    body.className = bodyClass;
+    const keep = card.querySelector(navSelector);
+    Array.from(card.childNodes).forEach((node) => {
+      if (node !== keep) body.appendChild(node);
+    });
+    card.appendChild(body);
+  };
+  cards.forEach(wrapCardBody);
+
   const storyNavs = cards.map((card) => card.querySelector(navSelector)).filter(Boolean);
   if (!storyNavs.length) return;
 
   const isStorySwipe = () => mobileMq.matches;
 
+  const resetCardTop = (card) => {
+    if (!card) return;
+    card.scrollTop = 0;
+    const body = card.querySelector(".stack-card__body, .cv-card__body");
+    if (body) body.scrollTop = 0;
+  };
+
   const goTo = (index) => {
     const target = cards[Math.max(0, Math.min(cards.length - 1, index))];
     if (!target) return;
+    resetCardTop(target);
+    if (isStorySwipe()) {
+      const extra = (stack.clientWidth - target.offsetWidth) / 2;
+      stack.scrollTo({
+        left: Math.max(0, target.offsetLeft - extra),
+        behavior: reduceMotion.matches ? "auto" : "smooth",
+      });
+      return;
+    }
     target.scrollIntoView({
       behavior: reduceMotion.matches ? "auto" : "smooth",
-      block: isStorySwipe() ? "nearest" : "start",
-      inline: isStorySwipe() ? "center" : "nearest",
+      block: "start",
+      inline: "nearest",
     });
   };
 
@@ -490,12 +519,19 @@ document.querySelectorAll("[data-more-projects]").forEach((root) => {
     ".home-stack > .stack-card.hero .hero-visual--portrait"
   );
 
+  let lastFront = -1;
+
   const update = () => {
     const active = currentIndex();
 
     cards.forEach((card, i) => {
       card.classList.toggle("is-front", i === active);
     });
+
+    if (isStorySwipe() && active !== lastFront) {
+      resetCardTop(cards[active]);
+      lastFront = active;
+    }
 
     storyNavs.forEach((nav, cardIndex) => {
       const segs = nav.querySelectorAll(segSelector);
@@ -574,6 +610,52 @@ document.querySelectorAll("[data-more-projects]").forEach((root) => {
 
   stack.addEventListener("pointercancel", () => {
     pointerTracking = false;
+  });
+
+  let swipeX = 0;
+  let swipeY = 0;
+  let swipeAxis = "";
+  let swipeActive = false;
+
+  stack.addEventListener(
+    "touchstart",
+    (event) => {
+      if (!isStorySwipe() || event.touches.length !== 1) return;
+      swipeActive = true;
+      swipeAxis = "";
+      swipeX = event.touches[0].clientX;
+      swipeY = event.touches[0].clientY;
+    },
+    { passive: true }
+  );
+
+  stack.addEventListener(
+    "touchmove",
+    (event) => {
+      if (!swipeActive || !isStorySwipe() || event.touches.length !== 1) return;
+      const dx = event.touches[0].clientX - swipeX;
+      const dy = event.touches[0].clientY - swipeY;
+      if (!swipeAxis && (Math.abs(dx) > 10 || Math.abs(dy) > 10)) {
+        swipeAxis = Math.abs(dx) > Math.abs(dy) ? "x" : "y";
+      }
+      if (swipeAxis === "x") event.preventDefault();
+    },
+    { passive: false }
+  );
+
+  stack.addEventListener("touchend", (event) => {
+    if (!swipeActive || !isStorySwipe()) return;
+    swipeActive = false;
+    if (swipeAxis !== "x") {
+      swipeAxis = "";
+      return;
+    }
+    const dx = event.changedTouches[0].clientX - swipeX;
+    swipeAxis = "";
+    if (Math.abs(dx) < 46) return;
+    const active = currentIndex();
+    if (dx < 0) goTo(active + 1);
+    else goTo(active - 1);
   });
 
   if (typeof mobileMq.addEventListener === "function") {

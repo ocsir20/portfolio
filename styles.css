@@ -3838,7 +3838,8 @@ html[data-theme="dark"] .cv-cert__logo {
     max-height: 100%;
     margin: 0;
     overflow-x: hidden;
-    overflow-y: auto;
+    overflow-y: hidden;
+    overscroll-behavior: none;
     scroll-snap-align: center;
     scroll-snap-stop: always;
     border-radius: 22px;
@@ -3857,7 +3858,37 @@ html[data-theme="dark"] .cv-cert__logo {
 
   .page-home .home-stack > .stack-card.section--balloon-dog {
     overflow-x: hidden;
+    overflow-y: hidden;
+  }
+
+  body.page-home .home-stack > .stack-card,
+  body.page-cv .cv-stack > .cv-card {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .page-home .stack-card__body,
+  body.page-cv .cv-card__body {
+    display: block;
+    flex: 1 1 auto;
+    min-height: 0;
+    overflow-x: hidden;
     overflow-y: auto;
+    overscroll-behavior: contain;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .page-home .home-stack > .stack-card .service-tabs {
+    height: auto;
+  }
+
+  .page-home .home-stack > .stack-card .service-tab {
+    flex: 0 0 auto;
+    min-height: 3.15rem;
+    height: auto;
+    padding: 0.72rem 0.9rem;
+    font-size: 0.92rem;
+    align-items: center;
   }
 
   body.page-cv .cv-card__stories,
@@ -4852,6 +4883,11 @@ html[data-theme="dark"] .more-project-card__visual {
   border-radius: 14px;
 }
 
+.page-home .stack-card__body,
+body.page-cv .cv-card__body {
+  display: contents;
+}
+
 .page-home .site-footer {
   position: relative;
   z-index: 10;
@@ -5130,6 +5166,23 @@ html[data-theme="dark"] .page-home .hero-visual--portrait .portrait-frame {
   .hero,
   .services-layout {
     grid-template-columns: 1fr;
+  }
+
+  .service-tabs {
+    height: auto;
+  }
+
+  .service-tab {
+    flex: 0 0 auto;
+    min-height: 3.15rem;
+    align-items: center;
+    padding: 0.75rem 0.95rem;
+    font-size: 0.95rem;
+  }
+
+  .service-tab__label {
+    overflow-wrap: break-word;
+    line-height: 1.3;
   }
 
   .home-collage__grid {

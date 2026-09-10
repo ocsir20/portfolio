@@ -649,14 +649,31 @@
     const y2 = dogBox.top + dogBox.height * cfg.TAIL_ANCHOR.y - stageBox.top;
 
     const pumping = pumpVisual && pumpVisual.classList.contains("is-pumping");
-    const midX = (x1 + x2) / 2;
-    const midY = Math.min(y1, y2) - (pumping ? 10 : 22) - Math.abs(x2 - x1) * 0.08;
-    const sag = pumping ? 6 : 0;
+    const dogLeft = dogBox.left - stageBox.left;
+    const dogRight = dogBox.right - stageBox.left;
+    const dogBottom = dogBox.bottom - stageBox.top;
+    const stacked = y1 > y2 + 36;
+    let path;
 
-    hosePath.setAttribute(
-      "d",
-      `M ${x1.toFixed(1)} ${y1.toFixed(1)} Q ${midX.toFixed(1)} ${(midY + sag).toFixed(1)} ${x2.toFixed(1)} ${y2.toFixed(1)}`
-    );
+    if (stacked) {
+      /* Mobile: pump sits under the dog, so bow the hose around the rear
+         instead of a midpoint that cuts through the body. */
+      const pad = Math.max(28, dogBox.width * 0.22);
+      const aroundRight = x2 >= dogLeft + dogBox.width * 0.5;
+      const pull = pumping ? 5 : 0;
+      const wayX = aroundRight ? dogRight + pad : dogLeft - pad;
+      const wayY = dogBottom + 6 - pull;
+      const mid1x = (x1 + wayX) / 2;
+      const mid2y = (y2 + wayY) / 2;
+      path = `M ${x1.toFixed(1)} ${y1.toFixed(1)} Q ${mid1x.toFixed(1)} ${(wayY + 10).toFixed(1)} ${wayX.toFixed(1)} ${wayY.toFixed(1)} Q ${wayX.toFixed(1)} ${mid2y.toFixed(1)} ${x2.toFixed(1)} ${y2.toFixed(1)}`;
+    } else {
+      const midX = (x1 + x2) / 2;
+      const midY = Math.min(y1, y2) - (pumping ? 10 : 22) - Math.abs(x2 - x1) * 0.08;
+      const sag = pumping ? 6 : 0;
+      path = `M ${x1.toFixed(1)} ${y1.toFixed(1)} Q ${midX.toFixed(1)} ${(midY + sag).toFixed(1)} ${x2.toFixed(1)} ${y2.toFixed(1)}`;
+    }
+
+    hosePath.setAttribute("d", path);
   };
 
   const requestHoseUpdate = () => {
