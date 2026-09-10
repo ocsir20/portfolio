@@ -372,19 +372,24 @@ document.querySelectorAll("[data-more-projects]").forEach((root) => {
   });
 })();
 
-/* CV sticky cards: story progression bars. Fill one segment per stacked card */
-(function initCvStories() {
-  if (!document.body.classList.contains("page-cv")) return;
+/* Home + CV stack progress bars, sticky on desktop, Instagram swipe on mobile */
+(function initStackStories() {
+  const isHome = document.body.classList.contains("page-home");
+  const isCv = document.body.classList.contains("page-cv");
+  if (!isHome && !isCv) return;
 
-  const stack = document.querySelector(".cv-stack");
+  const stack = document.querySelector(isHome ? ".home-stack" : ".cv-stack");
   if (!stack) return;
 
-  const cards = Array.from(stack.children).filter((el) => el.classList.contains("cv-card"));
+  const cardClass = isHome ? "stack-card" : "cv-card";
+  const cards = Array.from(stack.children).filter((el) => el.classList.contains(cardClass));
   if (cards.length < 2) return;
 
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
-  const storyNavs = cards.map((card) => card.querySelector(".cv-card__stories")).filter(Boolean);
-  if (!storyNavs.length) return;
+  const mobileMq = window.matchMedia("(max-width: 820px)");
+  const navSelector = isHome ? ".stack-card__stories" : ".cv-card__stories";
+  const segSelector = isHome ? ".stack-card__stories-seg" : ".cv-card__stories-seg";
+  const fillSelector = isHome ? ".stack-card__stories-fill" : ".cv-card__stories-fill";
 
   const labelFor = (card, index) => {
     const heading = card.querySelector("h1, h2");
@@ -392,27 +397,75 @@ document.querySelectorAll("[data-more-projects]").forEach((root) => {
     return `Go to ${name}`;
   };
 
+  if (isHome) {
+    cards.forEach((card) => {
+      if (card.querySelector(navSelector)) return;
+      const nav = document.createElement("div");
+      nav.className = "stack-card__stories";
+      nav.setAttribute("role", "navigation");
+      nav.setAttribute("aria-label", "Home sections");
+      cards.forEach((target, index) => {
+        const btn = document.createElement("button");
+        btn.type = "button";
+        btn.className = "stack-card__stories-seg";
+        btn.setAttribute("data-story-index", String(index));
+        const fill = document.createElement("span");
+        fill.className = "stack-card__stories-fill";
+        fill.style.setProperty("--fill", index === 0 ? "1" : "0");
+        fill.setAttribute("aria-hidden", "true");
+        btn.appendChild(fill);
+        nav.appendChild(btn);
+      });
+      card.insertBefore(nav, card.firstChild);
+    });
+  }
+
+  const storyNavs = cards.map((card) => card.querySelector(navSelector)).filter(Boolean);
+  if (!storyNavs.length) return;
+
+  const isStorySwipe = () => mobileMq.matches;
+
+  const goTo = (index) => {
+    const target = cards[Math.max(0, Math.min(cards.length - 1, index))];
+    if (!target) return;
+    target.scrollIntoView({
+      behavior: reduceMotion.matches ? "auto" : "smooth",
+      block: isStorySwipe() ? "nearest" : "start",
+      inline: isStorySwipe() ? "center" : "nearest",
+    });
+  };
+
   storyNavs.forEach((nav) => {
-    const segs = Array.from(nav.querySelectorAll(".cv-card__stories-seg"));
+    const segs = Array.from(nav.querySelectorAll(segSelector));
     segs.forEach((btn, segIndex) => {
       btn.setAttribute("aria-label", labelFor(cards[segIndex], segIndex));
-      btn.addEventListener("click", () => {
-        const target = cards[segIndex];
-        if (!target) return;
-        target.scrollIntoView({
-          behavior: reduceMotion.matches ? "auto" : "smooth",
-          block: "start",
-          inline: "nearest",
-        });
+      btn.addEventListener("click", (event) => {
+        event.stopPropagation();
+        goTo(segIndex);
       });
     });
   });
 
-  const update = () => {
+  const currentIndex = () => {
     const n = cards.length;
-    const stickyMode = getComputedStyle(cards[0]).position === "sticky";
     let active = 0;
 
+    if (isStorySwipe()) {
+      const stackMid = stack.getBoundingClientRect().left + stack.clientWidth / 2;
+      let best = 0;
+      let bestDist = Infinity;
+      cards.forEach((card, i) => {
+        const rect = card.getBoundingClientRect();
+        const dist = Math.abs(rect.left + rect.width / 2 - stackMid);
+        if (dist < bestDist) {
+          bestDist = dist;
+          best = i;
+        }
+      });
+      return best;
+    }
+
+    const stickyMode = getComputedStyle(cards[0]).position === "sticky";
     if (stickyMode) {
       for (let i = 0; i < n; i += 1) {
         const card = cards[i];
@@ -430,16 +483,24 @@ document.querySelectorAll("[data-more-projects]").forEach((root) => {
       if (stack.getBoundingClientRect().bottom <= window.innerHeight - 8) active = n - 1;
     }
 
-    active = Math.max(0, Math.min(n - 1, active));
+    return Math.max(0, Math.min(n - 1, active));
+  };
+
+  const heroPortrait = document.querySelector(
+    ".home-stack > .stack-card.hero .hero-visual--portrait"
+  );
+
+  const update = () => {
+    const active = currentIndex();
 
     cards.forEach((card, i) => {
       card.classList.toggle("is-front", i === active);
     });
 
     storyNavs.forEach((nav, cardIndex) => {
-      const segs = nav.querySelectorAll(".cv-card__stories-seg");
+      const segs = nav.querySelectorAll(segSelector);
       segs.forEach((seg, i) => {
-        const fill = seg.querySelector(".cv-card__stories-fill");
+        const fill = seg.querySelector(fillSelector);
         if (fill) fill.style.setProperty("--fill", i <= active ? "1" : "0");
         seg.classList.toggle("is-complete", i <= active);
         if (i === active) seg.setAttribute("aria-current", "step");
@@ -447,6 +508,10 @@ document.querySelectorAll("[data-more-projects]").forEach((root) => {
         seg.tabIndex = cardIndex === active ? 0 : -1;
       });
     });
+
+    if (heroPortrait && isHome) {
+      heroPortrait.classList.toggle("is-lit", active > 0 || window.scrollY > 2);
+    }
   };
 
   let ticking = false;
@@ -459,101 +524,64 @@ document.querySelectorAll("[data-more-projects]").forEach((root) => {
     });
   };
 
+  stack.addEventListener("scroll", onScroll, { passive: true });
   window.addEventListener("scroll", onScroll, { passive: true });
   window.addEventListener("resize", onScroll);
-  update();
-})();
 
-/* Home + CV mobile: tappable section pager + swipe between cards */
-(function initMobileStackPager() {
-  const isHome = document.body.classList.contains("page-home");
-  const isCv = document.body.classList.contains("page-cv");
-  if (!isHome && !isCv) return;
+  let pointerStartX = 0;
+  let pointerStartY = 0;
+  let pointerStartT = 0;
+  let pointerTracking = false;
 
-  const stack = document.querySelector(isHome ? ".home-stack" : ".cv-stack");
-  if (!stack) return;
+  const isInteractive = (node) =>
+    Boolean(
+      node.closest(
+        "a, button, input, textarea, select, label, [role='tab'], [data-testimonials-carousel] button, [data-balloon-play]"
+      )
+    );
 
-  const cards = Array.from(stack.children).filter((el) =>
-    el.classList.contains(isHome ? "stack-card" : "cv-card")
+  stack.addEventListener(
+    "pointerdown",
+    (event) => {
+      if (!isStorySwipe()) return;
+      if (event.pointerType === "mouse" && event.button !== 0) return;
+      pointerTracking = true;
+      pointerStartX = event.clientX;
+      pointerStartY = event.clientY;
+      pointerStartT = Date.now();
+    },
+    { passive: true }
   );
-  if (cards.length < 2) return;
 
-  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
-  const mobileMq = window.matchMedia("(max-width: 820px)");
+  stack.addEventListener("pointerup", (event) => {
+    if (!pointerTracking || !isStorySwipe()) return;
+    pointerTracking = false;
+    const dx = event.clientX - pointerStartX;
+    const dy = event.clientY - pointerStartY;
+    const dt = Date.now() - pointerStartT;
+    if (dt > 450) return;
+    if (Math.abs(dx) > 12 || Math.abs(dy) > 12) return;
+    if (isInteractive(event.target)) return;
 
-  let pager = null;
-  let dots = [];
-
-  const goTo = (index) => {
-    const target = cards[Math.max(0, Math.min(cards.length - 1, index))];
-    if (!target) return;
-    target.scrollIntoView({
-      behavior: reduceMotion.matches ? "auto" : "smooth",
-      block: "start",
-      inline: "nearest",
-    });
-  };
-
-  const currentIndex = () => {
-    const header = document.querySelector(".site-header");
-    const headerH = header ? header.offsetHeight : 0;
-    const marker = headerH + Math.min(140, window.innerHeight * 0.18);
-    let active = 0;
-    cards.forEach((card, i) => {
-      if (card.getBoundingClientRect().top <= marker + 8) active = i;
-    });
-    return active;
-  };
-
-  const syncDots = () => {
-    if (!dots.length) return;
     const active = currentIndex();
-    dots.forEach((dot, i) => {
-      dot.classList.toggle("is-active", i === active);
-      if (i === active) dot.setAttribute("aria-current", "true");
-      else dot.removeAttribute("aria-current");
-    });
-  };
+    const card = cards[active];
+    if (!card) return;
+    const rect = card.getBoundingClientRect();
+    const x = event.clientX - rect.left;
+    if (x < rect.width * 0.3) goTo(active - 1);
+    else goTo(active + 1);
+  });
 
-  const mountPager = () => {
-    if (pager || !isHome) return;
-    pager = document.createElement("nav");
-    pager.className = "stack-pager";
-    pager.setAttribute("aria-label", "Page sections");
-    cards.forEach((card, index) => {
-      const heading = card.querySelector("h1, h2");
-      const name = heading ? heading.textContent.trim() : `Section ${index + 1}`;
-      const dot = document.createElement("button");
-      dot.type = "button";
-      dot.className = "stack-pager__dot";
-      if (index === 0) dot.classList.add("is-active");
-      dot.setAttribute("aria-label", `Go to ${name}`);
-      dot.addEventListener("click", () => goTo(index));
-      pager.appendChild(dot);
-    });
-    document.body.appendChild(pager);
-    dots = Array.from(pager.querySelectorAll(".stack-pager__dot"));
-  };
+  stack.addEventListener("pointercancel", () => {
+    pointerTracking = false;
+  });
 
-  const unmountPager = () => {
-    if (!pager) return;
-    pager.remove();
-    pager = null;
-    dots = [];
-  };
-
-  const applyMode = () => {
-    if (mobileMq.matches) mountPager();
-    else unmountPager();
-    syncDots();
-  };
-
-  window.addEventListener("scroll", syncDots, { passive: true });
-  window.addEventListener("resize", applyMode);
   if (typeof mobileMq.addEventListener === "function") {
-    mobileMq.addEventListener("change", applyMode);
-  } else if (typeof mobileMq.addListener === "function") {
-    mobileMq.addListener(applyMode);
+    mobileMq.addEventListener("change", () => {
+      stack.scrollTo({ left: 0, top: 0 });
+      update();
+    });
   }
-  applyMode();
+
+  update();
 })();
