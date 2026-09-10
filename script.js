@@ -382,7 +382,6 @@ document.querySelectorAll("[data-more-projects]").forEach((root) => {
   if (!stack) return;
 
   const cardClass = isHome ? "stack-card" : "cv-card";
-  const originalCvHtml = isCv ? stack.innerHTML : "";
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
   const mobileMq = window.matchMedia("(max-width: 820px)");
   const navSelector = isHome ? ".stack-card__stories" : ".cv-card__stories";
@@ -437,147 +436,13 @@ document.querySelectorAll("[data-more-projects]").forEach((root) => {
     });
   };
 
-  const cardOverflows = (card) => {
-    const box = card.querySelector(".cv-card__body") || card;
-    void box.offsetHeight;
-    return box.scrollHeight > box.clientHeight + 8;
-  };
-
-  const unitsFor = (card) => {
-    const q = (sel) => Array.from(card.querySelectorAll(sel));
-    const entries = q(".cv-entries > .cv-entry");
-    if (entries.length > 1) return entries;
-    const skills = q(".cv-skills-tools > div");
-    if (skills.length > 1) return skills;
-    const certs = q(".cv-certs > .cv-cert");
-    if (certs.length > 1) return certs;
-    const langs = q(".cv-languages > .cv-language");
-    if (langs.length > 1) return langs;
-    const bullets = q(".cv-bullets > li");
-    if (bullets.length > 1) return bullets;
-    return [];
-  };
-
-  const makeCvContinuation = (sourceCard) => {
-    const section = document.createElement("section");
-    section.className = "cv-card stack-card cv-card--split";
-    const labelled = sourceCard.getAttribute("aria-labelledby");
-    if (labelled) section.setAttribute("aria-labelledby", labelled);
-    const nav = document.createElement("div");
-    nav.className = "cv-card__stories";
-    nav.setAttribute("role", "navigation");
-    nav.setAttribute("aria-label", "CV sections");
-    section.appendChild(nav);
-    const heading = sourceCard.querySelector("h1, h2");
-    if (heading) {
-      const clone = heading.cloneNode(true);
-      clone.removeAttribute("id");
-      section.appendChild(clone);
-    }
-    return section;
-  };
-
-  const prependEntryContext = (continuation, item) => {
-    if (!item || !item.closest || !item.closest(".cv-bullets")) return;
-    if (continuation.querySelector(".cv-entry__header")) return;
-    const entry = item.closest(".cv-entry");
-    if (!entry) return;
-    [".cv-entry__header", ".cv-entry__org"].forEach((sel) => {
-      const el = entry.querySelector(sel);
-      if (el) continuation.appendChild(el.cloneNode(true));
-    });
-  };
-
-  const fillHost = (card, host, remaining) => {
-    const nextRemaining = remaining.slice();
-    const taken = [];
-    while (nextRemaining.length) {
-      const item = nextRemaining[0];
-      host.appendChild(item);
-      taken.push(item);
-      nextRemaining.shift();
-      if (!cardOverflows(card)) continue;
-      if (taken.length > 1) {
-        host.removeChild(item);
-        nextRemaining.unshift(item);
-        taken.pop();
-        break;
-      }
-      const nestedBullets = item.querySelectorAll ? item.querySelectorAll(".cv-bullets > li") : [];
-      if (nestedBullets.length > 1) break;
-      const chrome = card.querySelector(".cv-media-layout, .cv-media-figure, .cv-media, .cv-card__lead");
-      if (chrome) {
-        host.removeChild(item);
-        nextRemaining.unshift(item);
-        taken.pop();
-        break;
-      }
-      break;
-    }
-    return nextRemaining;
-  };
-
-  const packUnits = (card, units) => {
-    if (units.length < 1) return;
-    const parent = units[0].parentElement;
-    if (!parent) return;
-    units.forEach((unit) => unit.remove());
-    let remaining = fillHost(card, parent, units);
-    let last = card;
-    let guard = 0;
-    while (remaining.length && guard < 24) {
-      guard += 1;
-      const cont = makeCvContinuation(card);
-      prependEntryContext(cont, remaining[0]);
-      const host = parent.cloneNode(false);
-      cont.appendChild(host);
-      last.after(cont);
-      last = cont;
-      const before = remaining.length;
-      remaining = fillHost(cont, host, remaining);
-      if (remaining.length === before) host.appendChild(remaining.shift());
-    }
-  };
-
-  const splitCvCard = (card) => {
-    if (!cardOverflows(card)) return;
-    const units = unitsFor(card);
-    if (units.length) packUnits(card, units);
-    if (cardOverflows(card)) {
-      const bullets = Array.from(card.querySelectorAll(".cv-bullets > li"));
-      if (bullets.length > 1) packUnits(card, bullets);
-    }
-    if (cardOverflows(card)) {
-      const entries = Array.from(card.querySelectorAll(".cv-entries > .cv-entry"));
-      const chrome = card.querySelector(".cv-media-layout, .cv-media-figure, .cv-card__lead");
-      if (chrome && entries.length) packUnits(card, entries);
-    }
-  };
-
-  const applyCvMobileSplit = () => {
-    if (!isCv) return;
-    stack.innerHTML = originalCvHtml;
-    stack.classList.remove("cv-stack--measuring");
-    if (!mobileMq.matches) return;
-    stack.classList.add("cv-stack--measuring");
-    void stack.offsetHeight;
-    Array.from(stack.children)
-      .filter((el) => el.classList.contains("cv-card"))
-      .forEach((card) => splitCvCard(card));
-    stack.classList.remove("cv-stack--measuring");
-  };
-
   const collectCards = () => {
     cards = Array.from(stack.children).filter((el) => el.classList.contains(cardClass));
     const cvStoriesOff = isCv && mobileMq.matches;
-    if (cvStoriesOff) {
-      cards.forEach((card) => {
-        card.querySelectorAll(".cv-card__stories").forEach((nav) => nav.remove());
-      });
-    } else if (isHome || isCv) {
+    if (!cvStoriesOff) {
       rebuildStoryBars();
+      cards.forEach(wrapCardBody);
     }
-    if (!cvStoriesOff) cards.forEach(wrapCardBody);
     storyNavs = cards.map((card) => card.querySelector(navSelector)).filter(Boolean);
   };
 
@@ -803,22 +668,7 @@ document.querySelectorAll("[data-more-projects]").forEach((root) => {
     else goTo(active - 1);
   });
 
-  const waitStackImages = (ms = 1800) =>
-    Promise.race([
-      Promise.all(
-        Array.from(stack.querySelectorAll("img")).map((img) => {
-          if (img.complete) return Promise.resolve();
-          return new Promise((resolve) => {
-            img.addEventListener("load", resolve, { once: true });
-            img.addEventListener("error", resolve, { once: true });
-          });
-        })
-      ),
-      new Promise((resolve) => window.setTimeout(resolve, ms)),
-    ]);
-
   const bootStories = () => {
-    applyCvMobileSplit();
     collectCards();
     if (cards.length < 2) return false;
     if (!isCv && !storyNavs.length) return false;
@@ -830,10 +680,8 @@ document.querySelectorAll("[data-more-projects]").forEach((root) => {
   if (typeof mobileMq.addEventListener === "function") {
     mobileMq.addEventListener("change", () => {
       bootStories();
-      waitStackImages().then(() => bootStories());
     });
   }
 
   bootStories();
-  waitStackImages().then(() => bootStories());
 })();

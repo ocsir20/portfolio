@@ -3759,7 +3759,8 @@ html[data-theme="dark"] .cv-cert__logo {
   .cv-profile__visual {
     max-width: 18rem;
     width: 100%;
-    justify-self: end;
+    justify-self: center;
+    margin-inline: auto;
     aspect-ratio: 4 / 5;
   }
 
@@ -3844,11 +3845,6 @@ html[data-theme="dark"] .cv-cert__logo {
     scroll-snap-type: none;
   }
 
-  body.page-cv .cv-stack.cv-stack--measuring {
-    height: calc(100dvh - 5.5rem);
-    overflow: hidden;
-  }
-
   body.page-home .home-stack::-webkit-scrollbar {
     display: none;
   }
@@ -3890,12 +3886,6 @@ html[data-theme="dark"] .cv-cert__logo {
     scroll-snap-align: none;
     border-radius: 22px;
     padding: 1.35rem 1.05rem;
-  }
-
-  body.page-cv .cv-stack.cv-stack--measuring > .cv-card {
-    height: 100%;
-    max-height: 100%;
-    overflow: hidden;
   }
 
   .page-home .home-stack > .stack-card.hero,
@@ -4954,10 +4944,6 @@ body.page-cv .cv-card__body {
 
   body.page-cv .cv-card__body {
     display: contents;
-  }
-
-  body.page-cv .cv-card--split .cv-skills-tools {
-    grid-template-columns: 1fr;
   }
 
   body.page-cv .cv-stack > .cv-card .cv-media-img {
