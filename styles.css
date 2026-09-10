@@ -1558,6 +1558,14 @@ html[data-theme="dark"] .blog-post-cover__note {
   pointer-events: none;
 }
 
+.thumb-scandinavia-blog {
+  background-color: #0d2340;
+  background-image: url("assets/pictures/scandinavia-blog-thumb.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
 .blog-post-meta {
   display: flex;
   align-items: center;
