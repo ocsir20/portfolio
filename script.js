@@ -13,7 +13,7 @@ const servicePanelThumb = document.querySelector("#servicePanelThumb");
 const serviceProjectMap = {
   "ai-design": {
     title: "Coded my portfolio with AI assistance",
-    desc: "Building a case-study portfolio in HTML with Cursor — structure, craft, and what stayed human-led.",
+    desc: "Building a case-study portfolio in HTML with Cursor. Structure, craft, and what stayed human-led.",
     thumbClass: "thumb-portfolio",
     href: "blogs/portfolio-ai-coded.html",
   },
@@ -31,13 +31,13 @@ const serviceProjectMap = {
   },
   pm: {
     title: "University Intranet Re-design based on UX Insights",
-    desc: "Research-led intranet redesign for a large university—clearer structure, navigation, and interfaces shaped by staff and student needs.",
+    desc: "Research-led intranet redesign for a large university. Clearer structure, navigation, and interfaces shaped by staff and student needs.",
     thumbClass: "thumb-sdu",
     href: "sdu-intranet-project.html",
   },
   branding: {
     title: "Designing a Website and Webshop for EdTech Startup Rotoy ApS",
-    desc: "Marketing site and webshop experience for an EdTech startup—clear storytelling, product discovery, and a purchase flow parents can trust.",
+    desc: "Marketing site and webshop experience for an EdTech startup. Clear storytelling, product discovery, and a purchase flow parents can trust.",
     thumbClass: "thumb-rotoy",
     href: "rotoy-project.html",
   },
@@ -370,4 +370,97 @@ document.querySelectorAll("[data-more-projects]").forEach((root) => {
     window.scrollTo({ top: 0, behavior: reduceMotion ? "auto" : "smooth" });
     btn.blur();
   });
+})();
+
+/* CV sticky cards: story progression bars. Fill one segment per stacked card */
+(function initCvStories() {
+  if (!document.body.classList.contains("page-cv")) return;
+
+  const stack = document.querySelector(".cv-stack");
+  if (!stack) return;
+
+  const cards = Array.from(stack.children).filter((el) => el.classList.contains("cv-card"));
+  if (cards.length < 2) return;
+
+  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+  const storyNavs = cards.map((card) => card.querySelector(".cv-card__stories")).filter(Boolean);
+  if (!storyNavs.length) return;
+
+  const labelFor = (card, index) => {
+    const heading = card.querySelector("h1, h2");
+    const name = heading ? heading.textContent.trim() : `Section ${index + 1}`;
+    return `Go to ${name}`;
+  };
+
+  storyNavs.forEach((nav) => {
+    const segs = Array.from(nav.querySelectorAll(".cv-card__stories-seg"));
+    segs.forEach((btn, segIndex) => {
+      btn.setAttribute("aria-label", labelFor(cards[segIndex], segIndex));
+      btn.addEventListener("click", () => {
+        const target = cards[segIndex];
+        if (!target) return;
+        const stickyTop = parseFloat(getComputedStyle(target).top) || 0;
+        const y = window.scrollY + target.getBoundingClientRect().top - stickyTop - 4;
+        window.scrollTo({
+          top: Math.max(0, y),
+          behavior: reduceMotion.matches ? "auto" : "smooth",
+        });
+      });
+    });
+  });
+
+  const update = () => {
+    const n = cards.length;
+    const stickyMode = getComputedStyle(cards[0]).position === "sticky";
+    let active = 0;
+
+    if (stickyMode) {
+      for (let i = 0; i < n; i += 1) {
+        const card = cards[i];
+        const stickyTop = parseFloat(getComputedStyle(card).top) || 0;
+        const rect = card.getBoundingClientRect();
+        if (rect.top <= stickyTop + 4) active = i;
+      }
+    } else {
+      const header = document.querySelector(".site-header");
+      const headerH = header ? header.offsetHeight : 0;
+      const mid = headerH + window.innerHeight * 0.28;
+      for (let i = 0; i < n; i += 1) {
+        if (cards[i].getBoundingClientRect().top <= mid) active = i;
+      }
+      if (stack.getBoundingClientRect().bottom <= window.innerHeight - 8) active = n - 1;
+    }
+
+    active = Math.max(0, Math.min(n - 1, active));
+
+    cards.forEach((card, i) => {
+      card.classList.toggle("is-front", i === active);
+    });
+
+    storyNavs.forEach((nav, cardIndex) => {
+      const segs = nav.querySelectorAll(".cv-card__stories-seg");
+      segs.forEach((seg, i) => {
+        const fill = seg.querySelector(".cv-card__stories-fill");
+        if (fill) fill.style.setProperty("--fill", i <= active ? "1" : "0");
+        seg.classList.toggle("is-complete", i <= active);
+        if (i === active) seg.setAttribute("aria-current", "step");
+        else seg.removeAttribute("aria-current");
+        seg.tabIndex = cardIndex === active ? 0 : -1;
+      });
+    });
+  };
+
+  let ticking = false;
+  const onScroll = () => {
+    if (ticking) return;
+    ticking = true;
+    requestAnimationFrame(() => {
+      update();
+      ticking = false;
+    });
+  };
+
+  window.addEventListener("scroll", onScroll, { passive: true });
+  window.addEventListener("resize", onScroll);
+  update();
 })();

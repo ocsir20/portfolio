@@ -39,7 +39,7 @@
     PUMP_ANIM_MS: 240,
     COLOR_CROSSFADE_MS: 560,
     AIR_PARTICLE_COUNT: 5,
-    /* Pop burst (first-party canvas confetti — no third-party scripts) */
+    /* Pop burst (first-party canvas confetti, no third-party scripts) */
     CONFETTI_COUNT: 96,
     FRAGMENT_COUNT: 16,
     SPARK_COUNT: 18,
@@ -64,8 +64,10 @@
     TAIL_ANCHOR: { x: 0.9, y: 0.3 },
     CONTACT: {
       name: "Octavia Sirbu",
-      role: "Senior Product Designer",
+      role: "Hit me up",
       email: "octaviasirbu@gmail.com",
+      phone: "+33 7 66 99 29 75",
+      phoneHref: "tel:+33766992975",
       linkedin: "https://www.linkedin.com/in/octaviasirbu/",
     },
   };
@@ -94,8 +96,11 @@
   const contactName = root.querySelector("[data-balloon-contact-name]");
   const contactRole = root.querySelector("[data-balloon-contact-role]");
   const contactLinkedin = root.querySelector("[data-balloon-contact-linkedin]");
-  const contactEmail = root.querySelector("[data-balloon-contact-email]");
   const contactEmailLabel = root.querySelector("[data-balloon-contact-email-label]");
+  const contactPhone = root.querySelector("[data-balloon-contact-phone]");
+  const contactPhoneLabel = root.querySelector("[data-balloon-contact-phone-label]");
+  const copyEmailBtn = root.querySelector("[data-balloon-copy-email]");
+  const copyFeedback = root.querySelector("[data-balloon-copy-feedback]");
 
   let pumps = 0;
   let busy = false;
@@ -230,7 +235,7 @@
       });
     }
 
-    /* Dense confetti — rectangles, ribbons, circles */
+    /* Dense confetti: rectangles, ribbons, circles */
     for (let i = 0; i < cfg.CONFETTI_COUNT; i += 1) {
       const angle = Math.random() * Math.PI * 2;
       const speed = (4 + Math.random() * 11) * spread * dpr;
@@ -381,13 +386,35 @@
     burstRaf = requestAnimationFrame(tick);
   };
 
+  const writeClipboard = async (text) => {
+    try {
+      if (navigator.clipboard && window.isSecureContext) {
+        await navigator.clipboard.writeText(text);
+        return;
+      }
+    } catch (error) {
+      /* Fall through to execCommand */
+    }
+    const helperInput = document.createElement("textarea");
+    helperInput.value = text;
+    helperInput.setAttribute("readonly", "");
+    helperInput.style.position = "absolute";
+    helperInput.style.left = "-9999px";
+    document.body.appendChild(helperInput);
+    helperInput.select();
+    const ok = document.execCommand("copy");
+    helperInput.remove();
+    if (!ok) throw new Error("copy failed");
+  };
+
   const applyContact = () => {
-    const { name, role, email, linkedin } = cfg.CONTACT;
+    const { name, role, email, phone, phoneHref, linkedin } = cfg.CONTACT;
     if (contactName) contactName.textContent = name;
     if (contactRole) contactRole.textContent = role;
     if (contactLinkedin) contactLinkedin.href = linkedin;
-    if (contactEmail) contactEmail.href = `mailto:${email}`;
     if (contactEmailLabel) contactEmailLabel.textContent = email;
+    if (contactPhone) contactPhone.href = phoneHref;
+    if (contactPhoneLabel) contactPhoneLabel.textContent = phone;
   };
 
   const progressRatio = () => Math.min(1, pumps / cfg.MAX_PUMPS);
@@ -498,7 +525,7 @@
         const e = easeGrow(Math.min(1, t));
         dogAnim.scale = dogAnim.fromScale + (dogAnim.targetScale - dogAnim.fromScale) * e;
         const settle = easeOutCubic(t);
-        /* Slightly rounder as it fills — organic balloon feel */
+        /* Slightly rounder as it fills: organic balloon feel */
         dogAnim.sx = 1 + (cfg.SETTLE_X || 0.035) * settle;
         dogAnim.sy = 1 - (cfg.SETTLE_Y || 0.02) * settle;
         dogAnim.rot = (cfg.TILT_DEG || 2.6) * Math.sin(t * Math.PI) * (1 - t);
@@ -664,8 +691,8 @@
       void revealEl.offsetWidth;
       revealEl.classList.add("is-in");
     }
-    if (replayBtn) {
-      schedule(() => replayBtn.focus({ preventScroll: true }), 80);
+    if (copyEmailBtn) {
+      schedule(() => copyEmailBtn.focus({ preventScroll: true }), 80);
     }
   };
 
@@ -789,6 +816,7 @@
     setProgress();
     setScaleVisual(false);
     requestHoseUpdate();
+    if (copyFeedback) copyFeedback.textContent = "";
 
     const firstTrigger = root.querySelector(".balloon-dog__dog");
     if (firstTrigger) firstTrigger.focus({ preventScroll: true });
@@ -812,6 +840,19 @@
     on(replayBtn, "click", (e) => {
       e.preventDefault();
       reset();
+    });
+  }
+
+  if (copyEmailBtn) {
+    on(copyEmailBtn, "click", async () => {
+      const email = (cfg.CONTACT.email || "").trim();
+      if (!email) return;
+      try {
+        await writeClipboard(email);
+        if (copyFeedback) copyFeedback.textContent = "Email copied to clipboard.";
+      } catch (error) {
+        if (copyFeedback) copyFeedback.textContent = "Could not copy email. Please copy it manually.";
+      }
     });
   }
 

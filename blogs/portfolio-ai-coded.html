@@ -21,7 +21,6 @@
             <li><a href="../cv.html">CV</a></li>
             <li><a href="../work.html">Projects</a></li>
             <li><a class="active" href="../blog.html">Blog</a></li>
-            <li><a href="../contact.html">Contact</a></li>
           </ul>
           <button
             type="button"
@@ -46,7 +45,14 @@
     </header>
 
     <main class="container section blog-post-page">
-      <a class="text-link" href="../blog.html">← Back to Blog</a>
+      <a class="blog-back" href="../blog.html">
+        <span class="blog-back__icon" aria-hidden="true">
+          <svg viewBox="0 0 16 16" fill="none">
+            <path d="M10.25 3.5 5.75 8l4.5 4.5M5.75 8H13" stroke="currentColor" stroke-width="1.55" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </span>
+        Back to Blog
+      </a>
 
       <figure class="blog-post-cover">
         <img
@@ -60,7 +66,7 @@
       <article class="blog-post">
         <h1>Coded my portfolio with AI assistance</h1>
         <p class="intro">
-          A step-by-step look at how I built this portfolio — starting with a Figma UI kit and design
+          A step-by-step look at how I built this portfolio - starting with a Figma UI kit and design
           tokens, then translating the system into HTML and CSS with AI assistance in Cursor.
         </p>
         <div class="blog-post-meta">
@@ -95,19 +101,19 @@
           AI sped up markup and CSS once the design tokens and structure (sketches) were already defined.
         </p>
 
-        <h3>Step 1 — Design tokens</h3>
+        <h3>Step 1: Design tokens</h3>
         <p>
           Before writing any code, I created a UI kit in Figma grounded in design tokens. This became the
           single source of truth for how the portfolio should look in both light and dark mode.
         </p>
         <p>The kit included:</p>
         <ul>
-          <li><strong>Colors</strong> — backgrounds, surfaces, text, muted text, accents, and borders for light and dark themes</li>
-          <li><strong>Typography</strong> — font families, sizes and weights, body copy, and UI labels</li>
-          <li><strong>Icons</strong> — navigation, theme toggle, footer, and section accents used consistently across pages</li>
-          <li><strong>Buttons</strong> — primary actions, text links, and theme toggle states</li>
-          <li><strong>Corner radius</strong> — shared radiuses for cards, images, avatars, and inputs so nothing felt one-off</li>
-          <li><strong>Spacing &amp; elevation</strong> — padding scales and subtle shadows for cards and header</li>
+          <li><strong>Colors:</strong> backgrounds, surfaces, text, muted text, accents, and borders for light and dark themes</li>
+          <li><strong>Typography:</strong> font families, sizes and weights, body copy, and UI labels</li>
+          <li><strong>Icons:</strong> navigation, theme toggle, footer, and section accents used consistently across pages</li>
+          <li><strong>Buttons:</strong> primary actions, text links, and theme toggle states</li>
+          <li><strong>Corner radius:</strong> shared radiuses for cards, images, avatars, and inputs so nothing felt one-off</li>
+          <li><strong>Spacing &amp; elevation:</strong> padding scales and subtle shadows for cards and header</li>
         </ul>
         <img
           class="article-image"
@@ -117,12 +123,12 @@
           decoding="async"
         />
         <p>
-          Treating the portfolio like a small product design system meant every later page — home, work,
-          blog, contact, and case studies could reuse the same building blocks instead of reinventing
+          Treating the portfolio like a small product design system meant every later page (home, work,
+          blog, contact, and case studies) could reuse the same building blocks instead of reinventing
           styles screen by screen.
         </p>
 
-        <h3>Step 2 — Layouts &amp; structure in Excalidraw</h3>
+        <h3>Step 2: Layouts &amp; structure in Excalidraw</h3>
         <p>
           With tokens in place, I designed key templates: hero, project cards, blog cards, testimonials,
           navigation, and footer. Case-study layouts were sketched with repeatable sections (overview, role,
@@ -145,9 +151,9 @@
           decoding="async"
         />
 
-        <h3>Step 3 — Tokens in CSS</h3>
+        <h3>Step 3: Tokens in CSS</h3>
         <p>
-          I translated the Figma token set into CSS custom properties in <code>styles.css</code> — one
+          I translated the Figma token set into CSS custom properties in <code>styles.css</code>: one
           palette for light mode and a matching set for <code>data-theme="dark"</code> on the
           <code>html</code> element.
         </p>
@@ -159,11 +165,11 @@
           <li>Shared border radiuses and spacing through component classes (cards, thumbs, quotes)</li>
         </ul>
         <p>
-          Keeping naming aligned between Figma and CSS made handoff — including AI-assisted edits — much
+          Keeping naming aligned between Figma and CSS made handoff, including AI-assisted edits, much
           faster: “use the muted surface token” was unambiguous.
         </p>
 
-        <h3>Step 4 — AI assistance in Cursor</h3>
+        <h3>Step 4: AI assistance in Cursor</h3>
         <p>
           I used my previosu expereince with coding to built the site as static website: home, work, blog, contact, and individual project pages with
           long-form content, GIFs, and testimonials. Each case study follows the same skeleton but keeps
@@ -186,14 +192,14 @@
           for both themes.
         </p>
 
-        <h3>Step 5 — QA testing &amp; launch</h3>
+        <h3>Step 5: QA testing &amp; launch</h3>
         <p>
           The last pass focused on real-device checks, light/dark consistency, performance (lean CSS, lazy
           images), and tying the blog back to the live portfolio with a project card at the end of each
           post.
         </p>
         <p>
-          Small JavaScript additions: theme toggle, testimonials carousel, “view more projects” scroll —
+          Small JavaScript additions (theme toggle, testimonials carousel, “view more projects” scroll)
           supported the experience without turning the site into a heavy app.
         </p>
 
@@ -212,7 +218,7 @@
 
         <h2>Explore the portfolio</h2>
         <p>
-          The live site brings together home, work, blog, and contact — with case studies for Nabogo,
+          The live site brings together home, work, blog, and contact, with case studies for Nabogo,
           Rotoy, SDU, makerspace, and more. Browse the projects and testimonials to see the full
           picture of how I work.
         </p>
@@ -222,9 +228,9 @@
             <div class="thumb thumb-portfolio" role="presentation"></div>
           </div>
           <div class="blog-post__project-card-body project-card--landscape__body">
-            <h3>Octavia Sirbu — Senior Product Designer Portfolio</h3>
+            <h3>Octavia Sirbu - Senior Product Designer Portfolio</h3>
             <p class="project-desc">
-              Case studies, testimonials, and project work — built as a fast static site with design-led craft.
+              Case studies, testimonials, and project work. Built as a fast static site with design-led craft.
             </p>
             <div class="project-labels">
               <span>HTML &amp; CSS</span>
