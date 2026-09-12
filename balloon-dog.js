@@ -36,7 +36,7 @@
     SETTLE_X: 0.035,
     SETTLE_Y: 0.02,
     TILT_DEG: 2.6,
-    PUMP_ANIM_MS: 240,
+    PUMP_ANIM_MS: 460,
     COLOR_CROSSFADE_MS: 560,
     AIR_PARTICLE_COUNT: 5,
     /* Pop burst (first-party canvas confetti, no third-party scripts) */

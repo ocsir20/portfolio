@@ -44,6 +44,21 @@ const serviceProjectMap = {
 };
 
 if (themeToggle) {
+  const themeScript = document.querySelector('script[src*="script.js"]');
+  const themeSoundBase = themeScript
+    ? new URL("assets/sounds/", new URL(".", themeScript.src))
+    : new URL("assets/sounds/", window.location.href);
+  const darkModeSound = new Audio(new URL("darkmode.mp3", themeSoundBase).href);
+  const lightModeSound = new Audio(new URL("lightmode.mp3", themeSoundBase).href);
+
+  const playThemeSound = (audio) => {
+    audio.currentTime = 0;
+    const play = audio.play();
+    if (play && typeof play.catch === "function") {
+      play.catch(() => {});
+    }
+  };
+
   const syncThemeToggle = () => {
     const isDark = document.documentElement.getAttribute("data-theme") === "dark";
     themeToggle.setAttribute("aria-label", isDark ? "Switch to light mode" : "Switch to dark mode");
@@ -56,6 +71,7 @@ if (themeToggle) {
     const isDark = document.documentElement.getAttribute("data-theme") === "dark";
     if (isDark) {
       document.documentElement.removeAttribute("data-theme");
+      playThemeSound(lightModeSound);
       try {
         localStorage.setItem("portfolio-theme", "light");
       } catch (e) {
@@ -63,6 +79,7 @@ if (themeToggle) {
       }
     } else {
       document.documentElement.setAttribute("data-theme", "dark");
+      playThemeSound(darkModeSound);
       try {
         localStorage.setItem("portfolio-theme", "dark");
       } catch (e) {
@@ -113,6 +130,7 @@ if (
 ) {
   const thumbClasses = Object.values(serviceProjectMap).map((project) => project.thumbClass);
 
+  const servicePanel = document.querySelector("#servicePanel");
   const servicePanelContent = document.querySelector("#servicePanelContent");
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   const usePanelFade = document.body.classList.contains("page-home") && servicePanelContent && !reduceMotion;
@@ -125,6 +143,9 @@ if (
 
     servicePanelTitle.textContent = title;
     servicePanelDescription.textContent = description;
+    if (servicePanel && serviceId) {
+      servicePanel.setAttribute("data-service-id", serviceId);
+    }
 
     if (project) {
       servicePanelProjectTitle.textContent = project.title;
@@ -254,27 +275,12 @@ document.querySelectorAll("[data-more-projects]").forEach((root) => {
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   const revealEls = document.querySelectorAll("[data-reveal]");
   const header = document.querySelector(".site-header");
-  const heroPortrait = document.querySelector(
-    ".home-stack > .stack-card.hero .hero-visual--portrait"
-  );
-
-  /* Grey → orange + stats: on hover (CSS) or the moment scroll starts
-     (next stack card begins moving up toward the sticky hero). */
-  const updateHeroLit = () => {
-    if (!heroPortrait) return;
-    if (reduceMotion) {
-      heroPortrait.classList.add("is-lit");
-      return;
-    }
-    heroPortrait.classList.toggle("is-lit", window.scrollY > 2);
-  };
 
   let litRaf = 0;
   const onScrollOrResize = () => {
     if (litRaf) return;
     litRaf = window.requestAnimationFrame(() => {
       litRaf = 0;
-      updateHeroLit();
       if (header) {
         header.classList.toggle("is-scrolled", window.scrollY > 12);
       }
@@ -283,7 +289,6 @@ document.querySelectorAll("[data-more-projects]").forEach((root) => {
 
   window.addEventListener("scroll", onScrollOrResize, { passive: true });
   window.addEventListener("resize", onScrollOrResize, { passive: true });
-  updateHeroLit();
   if (header) {
     header.classList.toggle("is-scrolled", window.scrollY > 12);
   }
@@ -525,10 +530,6 @@ document.querySelectorAll("[data-more-projects]").forEach((root) => {
     return Math.max(0, Math.min(n - 1, active));
   };
 
-  const heroPortrait = document.querySelector(
-    ".home-stack > .stack-card.hero .hero-visual--portrait"
-  );
-
   let lastFront = -1;
 
   const update = () => {
@@ -555,9 +556,6 @@ document.querySelectorAll("[data-more-projects]").forEach((root) => {
       });
     });
 
-    if (heroPortrait && isHome) {
-      heroPortrait.classList.toggle("is-lit", active > 0 || window.scrollY > 2);
-    }
   };
 
   let ticking = false;
@@ -684,4 +682,41 @@ document.querySelectorAll("[data-more-projects]").forEach((root) => {
   }
 
   bootStories();
+})();
+
+(function initFooterDogColorCycle() {
+  const logos = document.querySelectorAll("img.site-footer__logo");
+  if (!logos.length) return;
+
+  logos.forEach((img) => {
+    const src = img.getAttribute("src");
+    if (!src) return;
+
+    fetch(src)
+      .then((response) => {
+        if (!response.ok) throw new Error("logo fetch failed");
+        return response.text();
+      })
+      .then((markup) => {
+        const parsed = new DOMParser().parseFromString(markup, "image/svg+xml");
+        const svg = parsed.documentElement;
+        if (!svg || svg.nodeName.toLowerCase() !== "svg") return;
+
+        const styleEl = svg.querySelector("style");
+        if (styleEl) styleEl.remove();
+
+        svg.querySelectorAll('path[fill="#BC6B46"], path[fill="#bc6b46"]').forEach((path) => {
+          path.classList.add("site-footer__logo-fill");
+        });
+
+        svg.setAttribute("class", img.className);
+        svg.setAttribute("role", "img");
+        svg.setAttribute("aria-hidden", "true");
+        svg.setAttribute("focusable", "false");
+        svg.removeAttribute("width");
+        svg.removeAttribute("height");
+        img.replaceWith(svg);
+      })
+      .catch(() => {});
+  });
 })();

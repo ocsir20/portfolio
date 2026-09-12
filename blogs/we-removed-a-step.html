@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="../assets/portfolio-logo.svg" type="image/svg+xml" />
+    <title>We Didn't Add a Feature. We Removed a Step | Octavia Sirbu</title>
+    <script src="../theme-init.js"></script>
+    <link rel="stylesheet" href="../styles.css?v=vis-7" />
+  </head>
+  <body class="page-blog">
+    <header class="site-header">
+      <nav class="nav container">
+        <a class="logo" href="../index.html">
+          <span class="logo-mark" aria-hidden="true"><img class="logo-mark-img" src="../assets/portfolio-logo.svg" alt="" width="130" height="114" decoding="async" /></span>
+          <span class="logo-text">Octavia Sirbu</span>
+        </a>
+        <div class="nav-right">
+          <ul class="nav-links">
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="../cv.html">CV</a></li>
+            <li><a href="../work.html">Projects</a></li>
+            <li><a class="active" href="../blog.html">Blog</a></li>
+          </ul>
+          <button
+            type="button"
+            class="theme-toggle"
+            id="themeToggle"
+            aria-label="Switch to dark mode"
+            aria-pressed="false"
+            title="Light or dark mode"
+          >
+            <span class="theme-icon theme-icon-sun" aria-hidden="true">
+              <img src="../assets/icons/sun-03.svg" alt="" width="20" height="20" decoding="async" />
+            </span>
+            <span class="theme-icon theme-icon-moon" aria-hidden="true">
+              <img src="../assets/icons/moon.svg" alt="" width="20" height="20" decoding="async" />
+            </span>
+          </button>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container section blog-post-page">
+      <a class="blog-back" href="../blog.html">
+        <span class="blog-back__icon" aria-hidden="true">
+          <svg viewBox="0 0 16 16" fill="none">
+            <path d="M9.5 3.75 4.75 8 9.5 12.25M4.75 8h6.5" stroke="currentColor" stroke-width="1.55" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </span>
+        Back to Blog
+      </a>
+
+      <figure class="blog-post-cover blog-post-cover--contain">
+        <img
+          src="../assets/blogs/nabogo-ride-creation.jpg"
+          alt="Two Nabogo phone screens: choosing Recurring or Single Rides, then picking a planned departure time"
+          loading="lazy"
+          decoding="async"
+        />
+      </figure>
+
+      <article class="blog-post">
+        <h1>We Didn't Add a Feature. We Removed a Step</h1>
+        <p class="intro">
+          Sometimes the best UX decision isn't adding something new. It's taking something away.
+        </p>
+        <div class="blog-post-meta">
+          <img
+            class="blog-post-meta__avatar"
+            src="../assets/pictures/Octavia.png"
+            alt="Octavia Sirbu"
+            width="48"
+            height="48"
+            loading="lazy"
+            decoding="async"
+          />
+          <div class="blog-post-meta__text">
+            <span class="blog-post-meta__author">Octavia Sirbu</span>
+            <time class="blog-post-meta__date" datetime="2026-06-03">June 3, 2026</time>
+          </div>
+        </div>
+
+        <p>
+          When we looked at the ride creation experience in Nabogo, one thing became increasingly clear: drivers had too many choices.
+        </p>
+        <p>
+          Creating a ride could follow several different paths, each with its own logic, requirements and instructions. What was intended to give users flexibility was instead creating friction.
+        </p>
+        <p>
+          So rather than asking, <em>"What feature should we add?"</em>, we stepped back and asked two simpler questions:
+        </p>
+        <p><strong>What serves the user best in this moment?</strong></p>
+        <p><strong>And what helps the business grow?</strong></p>
+        <p>That changed the direction of the project.</p>
+
+        <h2>The problem: too much choice, too little clarity</h2>
+        <p>The original ride creation experience supported three different flows.</p>
+        <p>
+          On paper, this made sense. Drivers could create an instant ride, a single planned ride, or multiple rides in advance.
+        </p>
+        <p>But each flow behaved differently.</p>
+        <p>
+          Different requirements meant different screens, instructions and interactions. Drivers had to understand the differences before they could even start creating their ride.
+        </p>
+        <p>The result was a journey that required too much learning.</p>
+        <p>And there was another problem hiding underneath the UX.</p>
+        <p><strong>Not every ride created the same value.</strong></p>
+
+        <h2>Looking beyond the interface</h2>
+        <p>We looked at what happened after drivers created a ride.</p>
+        <p>
+          Instant rides sounded useful, but they rarely became public. In many cases, passengers couldn't discover or book them unless they already knew the driver.
+        </p>
+        <p>Planned rides were different.</p>
+        <p>
+          When a driver planned a ride ahead of time, it could become visible in the marketplace. That gave passengers a chance to discover it, book it and actually participate in the carpool.
+        </p>
+        <p>This was the moment where the UX problem became a product opportunity.</p>
+        <p>The goal wasn't simply to make ride creation easier.</p>
+        <p>
+          <strong>It was to make it easier to create the kind of ride that actually works for the carpooling ecosystem.</strong>
+        </p>
+
+        <h2>So we removed a flow</h2>
+        <p>
+          Instead of adding more guidance to help users navigate the existing complexity, we simplified the underlying structure.
+        </p>
+        <p>We reduced <strong>three ride creation flows to two:</strong></p>
+        <p>
+          <strong>Recurring Rides</strong><br />
+          Plan multiple rides in advance, with or without a return journey.
+        </p>
+        <p>
+          <strong>Single Rides</strong><br />
+          Create one ride, either now or at a planned time.
+        </p>
+        <p>
+          This allowed us to keep the flexibility drivers needed while removing unnecessary decisions.
+        </p>
+        <p>We also simplified the Single Ride flow by <strong>50%</strong>.</p>
+        <p>The experience became shorter, more consistent and easier to understand.</p>
+        <p>Most importantly, we introduced a subtle nudge toward planning rides ahead.</p>
+        <p>We weren't forcing users into a different behavior.</p>
+        <p>We were making the more valuable behavior easier.</p>
+
+        <h2>Designing for both sides of the marketplace</h2>
+        <p>One of the biggest lessons from this project was that UX doesn't exist in isolation.</p>
+        <p>Nabogo is a two-sided experience.</p>
+        <p>
+          A driver's decision affects the passenger's ability to find and book a ride. A seemingly small interaction in one part of the product can therefore influence the entire carpooling ecosystem.
+        </p>
+        <p>This meant we couldn't evaluate the ride creation flow only by asking:</p>
+        <blockquote>
+          <p>"Is this easier for the driver?"</p>
+        </blockquote>
+        <p>We also needed to ask:</p>
+        <blockquote>
+          <p>"Does this create a better experience for everyone involved?"</p>
+        </blockquote>
+        <p>That changed how we evaluated our design decisions.</p>
+
+        <h2>Less complexity. More consistency.</h2>
+        <p>Removing a flow wasn't just about reducing the number of screens.</p>
+        <p>
+          It gave us an opportunity to create a more consistent mental model across ride creation.
+        </p>
+        <p>
+          Instead of teaching users several different ways to create a ride, we created a clearer structure:
+        </p>
+        <p>
+          <strong>Recurring or Single.</strong><br />
+          <strong>Plan ahead when possible.</strong>
+        </p>
+        <p>
+          Fewer paths meant less cognitive load, fewer instructions and less time spent learning the interface.
+        </p>
+        <p>
+          And because the flows shared more of the same structure, the experience became easier to scale and maintain from a design and development perspective.
+        </p>
+
+        <h2>The results</h2>
+        <p>Two months after launching the new experience, we started seeing the impact.</p>
+        <p><strong>150+ users rated the new ride creation flow 4.11/5.</strong></p>
+        <p>We also saw:</p>
+        <ul>
+          <li><strong>More new users planning rides in advance</strong></li>
+          <li><strong>100% of rides becoming public</strong></li>
+          <li>A shorter and more consistent ride creation experience</li>
+          <li>Less complexity across the different ride journeys</li>
+        </ul>
+        <p>The numbers reinforced something we had suspected from the beginning:</p>
+        <p><strong>Simplification can be a growth strategy.</strong></p>
+
+        <h2>The bigger lesson</h2>
+        <p>As designers, it's easy to associate progress with addition.</p>
+        <p>A new feature.</p>
+        <p>A new screen.</p>
+        <p>A new interaction.</p>
+        <p>A new capability.</p>
+        <p>But sometimes the most valuable design work happens when you question what is already there.</p>
+        <p>What can disappear?</p>
+        <p>What decision can we remove?</p>
+        <p>What explanation no longer needs to exist?</p>
+        <p>What journey can become one step shorter?</p>
+        <p>For Nabogo, the answer wasn't another feature.</p>
+        <p>
+          <strong>It was removing complexity and making the right path easier to follow.</strong>
+        </p>
+        <p>Because great product design isn't always about giving people more.</p>
+        <p><strong>Sometimes it's about giving them less to think about.</strong></p>
+      </article>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container site-footer__inner">
+        <div class="site-footer__brand">
+          <img
+            class="site-footer__logo"
+            src="../assets/portfolio-logo.svg"
+            alt=""
+            width="130"
+            height="114"
+            decoding="async"
+          />
+          <p class="site-footer__tagline">Turning complexity into clear experiences</p>
+          <p>© 2026 Octavia Sirbu - Senior Product Designer</p>
+        </div>
+        <nav class="site-footer__nav" aria-label="Main pages">
+          <ul class="site-footer__list">
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="../cv.html">CV</a></li>
+            <li><a href="../work.html">Projects</a></li>
+            <li><a href="../blog.html">Blog</a></li>
+            <li><a href="../contact.html">Contact</a></li>
+          </ul>
+        </nav>
+        <div class="site-footer__social">
+          <a
+            class="site-footer__linkedin"
+            href="https://www.linkedin.com/in/octaviasirbu/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <img
+              class="site-footer__linkedin-icon"
+              src="../assets/icons/linkedin-02.svg"
+              alt=""
+              width="24"
+              height="24"
+              decoding="async"
+            />
+            <span>My LinkedIn</span>
+          </a>
+        </div>
+      </div>
+    </footer>
+    <script src="../script.js"></script>
+  </body>
+</html>

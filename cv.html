@@ -6,7 +6,7 @@
     <link rel="icon" href="assets/portfolio-logo.svg" type="image/svg+xml" />
     <title>CV | Octavia Sirbu</title>
     <script src="theme-init.js"></script>
-    <link rel="stylesheet" href="styles.css?v=home-scroll-2" />
+    <link rel="stylesheet" href="styles.css?v=vis-16" />
   </head>
   <body class="page-cv">
     <header class="site-header">
@@ -30,14 +30,11 @@
             aria-pressed="false"
             title="Light or dark mode"
           >
-            <span class="theme-toggle-track">
-              <span class="theme-icon theme-icon-sun" aria-hidden="true">
-                <img src="assets/icons/sun-03.svg" alt="" width="14" height="14" decoding="async" />
-              </span>
-              <span class="theme-icon theme-icon-moon" aria-hidden="true">
-                <img src="assets/icons/moon.svg" alt="" width="14" height="14" decoding="async" />
-              </span>
-              <span class="theme-toggle-thumb" aria-hidden="true"></span>
+            <span class="theme-icon theme-icon-sun" aria-hidden="true">
+              <img src="assets/icons/sun-03.svg" alt="" width="20" height="20" decoding="async" />
+            </span>
+            <span class="theme-icon theme-icon-moon" aria-hidden="true">
+              <img src="assets/icons/moon.svg" alt="" width="20" height="20" decoding="async" />
             </span>
           </button>
         </div>
@@ -88,12 +85,16 @@
               the user is prioritized and collaboration is key. I have a track record of elevating
               user experiences through visual consistency, user advocacy and stakeholder involvement.
             </p>
-            <ul class="cv-meta">
-              <li class="cv-meta__label">
-                <span class="cv-eu-label">EU citizen <span aria-hidden="true">🇷🇴 🇩🇰</span></span>
-              </li>
-              <li>Currently in Paris, France</li>
-            </ul>
+            <aside class="cv-roots" aria-label="Location">
+              <span class="cv-roots__mark" aria-hidden="true">🇪🇺</span>
+              <div class="cv-roots__copy">
+                <p class="cv-roots__origin">Born in Romania, formed in Denmark</p>
+                <p class="cv-roots__now">
+                  <span aria-hidden="true">📍</span>
+                  Current location Paris, France
+                </p>
+              </div>
+            </aside>
           </div>
           <div class="cv-profile__visual hero-visual hero-visual--portrait" aria-hidden="false">
             <div class="portrait-frame">
@@ -151,17 +152,20 @@
           As a big lover of Scandinavian Design at 18 years old I moved abroadto pursue design studies in Denmark
         </p>
         <div class="cv-media-layout">
-          <div class="cv-media">
-            <img
-              class="cv-media-img"
-              src="assets/pictures/sdu-graduation.jpg"
-              alt="Octavia Sirbu at Syddansk Universitet graduation, holding an SDU folder"
-              width="1024"
-              height="682"
-              loading="lazy"
-              decoding="async"
-            />
-          </div>
+          <figure class="cv-media-figure">
+            <div class="cv-media">
+              <img
+                class="cv-media-img"
+                src="assets/pictures/sdu-graduation.jpg"
+                alt="Octavia Sirbu at Syddansk Universitet graduation, holding an SDU folder"
+                width="1024"
+                height="682"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+            <figcaption class="cv-media-caption">Graduation at the University of Southern Denmark in June 2022</figcaption>
+          </figure>
           <ul class="cv-entries">
             <li class="cv-entry">
               <div class="cv-entry__header">
@@ -277,9 +281,26 @@
                 </div>
               </div>
               <p class="cv-entry__desc">
-                Led UX strategy across three platforms: new onboarding, a design system built from
-                scratch, and mentoring a junior designer and a student.
+                Nabogo is a carpooling app used in Denmark, Norway, Sweden, and the Netherlands.
+                I led product design across web and mobile.
               </p>
+              <ul class="cv-bullets">
+                <li>
+                  Set UX strategy against user needs and business goals, and owned the work from
+                  concept to launch.
+                </li>
+                <li>
+                  Kept decisions user-centred through research and testing, working closely with
+                  product, engineering, and stakeholders.
+                </li>
+                <li>
+                  Measured impact, then improved the product with design reviews, usability checks,
+                  and QA.
+                </li>
+                <li>
+                  Designed scalable UI in Figma and maintained shared libraries and the design system.
+                </li>
+              </ul>
             </div>
             <ul class="cv-metrics" aria-label="Key metrics">
               <li>
@@ -454,9 +475,6 @@
                   smoother developer handoff.
                 </li>
                 <li>
-                  Found expansion opportunities and simplified user flows to improve customer retention.
-                </li>
-                <li>
                   Designed physical packaging and robot casing, and evolved the brand's visual identity.
                 </li>
               </ul>
@@ -592,27 +610,45 @@
           </figure>
           <ul class="cv-entries">
             <li class="cv-entry">
-              <div class="cv-entry__header">
-                <h3>Graphic Design and Communication Student (Erasmus)</h3>
-                <span class="cv-entry__dates">Aug 2017 - Jan 2018</span>
+              <div class="cv-entry__main">
+                <div class="cv-study-job">
+                  <div class="cv-study-job__logo" aria-hidden="true">
+                    <img
+                      src="assets/pictures/BOSCH%20color.png"
+                      alt=""
+                      width="120"
+                      height="48"
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  </div>
+                  <div class="cv-study-job__body">
+                    <div class="cv-entry__header">
+                      <h3>Graphic Design and Communication Student (Erasmus)</h3>
+                    </div>
+                    <div class="cv-entry__header cv-entry__header--org">
+                      <p class="cv-entry__org">Bosch · Internship</p>
+                      <span class="cv-entry__dates">Aug 2017 - Jan 2018</span>
+                    </div>
+                    <p class="cv-entry__loc">Stuttgart Region · 6 months</p>
+                  </div>
+                </div>
+                <ul class="cv-bullets">
+                  <li>
+                    Creating visual content (PPT presentations and infographics) for the Automotive
+                    Electronics department.
+                  </li>
+                  <li>
+                    Coordinating company events for different company stakeholders (OEMs and other
+                    business collaborators).
+                  </li>
+                  <li>
+                    Competed at Hackathon Stuttgart 2017 and won the Best Pitch Award (1.000 €) for
+                    Clean Car by creating a working prototype of an AI voice app for the car dashboard.
+                    The project was a use case from Car2Go, a startup later purchased by Daimler GmbH.
+                  </li>
+                </ul>
               </div>
-              <p class="cv-entry__org">Bosch · Internship</p>
-              <p class="cv-entry__loc">Stuttgart Region · 6 months</p>
-              <ul class="cv-bullets">
-                <li>
-                  Creating visual content (PPT presentations and infographics) for the Automotive
-                  Electronics department.
-                </li>
-                <li>
-                  Coordinating company events for different company stakeholders (OEMs and other
-                  business collaborators).
-                </li>
-                <li>
-                  Competed at Hackathon Stuttgart 2017 and won the Best Pitch Award (1.000 €) for
-                  Clean Car by creating a working prototype of an AI voice app for the car dashboard.
-                  The project was a use case from Car2Go, a startup later purchased by Daimler GmbH.
-                </li>
-              </ul>
             </li>
           </ul>
         </div>
@@ -654,7 +690,7 @@
         </div>
         <h2 id="cv-skills-tools">What I've worked with along the way</h2>
         <div class="cv-skills-tools">
-          <div>
+          <div class="cv-skills-tools__group cv-skills-tools__group--process">
             <h3 class="cv-skills-tools__label">Design process</h3>
             <ul class="cv-tags" aria-label="Design process">
               <li>User research</li>
@@ -670,7 +706,7 @@
               <li>QA testing</li>
             </ul>
           </div>
-          <div>
+          <div class="cv-skills-tools__group cv-skills-tools__group--production">
             <h3 class="cv-skills-tools__label">Design production</h3>
             <ul class="cv-tags" aria-label="Design production">
               <li>Figma</li>
@@ -681,16 +717,18 @@
               <li>Motion</li>
             </ul>
           </div>
-          <div>
+          <div class="cv-skills-tools__group cv-skills-tools__group--engineering">
             <h3 class="cv-skills-tools__label">Engineering</h3>
             <ul class="cv-tags" aria-label="Engineering">
               <li>React</li>
               <li>Vue</li>
               <li>TypeScript</li>
               <li>HTML / CSS</li>
+              <li>Implementing translations</li>
+              <li>POEditor</li>
             </ul>
           </div>
-          <div>
+          <div class="cv-skills-tools__group cv-skills-tools__group--ai">
             <h3 class="cv-skills-tools__label">AI &amp; automation</h3>
             <ul class="cv-tags" aria-label="AI and automation">
               <li>Claude</li>
@@ -700,12 +738,13 @@
               <li>Cursor</li>
             </ul>
           </div>
-          <div>
+          <div class="cv-skills-tools__group cv-skills-tools__group--data">
             <h3 class="cv-skills-tools__label">Data &amp; analytics</h3>
             <ul class="cv-tags" aria-label="Data and analytics">
               <li>SQL</li>
               <li>Amplitude</li>
               <li>PostHog</li>
+              <li>Hotjar</li>
               <li>Google Analytics</li>
               <li>Power BI</li>
               <li>A/B testing</li>
@@ -752,47 +791,47 @@
         <h2 id="cv-languages">Languages</h2>
         <ul class="cv-languages">
           <li class="cv-language">
-            <div class="cv-language__header">
+            <div class="cv-language__body">
               <span class="cv-language__name">English</span>
-              <span class="cv-language__level">Fluent</span>
-            </div>
-            <div class="cv-language__cert">
-              <div class="cv-language__cert-logo" aria-hidden="true">
-                <img
-                  src="assets/pictures/british-council-logo.svg"
-                  alt=""
-                  width="48"
-                  height="48"
-                  loading="lazy"
-                  decoding="async"
-                />
+              <div class="cv-language__cert">
+                <div class="cv-language__cert-logo" aria-hidden="true">
+                  <img
+                    src="assets/pictures/british-council-logo.svg"
+                    alt=""
+                    width="48"
+                    height="48"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </div>
+                <div class="cv-language__cert-copy">
+                  <p class="cv-language__cert-title">Cambridge Advanced English (C1) Examination</p>
+                  <p class="cv-language__cert-meta">British Council · Jun 2012</p>
+                </div>
               </div>
-              <div class="cv-language__cert-copy">
-                <p class="cv-language__cert-title">Cambridge Advanced English (C1) Examination</p>
-                <p class="cv-language__cert-meta">British Council · Jun 2012</p>
-              </div>
             </div>
+            <span class="cv-language__level">Fluent</span>
           </li>
           <li class="cv-language">
-            <div class="cv-language__header">
+            <div class="cv-language__body">
               <span class="cv-language__name">French</span>
-              <span class="cv-language__level">Intermediate</span>
+              <p class="cv-language__desc"></p>
             </div>
-            <p class="cv-language__desc"></p>
+            <span class="cv-language__level">Intermediate</span>
           </li>
           <li class="cv-language">
-            <div class="cv-language__header">
+            <div class="cv-language__body">
               <span class="cv-language__name">Danish</span>
-              <span class="cv-language__level">Upper Intermediate</span>
+              <p class="cv-language__desc"></p>
             </div>
-            <p class="cv-language__desc"></p>
+            <span class="cv-language__level">Upper Intermediate</span>
           </li>
           <li class="cv-language">
-            <div class="cv-language__header">
+            <div class="cv-language__body">
               <span class="cv-language__name">Romanian</span>
-              <span class="cv-language__level">Native</span>
+              <p class="cv-language__desc"></p>
             </div>
-            <p class="cv-language__desc"></p>
+            <span class="cv-language__level">Native</span>
           </li>
         </ul>
       </section>
@@ -1042,6 +1081,6 @@
       </div>
     </footer>
 
-    <script src="script.js?v=home-scroll-1"></script>
+    <script src="script.js?v=footer-dog-1"></script>
   </body>
 </html>

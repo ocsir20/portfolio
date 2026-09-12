@@ -6,7 +6,7 @@
     <link rel="icon" href="assets/portfolio-logo.svg" type="image/svg+xml" />
     <title>Octavia Sirbu | Senior Product Designer</title>
     <script src="theme-init.js"></script>
-    <link rel="stylesheet" href="styles.css?v=home-scroll-2" />
+    <link rel="stylesheet" href="styles.css?v=vis-17" />
   </head>
   <body class="page-home">
     <header class="site-header">
@@ -30,14 +30,11 @@
             aria-pressed="false"
             title="Light or dark mode"
           >
-            <span class="theme-toggle-track">
-              <span class="theme-icon theme-icon-sun" aria-hidden="true">
-                <img src="assets/icons/sun-03.svg" alt="" width="14" height="14" decoding="async" />
-              </span>
-              <span class="theme-icon theme-icon-moon" aria-hidden="true">
-                <img src="assets/icons/moon.svg" alt="" width="14" height="14" decoding="async" />
-              </span>
-              <span class="theme-toggle-thumb" aria-hidden="true"></span>
+            <span class="theme-icon theme-icon-sun" aria-hidden="true">
+              <img src="assets/icons/sun-03.svg" alt="" width="20" height="20" decoding="async" />
+            </span>
+            <span class="theme-icon theme-icon-moon" aria-hidden="true">
+              <img src="assets/icons/moon.svg" alt="" width="20" height="20" decoding="async" />
             </span>
           </button>
         </div>
@@ -53,16 +50,14 @@
             I'm a Senior Product Designer who turns Complexity into Clear Experiences
           </p>
           <div class="hero-cta-row" data-reveal data-reveal-hero>
-            <a class="btn hero-cta" href="work.html">See My Projects</a>
-            <a class="btn hero-cta-connect" href="contact.html">
-              <span class="hero-cta-connect__emoji" aria-hidden="true">☕</span>
-              Let's connect
-            </a>
+            <a class="btn hero-cta" href="cv.html">See full CV</a>
+            <a class="btn hero-cta-connect" href="work.html">See projects</a>
           </div>
         </div>
 
         <div class="hero-visual hero-visual--portrait" data-reveal data-reveal-hero>
           <div class="portrait-frame">
+            <canvas class="hero-scramble" aria-hidden="true"></canvas>
             <img
               class="hero-portrait-img"
               src="assets/octavia-portrait.png"
@@ -73,22 +68,6 @@
               decoding="async"
             />
           </div>
-          <article class="hero-stat top-left">
-            <p> 🎓 MSc in IT</p>
-            <span>Product Design</span>
-          </article>
-          <article class="hero-stat top-right">
-            <p>International experience</p>
-            <span>Remote + onsite 🇩🇰 🇫🇷</span>
-          </article>
-          <article class="hero-stat right-middle">
-            <p>👩🏻‍💻 UX/UI design projects</p>
-            <span>since 2018</span>
-          </article>
-          <article class="hero-stat bottom-left">
-            <p>NN Group</p>
-            <span>Qualified UX Designer ✅</span>
-          </article>
         </div>
       </section>
 
@@ -168,7 +147,7 @@
           </div>
 
           <div class="home-collage__copy">
-            <h2 id="home-collage-heading">Scandi-educated Senior Product Designer with a flair for Business</h2>
+            <h2 id="home-collage-heading">Scandi-educated Senior Product Designer with a flair for Development</h2>
             <p class="intro home-collage__intro">
               A snapshot of how I partner with teams: gathering feedback from users, defining problems, shaping
               flows and components, and polishing interfaces so products feel clear,
@@ -200,8 +179,11 @@
               product surface across teams.
             </p>
             <div class="project-labels">
-              <span>Design System</span>
-              <span>Storybook</span>
+              <span data-skill="production">Design System</span>
+              <span data-skill="production">Dev handoff</span>
+              <span data-skill="production">Figma</span>
+              <span data-skill="ai">Cursor</span>
+              <span data-skill="ai">MCP</span>
             </div>
           </a>
           <a class="project-card" href="sdu-intranet-project.html" data-reveal data-reveal-stagger>
@@ -212,8 +194,10 @@
               navigation, and interfaces shaped by staff and student needs.
             </p>
             <div class="project-labels">
-              <span>Intranet</span>
-              <span>UX Research</span>
+              <span data-skill="production">Web Design</span>
+              <span data-skill="process">UX Research</span>
+              <span data-skill="process">Project Management</span>
+              <span data-skill="data">PowerBI</span>
             </div>
           </a>
           <a class="project-card" href="rotoy-project.html" data-reveal data-reveal-stagger>
@@ -224,8 +208,9 @@
               storytelling, product discovery, and a purchase flow parents can trust.
             </p>
             <div class="project-labels">
-              <span>EdTech</span>
-              <span>Webshop</span>
+              <span data-skill="production">Responsive Design</span>
+              <span data-skill="production">Visual Design &amp; Branding</span>
+              <span data-skill="engineering">Web Dev</span>
             </div>
           </a>
         </div>
@@ -339,6 +324,7 @@
           <div
             class="service-cta"
             id="servicePanel"
+            data-service-id="ai-design"
             role="region"
             aria-label="Selected service details"
             aria-live="polite"
@@ -508,6 +494,121 @@
                   <div class="quote__byline">
                     <span class="quote__name">Axel Soll</span>
                     <span class="quote__role">Chairman of Makerspace O'town Garage</span>
+                  </div>
+                </footer>
+              </article>
+              <article class="card quote testimonials-carousel__slide">
+                <p class="quote__text">
+                  "Octavia was part of the SundtValg Odense '19 team, where she played a major role in
+                  developing and promoting the event. With her ideas and marketing skills, we doubled
+                  the number of followers on our Instagram profile within 3 months. It was a pleasure
+                  to have a creative, responsible, and ambitious person on our team!"
+                </p>
+                <footer class="quote__footer">
+                  <img
+                    class="quote__avatar"
+                    src="assets/pictures/Nina.png"
+                    alt="Nina Popović Gøttsch"
+                    width="48"
+                    height="48"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                  <div class="quote__byline">
+                    <span class="quote__name">Nina Popović Gøttsch</span>
+                    <span class="quote__role">CEO of InsipreU Events</span>
+                  </div>
+                </footer>
+              </article>
+              <article class="card quote testimonials-carousel__slide">
+                <p class="quote__text">
+                  "I give my warmest recommendations for Octavia for her dedication and competences in
+                  driving a complex UX project across a large organization as the University of Southern
+                  Denmark. Octavia has demonstrated her UX-skills in both user research with interviews
+                  and workshops and in transforming user insights into prototypes and visual design."
+                </p>
+                <footer class="quote__footer">
+                  <img
+                    class="quote__avatar"
+                    src="assets/pictures/Christina.png?v=2"
+                    alt="Christina Vilms Kay"
+                    width="48"
+                    height="48"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                  <div class="quote__byline">
+                    <span class="quote__name">Christina Vilms Kay</span>
+                    <span class="quote__role">Head of Communication at the University of Southern Denmark</span>
+                  </div>
+                </footer>
+              </article>
+              <article class="card quote testimonials-carousel__slide">
+                <p class="quote__text">
+                  "Octavia worked in our team primarily on the prototyping of our app, for use in people
+                  with chronic conditions. She collaborated with engineer, strategist and myself to
+                  prototype an app that realised all our ideas, incorporating different stakeholders'
+                  input. Octavia is wonderfully creative and produces beautiful work."
+                </p>
+                <footer class="quote__footer">
+                  <img
+                    class="quote__avatar"
+                    src="assets/pictures/Nuala.png"
+                    alt="Nuala Burke"
+                    width="48"
+                    height="48"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                  <div class="quote__byline">
+                    <span class="quote__name">Nuala Burke</span>
+                    <span class="quote__role">Chief Scientific Office at Walk With Path LLC</span>
+                  </div>
+                </footer>
+              </article>
+              <article class="card quote testimonials-carousel__slide">
+                <p class="quote__text">
+                  "Working with Octavia set a new benchmark for what strong design collaboration looks
+                  like. As Lead Product Designer, she combined strong UI and UX expertise with exceptional
+                  collaborative skills, bringing together design, engineering, and stakeholders around a
+                  shared understanding. Any team would be fortunate to have her."
+                </p>
+                <footer class="quote__footer">
+                  <img
+                    class="quote__avatar"
+                    src="assets/pictures/Emil.png"
+                    alt="Emil Klindt Sørensen"
+                    width="48"
+                    height="48"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                  <div class="quote__byline">
+                    <span class="quote__name">Emil Klindt Sørensen</span>
+                    <span class="quote__role">Lead Software Engineer at Nabogo ApS</span>
+                  </div>
+                </footer>
+              </article>
+              <article class="card quote testimonials-carousel__slide">
+                <p class="quote__text">
+                  "Octavia was a great addition to our Media Production teams at TEDxEAL and Factory of
+                  Imagination. Octavia brought her photography skills to our events, and captured the
+                  excitement of a live event perfectly. She was also a great volunteer and team member
+                  throughout the whole event."
+                </p>
+                <footer class="quote__footer">
+                  <img
+                    class="quote__avatar"
+                    src="assets/pictures/Adam.png"
+                    alt="Adam Montandon"
+                    width="48"
+                    height="48"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                  <div class="quote__byline">
+                    <span class="quote__name">Adam Montandon</span>
+                    <span class="quote__role">Curator and license holder at TEDxOdense</span>
                   </div>
                 </footer>
               </article>
@@ -722,15 +823,28 @@
                 aria-label="Pump with the hand pump"
               >
                 <span class="balloon-dog__pump" data-balloon-pump-visual>
-                  <img
-                    class="balloon-dog__pump-img"
-                    src="assets/balloon-pump.png"
-                    alt=""
-                    width="433"
-                    height="962"
-                    decoding="async"
-                    draggable="false"
-                  />
+                  <span class="balloon-dog__pump-tilt">
+                    <img
+                      class="balloon-dog__pump-img balloon-dog__pump-img--body"
+                      src="assets/balloon-pump.png"
+                      alt=""
+                      width="433"
+                      height="962"
+                      decoding="async"
+                      draggable="false"
+                    />
+                    <span class="balloon-dog__pump-plunger" aria-hidden="true">
+                      <img
+                        class="balloon-dog__pump-img balloon-dog__pump-img--handle"
+                        src="assets/balloon-pump.png"
+                        alt=""
+                        width="433"
+                        height="962"
+                        decoding="async"
+                        draggable="false"
+                      />
+                    </span>
+                  </span>
                   <span
                     class="balloon-dog__pump-nozzle"
                     data-hose-nozzle
@@ -867,7 +981,8 @@
       </div>
     </footer>
 
-    <script src="balloon-dog.js?v=hose-around-3"></script>
-    <script src="script.js?v=home-scroll-1"></script>
+    <script src="balloon-dog.js?v=pump-stroke-1"></script>
+    <script src="hero-scramble.js?v=scramble-6"></script>
+    <script src="script.js?v=service-panel-1"></script>
   </body>
 </html>
