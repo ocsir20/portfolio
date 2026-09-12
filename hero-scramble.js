@@ -22,9 +22,10 @@
     "POSTHOG",
     "DATA",
   ];
-  const WORD_HOLD_MS = 3000;
+  const WORD_HOLD_MS = 6000;
   const IDLE_GRID_PER_SEC = 0.16;
-  const LETTER_LOCK_PER_SEC = IDLE_GRID_PER_SEC * 14;
+  const LETTER_LOCK_PER_SEC = IDLE_GRID_PER_SEC * 14 * 3;
+  const LETTER_FADE_PER_SEC = LETTER_LOCK_PER_SEC;
   const MAX_WORDS = 3;
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
@@ -224,9 +225,11 @@
     activeWords.push({
       cells,
       locked: cells.map((cell) => cell.letter === " "),
+      fade: cells.map((cell) => (cell.letter === " " ? 1 : 0)),
       lockOrder: order,
       lockCursor: 0,
       formed: false,
+      dissolving: false,
       holdUntil: 0,
       lockCarry: 0,
     });
@@ -282,7 +285,7 @@
     for (let w = activeWords.length - 1; w >= 0; w -= 1) {
       const word = activeWords[w];
 
-      if (!word.formed) {
+      if (!word.formed && !word.dissolving) {
         word.cells.forEach((cell, i) => {
           if (word.locked[i] || cell.letter === " ") return;
           if (Math.random() < IDLE_GRID_PER_SEC * dt) {
@@ -307,13 +310,40 @@
             glyphs[cell.index] = cell.letter === " " ? " " : cell.letter;
           });
         }
-        continue;
+      } else if (word.formed && !word.dissolving && now >= word.holdUntil) {
+        word.dissolving = true;
+        word.lockCarry = 0;
+      } else if (word.dissolving) {
+        word.lockCarry += LETTER_LOCK_PER_SEC * dt;
+        while (word.lockCarry >= 1 && word.lockCursor > 0) {
+          word.lockCarry -= 1;
+          word.lockCursor -= 1;
+          const i = word.lockOrder[word.lockCursor];
+          word.locked[i] = false;
+        }
       }
 
-      if (now >= word.holdUntil) {
-        word.cells.forEach((cell) => {
-          if (cell.letter !== " ") glyphs[cell.index] = randChar();
-        });
+      let allFadedOut = word.dissolving;
+      word.cells.forEach((cell, i) => {
+        if (cell.letter === " ") return;
+        const target = word.locked[i] ? 1 : 0;
+        const fade = word.fade[i];
+        if (fade < target) {
+          word.fade[i] = Math.min(target, fade + LETTER_FADE_PER_SEC * dt);
+        } else if (fade > target) {
+          word.fade[i] = Math.max(target, fade - LETTER_FADE_PER_SEC * dt);
+        }
+        if (word.fade[i] <= 0) {
+          if (word.dissolving && glyphs[cell.index] === cell.letter) {
+            glyphs[cell.index] = randChar();
+          }
+        } else if (word.locked[i] || word.dissolving) {
+          glyphs[cell.index] = cell.letter;
+        }
+        if (word.fade[i] > 0.001) allFadedOut = false;
+      });
+
+      if (word.dissolving && allFadedOut) {
         activeWords.splice(w, 1);
       }
     }
@@ -327,13 +357,13 @@
 
     const radius = Math.max(72, Math.min(width, height) * 0.28);
     const radiusSq = radius * radius;
-    const formed = new Set();
+    const formed = new Map();
     const forming = new Set();
     activeWords.forEach((word) => {
       word.cells.forEach((cell, i) => {
         if (cell.letter === " ") return;
-        if (word.formed || word.locked[i]) formed.add(cell.index);
-        else forming.add(cell.index);
+        if (word.fade[i] > 0) formed.set(cell.index, word.fade[i]);
+        else if (!word.formed && !word.dissolving && !word.locked[i]) forming.add(cell.index);
       });
     });
 
@@ -359,7 +389,9 @@
 
         let alpha = idleAlpha + influence * (hotAlpha - idleAlpha);
         if (forming.has(i)) alpha = idleAlpha + (wordAlpha - idleAlpha) * 0.35;
-        if (formed.has(i)) alpha = wordAlpha;
+        if (formed.has(i)) {
+          alpha = idleAlpha + (wordAlpha - idleAlpha) * formed.get(i);
+        }
 
         ctx.fillStyle = `rgba(${fg},${alpha.toFixed(3)})`;
         ctx.fillText(glyph, cx, cy);

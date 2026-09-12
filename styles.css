@@ -1970,8 +1970,8 @@ body.page-project--unlisted main {
 }
 
 .thumb-blog-design-systems {
-  background-color: #45404c;
-  background-image: url("assets/blogs/0CF18804-C456-4893-804F-6CC8BB46A75F.png");
+  background-color: #f5f0ec;
+  background-image: url("assets/blogs/design-systems-cover.png?v=6");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -1988,6 +1988,14 @@ body.page-project--unlisted main {
 .thumb-nabogo-onboarding {
   background-color: #45404c;
   background-image: url("assets/projects/nabogo/Onboarding%20cover.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.thumb-ai-workflow {
+  background-color: #f5f0ec;
+  background-image: url("assets/blogs/ai-workflow-figma-cursor.png?v=3");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;

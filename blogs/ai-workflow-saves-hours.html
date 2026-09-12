@@ -6,7 +6,7 @@
     <link rel="icon" href="../assets/portfolio-logo.svg" type="image/svg+xml" />
     <title>The AI Workflow That Saves Me Hours Every Week | Octavia Sirbu</title>
     <script src="../theme-init.js"></script>
-    <link rel="stylesheet" href="../styles.css" />
+    <link rel="stylesheet" href="../styles.css?v=vis-19" />
   </head>
   <body class="page-blog">
     <header class="site-header">
@@ -53,8 +53,8 @@
 
       <figure class="blog-post-cover">
         <img
-          src="../assets/projects/nabogo/Onboarding%20cover.jpg"
-          alt="Nabogo product design - AI workflow case study cover"
+          src="../assets/blogs/ai-workflow-figma-cursor.png?v=3"
+          alt="Figma and Cursor logos connected in a shared design-and-code workflow"
           loading="lazy"
           decoding="async"
         />
@@ -64,7 +64,8 @@
         <h1>The AI Workflow That Saves Me Hours Every Week</h1>
         <p class="intro">
           How I use AI across research, ideation, UI, copy, and prototyping to move from user problems
-          to validated solutions - without compromising depth or design quality.
+          to validated solutions - including Figma MCP as the link between the file I design and the
+          prototype I build in Cursor.
         </p>
         <div class="blog-post-meta">
           <img
@@ -78,7 +79,7 @@
           />
           <div class="blog-post-meta__text">
             <span class="blog-post-meta__author">Octavia Sirbu</span>
-            <time class="blog-post-meta__date" datetime="2026-05-26">May 26, 2026</time>
+            <time class="blog-post-meta__date" datetime="2026-06-03">June 3, 2026</time>
           </div>
         </div>
 
@@ -96,7 +97,7 @@
         <pre class="blog-post__workflow-diagram" aria-label="AI design workflow diagram">UX Research → Insight Synthesis → Ideation → UI Design → UX Writing → Prototyping → Validation
      ↓              ↓                ↓           ↓            ↓             ↓
  Condens        AI clustering   Figma Make   Figma UI    ChatGPT      Cursor
-                                      &amp; Cursor                  (copy)     (interaction)</pre>
+                                      &amp; Cursor               (copy)    via Figma MCP</pre>
         <p>
           This is not a linear process anymore. It’s iterative, fast, and AI-supported at every stage.
         </p>
@@ -156,13 +157,30 @@
           refine based on clarity, tone, and context.
         </p>
 
-        <h2>4. From static UI to real interaction (Cursor)</h2>
-        <p>The final step is bringing the design closer to reality.</p>
+        <h2>4. From static UI to real interaction (Figma MCP + Cursor)</h2>
         <p>
-          I transfer Figma screens and component structure into Cursor, where I can simulate
-          interactions and test real user flows. This helps bridge the gap between design intent and
-          product behavior.
+          High-fidelity screens are still only a snapshot. The next step is making the flow feel real
+          enough to test, without losing what I already decided in Figma.
         </p>
+        <p>
+          That is where <strong>Figma MCP</strong> (Model Context Protocol) sits in my workflow. It is
+          the live connection between the Figma file and Cursor. Instead of exporting PNGs, copying
+          specs by hand, or hoping the model guesses layout from a screenshot, Cursor can read the
+          actual file: frames, components, spacing, and structure.
+        </p>
+        <p>
+          In practice, I stay in Figma through design, then switch to Cursor for prototyping without
+          breaking the thread. I point the agent at a specific frame or flow, ask it to build the
+          interaction, and check the result against the design I just made. If the prototype reveals
+          a clumsy step, I go back to Figma, adjust the UI, and pull the update through MCP again.
+        </p>
+        <p>That loop is the communication layer between design and prototyping:</p>
+        <ul>
+          <li>Figma holds the visual source of truth</li>
+          <li>MCP gives Cursor live context from that file</li>
+          <li>Cursor turns screens into clickable, testable behavior</li>
+          <li>what I learn in the prototype feeds back into the Figma file</li>
+        </ul>
         <p>At this stage, I focus on:</p>
         <ul>
           <li>validating interaction flows</li>
@@ -170,13 +188,22 @@
           <li>refining user logic</li>
           <li>identifying friction before development</li>
         </ul>
-        <p>It turns design from something static into something testable.</p>
+        <p>It turns design from something static into something testable, while keeping both tools in sync.</p>
 
         <h2>Real example: Parking reservation in Nabogo</h2>
         <p>
           I applied this workflow when designing a new feature for Nabogo ApS, a carpooling platform
           used across Northern Europe.
         </p>
+        <figure class="blog-post__media-visual">
+          <img
+            class="article-image"
+            src="../assets/blogs/nabogo-reserve-parking.jpg"
+            alt="Nabogo Reserve Parking feature: phone screens showing the flow from ride QR check-in to reserving priority parking and viewing the reserved spot"
+            loading="lazy"
+            decoding="async"
+          />
+        </figure>
 
         <h3>Insight (Condens AI)</h3>
         <p>Through user research, a clear pattern emerged:</p>
@@ -217,12 +244,18 @@
         </ul>
         <p>The focus was clarity and reducing uncertainty during booking.</p>
 
-        <h3>Prototyping (Cursor)</h3>
-        <p>Finally, I used Cursor to simulate the full experience:</p>
+        <h3>Prototyping (Figma MCP + Cursor)</h3>
+        <p>
+          Finally, I used Figma MCP so Cursor could read the parking frames directly from the Figma
+          file, then simulated the full experience:
+        </p>
         <p>
           selecting a ride → choosing parking → confirming reservation → handling unavailable slots.
         </p>
-        <p>This allowed early validation of the interaction model before development.</p>
+        <p>
+          Because the prototype was built from the live design, not from a flattened export, I could
+          catch friction in the flow and push those changes back into Figma before development.
+        </p>
 
         <h2>Why this workflow matters</h2>
         <p>This AI-assisted approach changes the nature of design work.</p>
