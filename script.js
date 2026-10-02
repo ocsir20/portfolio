@@ -537,6 +537,8 @@ document.querySelectorAll("[data-more-projects]").forEach((root) => {
 
     cards.forEach((card, i) => {
       card.classList.toggle("is-front", i === active);
+      const video = card.querySelector("video");
+      if (video && i !== active && !video.paused) video.pause();
     });
 
     if (isStorySwipe() && active !== lastFront) {

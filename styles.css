@@ -3119,6 +3119,34 @@ body.page-cv .cv-stack > .cv-card:nth-child(10) {
   z-index: 10;
 }
 
+body.page-cv .cv-stack > .cv-card:nth-child(11) {
+  --stack-offset: 8.5rem;
+  z-index: 11;
+}
+
+body.page-cv .cv-card--intro-film > h2,
+body.page-cv .cv-card--intro-film .cv-card__body > h2 {
+  flex: 0 0 auto;
+  margin-bottom: 0.85rem;
+}
+
+body.page-cv .cv-intro-film {
+  flex: 1 1 auto;
+  min-height: 0;
+  width: 100%;
+  border-radius: 18px;
+  overflow: hidden;
+  background: #1c191b;
+}
+
+body.page-cv .cv-intro-film video {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  vertical-align: top;
+}
+
 body.page-cv .cv-card .contact-cards {
   margin-top: 0.15rem;
 }
@@ -4138,6 +4166,12 @@ html[data-theme="dark"] .cv-cert__logo {
     padding: 1.35rem 1.05rem;
     display: flex;
     flex-direction: column;
+  }
+
+  body.page-cv .cv-intro-film {
+    flex: 0 0 auto;
+    aspect-ratio: 16 / 9;
+    height: auto;
   }
 
   .page-home .home-stack > .stack-card.hero,
@@ -5296,6 +5330,12 @@ body.page-cv .cv-card__body {
     max-height: min(34vh, 16rem);
     width: 100%;
     object-fit: cover;
+  }
+
+  body.page-cv .cv-intro-film {
+    flex: 0 0 auto;
+    aspect-ratio: 16 / 9;
+    height: auto;
   }
 }
 
