@@ -1471,6 +1471,17 @@ body.page-blog .blog-card .thumb {
   overflow: hidden;
 }
 
+body.page-work .work-groups {
+  display: flex;
+  flex-direction: column;
+  gap: 2.75rem;
+}
+
+body.page-work .work-group__title,
+body.page-work .work-group .section-title--texture {
+  margin: 0 0 1.15rem;
+}
+
 .blog-post-page {
   max-width: min(720px, 100%);
 }
