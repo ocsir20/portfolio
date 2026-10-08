@@ -1043,10 +1043,6 @@ html[data-theme="dark"] .btn.hero-cta-connect {
   align-items: stretch;
 }
 
-body.page-home .stack-card:has(.services-grid) > .tag {
-  margin: 0 0 0.4rem;
-}
-
 body.page-home .stack-card:has(.services-grid) > .section-title--texture {
   padding: 0;
   margin-bottom: 1.15rem;
