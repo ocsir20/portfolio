@@ -6,7 +6,7 @@
     <link rel="icon" href="assets/portfolio-logo.svg" type="image/svg+xml" />
     <title>Octavia Sirbu | Senior Product Designer</title>
     <script src="theme-init.js"></script>
-    <link rel="stylesheet" href="styles.css?v=vis-17" />
+    <link rel="stylesheet" href="styles.css?v=vis-29" />
   </head>
   <body class="page-home">
     <header class="site-header">
@@ -216,140 +216,112 @@
         </div>
       </section>
 
-      <section class="container section stack-card" data-reveal>
-        <h2 class="section-title--texture">What I can do for you</h2>
-        <div class="services-layout">
-          <div class="service-tabs" role="tablist" aria-label="Services">
-            <button
-              class="service-tab active"
-              type="button"
-              role="tab"
-              aria-selected="true"
-              aria-controls="servicePanel"
-              data-service-id="ai-design"
-              data-title="AI-Enhanced Product Design"
-              data-description="Pairing human judgment with AI tooling to explore concepts, tighten flows, and ship interfaces faster without losing quality or accessibility."
-            >
-              <img
-                class="service-tab__icon"
-                src="assets/icons/artificial-intelligence-08.svg"
-                alt=""
-                width="24"
-                height="24"
-                decoding="async"
-              />
-              <span class="service-tab__label">AI-Enhanced Product Design</span>
-            </button>
-            <button
-              class="service-tab"
-              type="button"
-              role="tab"
-              aria-selected="false"
-              aria-controls="servicePanel"
-              data-service-id="ui-ai"
-              data-title="UI Design and Design Systems"
-              data-description="Designing modern interfaces, reusable components, and documentation so products stay consistent as teams and features scale."
-            >
-              <img
-                class="service-tab__icon"
-                src="assets/icons/web-design-01.svg"
-                alt=""
-                width="24"
-                height="24"
-                decoding="async"
-              />
-              <span class="service-tab__label">Scalable Design Systems</span>
-            </button>
-            <button
-              class="service-tab"
-              type="button"
-              role="tab"
-              aria-selected="false"
-              aria-controls="servicePanel"
-              data-service-id="ux-metrics"
-              data-title="UX Research and UX Writing"
-              data-description="Combining interviews, usability testing, and clear microcopy so journeys feel obvious, trustworthy, and grounded in real user behavior."
-            >
-              <img
-                class="service-tab__icon"
-                src="assets/icons/structure-04.svg"
-                alt=""
-                width="24"
-                height="24"
-                decoding="async"
-              />
-              <span class="service-tab__label">UX Research and UX Writing</span>
-            </button>
-            <button
-              class="service-tab"
-              type="button"
-              role="tab"
-              aria-selected="false"
-              aria-controls="servicePanel"
-              data-service-id="pm"
-              data-title="Project Management and Metrics"
-              data-description="Keeping design and delivery aligned through planning, stakeholder workshops, and measurable goals so teams know what shipped and why."
-            >
-              <img
-                class="service-tab__icon"
-                src="assets/icons/chart-line-data-02.svg"
-                alt=""
-                width="24"
-                height="24"
-                decoding="async"
-              />
-              <span class="service-tab__label">Project Management and Metrics</span>
-            </button>
-            <button
-              class="service-tab"
-              type="button"
-              role="tab"
-              aria-selected="false"
-              aria-controls="servicePanel"
-              data-service-id="branding"
-              data-title="Branding and Graphic Design"
-              data-description="Building visual identities, social assets, and marketing graphics that strengthen brand recognition across channels."
-            >
-              <img
-                class="service-tab__icon"
-                src="assets/icons/brush.svg"
-                alt=""
-                width="24"
-                height="24"
-                decoding="async"
-              />
-              <span class="service-tab__label">Branding and Visual Design</span>
-            </button>
-          </div>
-          <div
-            class="service-cta"
-            id="servicePanel"
-            data-service-id="ai-design"
-            role="region"
-            aria-label="Selected service details"
-            aria-live="polite"
-          >
-            <div class="service-panel__content" id="servicePanelContent">
-              <div class="service-panel__copy">
-                <h3 id="servicePanelTitle">AI-Enhanced Product Design</h3>
-                <p class="service-panel__desc" id="servicePanelDescription">
-                  Pairing human judgment with AI tooling to explore concepts, tighten flows, and ship
-                  interfaces faster without losing quality or accessibility.
-                </p>
-              </div>
-              <a class="project-card service-panel__project project-card--landscape" id="servicePanelProject" href="blogs/portfolio-ai-coded.html">
-                <div class="service-panel__project-visual project-card--landscape__visual">
-                  <div class="thumb thumb-portfolio" id="servicePanelThumb"></div>
-                </div>
-                <div class="service-panel__project-body project-card--landscape__body">
-                  <h3 id="servicePanelProjectTitle">Coded my portfolio with AI assistance</h3>
-                  <p class="project-desc" id="servicePanelProjectDesc">
-                    Building a case-study portfolio in HTML with Cursor. Structure, craft, and what stayed human-led.
-                  </p>
-                </div>
-              </a>
+      <section class="container section stack-card" data-reveal aria-labelledby="services-heading">
+        <p class="tag">Services</p>
+        <h2 id="services-heading" class="section-title--texture">What I can do for you</h2>
+        <p class="services-intro">
+          I help teams ship clearer products, from research and interface design to systems,
+          websites, and delivery you can measure.
+        </p>
+        <div class="services-grid">
+          <article class="service-offer">
+            <div class="service-offer__icon" aria-hidden="true">
+              <img src="assets/icons/web-design-01.svg" alt="" width="20" height="20" decoding="async" />
             </div>
-          </div>
+            <h3>UI Design and Design Systems</h3>
+            <p>
+              Designing modern interfaces, reusable components, and documentation so products stay
+              consistent as teams and features scale.
+            </p>
+            <div class="project-labels">
+              <span data-skill="production">UI Design</span>
+              <span data-skill="production">Design systems</span>
+              <span data-skill="production">Figma</span>
+              <span data-skill="production">Components</span>
+              <span data-skill="ai">MCP</span>
+            </div>
+          </article>
+          <article class="service-offer">
+            <div class="service-offer__icon" aria-hidden="true">
+              <img src="assets/icons/structure-04.svg" alt="" width="20" height="20" decoding="async" />
+            </div>
+            <h3>UX Research and Web Copy Writing</h3>
+            <p>
+              Combining interviews, usability testing, and clear writing so journeys feel obvious,
+              trustworthy, and grounded in real user behavior.
+            </p>
+            <div class="project-labels">
+              <span data-skill="process">Interviews</span>
+              <span data-skill="process">Usability testing</span>
+              <span data-skill="production">UX writing</span>
+              <span data-skill="production">Web copy</span>
+            </div>
+          </article>
+          <article class="service-offer">
+            <div class="service-offer__icon" aria-hidden="true">
+              <img src="assets/icons/artificial-intelligence-08.svg" alt="" width="20" height="20" decoding="async" />
+            </div>
+            <h3>Web Development and AI Automations</h3>
+            <p>
+              Building and shipping interfaces in code, and using AI tools to move faster on
+              exploration, documentation, and delivery without dropping quality.
+            </p>
+            <div class="project-labels">
+              <span data-skill="engineering">HTML / CSS</span>
+              <span data-skill="engineering">React</span>
+              <span data-skill="ai">Cursor</span>
+              <span data-skill="ai">Claude Code</span>
+              <span data-skill="ai">AI workflow</span>
+            </div>
+          </article>
+          <article class="service-offer">
+            <div class="service-offer__icon" aria-hidden="true">
+              <img src="assets/icons/chart-line-data-02.svg" alt="" width="20" height="20" decoding="async" />
+            </div>
+            <h3>Project Management and Metrics</h3>
+            <p>
+              Keeping design and delivery aligned through planning, stakeholder workshops, and
+              a lean process so the work has measurable impact and teams know what shipped and why.
+            </p>
+            <div class="project-labels">
+              <span data-skill="process">Workshops</span>
+              <span data-skill="data">Analytics</span>
+              <span data-skill="process">Roadmaps</span>
+              <span data-skill="process">Lean approach</span>
+            </div>
+          </article>
+          <article class="service-offer">
+            <div class="service-offer__icon" aria-hidden="true">
+              <img src="assets/icons/brush.svg" alt="" width="20" height="20" decoding="async" />
+            </div>
+            <h3>Branding and Graphic Design</h3>
+            <p>
+              Building visual identities, social assets, and marketing graphics that strengthen
+              brand recognition across channels.
+            </p>
+            <div class="project-labels">
+              <span data-skill="production">Visual identity</span>
+              <span data-skill="production">Brand</span>
+              <span data-skill="production">Social assets</span>
+              <span data-skill="production">Graphic design</span>
+            </div>
+          </article>
+          <article class="service-offer">
+            <div class="service-offer__icon" aria-hidden="true">
+              <img src="assets/icons/mail-01.svg" alt="" width="20" height="20" decoding="async" />
+            </div>
+            <h3>Customer Touch Points and Email Automations</h3>
+            <p>
+              Setting up welcome sequences, newsletters, and lifecycle emails with clear copy and
+              timing so people hear from you at the right moment, not all at once.
+            </p>
+            <div class="project-labels">
+              <span data-skill="production">Email flows</span>
+              <span data-skill="production">Newsletters</span>
+              <span data-skill="ai">Automation</span>
+              <span data-skill="process">Customer Journeys</span>
+            </div>
+          </article>
         </div>
       </section>
 
