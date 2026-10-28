@@ -25,7 +25,7 @@ const serviceProjectMap = {
   },
   "ux-metrics": {
     title: "Designing Onboardings that convert - Nabogo ApS",
-    desc: "UX strategy and onboarding flow improvements to help new carpoolers start faster.",
+    desc: "Improving onboarding for Nabogo's app and raising the activation rate by 5%.",
     thumbClass: "thumb-nabogo-onboarding",
     href: "nbg-onboarding.html",
   },
