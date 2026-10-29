@@ -3234,6 +3234,7 @@ body.page-cv .cv-card--intro-film .cv-card__body > h2 {
 }
 
 body.page-cv .cv-intro-film {
+  position: relative;
   flex: 1 1 auto;
   min-height: 0;
   width: 100%;
@@ -3248,6 +3249,42 @@ body.page-cv .cv-intro-film video {
   height: 100%;
   object-fit: cover;
   vertical-align: top;
+}
+
+body.page-cv .cv-intro-film__play {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 2;
+  display: grid;
+  place-items: center;
+  width: 4.6rem;
+  height: 4.6rem;
+  padding: 0 0 0 0.18rem;
+  border: 0;
+  border-radius: 50%;
+  color: var(--palette-ink);
+  background: color-mix(in srgb, var(--palette-white) 88%, transparent);
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.28);
+  transform: translate(-50%, -50%);
+  cursor: pointer;
+  transition: transform 0.18s ease, background-color 0.18s ease, opacity 0.2s ease;
+}
+
+body.page-cv .cv-intro-film__play:hover,
+body.page-cv .cv-intro-film__play:focus-visible {
+  background: var(--palette-white);
+  transform: translate(-50%, -50%) scale(1.05);
+}
+
+body.page-cv .cv-intro-film__play:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+body.page-cv .cv-intro-film.is-playing .cv-intro-film__play {
+  opacity: 0;
+  pointer-events: none;
 }
 
 body.page-cv .cv-card .contact-cards {

@@ -582,7 +582,7 @@ document.querySelectorAll("[data-more-projects]").forEach((root) => {
   const isInteractive = (node) =>
     Boolean(
       node.closest(
-        "a, button, input, textarea, select, label, [role='tab'], [data-testimonials-carousel] button, [data-balloon-play]"
+        "a, button, input, textarea, select, label, video, .cv-intro-film, [role='tab'], [data-testimonials-carousel] button, [data-balloon-play]"
       )
     );
 
@@ -684,6 +684,34 @@ document.querySelectorAll("[data-more-projects]").forEach((root) => {
   }
 
   bootStories();
+})();
+
+(function initCvIntroFilm() {
+  const wrap = document.querySelector(".cv-intro-film");
+  const video = wrap ? wrap.querySelector("video") : null;
+  const playBtn = wrap ? wrap.querySelector(".cv-intro-film__play") : null;
+  if (!wrap || !video || !playBtn) return;
+
+  const sync = () => {
+    const playing = !video.paused && !video.ended;
+    wrap.classList.toggle("is-playing", playing);
+    playBtn.setAttribute("aria-hidden", playing ? "true" : "false");
+    playBtn.tabIndex = playing ? -1 : 0;
+  };
+
+  playBtn.addEventListener("click", () => {
+    const play = video.play();
+    if (play && typeof play.catch === "function") play.catch(() => {});
+  });
+
+  video.addEventListener("play", sync);
+  video.addEventListener("playing", sync);
+  video.addEventListener("pause", sync);
+  video.addEventListener("ended", () => {
+    video.currentTime = 0;
+    sync();
+  });
+  sync();
 })();
 
 (function initFooterDogColorCycle() {
