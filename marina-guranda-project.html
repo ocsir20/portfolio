@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="assets/portfolio-logo.svg" type="image/svg+xml" />
+    <title>Designing and Building a Website and Webshop for Marina Guranda | Octavia Sirbu</title>
+    <script src="theme-init.js"></script>
+    <link rel="stylesheet" href="styles.css?v=vis-35" />
+  </head>
+  <body class="page-project">
+    <header class="site-header">
+      <nav class="nav container">
+        <a class="logo" href="index.html">
+          <span class="logo-mark" aria-hidden="true"><img class="logo-mark-img" src="assets/portfolio-logo.svg" alt="" width="130" height="114" decoding="async" /></span>
+          <span class="logo-text">Octavia Sirbu</span>
+        </a>
+        <div class="nav-right">
+          <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="cv.html">CV</a></li>
+            <li><a class="active" href="work.html">Projects</a></li>
+            <li><a href="blog.html">Blog</a></li>
+          </ul>
+          <button
+            type="button"
+            class="theme-toggle"
+            id="themeToggle"
+            aria-label="Switch to dark mode"
+            aria-pressed="false"
+            title="Light or dark mode"
+          >
+            <span class="theme-icon theme-icon-sun" aria-hidden="true">
+              <img src="assets/icons/sun-03.svg" alt="" width="20" height="20" decoding="async" />
+            </span>
+            <span class="theme-icon theme-icon-moon" aria-hidden="true">
+              <img src="assets/icons/moon.svg" alt="" width="20" height="20" decoding="async" />
+            </span>
+          </button>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <section class="page-hero page-hero--texture">
+        <div class="container">
+          <h1>Designing and Building a Website and Webshop for Marina Guranda</h1>
+          <p class="intro">
+            A Romanian-language site for a qualified French teacher in France. I designed it in Figma,
+            then used Figma MCP with Cursor to implement the webshop, calendar, contact form, and back office.
+          </p>
+        </div>
+      </section>
+
+      <div class="container project-overview-below-hero">
+        <section class="project-overview" aria-label="Project overview">
+          <div class="project-overview__summary">
+            <p class="project-overview__label">Project Summary</p>
+            <p class="project-overview__body">
+              Marina needed a calm, trustworthy place where students can understand the courses,
+              book a free intro conversation, send a message, and pay for a package. I owned the work
+              from visual identity and high-fidelity screens in Figma through production code. The
+              live site is at
+              <a class="text-link" href="https://marinaguranda.fr" target="_blank" rel="noopener noreferrer">marinaguranda.fr</a>.
+            </p>
+          </div>
+          <div class="project-overview__company">
+            <p class="project-overview__label">🇫🇷 Marina Guranda</p>
+            <p class="project-overview__body">
+              Qualified French teacher offering online group and 1-to-1 courses, from complete
+              beginners to conversation, plus a path for children. Students are mostly Romanian
+              speakers who want French for work, exams, interviews, or life in a francophone country.
+            </p>
+          </div>
+          <dl class="project-overview__meta">
+            <div class="project-overview__pair">
+              <dt>Role</dt>
+              <dd>Product designer and web developer (freelance)</dd>
+            </div>
+            <div class="project-overview__pair">
+              <dt>Team</dt>
+              <dd>Solo delivery with Marina as client and content owner.</dd>
+            </div>
+            <div class="project-overview__pair">
+              <dt>Methods</dt>
+              <dd>
+                Visual identity · High-fidelity UI · Figma MCP · Cursor · Responsive web · Checkout UX · Content modelling
+              </dd>
+            </div>
+            <div class="project-overview__pair">
+              <dt>Tools</dt>
+              <dd>Figma, Cursor, Claude, Figma MCP, Next.js, React, TypeScript, Tailwind, Stripe, Google Calendar, FormSubmit, Hostico.</dd>
+            </div>
+          </dl>
+        </section>
+      </div>
+
+      <article class="container section project-page-content project-page-content--marina">
+        <section class="project-onboarding-role" aria-labelledby="project-marina-role-heading">
+          <h1 id="project-marina-role-heading" class="project-onboarding-role__heading">My role</h1>
+          <div class="project-onboarding-role__layout">
+            <div class="project-onboarding-role__copy">
+              <h2>🎨 Design the brand and the product in Figma</h2>
+              <p>
+                Type, colour, photography, illustrations, and every key screen before a line of
+                production code.
+              </p>
+              <h2>🔗 Hand off through Figma MCP, not screenshots</h2>
+              <p>
+                Cursor read the Figma file so implementation followed the designed spacing, type,
+                and components instead of guessing.
+              </p>
+              <h2>🛒 Build the buying and booking path</h2>
+              <p>
+                Course catalog, checkout with Stripe, Google Calendar for intro meetings, and a
+                contact form that arrives by email.
+              </p>
+              <h2>🗂️ Make a back office a teacher can use</h2>
+              <p>
+                Login-protected editing for home, courses, about, booking copy, testimonials, and
+                legal pages, so Marina can update the site without waiting on a developer.
+              </p>
+              <h2>🏗️ Ship inside real hosting limits</h2>
+              <p>
+                Hostico Start cannot run Node. Production is a static export plus a PHP payment
+                endpoint, with the Node app kept for local preview and the back office.
+              </p>
+            </div>
+            <figure class="project-onboarding-role__visual">
+              <img
+                class="project-onboarding-role__img"
+                src="assets/projects/marina/marina-home.jpg"
+                alt="Marina Guranda homepage: portrait, script logo, and French course headline"
+                loading="lazy"
+                decoding="async"
+              />
+            </figure>
+          </div>
+        </section>
+
+        <h2>Design in Figma</h2>
+        <p>
+          The site had to feel like a teacher, not a marketplace. I started in Figma with an
+          editorial layout: cream paper, navy type, a burgundy script wordmark, arched portrait
+          frames, and line drawings of Paris and everyday French objects. Those motifs keep long
+          course pages from looking like a price list.
+        </p>
+        <p>
+          Information architecture is short on purpose. Home answers who Marina is and who the
+          courses are for. Cursuri splits group, 1-to-1, and children. Despre mine holds the story
+          and credentials. Contact and Programare are two different jobs: write a message, or look
+          at published dates for a free intro conversation. Payment is a dedicated checkout, not a
+          cart buried in the catalog.
+        </p>
+        <p>
+          Components were designed as a small system: buttons, fields, course cards, legal checkboxes,
+          and a sticky header CTA. That made the later MCP-to-code step faster, because Cursor could
+          reuse the same patterns instead of inventing a new layout on every page.
+        </p>
+
+        <img
+          class="article-image"
+          src="assets/projects/marina/marina-courses.jpg?v=2"
+          alt="Course catalog with group packages, prices, and illustrated sections"
+          loading="lazy"
+          decoding="async"
+        />
+
+        <h2>From Figma to Cursor with Figma MCP</h2>
+        <p>
+          Once the screens were solid, I connected the Figma file to Cursor through Figma MCP. The
+          agent could inspect frames, auto-layout, colour styles, and component structure, then
+          implement them in Next.js and Tailwind. I still reviewed every screen. MCP saved the hours
+          that usually go into describing padding, type scale, and component variants by hand.
+        </p>
+        <p>
+          That workflow also protected the design. When checkout, calendar, and admin were added,
+          they inherited the same cream, navy, and serif language instead of drifting into a
+          generic form UI. Constraints from hosting and payments were solved in code, without
+          throwing away the Figma source of truth.
+        </p>
+
+        <h2>Webshop</h2>
+        <p>
+          Students choose a course, pick a level when it matters, then land on a checkout that
+          collects contact and billing details before Stripe. The form does not take card numbers
+          on our servers. It validates required fields and legal consent, then opens Stripe Checkout
+          with the course, level, and email attached as a reference so Marina can match the payment
+          to a person.
+        </p>
+        <p>
+          The catalog stays readable: price, duration, group size, Zoom, and what is included.
+          Checkout is a two-column layout so the order summary stays visible while the student
+          fills the form. That is a trust choice. For a small teaching business, people need to see
+          what they are buying next to the fields they are typing.
+        </p>
+        <img
+          class="article-image"
+          src="assets/projects/marina/marina-checkout.jpg"
+          alt="Checkout form with contact details, billing fields, course summary, and Stripe payment"
+          loading="lazy"
+          decoding="async"
+        />
+
+        <h2>Calendar</h2>
+        <p>
+          The intro meeting is free and should not require an account. Building a full booking
+          product would have been more than Marina needed, and harder to host. I embedded her
+          public Google Calendar instead: month view on desktop, agenda on smaller screens, Europe
+          and Paris as the timezone, Romanian as the interface language.
+        </p>
+        <p>
+          The page copy is honest about the constraint. The calendar shows dates she publishes.
+          Students still write or email to start the conversation. That keeps availability in a
+          tool she already uses, and keeps the website from becoming a second calendar to maintain.
+        </p>
+        <img
+          class="article-image"
+          src="assets/projects/marina/marina-calendar.jpg"
+          alt="Booking page with intro meeting copy and an embedded Google Calendar"
+          loading="lazy"
+          decoding="async"
+        />
+
+        <h2>Contact form</h2>
+        <p>
+          The form asks for name, email, French level, and a message, then sends them to Marina's
+          inbox through FormSubmit. A hidden honeypot field drops obvious bots. Students get a
+          clear sent, confirm, or error state so they are not left wondering if the message went
+          through.
+        </p>
+        <p>
+          Contact and calendar are split because they solve different moments. Someone who already
+          knows what they want should not have to hunt for a date. Someone browsing availability
+          should not be forced through a long form first.
+        </p>
+        <img
+          class="article-image"
+          src="assets/projects/marina/marina-contact.jpg"
+          alt="Contact page with message form and arched portrait of Marina Guranda"
+          loading="lazy"
+          decoding="async"
+        />
+
+        <h2>Back office</h2>
+        <p>
+          A static brochure would go stale as prices and course lists change. The admin area is a
+          password-protected panel where Marina can edit home, each course, about, booking text,
+          testimonials, terms, and privacy. Saves write into structured content, including photo
+          uploads for testimonials.
+        </p>
+        <p>
+          I kept the back office visually quiet on purpose. It reuses the same type and colour so
+          it still feels like her site, but the job is editing, not marketing. There is a password
+          reset path so she is not locked out if a device changes.
+        </p>
+        <img
+          class="article-image"
+          src="assets/projects/marina/marina-admin.jpg"
+          alt="Back-office login screen for editing site content"
+          loading="lazy"
+          decoding="async"
+        />
+
+        <h2>Technologies</h2>
+        <ul>
+          <li>Figma for identity, layouts, and components, then Figma MCP as the bridge into Cursor.</li>
+          <li>Next.js, React, and TypeScript for pages, checkout, and the admin app.</li>
+          <li>Tailwind for the visual system taken from the Figma file.</li>
+          <li>Stripe Checkout for card payments, including Apple Pay and Google Pay where Stripe offers them.</li>
+          <li>Google Calendar embed for published intro dates.</li>
+          <li>FormSubmit for the contact form, without standing up a mail server.</li>
+          <li>Apache on Hostico for the public site, with a static export and PHP only where payment needs a server.</li>
+        </ul>
+
+        <h2>Constraints and reasoning</h2>
+        <p>
+          Three constraints shaped the architecture. First, the audience is Romanian, so the entire
+          product is in Romanian, including form labels, legal copy, and calendar language. Second,
+          Hostico Start does not run Node, so the marketing site is exported as static files. A PHP
+          endpoint handles the Stripe session when the Node API is not available. Third, Marina
+          works alone. She needed to change copy and prices without a deploy from me every time,
+          which is why the back office exists.
+        </p>
+        <p>
+          I also chose not to collect cards on the site, not to invent a booking engine, and not to
+          put a shopping cart on the catalog. Each of those would have added accounts, more hosting
+          complexity, and more ways for a student to get stuck. The site's job is to explain the
+          offer, make payment feel safe, and start a conversation.
+        </p>
+
+        <h2>Delivery</h2>
+        <p class="project-marina-links">
+          <a
+            class="text-link"
+            href="https://marinaguranda.fr"
+            target="_blank"
+            rel="noopener noreferrer"
+          >See the live website at marinaguranda.fr</a>
+          <a
+            class="text-link"
+            href="https://marinaguranda.fr/cursuri/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >Course catalog</a>
+          <a
+            class="text-link"
+            href="https://marinaguranda.fr/programare/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >Intro meeting calendar</a>
+          <a
+            class="text-link"
+            href="https://marinaguranda.fr/contact/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >Contact form</a>
+        </p>
+      </article>
+
+      <section class="more-projects" data-more-projects aria-labelledby="more-projects-heading">
+        <div class="container">
+          <div class="more-projects__header">
+            <h2 id="more-projects-heading">View more projects</h2>
+            <div class="more-projects__nav">
+              <button type="button" class="more-projects__btn" data-scroll-prev aria-label="Previous projects">&#8249;</button>
+              <button type="button" class="more-projects__btn" data-scroll-next aria-label="Next projects">&#8250;</button>
+            </div>
+          </div>
+          <div class="more-projects__track">
+            <a class="more-project-card" href="rotoy-project.html">
+              <div class="more-project-card__visual">
+                <div class="thumb thumb-rotoy" role="presentation"></div>
+              </div>
+              <div class="more-project-card__body">
+                <h3>Designing a Website and Webshop for EdTech Startup Rotoy ApS</h3>
+                <p>Marketing site and webshop for an EdTech startup.</p>
+              </div>
+            </a>
+            <a class="more-project-card" href="makerspace-project.html">
+              <div class="more-project-card__visual">
+                <div class="thumb thumb-makerspace" role="presentation"></div>
+              </div>
+              <div class="more-project-card__body">
+                <h3>O'town Garage Makerspace Website Design</h3>
+                <p>Website design for a community makerspace.</p>
+              </div>
+            </a>
+            <a class="more-project-card" href="nbg-designsystem.html">
+              <div class="more-project-card__visual">
+                <div class="thumb thumb-nabogo-designsystem" role="presentation"></div>
+              </div>
+              <div class="more-project-card__body">
+                <h3>AI-powered Design System for Nabogo ApS</h3>
+                <p>Tokens, components, and Storybook for a consistent Nabogo UI.</p>
+              </div>
+            </a>
+            <a class="more-project-card" href="sdu-intranet-project.html">
+              <div class="more-project-card__visual">
+                <div class="thumb thumb-sdu" role="presentation"></div>
+              </div>
+              <div class="more-project-card__body">
+                <h3>University Intranet Re-design based on UX Insights</h3>
+                <p>Research-led intranet redesign for a large university.</p>
+              </div>
+            </a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container site-footer__inner">
+        <div class="site-footer__brand">
+          <img
+            class="site-footer__logo"
+            src="assets/portfolio-logo.svg"
+            alt=""
+            width="130"
+            height="114"
+            decoding="async"
+          />
+          <p class="site-footer__tagline">Turning complexity into clear experiences</p>
+          <p>© 2026 Octavia Sirbu - Senior Product Designer</p>
+        </div>
+        <nav class="site-footer__nav" aria-label="Main pages">
+          <ul class="site-footer__list">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="cv.html">CV</a></li>
+            <li><a href="work.html">Projects</a></li>
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="privacy.html">Privacy</a></li>
+          </ul>
+        </nav>
+        <div class="site-footer__social">
+          <a
+            class="site-footer__linkedin"
+            href="https://www.linkedin.com/in/octaviasirbu/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <img
+              class="site-footer__linkedin-icon"
+              src="assets/icons/linkedin-02.svg"
+              alt=""
+              width="24"
+              height="24"
+              decoding="async"
+            />
+            <span>My LinkedIn</span>
+          </a>
+        </div>
+      </div>
+    </footer>
+
+    <script src="script.js?v=cv-film-3"></script>
+  </body>
+</html>

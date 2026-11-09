@@ -695,6 +695,8 @@ document.querySelectorAll("[data-more-projects]").forEach((root) => {
   const sync = () => {
     const playing = !video.paused && !video.ended;
     wrap.classList.toggle("is-playing", playing);
+    video.controls = playing;
+    playBtn.hidden = playing;
     playBtn.setAttribute("aria-hidden", playing ? "true" : "false");
     playBtn.tabIndex = playing ? -1 : 0;
   };
