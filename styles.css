@@ -2129,10 +2129,10 @@ body.page-project--unlisted main {
 }
 
 .thumb-marina {
-  background-color: #f5f0ec;
-  background-image: url("assets/projects/marina/marina-home.jpg");
+  background-color: #0b1830;
+  background-image: url("assets/projects/marina/marina-devices.jpg");
   background-size: cover;
-  background-position: center top;
+  background-position: center;
   background-repeat: no-repeat;
 }
 
@@ -2797,8 +2797,32 @@ body.page-project--unlisted main {
 }
 
 .project-page-content--marina .project-onboarding-role__layout {
-  grid-template-columns: minmax(0, 1fr) minmax(0, min(46%, 380px));
-  align-items: stretch;
+  grid-template-columns: minmax(0, 1fr) minmax(0, min(48%, 440px));
+  align-items: start;
+}
+
+.project-page-content--marina .project-onboarding-role__visual {
+  gap: 1rem;
+}
+
+@media (max-width: 768px) {
+  .project-page-content--marina .project-onboarding-role__layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+.project-page-content--marina .project-marina-points {
+  margin: 0 0 1.35rem;
+  padding-left: 1.2rem;
+}
+
+.project-page-content--marina .project-marina-points li {
+  margin: 0 0 1rem;
+  line-height: 1.65;
+}
+
+.project-page-content--marina .project-marina-points li:last-child {
+  margin-bottom: 0;
 }
 
 .project-page-content--marina .project-marina-links {
@@ -2807,6 +2831,73 @@ body.page-project--unlisted main {
   align-items: flex-start;
   gap: 0.55rem;
   margin: 0 0 1.25rem;
+}
+
+.project-page-content--marina .project-takeaway {
+  margin: 1.35rem 0 1.75rem;
+  padding: 1.1rem 1.25rem 1.15rem 1.3rem;
+  border-left: 3px solid var(--accent);
+  border-radius: 0 14px 14px 0;
+  background: color-mix(in srgb, var(--palette-cream) 55%, var(--surface));
+}
+
+.project-page-content--marina .project-takeaway__label {
+  margin: 0 0 0.4rem;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.project-page-content--marina .project-takeaway p:last-child {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(1.12rem, 2.2vw, 1.32rem);
+  font-weight: 600;
+  line-height: 1.4;
+  color: var(--text);
+}
+
+.project-page-content--marina .project-marina-brand {
+  display: grid;
+  gap: 1rem;
+  margin: 1.5rem 0 2rem;
+}
+
+.project-page-content--marina .project-marina-brand .article-image {
+  margin: 0;
+}
+
+.project-page-content--marina .project-marina-pair {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin: 1.5rem 0 2rem;
+  padding: 0.85rem;
+  border-radius: 16px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+}
+
+.project-page-content--marina .project-marina-pair .article-image {
+  margin: 0;
+  border: 1px solid var(--border);
+  object-fit: cover;
+  object-position: center top;
+  aspect-ratio: 4 / 5;
+  height: 100%;
+  background: #f6f1ea;
+}
+
+@media (max-width: 700px) {
+  .project-page-content--marina .project-marina-pair {
+    grid-template-columns: 1fr;
+  }
+
+  .project-page-content--marina .project-marina-pair .article-image {
+    aspect-ratio: 16 / 11;
+  }
 }
 
 .legal-content {
