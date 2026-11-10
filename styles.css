@@ -2796,6 +2796,10 @@ body.page-project--unlisted main {
   margin: 1.5rem 0 2rem;
 }
 
+.project-page-content--marina .article-image--kanban {
+  max-width: min(28rem, 100%);
+}
+
 .project-page-content--marina .project-onboarding-role__layout {
   grid-template-columns: minmax(0, 1fr) minmax(0, min(48%, 440px));
   align-items: start;
