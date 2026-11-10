@@ -4,8 +4,9 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" href="assets/portfolio-logo.svg" type="image/svg+xml" />
-    <title>Designing Onboardings that Convert - Nabogo ApS | Octavia Sirbu</title>
+    <title data-i18n="ob.pageTitle">Designing Onboardings that Convert - Nabogo ApS | Octavia Sirbu</title>
     <script src="theme-init.js"></script>
+    <script src="lang-init.js"></script>
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body class="page-project">
@@ -17,18 +18,18 @@
         </a>
         <div class="nav-right">
           <ul class="nav-links">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="cv.html">CV</a></li>
-            <li><a class="active" href="work.html">Projects</a></li>
-            <li><a href="blog.html">Blog</a></li>
+            <li><a data-i18n="nav.home" href="index.html">Home</a></li>
+            <li><a data-i18n="nav.cv" href="cv.html">CV</a></li>
+            <li><a data-i18n="nav.projects" class="active" href="work.html">Projects</a></li>
+            <li><a data-i18n="nav.blog" href="blog.html">Blog</a></li>
           </ul>
           <button
             type="button"
             class="theme-toggle"
             id="themeToggle"
-            aria-label="Switch to dark mode"
+            aria-label="Switch to dark mode" data-i18n-aria="theme.dark"
             aria-pressed="false"
-            title="Light or dark mode"
+            title="Light or dark mode" data-i18n-title="theme.title"
           >
             <span class="theme-icon theme-icon-sun" aria-hidden="true">
               <img src="assets/icons/sun-03.svg" alt="" width="20" height="20" decoding="async" />
@@ -37,6 +38,10 @@
               <img src="assets/icons/moon.svg" alt="" width="20" height="20" decoding="async" />
             </span>
           </button>
+          <div class="lang-toggle" role="group" data-i18n-aria="nav.lang">
+            <button type="button" class="lang-toggle__btn" data-lang-set="en" lang="en">EN</button>
+            <button type="button" class="lang-toggle__btn" data-lang-set="fr" lang="fr">FR</button>
+          </div>
         </div>
       </nav>
     </header>
@@ -44,18 +49,18 @@
     <main>
       <section class="page-hero page-hero--texture">
         <div class="container">
-          <h1>Designing Onboardings that Convert - Nabogo ApS</h1>
-          <p class="intro">
+          <h1 data-i18n="more.card.onboarding">Designing Onboardings that Convert - Nabogo ApS</h1>
+          <p class="intro" data-i18n="more.card.onboarding.p">
             Improving onboarding for Nabogo's app and raising the activation rate by 5%.
           </p>
         </div>
       </section>
 
       <div class="container project-overview-below-hero">
-        <section class="project-overview" aria-label="Project overview">
+        <section class="project-overview" aria-label="Project overview" data-i18n-aria="proj.overview">
           <div class="project-overview__summary">
-            <p class="project-overview__label">Project Summary</p>
-            <p class="project-overview__body">
+            <p class="project-overview__label" data-i18n="proj.summary">Project Summary</p>
+            <p class="project-overview__body" data-i18n="ob.summary">
               In this project, I redesigned the onboarding flow to improve 
               the user experience, conversion rates and helped us learn more about our users. The new onboarding flow 
               has been a success and created 5% more conversions than the previous in the first 3 months despite 
@@ -65,7 +70,7 @@
           </div>
           <div class="project-overview__company">
             <p class="project-overview__label">🇩🇰 Nabogo ApS</p>
-            <p class="project-overview__body">
+            <p class="project-overview__body" data-i18n="nabogo.company">
               Carpooling for daily commuters - to benefit mobility, infrastructure and the climate.
               We partner with Public transportation authorities, provinces and private companies.
               Nabogo ApS is available in North European markets (Denmark, Norway, Sweden,
@@ -74,22 +79,22 @@
           </div>
           <dl class="project-overview__meta">
             <div class="project-overview__pair">
-              <dt>Role</dt>
-              <dd>Lead Product Designer</dd>
+              <dt data-i18n="proj.role">Role</dt>
+              <dd data-i18n="role.leadPd">Lead Product Designer</dd>
             </div>
             <div class="project-overview__pair">
-              <dt>Team</dt>
-              <dd>Nabogo ApS product team: 1 product manager, 1 lead product designer, 1 UX designer, 4 developers.</dd>
+              <dt data-i18n="proj.team">Team</dt>
+              <dd data-i18n="nabogo.team">Nabogo ApS product team: 1 product manager, 1 lead product designer, 1 UX designer, 4 developers.</dd>
             </div>
             <div class="project-overview__pair">
-              <dt>Methods</dt>
-              <dd>
+              <dt data-i18n="proj.methods">Methods</dt>
+              <dd data-i18n="nabogo.methods">
                 Sketches · User flows · High-fidelity prototyping · Error-state design · Usability testing · Design System
               </dd>
             </div>
             <div class="project-overview__pair">
-              <dt>Tools</dt>
-              <dd>Figma, Storybook, Jira, Confluence, Miro, Posthog (Funnel Analytics), and Condens.</dd>
+              <dt data-i18n="proj.tools">Tools</dt>
+              <dd data-i18n="nabogo.tools">Figma, Storybook, Jira, Confluence, Miro, Posthog (Funnel Analytics), and Condens.</dd>
             </div>
           </dl>
         </section>
@@ -98,28 +103,28 @@
       <article class="container section project-page-content project-page-content--nabogo">
         <div class="project-onboarding-lead">
           <section class="project-onboarding-role" aria-labelledby="project-onboarding-role-heading">
-            <h1 id="project-onboarding-role-heading" class="project-onboarding-role__heading">My role</h1>
+            <h1 id="project-onboarding-role-heading" class="project-onboarding-role__heading" data-i18n="proj.myRole">My role</h1>
             <div class="project-onboarding-role__layout">
               <div class="project-onboarding-role__copy">
-                <h2>🎯 Lead End-to-end Product Execution</h2>
-                <p>Own the design process from concept to launch.</p>
-                <h2>👨‍💼 Champion the User</h2>
-                <p>
+                <h2 data-i18n="role.leadExec">🎯 Lead End-to-end Product Execution</h2>
+                <p data-i18n="role.leadExec.p">Own the design process from concept to launch.</p>
+                <h2 data-i18n="role.champion">👨‍💼 Champion the User</h2>
+                <p data-i18n="role.champion.p">
                   Designing user centric features and user journey by implementing data from user test,
                   user interviews and surveys.
                 </p>
                 <h2>📊 Measure &amp; Improve</h2>
-                <p>
+                <p data-i18n="role.measure.p">
                   Track impact for new feature and imporvements and refine based on data together with PM
                   and lead engineer.
                 </p>
-                <h2>✅ Enforce Quality Standards</h2>
-                <p>
+                <h2 data-i18n="role.quality">✅ Enforce Quality Standards</h2>
+                <p data-i18n="role.quality.p">
                   Implement design reviews, usability checks, and QA testing to ensure consistency and a
                   smooth user experience.
                 </p>
-                <h2>🚀 Craft Scalable UI</h2>
-                <p>
+                <h2 data-i18n="role.ui">🚀 Craft Scalable UI</h2>
+                <p data-i18n="role.ui.p">
                   Create clear, consistent interfaces using Figma and maintain shared libraries and design
                   systems.
                 </p>
@@ -155,19 +160,19 @@
                 />
               </figure>
               <div class="project-onboarding-media__copy">
-                <h1 class="project-onboarding-media__title">Shifting from a registration flow to an onboarding flow</h1>
-                <h2 class="project-onboarding-media__subtitle">
+                <h1 class="project-onboarding-media__title" data-i18n="ob.shift">Shifting from a registration flow to an onboarding flow</h1>
+                <h2 class="project-onboarding-media__subtitle" data-i18n="ob.shift.1">
                   🚗 Users aren't just adding their credentials information, they are setting up their profile and
                   their carpooling preferences
                 </h2>
-                <h2 class="project-onboarding-media__subtitle">
+                <h2 class="project-onboarding-media__subtitle" data-i18n="ob.shift.2">
                   🎯 All the information is now collected in one place and is used to personalize the onboarding
                   experience for the user
                 </h2>
-                <h2 class="project-onboarding-media__subtitle">
+                <h2 class="project-onboarding-media__subtitle" data-i18n="ob.shift.3">
                   🚀 The new flow is longer but it is more engaging and informative
                 </h2>
-                <h2 class="project-onboarding-media__subtitle">
+                <h2 class="project-onboarding-media__subtitle" data-i18n="ob.shift.4">
                   📊 And Nabogo ApS will be able to collect relevant information about its users to see paterns in
                   their carpooling habits
                 </h2>
@@ -177,11 +182,11 @@
           <section class="project-onboarding-media project-onboarding-media--gif-right">
             <div class="project-onboarding-media__layout">
               <div class="project-onboarding-media__copy">
-                <h1 class="project-onboarding-media__title">Drivers and passengers have personalized onboarding experiences</h1>
-                <h2 class="project-onboarding-media__subtitle">
+                <h1 class="project-onboarding-media__title" data-i18n="ob.pers.h1">Drivers and passengers have personalized onboarding experiences</h1>
+                <h2 class="project-onboarding-media__subtitle" data-i18n="ob.pers.d">
                   When the user is a driver, they are nudged to create a ride and share it with their work colleagues
                 </h2>
-                <h2 class="project-onboarding-media__subtitle">
+                <h2 class="project-onboarding-media__subtitle" data-i18n="ob.pers.p">
                   When the user is a passenger, they are nudged to join a ride and share it with their work colleagues
                 </h2>
               </div>
@@ -205,10 +210,10 @@
         <section class="project-onboarding-strategy" aria-labelledby="project-onboarding-strategy-heading">
           <div class="project-onboarding-strategy__layout">
             <div class="project-onboarding-strategy__copy">
-              <h1 id="project-onboarding-strategy-heading" class="project-onboarding-strategy__title">
+              <h1 id="project-onboarding-strategy-heading" class="project-onboarding-strategy__title" data-i18n="ob.ux.h1">
                 UX strategy: Which users are most likely to start carpooling immediately?
               </h1>
-              <p>
+              <p data-i18n="ob.ux.p">
                 The first thing to do is to understand our users and their needs therefore design decisions 
                 are guided by a clear understanding of the users we serve. By focusing on
                 specific user needs, behaviors, and goals, the product can deliver more meaningful and relevant
@@ -229,8 +234,8 @@
           </div>
         </section>
         <div class="project-onboarding-focus">
-          <h1 class="project-onboarding-focus__title">Focus on users with an innovative mindset</h1>
-          <p>
+          <h1 class="project-onboarding-focus__title" data-i18n="ob.innov.h1">Focus on users with an innovative mindset</h1>
+          <p data-i18n="ob.innov.p">
             The Diffusion of Innovation model explains how different types of people adopt new products
             or technologies over time. It categorizes users into groups such as innovators, early
             adopters, early majority, late majority, and laggards, each with different motivations
@@ -249,10 +254,10 @@
         <section class="project-onboarding-teams" aria-labelledby="project-onboarding-teams-heading">
           <div class="project-onboarding-teams__layout">
             <div class="project-onboarding-teams__copy">
-              <h1 id="project-onboarding-teams-heading" class="project-onboarding-teams__title">
+              <h1 id="project-onboarding-teams-heading" class="project-onboarding-teams__title" data-i18n="ob.teams.h1">
                 📈 The focus should be on carpooling teams and not individual users
               </h1>
-              <p>
+              <p data-i18n="ob.teams.p">
                 A strategic focus for Nabogo is carpooling teams - groups of colleagues who are already
                 sharing rides informally. Because these users are already carpooling, the barrier to
                 adoption is much lower: they don't need to be convinced of the value or spend time finding
@@ -274,19 +279,19 @@
         </section>
 
         <section class="project-onboarding-flows" aria-labelledby="project-onboarding-flows-heading">
-          <h1 id="project-onboarding-flows-heading" class="project-onboarding-flows__title">
+          <h1 id="project-onboarding-flows-heading" class="project-onboarding-flows__title" data-i18n="ob.flows.h1">
             User Flows for Onboarding
           </h1>
-          <p>
+          <p data-i18n="ob.flows.p1">
             Gathering data about users is essential to understand behaviors, needs, and pain points
             across the product experience and in this case for the new onboarding flow changes.
           </p>
-          <p>
+          <p data-i18n="ob.flows.p2">
             We combine qualitative methods such as interviews and user tests with app analytics data
             such as funnels. For the onboarding flow we were very interested about the user drop off
             rate and how clear the new steps are in the onboarding.
           </p>
-          <p>
+          <p data-i18n="ob.flows.p3">
             Below are the personas we considered for user tests and the funnels they would be going
             through:
           </p>
@@ -300,26 +305,26 @@
         />
 
         <section class="project-onboarding-shift" aria-labelledby="project-onboarding-shift-heading">
-          <h1 id="project-onboarding-shift-heading" class="project-onboarding-shift__title">
+          <h1 id="project-onboarding-shift-heading" class="project-onboarding-shift__title" data-i18n="ob.reg.h1">
             Shifting from a ‘Resgistration’ flow to an ‘Onboarding’ flow
           </h1>
-          <p>
+          <p data-i18n="ob.reg.p">
             Before the flow of the app was quite simple and focused on the user creating their
             credentials and using their phone number for verification. For the new flow, we are asking
             the user for more information and adding nudges in order to set up and personalize their
             carpooling profile.
           </p>
-          <p>To do so, we are asking:</p>
+          <p data-i18n="ob.reg.ask">To do so, we are asking:</p>
           <ul class="project-onboarding-shift__list">
-            <li>What type of carpooler are you (Passenger, driver or both)</li>
-            <li>How often do you carpool?</li>
-            <li>Where are you carpooling from and to?</li>
-            <li>Would you like to create a carpool right now? (Nudge)</li>
-            <li>Would you like to share your carpool ride with your work colleagues? (Nudge)</li>
+            <li data-i18n="ob.reg.l1">What type of carpooler are you (Passenger, driver or both)</li>
+            <li data-i18n="ob.reg.l2">How often do you carpool?</li>
+            <li data-i18n="ob.reg.l3">Where are you carpooling from and to?</li>
+            <li data-i18n="ob.reg.l4">Would you like to create a carpool right now? (Nudge)</li>
+            <li data-i18n="ob.reg.l5">Would you like to share your carpool ride with your work colleagues? (Nudge)</li>
           </ul>
         </section>
         <figure class="project-onboarding-flow-figure">
-          <h2 class="project-onboarding-flow-figure__heading">
+          <h2 class="project-onboarding-flow-figure__heading" data-i18n="ob.old">
             Old flow that was a simple registration:
           </h2>
           <img
@@ -331,7 +336,7 @@
           />
         </figure>
         <figure class="project-onboarding-flow-figure">
-          <h2 class="project-onboarding-flow-figure__heading">
+          <h2 class="project-onboarding-flow-figure__heading" data-i18n="ob.new">
             New flow that is an onboarding flow getting users set up to use the app:
           </h2>
           <img
@@ -343,10 +348,10 @@
           />
         </figure>
         <section class="project-onboarding-recruitment" aria-labelledby="project-onboarding-recruitment-heading">
-          <h1 id="project-onboarding-recruitment-heading" class="project-onboarding-recruitment__title">
+          <h1 id="project-onboarding-recruitment-heading" class="project-onboarding-recruitment__title" data-i18n="ob.right.h1">
             Are the right users recruited on the Nabogo app?
           </h1>
-          <p>
+          <p data-i18n="ob.right.p">
             These screens were added to the app’s onboarding flow to help users set up their profiles.
             By collecting this information early, we gain a better understanding of who is registering on
             the platform and whether our marketing and sales initiatives are reaching the right audience.
@@ -363,10 +368,10 @@
         />
 
         <section class="project-onboarding-activation" aria-labelledby="project-onboarding-activation-heading">
-          <h1 id="project-onboarding-activation-heading" class="project-onboarding-activation__title">
+          <h1 id="project-onboarding-activation-heading" class="project-onboarding-activation__title" data-i18n="ob.exp.h1">
             Experiment: Which users are most likely to start carpooling immediately?
           </h1>
-          <p>
+          <p data-i18n="ob.exp.p">
             At Nabogo, activation rate refers to users who not only create an account but also complete
             their first carpool - either by offering or joining a ride. This metric is critical for a
             carpooling platform, as real value is only created when users actually start sharing rides, not
@@ -384,18 +389,18 @@
           decoding="async"
         />
         <section class="project-onboarding-event" aria-labelledby="project-onboarding-event-heading">
-          <h1 id="project-onboarding-event-heading" class="project-onboarding-event__title">
+          <h1 id="project-onboarding-event-heading" class="project-onboarding-event__title" data-i18n="ob.event.h1">
             Users are used to longer onboarding flows from other apps and the reception was overall positive
           </h1>
           <div class="project-onboarding-event__layout">
             <div class="project-onboarding-event__copy">
-              <p>
+              <p data-i18n="ob.event.p">
                 The new onboarding flow was tested on users at an in-person event at the headquarters of
                 Novo Nordisk, one of Nabogo’s carpooling partners. There we onboarded 100+ people during the
                 event.
               </p>
-              <h2 class="project-onboarding-event__insight">Key insight 1</h2>
-              <p>
+              <h2 class="project-onboarding-event__insight" data-i18n="ob.k1">Key insight 1</h2>
+              <p data-i18n="ob.k1p">
                 Users struggled to understand the wording in the onboarding step where we ask about their
                 carpooling habits. Some participants had never carpooled before registering for the app, while
                 others found it difficult to accurately recall how often they had previously carpooled. This
@@ -416,8 +421,8 @@
             </figure>
           </div>
           <div class="project-onboarding-event__full">
-            <h2 class="project-onboarding-event__insight">Key insight 2</h2>
-            <p>
+            <h2 class="project-onboarding-event__insight" data-i18n="ob.k2">Key insight 2</h2>
+            <p data-i18n="ob.k2p">
               Users were used to longer onboarding flows from other apps and all the participants completed
               the onboarding flow at the event. None of the steps were surprising or irrelevant and the
               reception of the new onboarding on the app has been overall positive.
@@ -425,12 +430,12 @@
           </div>
         </section>
 
-        <h4>Outcome</h4>
+        <h4 data-i18n="proj.outcome">Outcome</h4>
         <section class="project-onboarding-outcome" aria-labelledby="project-onboarding-outcome-heading">
-          <h1 id="project-onboarding-outcome-heading" class="project-onboarding-outcome__title">
+          <h1 id="project-onboarding-outcome-heading" class="project-onboarding-outcome__title" data-i18n="ob.out.h1">
             The new onboarding has been a success and created more conversions than the previous in the first 3 months
           </h1>
-          <p>
+          <p data-i18n="ob.out.p">
             The redesigned onboarding flow improved clarity and reduced friction during signup, leading to a
             noticeable increase in user engagement and more successful conversions within the first three months
             after launch. Furthermore now we can track user groups better and see patterns between them.
@@ -453,9 +458,9 @@
 
 
 
-      <section class="container section project-page-testimonial" aria-label="Testimonial">
+      <section class="container section project-page-testimonial" aria-label="Testimonial" data-i18n-aria="proj.testimonial">
         <article class="card quote">
-          <p class="quote__text">
+          <p class="quote__text" data-i18n="q.kasper">
             "Octavia is an excellent designer by trade, with a strong eye for detail, but what
             truly sets her apart is her product design leadership. She takes full ownership of
             complex initiatives and steers them safely from early discovery through design and
@@ -473,7 +478,7 @@
             />
             <div class="quote__byline">
               <span class="quote__name">Kasper Sørensen</span>
-              <span class="quote__role">Product Manager at Nabogo ApS</span>
+              <span class="quote__role" data-i18n="role.kasper">Product Manager at Nabogo ApS</span>
             </div>
           </footer>
         </article>
@@ -501,10 +506,10 @@
       <section class="more-projects" data-more-projects aria-labelledby="more-projects-heading">
         <div class="container">
           <div class="more-projects__header">
-            <h2 id="more-projects-heading">View more projects</h2>
+            <h2 id="more-projects-heading" data-i18n="more.title">View more projects</h2>
             <div class="more-projects__nav">
-              <button type="button" class="more-projects__btn" data-scroll-prev aria-label="Previous projects">&#8249;</button>
-              <button type="button" class="more-projects__btn" data-scroll-next aria-label="Next projects">&#8250;</button>
+              <button type="button" class="more-projects__btn" data-scroll-prev aria-label="Previous projects" data-i18n-aria="more.prev">&#8249;</button>
+              <button type="button" class="more-projects__btn" data-scroll-next aria-label="Next projects" data-i18n-aria="more.next">&#8250;</button>
             </div>
           </div>
           <div class="more-projects__track">
@@ -513,8 +518,8 @@
                 <div class="thumb thumb-nabogo-designsystem" role="presentation"></div>
               </div>
               <div class="more-project-card__body">
-                <h3>AI-powered Design System for Nabogo ApS</h3>
-                <p>Tokens, components, and Storybook for a consistent Nabogo UI.</p>
+                <h3 data-i18n="more.card.ds">AI-powered Design System for Nabogo ApS</h3>
+                <p data-i18n="more.card.ds.p">Tokens, components, and Storybook for a consistent Nabogo UI.</p>
               </div>
             </a>
             <a class="more-project-card" href="sdu-intranet-project.html">
@@ -522,8 +527,8 @@
                 <div class="thumb thumb-sdu" role="presentation"></div>
               </div>
               <div class="more-project-card__body">
-                <h3>University Intranet Re-design based on UX Insights</h3>
-                <p>Research-led intranet redesign for a large university.</p>
+                <h3 data-i18n="more.card.sdu">University Intranet Re-design based on UX Insights</h3>
+                <p data-i18n="more.card.sdu.p">Research-led intranet redesign for a large university.</p>
               </div>
             </a>
             <a class="more-project-card" href="rotoy-project.html">
@@ -531,8 +536,8 @@
                 <div class="thumb thumb-rotoy" role="presentation"></div>
               </div>
               <div class="more-project-card__body">
-                <h3>Designing a Website and Webshop for EdTech Startup Rotoy ApS</h3>
-                <p>Marketing site and webshop for an EdTech startup.</p>
+                <h3 data-i18n="more.card.rotoy">Designing a Website and Webshop for EdTech Startup Rotoy ApS</h3>
+                <p data-i18n="more.card.rotoy.p">Marketing site and webshop for an EdTech startup.</p>
               </div>
             </a>
             <a class="more-project-card" href="makerspace-project.html">
@@ -540,8 +545,8 @@
                 <div class="thumb thumb-makerspace" role="presentation"></div>
               </div>
               <div class="more-project-card__body">
-                <h3>O'town Garage Makerspace Website Design</h3>
-                <p>Website design for a community makerspace.</p>
+                <h3 data-i18n="more.card.makerspace">O'town Garage Makerspace Website Design</h3>
+                <p data-i18n="more.card.makerspace.p">Website design for a community makerspace.</p>
               </div>
             </a>
           </div>
@@ -560,17 +565,17 @@
             height="114"
             decoding="async"
           />
-          <p class="site-footer__tagline">Turning complexity into clear experiences</p>
-          <p>© 2026 Octavia Sirbu - Senior Product Designer</p>
+          <p class="site-footer__tagline" data-i18n="footer.tagline">Turning complexity into clear experiences</p>
+          <p>© 2026 Octavia Sirbu - <span data-i18n="footer.role">Senior Product Designer</span></p>
         </div>
-        <nav class="site-footer__nav" aria-label="Main pages">
+        <nav class="site-footer__nav" aria-label="Main pages" data-i18n-aria="footer.navLabel">
           <ul class="site-footer__list">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="cv.html">CV</a></li>
-            <li><a href="work.html">Projects</a></li>
-            <li><a href="blog.html">Blog</a></li>
-            <li><a href="contact.html">Contact</a></li>
-            <li><a href="privacy.html">Privacy</a></li>
+            <li><a data-i18n="nav.home" href="index.html">Home</a></li>
+            <li><a data-i18n="nav.cv" href="cv.html">CV</a></li>
+            <li><a data-i18n="nav.projects" href="work.html">Projects</a></li>
+            <li><a data-i18n="nav.blog" href="blog.html">Blog</a></li>
+            <li><a data-i18n="nav.contact" href="contact.html">Contact</a></li>
+            <li><a data-i18n="nav.privacy" href="privacy.html">Privacy</a></li>
           </ul>
         </nav>
         <div class="site-footer__social">
@@ -588,12 +593,14 @@
               height="24"
               decoding="async"
             />
-            <span>My LinkedIn</span>
+            <span data-i18n="nav.linkedin">My LinkedIn</span>
           </a>
         </div>
       </div>
     </footer>
 
+    <script src="i18n.js?v=3"></script>
+    <script src="i18n-content.js?v=2"></script>
     <script src="script.js"></script>
   </body>
 </html>

@@ -4,9 +4,10 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" href="assets/portfolio-logo.svg" type="image/svg+xml" />
-    <title>Octavia Sirbu | Senior Product Designer</title>
+    <title data-i18n-page-title="home.pageTitle">Octavia Sirbu | Senior Product Designer</title>
     <script src="theme-init.js"></script>
-    <link rel="stylesheet" href="styles.css?v=vis-31" />
+    <script src="lang-init.js"></script>
+    <link rel="stylesheet" href="styles.css?v=vis-48" />
   </head>
   <body class="page-home">
     <header class="site-header">
@@ -17,18 +18,18 @@
         </a>
         <div class="nav-right">
           <ul class="nav-links">
-            <li><a class="active" href="index.html">Home</a></li>
-            <li><a href="cv.html">CV</a></li>
-            <li><a href="work.html">Projects</a></li>
-            <li><a href="blog.html">Blog</a></li>
+            <li><a data-i18n="nav.home" class="active" href="index.html">Home</a></li>
+            <li><a data-i18n="nav.cv" href="cv.html">CV</a></li>
+            <li><a data-i18n="nav.projects" href="work.html">Projects</a></li>
+            <li><a data-i18n="nav.blog" href="blog.html">Blog</a></li>
           </ul>
           <button
             type="button"
             class="theme-toggle"
             id="themeToggle"
-            aria-label="Switch to dark mode"
+            aria-label="Switch to dark mode" data-i18n-aria="theme.dark"
             aria-pressed="false"
-            title="Light or dark mode"
+            title="Light or dark mode" data-i18n-title="theme.title"
           >
             <span class="theme-icon theme-icon-sun" aria-hidden="true">
               <img src="assets/icons/sun-03.svg" alt="" width="20" height="20" decoding="async" />
@@ -37,6 +38,10 @@
               <img src="assets/icons/moon.svg" alt="" width="20" height="20" decoding="async" />
             </span>
           </button>
+          <div class="lang-toggle" role="group" data-i18n-aria="nav.lang">
+            <button type="button" class="lang-toggle__btn" data-lang-set="en" lang="en">EN</button>
+            <button type="button" class="lang-toggle__btn" data-lang-set="fr" lang="fr">FR</button>
+          </div>
         </div>
       </nav>
     </header>
@@ -44,14 +49,14 @@
     <main class="home-stack">
       <section class="hero container stack-card is-front">
         <div class="hero-copy">
-          <p class="tag" data-reveal data-reveal-hero>SENIOR PRODUCT DESIGNER</p>
-          <h1 data-reveal data-reveal-hero>Hi! It's Octavia</h1>
-          <p class="intro" data-reveal data-reveal-hero>
+          <p class="tag" data-reveal data-reveal-hero data-i18n="home.tag">SENIOR PRODUCT DESIGNER</p>
+          <h1 data-reveal data-reveal-hero data-i18n="home.hello">Hi! It's Octavia</h1>
+          <p class="intro" data-reveal data-reveal-hero data-i18n="home.intro">
             I'm a Senior Product Designer who turns Complexity into Clear Experiences
           </p>
           <div class="hero-cta-row" data-reveal data-reveal-hero>
-            <a class="btn hero-cta" href="cv.html">See full CV</a>
-            <a class="btn hero-cta-connect" href="work.html">See projects</a>
+            <a class="btn hero-cta" href="cv.html" data-i18n="home.cta.cv">See full CV</a>
+            <a class="btn hero-cta-connect" href="work.html" data-i18n="home.cta.work">See projects</a>
           </div>
         </div>
 
@@ -76,7 +81,7 @@
           <div class="home-bento" aria-label="Highlights">
             <article class="home-bento__tile home-bento__tile--years">
               <p class="home-bento__years-value">7+</p>
-              <p class="home-bento__years-label">years of work experience</p>
+              <p class="home-bento__years-label" data-i18n="home.years">years of work experience</p>
             </article>
 
             <article class="home-bento__tile home-bento__tile--nng">
@@ -89,14 +94,14 @@
                 loading="lazy"
                 decoding="async"
               />
-              <p class="home-bento__nng-label">Certified</p>
+              <p class="home-bento__nng-label" data-i18n="home.certified">Certified</p>
             </article>
 
             <a class="home-bento__tile home-bento__tile--years home-bento__tile--projects" href="work.html">
               <p class="home-bento__years-value">14</p>
-              <p class="home-bento__years-label">completed projects</p>
+              <p class="home-bento__years-label" data-i18n="home.projectsCount">completed projects</p>
               <span class="home-bento__overlay">
-                <span class="home-bento__overlay-text">See projects</span>
+                <span class="home-bento__overlay-text" data-i18n="home.seeProjects">See projects</span>
                 <img
                   class="home-bento__overlay-icon"
                   src="assets/icons/link-square-02.svg"
@@ -117,7 +122,7 @@
                 height="28"
                 decoding="async"
               />
-              <p class="home-bento__grad-label">
+              <p class="home-bento__grad-label" data-i18n="home.grad">
                 Graduated a MSc in IT Product Design at the University of Southern Denmark
               </p>
             </article>
@@ -133,7 +138,7 @@
                 decoding="async"
               />
               <span class="home-bento__overlay">
-                <span class="home-bento__overlay-text">See CV</span>
+                <span class="home-bento__overlay-text" data-i18n="home.seeCv">See CV</span>
                 <img
                   class="home-bento__overlay-icon"
                   src="assets/icons/link-square-02.svg"
@@ -147,18 +152,18 @@
           </div>
 
           <div class="home-collage__copy">
-            <h2 id="home-collage-heading">Scandi-educated Senior Product Designer with a flair for Development</h2>
-            <p class="intro home-collage__intro">
+            <h2 id="home-collage-heading" data-i18n="home.collage.title">Scandi-educated Senior Product Designer with a flair for Development</h2>
+            <p class="intro home-collage__intro" data-i18n="home.collage.p1">
               A snapshot of how I partner with teams: gathering feedback from users, defining problems, shaping
               flows and components, and polishing interfaces so products feel clear,
               consistent and easy to navigate.
             </p>
-            <p class="intro home-collage__intro home-collage__intro--follow">
+            <p class="intro home-collage__intro home-collage__intro--follow" data-i18n="home.collage.p2">
               I'm using AI as a partner but I keep the human touch in products to ensure they are not just
               technically sound but also fixing new problems for real users.
             </p>
             <a class="btn home-collage__cv" href="cv.html">
-              See full CV
+              <span data-i18n="home.cta.cv">See full CV</span>
               <span class="home-collage__cv-arrow" aria-hidden="true">→</span>
             </a>
           </div>
@@ -167,20 +172,20 @@
 
       <section class="container section stack-card" data-reveal>
         <div class="section-heading section-heading--texture">
-          <h2>Highlighted Projects</h2>
-          <a class="text-link text-link--animated" href="work.html">See all projects</a>
+          <h2 data-i18n="home.featured">Highlighted Projects</h2>
+          <a class="text-link text-link--animated" href="work.html" data-i18n="home.allProjects">See all projects</a>
         </div>
         <div class="grid three home-featured-grid">
           <a class="project-card" href="nbg-designsystem.html" data-reveal data-reveal-stagger>
             <div class="thumb thumb-nabogo-designsystem"></div>
-            <h3>AI-powered Design System for Nabogo ApS</h3>
-            <p class="project-desc">
+            <h3 data-i18n="work.ds.title">AI-powered Design System for Nabogo ApS</h3>
+            <p class="project-desc" data-i18n="work.ds.desc">
               Tokens, components, and Storybook documentation for a consistent
               product surface across teams.
             </p>
             <div class="project-labels">
-              <span data-skill="production">Design System</span>
-              <span data-skill="production">Dev handoff</span>
+              <span data-skill="production" data-i18n="skill.ds">Design System</span>
+              <span data-skill="production" data-i18n="skill.handoff">Dev handoff</span>
               <span data-skill="production">Figma</span>
               <span data-skill="ai">Cursor</span>
               <span data-skill="ai">MCP</span>
@@ -188,120 +193,120 @@
           </a>
           <a class="project-card" href="sdu-intranet-project.html" data-reveal data-reveal-stagger>
             <div class="thumb thumb-sdu"></div>
-            <h3>University Intranet Re-design based on UX Insights</h3>
-            <p class="project-desc">
+            <h3 data-i18n="work.sdu.title">University Intranet Re-design based on UX Insights</h3>
+            <p class="project-desc" data-i18n="work.sdu.desc">
               Research-led intranet redesign for a large university. Clearer structure,
               navigation, and interfaces shaped by staff and student needs.
             </p>
             <div class="project-labels">
-              <span data-skill="production">Web Design</span>
-              <span data-skill="process">UX Research</span>
-              <span data-skill="process">Project Management</span>
+              <span data-skill="production" data-i18n="skill.web">Web Design</span>
+              <span data-skill="process" data-i18n="skill.ux">UX Research</span>
+              <span data-skill="process" data-i18n="skill.pm">Project Management</span>
               <span data-skill="data">PowerBI</span>
             </div>
           </a>
           <a class="project-card" href="rotoy-project.html" data-reveal data-reveal-stagger>
             <div class="thumb thumb-rotoy"></div>
-            <h3>Designing a Website and Webshop for EdTech Startup Rotoy ApS</h3>
-            <p class="project-desc">
+            <h3 data-i18n="work.rotoy.title">Designing a Website and Webshop for EdTech Startup Rotoy ApS</h3>
+            <p class="project-desc" data-i18n="work.rotoy.desc">
               Marketing site and webshop experience for an EdTech startup. Clear
               storytelling, product discovery, and a purchase flow parents can trust.
             </p>
             <div class="project-labels">
-              <span data-skill="production">Responsive Design</span>
-              <span data-skill="production">Visual Design &amp; Branding</span>
-              <span data-skill="engineering">Web Dev</span>
+              <span data-skill="production" data-i18n="skill.resp">Responsive Design</span>
+              <span data-skill="production" data-i18n="skill.brand">Visual Design &amp; Branding</span>
+              <span data-skill="engineering" data-i18n="skill.webdev">Web Dev</span>
             </div>
           </a>
         </div>
       </section>
 
       <section class="container section stack-card" data-reveal aria-labelledby="services-heading">
-        <h2 id="services-heading" class="section-title--texture">What I can do for you</h2>
+        <h2 id="services-heading" class="section-title--texture" data-i18n="home.services">What I can do for you</h2>
         <div class="services-grid">
           <article class="service-offer">
             <div class="service-offer__icon" aria-hidden="true">
               <img src="assets/icons/web-design-01.svg" alt="" width="20" height="20" decoding="async" />
             </div>
-            <h3>UI Design and Design Systems</h3>
-            <p>
+            <h3 data-i18n="home.s1.title">UI Design and Design Systems</h3>
+            <p data-i18n="home.s1.body">
               Designing modern interfaces, reusable components, and documentation so products stay
               consistent as teams and features scale.
             </p>
             <div class="project-labels">
               <span data-skill="production">Figma</span>
-              <span data-skill="production">Components</span>
+              <span data-skill="production" data-i18n="skill.components">Components</span>
             </div>
           </article>
           <article class="service-offer">
             <div class="service-offer__icon" aria-hidden="true">
               <img src="assets/icons/structure-04.svg" alt="" width="20" height="20" decoding="async" />
             </div>
-            <h3>UX Research and Web Copy Writing</h3>
-            <p>
+            <h3 data-i18n="home.s2.title">UX Research and Web Copy Writing</h3>
+            <p data-i18n="home.s2.body">
               Combining interviews, usability testing, and clear writing so journeys feel obvious,
               trustworthy, and grounded in real user behavior.
             </p>
             <div class="project-labels">
-              <span data-skill="process">Usability testing</span>
-              <span data-skill="process">Interviews</span>
+              <span data-skill="process" data-i18n="skill.usability">Usability testing</span>
+              <span data-skill="process" data-i18n="skill.interviews">Interviews</span>
             </div>
           </article>
           <article class="service-offer">
             <div class="service-offer__icon" aria-hidden="true">
               <img src="assets/icons/artificial-intelligence-08.svg" alt="" width="20" height="20" decoding="async" />
             </div>
-            <h3>Web Development and AI Automations</h3>
-            <p>
+            <h3 data-i18n="home.s3.title">Web Development and AI Automations</h3>
+            <p data-i18n="home.s3.body">
               Building and shipping interfaces in code, and using AI tools to move faster on
               exploration, documentation, and delivery without dropping quality.
             </p>
             <div class="project-labels">
-              <span data-skill="engineering">Landing pages</span>
-              <span data-skill="engineering">E-commerce</span>
-              <span data-skill="engineering">Subscriptions</span>
+              <span data-skill="engineering" data-i18n="skill.landing">Landing pages</span>
+              <span data-skill="engineering" data-i18n="skill.ecom">E-commerce</span>
+              <span data-skill="engineering" data-i18n="skill.subs">Subscriptions</span>
             </div>
           </article>
           <article class="service-offer">
             <div class="service-offer__icon" aria-hidden="true">
               <img src="assets/icons/chart-line-data-02.svg" alt="" width="20" height="20" decoding="async" />
             </div>
-            <h3>Project Management and Metrics</h3>
-            <p>
+            <h3 data-i18n="home.s4.title">Project Management and Metrics</h3>
+            <p data-i18n="home.s4.body">
               Keeping design and delivery aligned through planning, stakeholder workshops, and
               a lean process so the work has measurable impact and teams know what shipped and why.
             </p>
             <div class="project-labels">
-              <span data-skill="process">Roadmaps</span>
-              <span data-skill="data">Analytics</span>
+              <span data-skill="process" data-i18n="skill.roadmaps">Roadmaps</span>
+              <span data-skill="data" data-i18n="skill.analytics">Analytics</span>
             </div>
           </article>
           <article class="service-offer">
             <div class="service-offer__icon" aria-hidden="true">
               <img src="assets/icons/brush.svg" alt="" width="20" height="20" decoding="async" />
             </div>
-            <h3>Branding and Graphic Design</h3>
-            <p>
+            <h3 data-i18n="home.s5.title">Branding and Graphic Design</h3>
+            <p data-i18n="home.s5.body">
               Building visual identities, social assets, and marketing graphics that strengthen
               brand recognition across channels.
             </p>
             <div class="project-labels">
-              <span data-skill="production">Visual identity</span>
-              <span data-skill="production">Brand assets</span>
+              <span data-skill="production" data-i18n="skill.identity">Visual identity</span>
+              <span data-skill="production" data-i18n="skill.assets">Brand assets</span>
             </div>
           </article>
           <article class="service-offer">
             <div class="service-offer__icon" aria-hidden="true">
               <img src="assets/icons/mail-01.svg" alt="" width="20" height="20" decoding="async" />
             </div>
-            <h3>Customer Touch Points and Email Automations</h3>
-            <p>
+            <h3 data-i18n="home.s6.title">Customer Touch Points and Email Automations</h3>
+            <p data-i18n="home.s6.body">
               Setting up welcome sequences, newsletters, and lifecycle emails with clear copy and
               timing so people hear from you at the right moment, not all at once.
             </p>
             <div class="project-labels">
-              <span data-skill="process">Customer Journeys</span>
-              <span data-skill="production">Email flows</span>
+              <span data-skill="process" data-i18n="skill.journeys">Customer Journeys</span>
+              <span data-skill="production" data-i18n="skill.email">Email flows</span>
             </div>
           </article>
         </div>
@@ -311,16 +316,16 @@
         class="container section section--testimonials stack-card"
         data-reveal
         data-testimonials-carousel
-        aria-label="Testimonials"
+        aria-label="Testimonials" data-i18n-aria="home.testimonials"
       >
         <div class="testimonials-carousel__header">
-          <h2 class="testimonials-carousel__title">Testimonials</h2>
+          <h2 class="testimonials-carousel__title" data-i18n="home.testimonials">Testimonials</h2>
           <div class="testimonials-carousel__nav">
             <button
               type="button"
               class="testimonials-carousel__btn"
               data-testimonials-prev
-              aria-label="Previous testimonials"
+              aria-label="Previous testimonials" data-i18n-aria="home.t.prev"
             >
               &#8249;
             </button>
@@ -328,7 +333,7 @@
               type="button"
               class="testimonials-carousel__btn"
               data-testimonials-next
-              aria-label="Next testimonials"
+              aria-label="Next testimonials" data-i18n-aria="home.t.next"
             >
               &#8250;
             </button>
@@ -338,7 +343,7 @@
           <div class="testimonials-carousel__viewport">
             <div class="testimonials-carousel__track">
               <article class="card quote testimonials-carousel__slide">
-                <p class="quote__text">
+                <p class="quote__text" data-i18n="q.esben">
                   "The project demonstrated Octavia's UX professional know-how regarding user
                   research (interviews and workshops), translating user insights, designing
                   prototypes, and visual design. The resulting web intranet portal is today a widely accepted
@@ -356,12 +361,12 @@
                   />
                   <div class="quote__byline">
                     <span class="quote__name">Esben Flindt</span>
-                    <span class="quote__role">Manager at the University of Southern Denmark</span>
+                    <span class="quote__role" data-i18n="role.esben">Manager at the University of Southern Denmark</span>
                   </div>
                 </footer>
               </article>
               <article class="card quote testimonials-carousel__slide">
-                <p class="quote__text">
+                <p class="quote__text" data-i18n="q.kasper">
                   "Octavia is an excellent designer by trade, with a strong eye for detail, but what
                   truly sets her apart is her product design leadership. She takes full ownership of
                   complex initiatives and steers them safely from early discovery through design and
@@ -379,12 +384,12 @@
                   />
                   <div class="quote__byline">
                     <span class="quote__name">Kasper Sørensen</span>
-                    <span class="quote__role">Product Manager at Nabogo ApS</span>
+                    <span class="quote__role" data-i18n="role.kasper">Product Manager at Nabogo ApS</span>
                   </div>
                 </footer>
               </article>
               <article class="card quote testimonials-carousel__slide">
-                <p class="quote__text">
+                <p class="quote__text" data-i18n="q.anja">
                   "Octavia has a great eagerness to improve her skills and always aims to create the
                   best solutions. She has been working with many stakeholders at Universal Robots and
                   has built a strong network."
@@ -401,12 +406,12 @@
                   />
                   <div class="quote__byline">
                     <span class="quote__name">Anja Saabye</span>
-                    <span class="quote__role">Head of Product Design at Universal Robots</span>
+                    <span class="quote__role" data-i18n="role.anja">Head of Product Design at Universal Robots</span>
                   </div>
                 </footer>
               </article>
               <article class="card quote testimonials-carousel__slide">
-                <p class="quote__text">
+                <p class="quote__text" data-i18n="q.chris">
                   "Octavia brings strong product thinking, a clear UX vision, and is very effective at turning
                   ideas into concrete, well-designed solutions. She is also a strong communicator, clear,
                   thoughtful, and easy to work with, which made collaboration across teams smooth and
@@ -424,12 +429,12 @@
                   />
                   <div class="quote__byline">
                     <span class="quote__name">Krzysztof Zielinski</span>
-                    <span class="quote__role">CTO at Rotoy ApS</span>
+                    <span class="quote__role" data-i18n="role.chris">CTO at Rotoy ApS</span>
                   </div>
                 </footer>
               </article>
               <article class="card quote testimonials-carousel__slide">
-                <p class="quote__text">
+                <p class="quote__text" data-i18n="q.axel">
                   "I no longer have to repeat the info from our website. Octavia keeps the purpose of the product
                   as the goal for the design, which is as valuable as the appealing visuals that she creates. She is
                   proactively asking relevant questions and challenges our preconceptions with a positive mindset -
@@ -447,12 +452,12 @@
                   />
                   <div class="quote__byline">
                     <span class="quote__name">Axel Soll</span>
-                    <span class="quote__role">Chairman of Makerspace O'town Garage</span>
+                    <span class="quote__role" data-i18n="role.axel">Chairman of Makerspace O'town Garage</span>
                   </div>
                 </footer>
               </article>
               <article class="card quote testimonials-carousel__slide">
-                <p class="quote__text">
+                <p class="quote__text" data-i18n="q.nina">
                   "Octavia was part of the SundtValg Odense '19 team, where she played a major role in
                   developing and promoting the event. With her ideas and marketing skills, we doubled
                   the number of followers on our Instagram profile within 3 months. It was a pleasure
@@ -470,12 +475,12 @@
                   />
                   <div class="quote__byline">
                     <span class="quote__name">Nina Popović Gøttsch</span>
-                    <span class="quote__role">CEO of InsipreU Events</span>
+                    <span class="quote__role" data-i18n="role.nina">CEO of InsipreU Events</span>
                   </div>
                 </footer>
               </article>
               <article class="card quote testimonials-carousel__slide">
-                <p class="quote__text">
+                <p class="quote__text" data-i18n="q.christina">
                   "I give my warmest recommendations for Octavia for her dedication and competences in
                   driving a complex UX project across a large organization as the University of Southern
                   Denmark. Octavia has demonstrated her UX-skills in both user research with interviews
@@ -493,12 +498,12 @@
                   />
                   <div class="quote__byline">
                     <span class="quote__name">Christina Vilms Kay</span>
-                    <span class="quote__role">Head of Communication at the University of Southern Denmark</span>
+                    <span class="quote__role" data-i18n="role.christina">Head of Communication at the University of Southern Denmark</span>
                   </div>
                 </footer>
               </article>
               <article class="card quote testimonials-carousel__slide">
-                <p class="quote__text">
+                <p class="quote__text" data-i18n="q.nuala">
                   "Octavia worked in our team primarily on the prototyping of our app, for use in people
                   with chronic conditions. She collaborated with engineer, strategist and myself to
                   prototype an app that realised all our ideas, incorporating different stakeholders'
@@ -516,12 +521,12 @@
                   />
                   <div class="quote__byline">
                     <span class="quote__name">Nuala Burke</span>
-                    <span class="quote__role">Chief Scientific Office at Walk With Path LLC</span>
+                    <span class="quote__role" data-i18n="role.nuala">Chief Scientific Office at Walk With Path LLC</span>
                   </div>
                 </footer>
               </article>
               <article class="card quote testimonials-carousel__slide">
-                <p class="quote__text">
+                <p class="quote__text" data-i18n="q.emil">
                   "Working with Octavia set a new benchmark for what strong design collaboration looks
                   like. As Lead Product Designer, she combined strong UI and UX expertise with exceptional
                   collaborative skills, bringing together design, engineering, and stakeholders around a
@@ -539,12 +544,12 @@
                   />
                   <div class="quote__byline">
                     <span class="quote__name">Emil Klindt Sørensen</span>
-                    <span class="quote__role">Lead Software Engineer at Nabogo ApS</span>
+                    <span class="quote__role" data-i18n="role.emil">Lead Software Engineer at Nabogo ApS</span>
                   </div>
                 </footer>
               </article>
               <article class="card quote testimonials-carousel__slide">
-                <p class="quote__text">
+                <p class="quote__text" data-i18n="q.adam">
                   "Octavia was a great addition to our Media Production teams at TEDxEAL and Factory of
                   Imagination. Octavia brought her photography skills to our events, and captured the
                   excitement of a live event perfectly. She was also a great volunteer and team member
@@ -562,7 +567,7 @@
                   />
                   <div class="quote__byline">
                     <span class="quote__name">Adam Montandon</span>
-                    <span class="quote__role">Curator and license holder at TEDxOdense</span>
+                    <span class="quote__role" data-i18n="role.adam">Curator and license holder at TEDxOdense</span>
                   </div>
                 </footer>
               </article>
@@ -572,7 +577,7 @@
       </section>
 
       <section class="container section section--trusted stack-card" data-reveal>
-        <h2 class="section-title--center">Trusted by</h2>
+        <h2 class="section-title--center" data-i18n="home.trusted">Trusted by</h2>
         <div class="trusted-by-logos" role="list" data-reveal data-reveal-stagger>
           <div class="trusted-by-logo" role="listitem">
             <img
@@ -685,11 +690,11 @@
       >
         <div class="balloon-dog">
           <div class="balloon-dog__play" data-balloon-play>
-            <p class="tag balloon-dog__eyebrow">A little fun</p>
-            <h2 id="balloon-dog-heading" class="section-title--center">
+            <p class="tag balloon-dog__eyebrow" data-i18n="balloon.fun">A little fun</p>
+            <h2 id="balloon-dog-heading" class="section-title--center" data-i18n="balloon.title">
               Pump the balloon dog
             </h2>
-            <p class="balloon-dog__lede">
+            <p class="balloon-dog__lede" data-i18n="balloon.lede">
               Inflate until it pops. Contact details are waiting underneath.
             </p>
 
@@ -717,7 +722,7 @@
                 type="button"
                 class="balloon-dog__dog"
                 data-balloon-pump-trigger
-                aria-label="Pump the balloon dog"
+                aria-label="Pump the balloon dog" data-i18n-aria="balloon.pump"
               >
                 <span class="balloon-dog__dog-scale" data-balloon-dog-scale>
                   <span class="balloon-dog__imgs">
@@ -774,7 +779,7 @@
                 type="button"
                 class="balloon-dog__pump-wrap"
                 data-balloon-pump-trigger
-                aria-label="Pump with the hand pump"
+                aria-label="Pump with the hand pump" data-i18n-aria="balloon.hand"
               >
                 <span class="balloon-dog__pump" data-balloon-pump-visual>
                   <span class="balloon-dog__pump-tilt">
@@ -817,16 +822,16 @@
             hidden
             aria-hidden="true"
           >
-            <p class="tag balloon-dog__eyebrow">You found me</p>
+            <p class="tag balloon-dog__eyebrow" data-i18n="balloon.found">You found me</p>
             <h2 class="section-title--center" data-balloon-contact-name>Octavia Sirbu</h2>
-            <p class="balloon-dog__role" data-balloon-contact-role>Hit me up</p>
+            <p class="balloon-dog__role" data-balloon-contact-role data-i18n="balloon.role">Hit me up</p>
             <ul class="balloon-dog__links">
               <li style="--stagger: 0">
                 <button
                   type="button"
                   class="balloon-dog__link"
                   data-balloon-copy-email
-                  aria-label="Copy email address"
+                  aria-label="Copy email address" data-i18n-aria="balloon.copyAria"
                 >
                   <img
                     src="assets/icons/copy-01.svg"
@@ -883,7 +888,7 @@
               </li>
             </ul>
             <p class="balloon-dog__copy-feedback form-message" data-balloon-copy-feedback aria-live="polite"></p>
-            <button type="button" class="balloon-dog__replay" data-balloon-replay>
+            <button type="button" class="balloon-dog__replay" data-balloon-replay data-i18n="balloon.again">
               Inflate again
             </button>
           </div>
@@ -902,17 +907,17 @@
             height="114"
             decoding="async"
           />
-          <p class="site-footer__tagline">Turning complexity into clear experiences</p>
-          <p>© 2026 Octavia Sirbu - Senior Product Designer</p>
+          <p class="site-footer__tagline" data-i18n="footer.tagline">Turning complexity into clear experiences</p>
+          <p>© 2026 Octavia Sirbu - <span data-i18n="footer.role">Senior Product Designer</span></p>
         </div>
-        <nav class="site-footer__nav" aria-label="Main pages">
+        <nav class="site-footer__nav" aria-label="Main pages" data-i18n-aria="footer.navLabel">
           <ul class="site-footer__list">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="cv.html">CV</a></li>
-            <li><a href="work.html">Projects</a></li>
-            <li><a href="blog.html">Blog</a></li>
-            <li><a href="contact.html">Contact</a></li>
-            <li><a href="privacy.html">Privacy</a></li>
+            <li><a data-i18n="nav.home" href="index.html">Home</a></li>
+            <li><a data-i18n="nav.cv" href="cv.html">CV</a></li>
+            <li><a data-i18n="nav.projects" href="work.html">Projects</a></li>
+            <li><a data-i18n="nav.blog" href="blog.html">Blog</a></li>
+            <li><a data-i18n="nav.contact" href="contact.html">Contact</a></li>
+            <li><a data-i18n="nav.privacy" href="privacy.html">Privacy</a></li>
           </ul>
         </nav>
         <div class="site-footer__social">
@@ -930,14 +935,16 @@
               height="24"
               decoding="async"
             />
-            <span>My LinkedIn</span>
+            <span data-i18n="nav.linkedin">My LinkedIn</span>
           </a>
         </div>
       </div>
     </footer>
 
-    <script src="balloon-dog.js?v=pump-stroke-1"></script>
+    <script src="i18n.js?v=3"></script>
+    <script src="i18n-content.js?v=2"></script>
+    <script src="balloon-dog.js?v=pump-stroke-2"></script>
     <script src="hero-scramble.js?v=scramble-7"></script>
-    <script src="script.js?v=service-panel-1"></script>
+    <script src="script.js?v=service-panel-2"></script>
   </body>
 </html>

@@ -18,12 +18,12 @@
     COLOR_BLEND_SPAN: 0.12,
     /* Screen-reader-only stage labels (visible status UI removed) */
     STAGE_LABELS: [
-      { at: 0, label: "Balloon dog ready" },
-      { at: 0.25, label: "Getting bigger" },
-      { at: 0.5, label: "Looking plump" },
-      { at: 0.75, label: "Getting unstable" },
-      { at: 0.9, label: "So tense" },
-      { at: 1, label: "Pop" },
+      { at: 0, key: "balloon.ready", label: "Balloon dog ready" },
+      { at: 0.25, key: "balloon.bigger", label: "Getting bigger" },
+      { at: 0.5, key: "balloon.plump", label: "Looking plump" },
+      { at: 0.75, key: "balloon.unstable", label: "Getting unstable" },
+      { at: 0.9, key: "balloon.tense", label: "So tense" },
+      { at: 1, key: "balloon.pop", label: "Pop" },
     ],
     WOBBLE_FROM_PUMP: 4,
     HOLD_BEFORE_POP_MS: 620,
@@ -76,6 +76,17 @@
   if (!root) return;
 
   const cfg = BALLOON_DOG_CONFIG;
+  const t = (key, fallback) => {
+    try {
+      if (window.portfolioI18n) {
+        const value = window.portfolioI18n.t(key);
+        if (value) return value;
+      }
+    } catch (e) {
+      /* ignore */
+    }
+    return fallback;
+  };
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
   const playEl = root.querySelector("[data-balloon-play]");
@@ -410,7 +421,7 @@
   const applyContact = () => {
     const { name, role, email, phone, phoneHref, linkedin } = cfg.CONTACT;
     if (contactName) contactName.textContent = name;
-    if (contactRole) contactRole.textContent = role;
+    if (contactRole) contactRole.textContent = t("balloon.role", role);
     if (contactLinkedin) contactLinkedin.href = linkedin;
     if (contactEmailLabel) contactEmailLabel.textContent = email;
     if (contactPhone) contactPhone.href = phoneHref;
@@ -438,11 +449,11 @@
 
   const stageLabel = () => {
     const r = progressRatio();
-    let label = cfg.STAGE_LABELS[0].label;
+    let current = cfg.STAGE_LABELS[0];
     cfg.STAGE_LABELS.forEach((s) => {
-      if (r >= s.at) label = s.label;
+      if (r >= s.at) current = s;
     });
-    return label;
+    return t(current.key, current.label);
   };
 
   const opacityForLayer = (layer, r) => {
@@ -741,7 +752,7 @@
   const explode = () => {
     exploded = true;
     busy = true;
-    if (statusEl) statusEl.textContent = "Pop";
+    if (statusEl) statusEl.textContent = t("balloon.pop", "Pop");
     updateLayerBlend();
 
     if (!reduceMotion) {
@@ -868,9 +879,9 @@
       if (!email) return;
       try {
         await writeClipboard(email);
-        if (copyFeedback) copyFeedback.textContent = "Email copied to clipboard.";
+        if (copyFeedback) copyFeedback.textContent = t("copy.ok", "Email copied to clipboard.");
       } catch (error) {
-        if (copyFeedback) copyFeedback.textContent = "Could not copy email. Please copy it manually.";
+        if (copyFeedback) copyFeedback.textContent = t("copy.fail", "Could not copy email. Please copy it manually.");
       }
     });
   }
@@ -914,6 +925,7 @@
   }
 
   requestHoseUpdate();
+  document.addEventListener("portfolio-lang", applyContact);
 
   root._balloonDogConfig = cfg;
   root._balloonDogReset = reset;

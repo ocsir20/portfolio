@@ -4,8 +4,9 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" href="assets/portfolio-logo.svg" type="image/svg+xml" />
-    <title>AI-powered Design System for Nabogo ApS | Octavia Sirbu</title>
+    <title data-i18n="ds.pageTitle">AI-powered Design System for Nabogo ApS | Octavia Sirbu</title>
     <script src="theme-init.js"></script>
+    <script src="lang-init.js"></script>
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body class="page-project">
@@ -17,18 +18,18 @@
         </a>
         <div class="nav-right">
           <ul class="nav-links">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="cv.html">CV</a></li>
-            <li><a class="active" href="work.html">Projects</a></li>
-            <li><a href="blog.html">Blog</a></li>
+            <li><a data-i18n="nav.home" href="index.html">Home</a></li>
+            <li><a data-i18n="nav.cv" href="cv.html">CV</a></li>
+            <li><a data-i18n="nav.projects" class="active" href="work.html">Projects</a></li>
+            <li><a data-i18n="nav.blog" href="blog.html">Blog</a></li>
           </ul>
           <button
             type="button"
             class="theme-toggle"
             id="themeToggle"
-            aria-label="Switch to dark mode"
+            aria-label="Switch to dark mode" data-i18n-aria="theme.dark"
             aria-pressed="false"
-            title="Light or dark mode"
+            title="Light or dark mode" data-i18n-title="theme.title"
           >
             <span class="theme-icon theme-icon-sun" aria-hidden="true">
               <img src="assets/icons/sun-03.svg" alt="" width="20" height="20" decoding="async" />
@@ -37,6 +38,10 @@
               <img src="assets/icons/moon.svg" alt="" width="20" height="20" decoding="async" />
             </span>
           </button>
+          <div class="lang-toggle" role="group" data-i18n-aria="nav.lang">
+            <button type="button" class="lang-toggle__btn" data-lang-set="en" lang="en">EN</button>
+            <button type="button" class="lang-toggle__btn" data-lang-set="fr" lang="fr">FR</button>
+          </div>
         </div>
       </nav>
     </header>
@@ -44,8 +49,8 @@
     <main>
       <section class="page-hero page-hero--texture">
         <div class="container">
-          <h1>AI-powered Design System for Nabogo ApS</h1>
-          <p class="intro">
+          <h1 data-i18n="more.card.ds">AI-powered Design System for Nabogo ApS</h1>
+          <p class="intro" data-i18n="ds.intro">
             Foundations, components, and documentation that keep Nabogo’s product surfaces
             consistent from design through code.
           </p>
@@ -53,10 +58,10 @@
       </section>
 
       <div class="container project-overview-below-hero">
-        <section class="project-overview" aria-label="Project overview">
+        <section class="project-overview" aria-label="Project overview" data-i18n-aria="proj.overview">
           <div class="project-overview__summary">
-            <p class="project-overview__label">Project Summary</p>
-            <p class="project-overview__body">
+            <p class="project-overview__label" data-i18n="proj.summary">Project Summary</p>
+            <p class="project-overview__body" data-i18n="ds.summary">
               This companion case study focuses on the Nabogo design system: tokens, type, color,
               components in Storybook, and how the team uses them to ship faster with fewer visual
               regressions. For the broader product story, see the main Nabogo case study.
@@ -64,7 +69,7 @@
           </div>
           <div class="project-overview__company">
             <p class="project-overview__label">🇩🇰 Nabogo ApS</p>
-            <p class="project-overview__body">
+            <p class="project-overview__body" data-i18n="nabogo.company">
               Carpooling for daily commuters - to benefit mobility, infrastructure and the climate.
               We partner with Public transportation authorities, provinces and private companies.
               Nabogo ApS is available in North European markets (Denmark, Norway, Sweden,
@@ -73,22 +78,22 @@
           </div>
           <dl class="project-overview__meta">
             <div class="project-overview__pair">
-              <dt>Role</dt>
-              <dd>Lead Product Designer</dd>
+              <dt data-i18n="proj.role">Role</dt>
+              <dd data-i18n="role.leadPd">Lead Product Designer</dd>
             </div>
             <div class="project-overview__pair">
-              <dt>Team</dt>
-              <dd>Nabogo ApS product team: 1 product manager, 1 lead product designer, 1 UX designer, 4 developers.</dd>
+              <dt data-i18n="proj.team">Team</dt>
+              <dd data-i18n="nabogo.team">Nabogo ApS product team: 1 product manager, 1 lead product designer, 1 UX designer, 4 developers.</dd>
             </div>
             <div class="project-overview__pair">
-              <dt>Methods</dt>
-              <dd>
+              <dt data-i18n="proj.methods">Methods</dt>
+              <dd data-i18n="nabogo.methods2">
                 Sketches · User flows · High-fidelity prototyping · Error-state design · Usability testing · Design System · A/B testing
               </dd>
             </div>
             <div class="project-overview__pair">
-              <dt>Tools</dt>
-              <dd>Figma, Cursor, Storybook, Jira, Confluence, Miro, Posthog and Condens.</dd>
+              <dt data-i18n="proj.tools">Tools</dt>
+              <dd data-i18n="nabogo.tools2">Figma, Cursor, Storybook, Jira, Confluence, Miro, Posthog and Condens.</dd>
             </div>
           </dl>
         </section>
@@ -104,28 +109,28 @@
             decoding="async"
           />
           <section class="project-onboarding-role" aria-labelledby="project-onboarding-role-heading">
-            <h1 id="project-onboarding-role-heading" class="project-onboarding-role__heading">My role</h1>
+            <h1 id="project-onboarding-role-heading" class="project-onboarding-role__heading" data-i18n="proj.myRole">My role</h1>
             <div class="project-onboarding-role__layout">
               <div class="project-onboarding-role__copy">
-                <h2>🎯 Lead End-to-end Product Execution</h2>
-                <p>Own the design process from concept to launch.</p>
-                <h2>👨‍💼 Champion the User</h2>
-                <p>
+                <h2 data-i18n="role.leadExec">🎯 Lead End-to-end Product Execution</h2>
+                <p data-i18n="role.leadExec.p">Own the design process from concept to launch.</p>
+                <h2 data-i18n="role.champion">👨‍💼 Champion the User</h2>
+                <p data-i18n="role.champion.p">
                   Designing user centric features and user journey by implementing data from user test,
                   user interviews and surveys.
                 </p>
                 <h2>📊 Measure &amp; Improve</h2>
-                <p>
+                <p data-i18n="role.measure.p">
                   Track impact for new feature and imporvements and refine based on data together with PM
                   and lead engineer.
                 </p>
-                <h2>✅ Enforce Quality Standards</h2>
-                <p>
+                <h2 data-i18n="role.quality">✅ Enforce Quality Standards</h2>
+                <p data-i18n="role.quality.p">
                   Implement design reviews, usability checks, and QA testing to ensure consistency and a
                   smooth user experience.
                 </p>
-                <h2>🚀 Craft Scalable UI</h2>
-                <p>
+                <h2 data-i18n="role.ui">🚀 Craft Scalable UI</h2>
+                <p data-i18n="role.ui.p">
                   Create clear, consistent interfaces using Figma and maintain shared libraries and design
                   systems.
                 </p>
@@ -321,9 +326,9 @@ decoding="async"
 
       </article>
 
-      <section class="container section project-page-testimonial" aria-label="Testimonial">
+      <section class="container section project-page-testimonial" aria-label="Testimonial" data-i18n-aria="proj.testimonial">
         <article class="card quote">
-          <p class="quote__text">
+          <p class="quote__text" data-i18n="q.kasper">
             "Octavia is an excellent designer by trade, with a strong eye for detail, but what
             truly sets her apart is her product design leadership. She takes full ownership of
             complex initiatives and steers them safely from early discovery through design and
@@ -341,7 +346,7 @@ decoding="async"
             />
             <div class="quote__byline">
               <span class="quote__name">Kasper Sørensen</span>
-              <span class="quote__role">Product Manager at Nabogo ApS</span>
+              <span class="quote__role" data-i18n="role.kasper">Product Manager at Nabogo ApS</span>
             </div>
           </footer>
         </article>
@@ -350,10 +355,10 @@ decoding="async"
       <section class="more-projects" data-more-projects aria-labelledby="more-projects-heading">
         <div class="container">
           <div class="more-projects__header">
-            <h2 id="more-projects-heading">View more projects</h2>
+            <h2 id="more-projects-heading" data-i18n="more.title">View more projects</h2>
             <div class="more-projects__nav">
-              <button type="button" class="more-projects__btn" data-scroll-prev aria-label="Previous projects">&#8249;</button>
-              <button type="button" class="more-projects__btn" data-scroll-next aria-label="Next projects">&#8250;</button>
+              <button type="button" class="more-projects__btn" data-scroll-prev aria-label="Previous projects" data-i18n-aria="more.prev">&#8249;</button>
+              <button type="button" class="more-projects__btn" data-scroll-next aria-label="Next projects" data-i18n-aria="more.next">&#8250;</button>
             </div>
           </div>
           <div class="more-projects__track">
@@ -362,8 +367,8 @@ decoding="async"
                 <div class="thumb thumb-nabogo-onboarding" role="presentation"></div>
               </div>
               <div class="more-project-card__body">
-                <h3>Designing Onboardings that convert - Nabogo ApS</h3>
-                <p>Improving onboarding for Nabogo's app and raising the activation rate by 5%.</p>
+                <h3 data-i18n="more.card.onboarding">Designing Onboardings that convert - Nabogo ApS</h3>
+                <p data-i18n="more.card.onboarding.p">Improving onboarding for Nabogo's app and raising the activation rate by 5%.</p>
               </div>
             </a>
             <a class="more-project-card" href="sdu-intranet-project.html">
@@ -371,8 +376,8 @@ decoding="async"
                 <div class="thumb thumb-sdu" role="presentation"></div>
               </div>
               <div class="more-project-card__body">
-                <h3>University Intranet Re-design based on UX Insights</h3>
-                <p>Research-led intranet redesign for a large university.</p>
+                <h3 data-i18n="more.card.sdu">University Intranet Re-design based on UX Insights</h3>
+                <p data-i18n="more.card.sdu.p">Research-led intranet redesign for a large university.</p>
               </div>
             </a>
             <a class="more-project-card" href="rotoy-project.html">
@@ -380,8 +385,8 @@ decoding="async"
                 <div class="thumb thumb-rotoy" role="presentation"></div>
               </div>
               <div class="more-project-card__body">
-                <h3>Designing a Website and Webshop for EdTech Startup Rotoy ApS</h3>
-                <p>Marketing site and webshop for an EdTech startup.</p>
+                <h3 data-i18n="more.card.rotoy">Designing a Website and Webshop for EdTech Startup Rotoy ApS</h3>
+                <p data-i18n="more.card.rotoy.p">Marketing site and webshop for an EdTech startup.</p>
               </div>
             </a>
             <a class="more-project-card" href="makerspace-project.html">
@@ -389,8 +394,8 @@ decoding="async"
                 <div class="thumb thumb-makerspace" role="presentation"></div>
               </div>
               <div class="more-project-card__body">
-                <h3>O'town Garage Makerspace Website Design</h3>
-                <p>Website design for a community makerspace.</p>
+                <h3 data-i18n="more.card.makerspace">O'town Garage Makerspace Website Design</h3>
+                <p data-i18n="more.card.makerspace.p">Website design for a community makerspace.</p>
               </div>
             </a>
           </div>
@@ -409,17 +414,17 @@ decoding="async"
             height="114"
             decoding="async"
           />
-          <p class="site-footer__tagline">Turning complexity into clear experiences</p>
-          <p>© 2026 Octavia Sirbu - Senior Product Designer</p>
+          <p class="site-footer__tagline" data-i18n="footer.tagline">Turning complexity into clear experiences</p>
+          <p>© 2026 Octavia Sirbu - <span data-i18n="footer.role">Senior Product Designer</span></p>
         </div>
-        <nav class="site-footer__nav" aria-label="Main pages">
+        <nav class="site-footer__nav" aria-label="Main pages" data-i18n-aria="footer.navLabel">
           <ul class="site-footer__list">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="cv.html">CV</a></li>
-            <li><a href="work.html">Projects</a></li>
-            <li><a href="blog.html">Blog</a></li>
-            <li><a href="contact.html">Contact</a></li>
-            <li><a href="privacy.html">Privacy</a></li>
+            <li><a data-i18n="nav.home" href="index.html">Home</a></li>
+            <li><a data-i18n="nav.cv" href="cv.html">CV</a></li>
+            <li><a data-i18n="nav.projects" href="work.html">Projects</a></li>
+            <li><a data-i18n="nav.blog" href="blog.html">Blog</a></li>
+            <li><a data-i18n="nav.contact" href="contact.html">Contact</a></li>
+            <li><a data-i18n="nav.privacy" href="privacy.html">Privacy</a></li>
           </ul>
         </nav>
         <div class="site-footer__social">
@@ -437,12 +442,14 @@ decoding="async"
               height="24"
               decoding="async"
             />
-            <span>My LinkedIn</span>
+            <span data-i18n="nav.linkedin">My LinkedIn</span>
           </a>
         </div>
       </div>
     </footer>
 
+    <script src="i18n.js?v=3"></script>
+    <script src="i18n-content.js?v=2"></script>
     <script src="script.js"></script>
   </body>
 </html>

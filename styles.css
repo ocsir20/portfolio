@@ -333,6 +333,44 @@ body.page-project .project-media--quad {
   outline-offset: 3px;
 }
 
+.lang-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.15rem;
+  flex-shrink: 0;
+  padding: 0.18rem;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+}
+
+.lang-toggle__btn {
+  appearance: none;
+  -webkit-appearance: none;
+  margin: 0;
+  padding: 0.35rem 0.55rem;
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+  color: var(--muted);
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+}
+
+.lang-toggle__btn.is-active,
+.lang-toggle__btn[aria-pressed="true"] {
+  background: var(--accent);
+  color: var(--btn-text);
+}
+
+.lang-toggle__btn:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
 html[data-theme="dark"] .theme-toggle {
   border-color: rgba(255, 255, 255, 0.12);
   background: #26222b;

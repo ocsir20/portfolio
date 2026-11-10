@@ -61,7 +61,10 @@ if (themeToggle) {
 
   const syncThemeToggle = () => {
     const isDark = document.documentElement.getAttribute("data-theme") === "dark";
-    themeToggle.setAttribute("aria-label", isDark ? "Switch to light mode" : "Switch to dark mode");
+    const i18n = window.portfolioI18n;
+    const darkLabel = i18n ? i18n.t("theme.dark") : "Switch to dark mode";
+    const lightLabel = i18n ? i18n.t("theme.light") : "Switch to light mode";
+    themeToggle.setAttribute("aria-label", isDark ? lightLabel : darkLabel);
     themeToggle.setAttribute("aria-pressed", isDark ? "true" : "false");
   };
 
@@ -112,9 +115,13 @@ if (copyEmailCard && copyFeedback && emailValue) {
   copyEmailCard.addEventListener("click", async () => {
     try {
       await writeClipboard(emailText);
-      copyFeedback.textContent = "Email copied to clipboard.";
+      copyFeedback.textContent = window.portfolioI18n
+        ? window.portfolioI18n.t("copy.ok")
+        : "Email copied to clipboard.";
     } catch (error) {
-      copyFeedback.textContent = "Could not copy email. Please copy it manually.";
+      copyFeedback.textContent = window.portfolioI18n
+        ? window.portfolioI18n.t("copy.fail")
+        : "Could not copy email. Please copy it manually.";
     }
   });
 }
@@ -347,7 +354,10 @@ document.querySelectorAll("[data-more-projects]").forEach((root) => {
   const btn = document.createElement("button");
   btn.type = "button";
   btn.className = "back-to-top";
-  btn.setAttribute("aria-label", "Back to top");
+  btn.setAttribute(
+    "aria-label",
+    window.portfolioI18n ? window.portfolioI18n.t("top.label") : "Back to top"
+  );
 
   const img = document.createElement("img");
   img.src = iconSrc;
@@ -398,8 +408,11 @@ document.querySelectorAll("[data-more-projects]").forEach((root) => {
 
   const labelFor = (card, index) => {
     const heading = card.querySelector("h1, h2");
-    const name = heading ? heading.textContent.trim() : `Section ${index + 1}`;
-    return `Go to ${name}`;
+    const i18n = window.portfolioI18n;
+    const sectionWord = i18n ? i18n.t("cv.section") : "Section";
+    const name = heading ? heading.textContent.trim() : `${sectionWord} ${index + 1}`;
+    const go = i18n ? i18n.t("nav.goto") : "Go to";
+    return `${go} ${name}`;
   };
 
   const wrapCardBody = (card) => {
@@ -421,7 +434,14 @@ document.querySelectorAll("[data-more-projects]").forEach((root) => {
         nav = document.createElement("div");
         nav.className = isHome ? "stack-card__stories" : "cv-card__stories";
         nav.setAttribute("role", "navigation");
-        nav.setAttribute("aria-label", isHome ? "Home sections" : "CV sections");
+        nav.setAttribute(
+          "aria-label",
+          window.portfolioI18n
+            ? window.portfolioI18n.t(isHome ? "nav.homeSections" : "cv.sectionsNav")
+            : isHome
+              ? "Home sections"
+              : "CV sections"
+        );
         card.insertBefore(nav, card.firstChild);
       }
       nav.innerHTML = "";
@@ -684,6 +704,9 @@ document.querySelectorAll("[data-more-projects]").forEach((root) => {
   }
 
   bootStories();
+  document.addEventListener("portfolio-lang", () => {
+    bootStories();
+  });
 })();
 
 (function initCvIntroFilm() {

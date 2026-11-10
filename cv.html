@@ -4,8 +4,9 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" href="assets/portfolio-logo.svg" type="image/svg+xml" />
-    <title>CV | Octavia Sirbu</title>
+    <title data-i18n="cv.pageTitle">CV | Octavia Sirbu</title>
     <script src="theme-init.js"></script>
+    <script src="lang-init.js"></script>
     <link rel="stylesheet" href="styles.css?v=vis-33" />
   </head>
   <body class="page-cv">
@@ -17,18 +18,18 @@
         </a>
         <div class="nav-right">
           <ul class="nav-links">
-            <li><a href="index.html">Home</a></li>
-            <li><a class="active" href="cv.html">CV</a></li>
-            <li><a href="work.html">Projects</a></li>
-            <li><a href="blog.html">Blog</a></li>
+            <li><a data-i18n="nav.home" href="index.html">Home</a></li>
+            <li><a data-i18n="nav.cv" class="active" href="cv.html">CV</a></li>
+            <li><a data-i18n="nav.projects" href="work.html">Projects</a></li>
+            <li><a data-i18n="nav.blog" href="blog.html">Blog</a></li>
           </ul>
           <button
             type="button"
             class="theme-toggle"
             id="themeToggle"
-            aria-label="Switch to dark mode"
+            aria-label="Switch to dark mode" data-i18n-aria="theme.dark"
             aria-pressed="false"
-            title="Light or dark mode"
+            title="Light or dark mode" data-i18n-title="theme.title"
           >
             <span class="theme-icon theme-icon-sun" aria-hidden="true">
               <img src="assets/icons/sun-03.svg" alt="" width="20" height="20" decoding="async" />
@@ -37,6 +38,10 @@
               <img src="assets/icons/moon.svg" alt="" width="20" height="20" decoding="async" />
             </span>
           </button>
+          <div class="lang-toggle" role="group" data-i18n-aria="nav.lang">
+            <button type="button" class="lang-toggle__btn" data-lang-set="en" lang="en">EN</button>
+            <button type="button" class="lang-toggle__btn" data-lang-set="fr" lang="fr">FR</button>
+          </div>
         </div>
       </nav>
     </header>
@@ -44,7 +49,7 @@
     <main>
       <div class="cv-stack">
       <section class="cv-card stack-card cv-card--profile is-front" aria-labelledby="cv-profile">
-        <div class="cv-card__stories" role="navigation" aria-label="CV sections">
+        <div class="cv-card__stories" role="navigation" aria-label="CV sections" data-i18n-aria="cv.sectionsNav">
           <button type="button" class="cv-card__stories-seg" data-cv-story="0" aria-label="Section 1">
             <span class="cv-card__stories-fill" style="--fill: 1" aria-hidden="true"></span>
           </button>
@@ -79,19 +84,19 @@
         <div class="cv-profile">
           <div class="cv-profile__copy">
             <p class="tag">CV</p>
-            <h1 id="cv-profile">Senior Product Designer</h1>
-            <p>
+            <h1 id="cv-profile" data-i18n="cv.h1">Senior Product Designer</h1>
+            <p data-i18n="cv.intro">
               With 7+ years of experience in product design and management, I thrive in agile work environments where
               the user is prioritized and collaboration is key. I have a track record of elevating
               user experiences through visual consistency, user advocacy and stakeholder involvement.
             </p>
-            <aside class="cv-roots" aria-label="Location">
+            <aside class="cv-roots" aria-label="Location" data-i18n-aria="cv.locLabel">
               <span class="cv-roots__mark" aria-hidden="true">🇪🇺</span>
               <div class="cv-roots__copy">
-                <p class="cv-roots__origin">Born in Romania, formed in Denmark</p>
+                <p class="cv-roots__origin" data-i18n="cv.origin">Born in Romania, formed in Denmark</p>
                 <p class="cv-roots__now">
                   <span aria-hidden="true">📍</span>
-                  Current location Paris, France
+                  <span data-i18n="cv.now">Current location Paris, France</span>
                 </p>
               </div>
             </aside>
@@ -113,7 +118,7 @@
       </section>
 
       <section class="cv-card stack-card cv-card--intro-film" aria-labelledby="cv-intro-film">
-        <div class="cv-card__stories" role="navigation" aria-label="CV sections">
+        <div class="cv-card__stories" role="navigation" aria-label="CV sections" data-i18n-aria="cv.sectionsNav">
           <button type="button" class="cv-card__stories-seg" data-cv-story="0" aria-label="Section 1">
             <span class="cv-card__stories-fill" style="--fill: 1" aria-hidden="true"></span>
           </button>
@@ -145,7 +150,7 @@
             <span class="cv-card__stories-fill" style="--fill: 0" aria-hidden="true"></span>
           </button>
         </div>
-        <h2 id="cv-intro-film">Get to know me</h2>
+        <h2 id="cv-intro-film" data-i18n="cv.film.h2">Get to know me</h2>
         <div class="cv-intro-film">
           <video
             playsinline
@@ -155,7 +160,7 @@
           >
             Your browser does not support the video tag.
           </video>
-          <button type="button" class="cv-intro-film__play" aria-label="Play video">
+          <button type="button" class="cv-intro-film__play" aria-label="Play video" data-i18n-aria="cv.play">
             <span class="cv-intro-film__play-icon" aria-hidden="true">
               <svg viewBox="0 0 24 24" width="42" height="42" focusable="false">
                 <path fill="currentColor" d="M8.2 5.4v13.2L19.4 12 8.2 5.4z" />
@@ -166,7 +171,7 @@
       </section>
 
       <section class="cv-card stack-card" aria-labelledby="cv-education">
-        <div class="cv-card__stories" role="navigation" aria-label="CV sections">
+        <div class="cv-card__stories" role="navigation" aria-label="CV sections" data-i18n-aria="cv.sectionsNav">
           <button type="button" class="cv-card__stories-seg" data-cv-story="0" aria-label="Section 1">
             <span class="cv-card__stories-fill" style="--fill: 1" aria-hidden="true"></span>
           </button>
@@ -198,8 +203,8 @@
             <span class="cv-card__stories-fill" style="--fill: 0" aria-hidden="true"></span>
           </button>
         </div>
-        <h2 id="cv-education">Design Education in Scandinavia</h2>
-        <p class="cv-card__lead">
+        <h2 id="cv-education" data-i18n="cv.edu.h2">Design Education in Scandinavia</h2>
+        <p class="cv-card__lead" data-i18n="cv.edu.lead">
           As a big lover of Scandinavian Design at 18 years old I moved abroadto pursue design studies in Denmark
         </p>
         <div class="cv-media-layout">
@@ -215,16 +220,16 @@
                 decoding="async"
               />
             </div>
-            <figcaption class="cv-media-caption">Graduation at the University of Southern Denmark in June 2022</figcaption>
+            <figcaption class="cv-media-caption" data-i18n="cv.edu.cap">Graduation at the University of Southern Denmark in June 2022</figcaption>
           </figure>
           <ul class="cv-entries">
             <li class="cv-entry">
               <div class="cv-entry__header">
-                <h3>MSc in IT Product Design</h3>
+                <h3 data-i18n="cv.edu.msc">MSc in IT Product Design</h3>
                 <span class="cv-entry__dates">2020 - 2022</span>
               </div>
-              <p class="cv-entry__org">University of Southern Denmark</p>
-              <p class="cv-entry__loc">Denmark <span aria-hidden="true">🚲 🇩🇰</span></p>
+              <p class="cv-entry__org" data-i18n="cv.edu.sdu">University of Southern Denmark</p>
+              <p class="cv-entry__loc"><span data-i18n="cv.edu.dk">Denmark</span> <span aria-hidden="true">🚲 🇩🇰</span></p>
               <div class="cv-study-job">
                 <div class="cv-study-job__logo" aria-hidden="true">
                   <img
@@ -237,19 +242,19 @@
                   />
                 </div>
                 <div class="cv-study-job__body">
-                  <p class="cv-study-job__title">UX and Graphic Designer (Part-time)</p>
+                  <p class="cv-study-job__title" data-i18n="cv.edu.urTitle">UX and Graphic Designer (Part-time)</p>
                   <p class="cv-study-job__org">Universal Robots A/S</p>
-                  <p class="cv-study-job__note">Student job during my studies</p>
+                  <p class="cv-study-job__note" data-i18n="cv.edu.student">Student job during my studies</p>
                 </div>
               </div>
             </li>
             <li class="cv-entry">
               <div class="cv-entry__header">
-                <h3>Digital Design</h3>
+                <h3 data-i18n="cv.edu.dd">Digital Design</h3>
                 <span class="cv-entry__dates">2015 - 2018</span>
               </div>
-              <p class="cv-entry__org">University College Lillebælt</p>
-              <p class="cv-entry__loc">Denmark <span aria-hidden="true">🚲 🇩🇰</span></p>
+              <p class="cv-entry__org" data-i18n="cv.edu.ucl">University College Lillebælt</p>
+              <p class="cv-entry__loc"><span data-i18n="cv.edu.dk">Denmark</span> <span aria-hidden="true">🚲 🇩🇰</span></p>
               <div class="cv-study-job">
                 <div class="cv-study-job__logo" aria-hidden="true">
                   <img
@@ -262,9 +267,9 @@
                   />
                 </div>
                 <div class="cv-study-job__body">
-                  <p class="cv-study-job__title">Digital Designer (Part-time)</p>
+                  <p class="cv-study-job__title" data-i18n="cv.edu.monsensoTitle">Digital Designer (Part-time)</p>
                   <p class="cv-study-job__org">Monsenso</p>
-                  <p class="cv-study-job__note">Student job during my studies</p>
+                  <p class="cv-study-job__note" data-i18n="cv.edu.student">Student job during my studies</p>
                 </div>
               </div>
             </li>
@@ -275,7 +280,7 @@
       
 
       <section class="cv-card stack-card" aria-labelledby="cv-experience">
-        <div class="cv-card__stories" role="navigation" aria-label="CV sections">
+        <div class="cv-card__stories" role="navigation" aria-label="CV sections" data-i18n-aria="cv.sectionsNav">
           <button type="button" class="cv-card__stories-seg" data-cv-story="0" aria-label="Section 1">
             <span class="cv-card__stories-fill" style="--fill: 1" aria-hidden="true"></span>
           </button>
@@ -307,7 +312,7 @@
             <span class="cv-card__stories-fill" style="--fill: 0" aria-hidden="true"></span>
           </button>
         </div>
-<h2 id="cv-experience">Work Experience</h2>
+<h2 id="cv-experience" data-i18n="cv.exp.h2">Work Experience</h2>
         <ul class="cv-entries">
           <li class="cv-entry cv-entry--with-metrics">
             <div class="cv-entry__main">
@@ -324,31 +329,31 @@
                 </div>
                 <div class="cv-study-job__body">
                   <div class="cv-entry__header">
-                    <h3>Lead Product Designer</h3>
+                    <h3 data-i18n="role.leadPd">Lead Product Designer</h3>
                     <span class="cv-entry__dates">2024 - 2026</span>
                   </div>
-                  <p class="cv-entry__org">Nabogo ApS · carpooling, web / iOS / Android</p>
-                  <p class="cv-entry__loc">Full-time · Scale-up</p>
+                  <p class="cv-entry__org" data-i18n="cv.nabogo.org">Nabogo ApS · carpooling, web / iOS / Android</p>
+                  <p class="cv-entry__loc" data-i18n="cv.nabogo.loc">Full-time · Scale-up</p>
                 </div>
               </div>
-              <p class="cv-entry__desc">
+              <p class="cv-entry__desc" data-i18n="cv.nabogo.desc">
                 Nabogo is a carpooling app used in Denmark, Norway, Sweden, and the Netherlands.
                 I led product design across web and mobile.
               </p>
               <ul class="cv-bullets">
-                <li>
+                <li data-i18n="cv.nabogo.b1">
                   Set UX strategy against user needs and business goals, and owned the work from
                   concept to launch.
                 </li>
-                <li>
+                <li data-i18n="cv.nabogo.b2">
                   Kept decisions user-centred through research and testing, working closely with
                   product, engineering, and stakeholders.
                 </li>
-                <li>
+                <li data-i18n="cv.nabogo.b3">
                   Measured impact, then improved the product with design reviews, usability checks,
                   and QA.
                 </li>
-                <li>
+                <li data-i18n="cv.nabogo.b4">
                   Designed scalable UI in Figma and maintained shared libraries and the design system.
                 </li>
               </ul>
@@ -356,15 +361,15 @@
             <ul class="cv-metrics" aria-label="Key metrics">
               <li>
                 <span class="cv-metrics__value">1.5x</span>
-                <span class="cv-metrics__label">Activation, DK</span>
+                <span class="cv-metrics__label" data-i18n="cv.m.activation">Activation, DK</span>
               </li>
               <li>
                 <span class="cv-metrics__value">~2x</span>
-                <span class="cv-metrics__label">Fewer components</span>
+                <span class="cv-metrics__label" data-i18n="cv.m.components">Fewer components</span>
               </li>
               <li>
                 <span class="cv-metrics__value">−50%</span>
-                <span class="cv-metrics__label">Journey complexity</span>
+                <span class="cv-metrics__label" data-i18n="cv.m.journey">Journey complexity</span>
               </li>
             </ul>
           </li>
@@ -383,14 +388,14 @@
                 </div>
                 <div class="cv-study-job__body">
                   <div class="cv-entry__header">
-                    <h3>UX / UI Designer</h3>
+                    <h3 data-i18n="cv.sdu.title">UX / UI Designer</h3>
                     <span class="cv-entry__dates">2022 - 2024</span>
                   </div>
-                  <p class="cv-entry__org">University of Southern Denmark · employee intranet</p>
-                  <p class="cv-entry__loc">Full-time · University</p>
+                  <p class="cv-entry__org" data-i18n="cv.sdu.org">University of Southern Denmark · employee intranet</p>
+                  <p class="cv-entry__loc" data-i18n="cv.sdu.loc">Full-time · University</p>
                 </div>
               </div>
-              <p class="cv-entry__desc">
+              <p class="cv-entry__desc" data-i18n="cv.sdu.desc">
                 Designed and coordinated a new staff intranet through stakeholder workshops, interviews,
                 usability testing, Figma prototyping, and close collaboration with development.
               </p>
@@ -398,11 +403,11 @@
             <ul class="cv-metrics" aria-label="Key metrics">
               <li>
                 <span class="cv-metrics__value">−50%</span>
-                <span class="cv-metrics__label">Fewer pages</span>
+                <span class="cv-metrics__label" data-i18n="cv.m.pages">Fewer pages</span>
               </li>
               <li>
                 <span class="cv-metrics__value">300+</span>
-                <span class="cv-metrics__label">Stakeholders</span>
+                <span class="cv-metrics__label" data-i18n="cv.m.stakeholders">Stakeholders</span>
               </li>
             </ul>
           </li>
@@ -411,7 +416,7 @@
       </section>
 
       <section class="cv-card stack-card" aria-labelledby="cv-entrepreneurship">
-        <div class="cv-card__stories" role="navigation" aria-label="CV sections">
+        <div class="cv-card__stories" role="navigation" aria-label="CV sections" data-i18n-aria="cv.sectionsNav">
           <button type="button" class="cv-card__stories-seg" data-cv-story="0" aria-label="Section 1">
             <span class="cv-card__stories-fill" style="--fill: 1" aria-hidden="true"></span>
           </button>
@@ -443,8 +448,8 @@
             <span class="cv-card__stories-fill" style="--fill: 0" aria-hidden="true"></span>
           </button>
         </div>
-        <h2 id="cv-entrepreneurship">Entrepreneurship Experience</h2>
-        <p class="cv-card__lead">
+        <h2 id="cv-entrepreneurship" data-i18n="cv.ent.h2">Entrepreneurship Experience</h2>
+        <p class="cv-card__lead" data-i18n="cv.ent.lead">
           Co-founded Rotoy ApS, an EdTech startup that helps children start STEM learning early through
           coding missions woven into storytelling.
         </p>
@@ -462,7 +467,7 @@
             <div class="cv-media-bento">
               <div class="cv-media-bento__tile cv-media-bento__tile--raised">
                 <p class="cv-media-bento__value">€70,000</p>
-                <p class="cv-media-bento__label">Raised</p>
+                <p class="cv-media-bento__label" data-i18n="cv.ent.raised">Raised</p>
               </div>
               <a
                 class="cv-media-bento__tile cv-media-bento__tile--logo"
@@ -480,7 +485,7 @@
                   decoding="async"
                 />
                 <span class="home-bento__overlay">
-                  <span class="home-bento__overlay-text">See website</span>
+                  <span class="home-bento__overlay-text" data-i18n="cv.ent.see">See website</span>
                   <img
                     class="home-bento__overlay-icon"
                     src="assets/icons/link-square-02.svg"
@@ -496,36 +501,36 @@
           <ul class="cv-entries">
             <li class="cv-entry">
               <div class="cv-entry__header">
-                <h3>Co-founder and Lead Designer</h3>
+                <h3 data-i18n="cv.ent.title">Co-founder and Lead Designer</h3>
                 <span class="cv-entry__dates">2022 - 2024</span>
               </div>
-              <p class="cv-entry__org">Rotoy ApS, EdTech startup</p>
-              <p class="cv-entry__desc">
+              <p class="cv-entry__org" data-i18n="cv.ent.org">Rotoy ApS, EdTech startup</p>
+              <p class="cv-entry__desc" data-i18n="cv.ent.desc">
                 Led design and process ownership, secured 500,000 DKK (~70,000 EUR) funding, and guided student and
                 part-time contributors across design, development, and events.
               </p>
               <ul class="cv-bullets">
-                <li>
+                <li data-i18n="cv.ent.b1">
                   Directed end-to-end UX and product design, working with the CTO to supervise
                   cross-functional teams.
                 </li>
-                <li>
+                <li data-i18n="cv.ent.b2">
                   Launched a new brand website with a bolder visual identity, Stripe-integrated shop,
                   and SEO-ready content to support growth.
                 </li>
-                <li>
+                <li data-i18n="cv.ent.b3">
                   Supported funding applications and business development by turning product vision and
                   user impact into clear strategic roadmaps.
                 </li>
-                <li>
+                <li data-i18n="cv.ent.b4">
                   Ran interviews, workshops, and usability tests with children, parents, and educators
                   to keep decisions user-centred.
                 </li>
-                <li>
+                <li data-i18n="cv.ent.b5">
                   Built high-fidelity Figma prototypes and React components for consistent design and
                   smoother developer handoff.
                 </li>
-                <li>
+                <li data-i18n="cv.ent.b6">
                   Designed physical packaging and robot casing, and evolved the brand's visual identity.
                 </li>
               </ul>
@@ -537,7 +542,7 @@
       
 
       <section class="cv-card stack-card" aria-labelledby="cv-freelance">
-        <div class="cv-card__stories" role="navigation" aria-label="CV sections">
+        <div class="cv-card__stories" role="navigation" aria-label="CV sections" data-i18n-aria="cv.sectionsNav">
           <button type="button" class="cv-card__stories-seg" data-cv-story="0" aria-label="Section 1">
             <span class="cv-card__stories-fill" style="--fill: 1" aria-hidden="true"></span>
           </button>
@@ -569,7 +574,7 @@
             <span class="cv-card__stories-fill" style="--fill: 0" aria-hidden="true"></span>
           </button>
         </div>
-        <h2 id="cv-freelance">Freelance Experience in Scandinavia ⚓</h2>
+        <h2 id="cv-freelance" data-i18n="cv.free.h2">Freelance Experience in Scandinavia ⚓</h2>
         <div class="cv-media-layout">
           <figure class="cv-media-figure">
             <div class="cv-media">
@@ -583,27 +588,27 @@
                 decoding="async"
               />
             </div>
-            <figcaption class="cv-media-caption">Afterwork in Copenhagen, Denmark</figcaption>
+            <figcaption class="cv-media-caption" data-i18n="cv.free.cap">Afterwork in Copenhagen, Denmark</figcaption>
           </figure>
           <ul class="cv-entries">
           <li class="cv-entry">
             <div class="cv-entry__header">
-              <h3>Digital Designer and Web Dev</h3>
+              <h3 data-i18n="cv.free.title">Digital Designer and Web Dev</h3>
               <span class="cv-entry__dates">Oct 2018 - Feb 2021</span>
             </div>
-            <p class="cv-entry__org">Freelance</p>
-            <p class="cv-entry__loc">2 years 5 months</p>
-            <p class="cv-entry__desc">
+            <p class="cv-entry__org" data-i18n="cv.free.org">Freelance</p>
+            <p class="cv-entry__loc" data-i18n="cv.free.loc">2 years 5 months</p>
+            <p class="cv-entry__desc" data-i18n="cv.free.desc">
               Designed websites, brand guides and visual identity for small businesses, as well as social media templates, ads, infographics, illustrations, product shot photography, promotional materials (flyers, posters, etc.) and Power Point presentations.
               
             </p>
             <ul class="cv-bullets">
-              <li>Woomio ApS (SaaS scale-up in influencer marketing in Copenhagen, Denmark)</li>
-              <li>Student House (Danish Student Organisation)</li>
-              <li>Walk With Path (MedTech startup in Copenhagen, Denmark)</li>
-              <li>O'Town Garage (Makerspace organization in Denmark)</li>
-              <li>Sundt Vælg (Event organized by InspireU Events in Odense, Denmark)</li>
-              <li>Other local businesses in Denmark</li>
+              <li data-i18n="cv.free.b1">Woomio ApS (SaaS scale-up in influencer marketing in Copenhagen, Denmark)</li>
+              <li data-i18n="cv.free.b2">Student House (Danish Student Organisation)</li>
+              <li data-i18n="cv.free.b3">Walk With Path (MedTech startup in Copenhagen, Denmark)</li>
+              <li data-i18n="cv.free.b4">O'Town Garage (Makerspace organization in Denmark)</li>
+              <li data-i18n="cv.free.b5">Sundt Vælg (Event organized by InspireU Events in Odense, Denmark)</li>
+              <li data-i18n="cv.free.b6">Other local businesses in Denmark</li>
             </ul>
           </li>
         </ul>
@@ -611,7 +616,7 @@
       </section>
 
       <section class="cv-card stack-card" aria-labelledby="cv-erasmus">
-        <div class="cv-card__stories" role="navigation" aria-label="CV sections">
+        <div class="cv-card__stories" role="navigation" aria-label="CV sections" data-i18n-aria="cv.sectionsNav">
           <button type="button" class="cv-card__stories-seg" data-cv-story="0" aria-label="Section 1">
             <span class="cv-card__stories-fill" style="--fill: 1" aria-hidden="true"></span>
           </button>
@@ -643,7 +648,7 @@
             <span class="cv-card__stories-fill" style="--fill: 0" aria-hidden="true"></span>
           </button>
         </div>
-        <h2 id="cv-erasmus">Erasmus Internship in Stuttgart, Germany</h2>
+        <h2 id="cv-erasmus" data-i18n="cv.er.h2">Erasmus Internship in Stuttgart, Germany</h2>
         <div class="cv-media-layout">
           <figure class="cv-media-figure">
             <div class="cv-media">
@@ -657,7 +662,7 @@
                 decoding="async"
               />
             </div>
-            <figcaption class="cv-media-caption">Hackathon Stuttgart Competition, 2017</figcaption>
+            <figcaption class="cv-media-caption" data-i18n="cv.er.cap">Hackathon Stuttgart Competition, 2017</figcaption>
           </figure>
           <ul class="cv-entries">
             <li class="cv-entry">
@@ -675,25 +680,25 @@
                   </div>
                   <div class="cv-study-job__body">
                     <div class="cv-entry__header">
-                      <h3>Graphic Design and Communication Student (Erasmus)</h3>
+                      <h3 data-i18n="cv.er.title">Graphic Design and Communication Student (Erasmus)</h3>
                     </div>
                     <div class="cv-entry__header cv-entry__header--org">
-                      <p class="cv-entry__org">Bosch · Internship</p>
+                      <p class="cv-entry__org" data-i18n="cv.er.org">Bosch · Internship</p>
                       <span class="cv-entry__dates">Aug 2017 - Jan 2018</span>
                     </div>
-                    <p class="cv-entry__loc">Stuttgart Region · 6 months</p>
+                    <p class="cv-entry__loc" data-i18n="cv.er.loc">Stuttgart Region · 6 months</p>
                   </div>
                 </div>
                 <ul class="cv-bullets">
-                  <li>
+                  <li data-i18n="cv.er.b1">
                     Creating visual content (PPT presentations and infographics) for the Automotive
                     Electronics department.
                   </li>
-                  <li>
+                  <li data-i18n="cv.er.b2">
                     Coordinating company events for different company stakeholders (OEMs and other
                     business collaborators).
                   </li>
-                  <li>
+                  <li data-i18n="cv.er.b3">
                     Competed at Hackathon Stuttgart 2017 and won the Best Pitch Award (1.000 €) for
                     Clean Car by creating a working prototype of an AI voice app for the car dashboard.
                     The project was a use case from Car2Go, a startup later purchased by Daimler GmbH.
@@ -707,7 +712,7 @@
 
       
       <section class="cv-card stack-card" aria-labelledby="cv-skills-tools">
-        <div class="cv-card__stories" role="navigation" aria-label="CV sections">
+        <div class="cv-card__stories" role="navigation" aria-label="CV sections" data-i18n-aria="cv.sectionsNav">
           <button type="button" class="cv-card__stories-seg" data-cv-story="0" aria-label="Section 1">
             <span class="cv-card__stories-fill" style="--fill: 1" aria-hidden="true"></span>
           </button>
@@ -739,50 +744,50 @@
             <span class="cv-card__stories-fill" style="--fill: 0" aria-hidden="true"></span>
           </button>
         </div>
-        <h2 id="cv-skills-tools">What I've worked with along the way</h2>
+        <h2 id="cv-skills-tools" data-i18n="cv.skills.h2">What I've worked with along the way</h2>
         <div class="cv-skills-tools">
           <div class="cv-skills-tools__group cv-skills-tools__group--process">
-            <h3 class="cv-skills-tools__label">Design process</h3>
+            <h3 class="cv-skills-tools__label" data-i18n="cv.skills.process">Design process</h3>
             <ul class="cv-tags" aria-label="Design process">
-              <li>User research</li>
-              <li>Competitive audit</li>
-              <li>Behavioral analytics</li>
+              <li data-i18n="cv.tag.research">User research</li>
+              <li data-i18n="cv.tag.audit">Competitive audit</li>
+              <li data-i18n="cv.tag.behav">Behavioral analytics</li>
               <li>JTBD</li>
-              <li>Workshops</li>
-              <li>Surveys</li>
-              <li>Personas</li>
-              <li>User journeys</li>
-              <li>Prototyping</li>
-              <li>Usability testing</li>
+              <li data-i18n="cv.tag.workshops">Workshops</li>
+              <li data-i18n="cv.tag.surveys">Surveys</li>
+              <li data-i18n="cv.tag.personas">Personas</li>
+              <li data-i18n="cv.tag.journeys">User journeys</li>
+              <li data-i18n="cv.tag.proto">Prototyping</li>
+              <li data-i18n="cv.tag.usability">Usability testing</li>
             </ul>
           </div>
           <div class="cv-skills-tools__group cv-skills-tools__group--production">
-            <h3 class="cv-skills-tools__label">Design production</h3>
+            <h3 class="cv-skills-tools__label" data-i18n="cv.skills.production">Design production</h3>
             <ul class="cv-tags" aria-label="Design production">
               <li>Figma</li>
               <li>Adobe Creative Suite</li>
-              <li>Design systems</li>
-              <li>Component libraries</li>
-              <li>UX writing</li>
-              <li>Motion</li>
+              <li data-i18n="cv.tag.ds">Design systems</li>
+              <li data-i18n="cv.tag.libs">Component libraries</li>
+              <li data-i18n="cv.tag.uxw">UX writing</li>
+              <li data-i18n="cv.tag.motion">Motion</li>
             </ul>
           </div>
           <div class="cv-skills-tools__group cv-skills-tools__group--engineering">
-            <h3 class="cv-skills-tools__label">Engineering</h3>
+            <h3 class="cv-skills-tools__label" data-i18n="cv.skills.eng">Engineering</h3>
             <ul class="cv-tags" aria-label="Engineering">
               <li>React</li>
               <li>Vue</li>
               <li>TypeScript</li>
               <li>HTML / CSS</li>
-              <li>Implementing translations</li>
+              <li data-i18n="cv.tag.i18n">Implementing translations</li>
               <li>POEditor</li>
-              <li>QA testing</li>
-              <li>Hosting</li>
+              <li data-i18n="cv.tag.qa">QA testing</li>
+              <li data-i18n="cv.tag.hosting">Hosting</li>
               <li>CICD</li>
             </ul>
           </div>
           <div class="cv-skills-tools__group cv-skills-tools__group--ai">
-            <h3 class="cv-skills-tools__label">AI &amp; automation</h3>
+            <h3 class="cv-skills-tools__label" data-i18n="cv.skills.ai">AI &amp; automation</h3>
             <ul class="cv-tags" aria-label="AI and automation">
               <li>Claude</li>
               <li>MCP</li>
@@ -792,7 +797,7 @@
             </ul>
           </div>
           <div class="cv-skills-tools__group cv-skills-tools__group--data">
-            <h3 class="cv-skills-tools__label">Data &amp; analytics</h3>
+            <h3 class="cv-skills-tools__label" data-i18n="cv.skills.data">Data &amp; analytics</h3>
             <ul class="cv-tags" aria-label="Data and analytics">
               <li>SQL</li>
               <li>Amplitude</li>
@@ -809,7 +814,7 @@
       
 
       <section class="cv-card stack-card" aria-labelledby="cv-languages">
-        <div class="cv-card__stories" role="navigation" aria-label="CV sections">
+        <div class="cv-card__stories" role="navigation" aria-label="CV sections" data-i18n-aria="cv.sectionsNav">
           <button type="button" class="cv-card__stories-seg" data-cv-story="0" aria-label="Section 1">
             <span class="cv-card__stories-fill" style="--fill: 1" aria-hidden="true"></span>
           </button>
@@ -841,11 +846,11 @@
             <span class="cv-card__stories-fill" style="--fill: 0" aria-hidden="true"></span>
           </button>
         </div>
-        <h2 id="cv-languages">Languages</h2>
+        <h2 id="cv-languages" data-i18n="cv.lang.h2">Languages</h2>
         <ul class="cv-languages">
           <li class="cv-language">
             <div class="cv-language__body">
-              <span class="cv-language__name">English</span>
+              <span class="cv-language__name" data-i18n="cv.lang.en">English</span>
               <div class="cv-language__cert">
                 <div class="cv-language__cert-logo" aria-hidden="true">
                   <img
@@ -858,33 +863,33 @@
                   />
                 </div>
                 <div class="cv-language__cert-copy">
-                  <p class="cv-language__cert-title">Cambridge Advanced English (C1) Examination</p>
+                  <p class="cv-language__cert-title" data-i18n="cv.lang.cert">Cambridge Advanced English (C1) Examination</p>
                   <p class="cv-language__cert-meta">British Council · Jun 2012</p>
                 </div>
               </div>
             </div>
-            <span class="cv-language__level">Fluent</span>
+            <span class="cv-language__level" data-i18n="cv.lang.fluent">Fluent</span>
           </li>
           <li class="cv-language">
             <div class="cv-language__body">
-              <span class="cv-language__name">French</span>
+              <span class="cv-language__name" data-i18n="cv.lang.fr">French</span>
               <p class="cv-language__desc"></p>
             </div>
-            <span class="cv-language__level">Intermediate</span>
+            <span class="cv-language__level" data-i18n="cv.lang.int">Intermediate</span>
           </li>
           <li class="cv-language">
             <div class="cv-language__body">
-              <span class="cv-language__name">Danish</span>
+              <span class="cv-language__name" data-i18n="cv.lang.da">Danish</span>
               <p class="cv-language__desc"></p>
             </div>
-            <span class="cv-language__level">Upper Intermediate</span>
+            <span class="cv-language__level" data-i18n="cv.lang.upper">Upper Intermediate</span>
           </li>
           <li class="cv-language">
             <div class="cv-language__body">
-              <span class="cv-language__name">Romanian</span>
+              <span class="cv-language__name" data-i18n="cv.lang.ro">Romanian</span>
               <p class="cv-language__desc"></p>
             </div>
-            <span class="cv-language__level">Native</span>
+            <span class="cv-language__level" data-i18n="cv.lang.native">Native</span>
           </li>
         </ul>
       </section>
@@ -892,7 +897,7 @@
       
 
       <section class="cv-card stack-card" aria-labelledby="cv-certifications">
-        <div class="cv-card__stories" role="navigation" aria-label="CV sections">
+        <div class="cv-card__stories" role="navigation" aria-label="CV sections" data-i18n-aria="cv.sectionsNav">
           <button type="button" class="cv-card__stories-seg" data-cv-story="0" aria-label="Section 1">
             <span class="cv-card__stories-fill" style="--fill: 1" aria-hidden="true"></span>
           </button>
@@ -924,7 +929,7 @@
             <span class="cv-card__stories-fill" style="--fill: 0" aria-hidden="true"></span>
           </button>
         </div>
-        <h2 id="cv-certifications">Certifications</h2>
+        <h2 id="cv-certifications" data-i18n="cv.cert.h2">Certifications</h2>
         <ul class="cv-certs">
           <li class="cv-cert">
             <div class="cv-cert__logo" aria-hidden="true">
@@ -939,11 +944,11 @@
             </div>
             <div class="cv-cert__body">
               <div class="cv-cert__header">
-                <h3>Customer Journey Management</h3>
+                <h3 data-i18n="cv.cert.cjm">Customer Journey Management</h3>
                 <span class="cv-entry__dates">Oct 2024</span>
               </div>
               <p class="cv-entry__org">Nielsen Norman Group</p>
-              <p class="cv-entry__loc">Credential ID 1089743</p>
+              <p class="cv-entry__loc" data-i18n="cv.cert.id">Credential ID 1089743</p>
             </div>
           </li>
 
@@ -960,11 +965,11 @@
             </div>
             <div class="cv-cert__body">
               <div class="cv-cert__header">
-                <h3>Project Management - Leading and facilitating project processes in big organisations (2 ECTS)</h3>
+                <h3 data-i18n="cv.cert.pm">Project Management - Leading and facilitating project processes in big organisations (2 ECTS)</h3>
                 <span class="cv-entry__dates">Nov 2023</span>
               </div>
               <p class="cv-entry__org">Syddansk Universitet - University of Southern Denmark</p>
-              <p class="cv-entry__loc">Skills: Conflict Resolution, Project Management</p>
+              <p class="cv-entry__loc" data-i18n="cv.cert.pmSkills">Skills: Conflict Resolution, Project Management</p>
             </div>
           </li>
 
@@ -981,7 +986,7 @@
             </div>
             <div class="cv-cert__body">
               <div class="cv-cert__header">
-                <h3>Conducting Usability Testing</h3>
+                <h3 data-i18n="cv.cert.usability">Conducting Usability Testing</h3>
                 <span class="cv-entry__dates">Sep 2023</span>
               </div>
               <p class="cv-entry__org">IxDF - Interaction Design Foundation</p>
@@ -1002,11 +1007,11 @@
             </div>
             <div class="cv-cert__body">
               <div class="cv-cert__header">
-                <h3>Data-Driven Design: Quantitative Research for UX</h3>
+                <h3 data-i18n="cv.cert.data">Data-Driven Design: Quantitative Research for UX</h3>
                 <span class="cv-entry__dates">Aug 2023</span>
               </div>
               <p class="cv-entry__org">IxDF - Interaction Design Foundation</p>
-              <p class="cv-entry__loc">Credential ID 144226 · Skills: A/B Testing, Quantitative Research</p>
+              <p class="cv-entry__loc" data-i18n="cv.cert.dataSkills">Credential ID 144226 · Skills: A/B Testing, Quantitative Research</p>
             </div>
           </li>
         </ul>
@@ -1015,7 +1020,7 @@
       
 
       <section class="cv-card stack-card cv-card--contact" aria-labelledby="cv-contact">
-        <div class="cv-card__stories" role="navigation" aria-label="CV sections">
+        <div class="cv-card__stories" role="navigation" aria-label="CV sections" data-i18n-aria="cv.sectionsNav">
           <button type="button" class="cv-card__stories-seg" data-cv-story="0" aria-label="Section 1">
             <span class="cv-card__stories-fill" style="--fill: 1" aria-hidden="true"></span>
           </button>
@@ -1047,7 +1052,7 @@
             <span class="cv-card__stories-fill" style="--fill: 0" aria-hidden="true"></span>
           </button>
         </div>
-        <h2 id="cv-contact">Contact</h2>
+        <h2 id="cv-contact" data-i18n="cv.contact.h2">Contact</h2>
         <div class="contact-cards">
           <a
             class="contact-card contact-card--texture"
@@ -1058,7 +1063,7 @@
             <span class="contact-icon" aria-hidden="true">
               <img src="assets/icons/linkedin-02.svg" alt="" width="24" height="24" decoding="async" />
             </span>
-            <h3>Let's connect</h3>
+            <h3 data-i18n="contact.connect">Let's connect</h3>
             <p>linkedin.com/in/octavia-sirbu</p>
           </a>
 
@@ -1066,7 +1071,7 @@
             <span class="contact-icon" aria-hidden="true">
               <img src="assets/icons/copy-01.svg" alt="" width="24" height="24" decoding="async" />
             </span>
-            <h3>Copy email</h3>
+            <h3 data-i18n="contact.copy">Copy email</h3>
             <p id="emailValue">octaviasirbu@gmail.com</p>
           </button>
 
@@ -1079,7 +1084,7 @@
             <span class="contact-icon" aria-hidden="true">
               <img src="assets/icons/download-01.svg" alt="" width="24" height="24" decoding="async" />
             </span>
-            <h3>Download CV</h3>
+            <h3 data-i18n="contact.cv">Download CV</h3>
             <p>Octavia Sirbu CV.pdf</p>
           </a>
         </div>
@@ -1101,17 +1106,17 @@
             height="114"
             decoding="async"
           />
-          <p class="site-footer__tagline">Turning complexity into clear experiences</p>
-          <p>© 2026 Octavia Sirbu - Senior Product Designer</p>
+          <p class="site-footer__tagline" data-i18n="footer.tagline">Turning complexity into clear experiences</p>
+          <p>© 2026 Octavia Sirbu - <span data-i18n="footer.role">Senior Product Designer</span></p>
         </div>
-        <nav class="site-footer__nav" aria-label="Main pages">
+        <nav class="site-footer__nav" aria-label="Main pages" data-i18n-aria="footer.navLabel">
           <ul class="site-footer__list">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="cv.html">CV</a></li>
-            <li><a href="work.html">Projects</a></li>
-            <li><a href="blog.html">Blog</a></li>
-            <li><a href="contact.html">Contact</a></li>
-            <li><a href="privacy.html">Privacy</a></li>
+            <li><a data-i18n="nav.home" href="index.html">Home</a></li>
+            <li><a data-i18n="nav.cv" href="cv.html">CV</a></li>
+            <li><a data-i18n="nav.projects" href="work.html">Projects</a></li>
+            <li><a data-i18n="nav.blog" href="blog.html">Blog</a></li>
+            <li><a data-i18n="nav.contact" href="contact.html">Contact</a></li>
+            <li><a data-i18n="nav.privacy" href="privacy.html">Privacy</a></li>
           </ul>
         </nav>
         <div class="site-footer__social">
@@ -1129,12 +1134,14 @@
               height="24"
               decoding="async"
             />
-            <span>My LinkedIn</span>
+            <span data-i18n="nav.linkedin">My LinkedIn</span>
           </a>
         </div>
       </div>
     </footer>
 
+    <script src="i18n.js?v=3"></script>
+    <script src="i18n-content.js?v=2"></script>
     <script src="script.js?v=cv-film-3"></script>
   </body>
 </html>

@@ -4,9 +4,10 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" href="assets/portfolio-logo.svg" type="image/svg+xml" />
-    <title>Work | Octavia Sirbu </title>
+    <title data-i18n-page-title="work.pageTitle">Projects | Octavia Sirbu</title>
     <script src="theme-init.js"></script>
-    <link rel="stylesheet" href="styles.css?v=vis-45" />
+    <script src="lang-init.js"></script>
+    <link rel="stylesheet" href="styles.css?v=vis-48" />
   </head>
   <body class="page-work">
     <header class="site-header">
@@ -17,18 +18,18 @@
         </a>
         <div class="nav-right">
           <ul class="nav-links">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="cv.html">CV</a></li>
-            <li><a class="active" href="work.html">Projects</a></li>
-            <li><a href="blog.html">Blog</a></li>
+            <li><a data-i18n="nav.home" href="index.html">Home</a></li>
+            <li><a data-i18n="nav.cv" href="cv.html">CV</a></li>
+            <li><a data-i18n="nav.projects" class="active" href="work.html">Projects</a></li>
+            <li><a data-i18n="nav.blog" href="blog.html">Blog</a></li>
           </ul>
           <button
             type="button"
             class="theme-toggle"
             id="themeToggle"
-            aria-label="Switch to dark mode"
+            aria-label="Switch to dark mode" data-i18n-aria="theme.dark"
             aria-pressed="false"
-            title="Light or dark mode"
+            title="Light or dark mode" data-i18n-title="theme.title"
           >
             <span class="theme-icon theme-icon-sun" aria-hidden="true">
               <img src="assets/icons/sun-03.svg" alt="" width="20" height="20" decoding="async" />
@@ -37,6 +38,10 @@
               <img src="assets/icons/moon.svg" alt="" width="20" height="20" decoding="async" />
             </span>
           </button>
+          <div class="lang-toggle" role="group" data-i18n-aria="nav.lang">
+            <button type="button" class="lang-toggle__btn" data-lang-set="en" lang="en">EN</button>
+            <button type="button" class="lang-toggle__btn" data-lang-set="fr" lang="fr">FR</button>
+          </div>
         </div>
       </nav>
     </header>
@@ -44,8 +49,8 @@
     <main>
       <section class="page-hero page-hero--texture">
         <div class="container">
-          <h1>Projects</h1>
-          <p class="intro">
+          <h1 data-i18n="work.title">Projects</h1>
+          <p class="intro" data-i18n="work.intro">
             Product design case studies and websites I designed and built, grouped
             by the kind of work.
           </p>
@@ -54,43 +59,43 @@
 
       <section class="container section work-groups">
         <section class="work-group" aria-labelledby="work-product">
-          <h2 id="work-product" class="section-title--texture">Product Design (UX/UI) Projects</h2>
+          <h2 id="work-product" class="section-title--texture" data-i18n="work.product">Product Design (UX/UI) Projects</h2>
           <div class="grid three cards-grid">
             <a class="project-card" href="nbg-project.html">
               <div class="thumb thumb-airwallet-checkout"></div>
-              <h3>Leading Product UX for a SaaS </h3>
-              <p class="project-desc">
+              <h3 data-i18n="work.saas.title">Leading Product UX for a SaaS </h3>
+              <p class="project-desc" data-i18n="work.saas.desc">
                 Interactive prototype for selecting multiple laundry machines and
                 paying in one bundled transaction.
               </p>
               <div class="project-labels">
-                <span data-skill="process">UX Research</span>
-                <span data-skill="process">UI Prototyping</span>
+                <span data-skill="process" data-i18n="skill.ux">UX Research</span>
+                <span data-skill="process" data-i18n="skill.proto">UI Prototyping</span>
               </div>
             </a>
             <a class="project-card" href="nbg-onboarding.html">
               <div class="thumb thumb-nabogo-onboarding"></div>
-              <h3>Designing Onboardings that Convert - Nabogo ApS</h3>
-              <p class="project-desc">
+              <h3 data-i18n="work.onboarding.title">Designing Onboardings that Convert - Nabogo ApS</h3>
+              <p class="project-desc" data-i18n="work.onboarding.desc">
                 Improving onboarding for Nabogo's app and raising the activation rate by 5%.
               </p>
               <div class="project-labels">
-                <span data-skill="process">UX Research</span>
-                <span data-skill="process">UI Prototyping</span>
-                <span data-skill="production">UX Writing</span>
-                <span data-skill="production">Dev handoff</span>
+                <span data-skill="process" data-i18n="skill.ux">UX Research</span>
+                <span data-skill="process" data-i18n="skill.proto">UI Prototyping</span>
+                <span data-skill="production" data-i18n="skill.uxw">UX Writing</span>
+                <span data-skill="production" data-i18n="skill.handoff">Dev handoff</span>
               </div>
             </a>
             <a class="project-card" href="nbg-designsystem.html">
               <div class="thumb thumb-nabogo-designsystem"></div>
-              <h3>AI-powered Design System for Nabogo ApS</h3>
-              <p class="project-desc">
+              <h3 data-i18n="work.ds.title">AI-powered Design System for Nabogo ApS</h3>
+              <p class="project-desc" data-i18n="work.ds.desc">
                 Tokens, components, and Storybook documentation for a consistent
                 product surface across teams.
               </p>
               <div class="project-labels">
-                <span data-skill="production">Design System</span>
-                <span data-skill="production">Dev handoff</span>
+                <span data-skill="production" data-i18n="skill.ds">Design System</span>
+                <span data-skill="production" data-i18n="skill.handoff">Dev handoff</span>
                 <span data-skill="production">Figma</span>
                 <span data-skill="ai">Cursor</span>
                 <span data-skill="ai">MCP</span>
@@ -98,15 +103,15 @@
             </a>
             <a class="project-card" href="sdu-intranet-project.html">
               <div class="thumb thumb-sdu"></div>
-              <h3>University Intranet Re-design based on UX Insights</h3>
-              <p class="project-desc">
+              <h3 data-i18n="work.sdu.title">University Intranet Re-design based on UX Insights</h3>
+              <p class="project-desc" data-i18n="work.sdu.desc">
                 Research-led intranet redesign for a large university. Clearer structure,
                 navigation, and interfaces shaped by staff and student needs.
               </p>
               <div class="project-labels">
-                <span data-skill="production">Web Design</span>
-                <span data-skill="process">UX Research</span>
-                <span data-skill="process">Project Management</span>
+                <span data-skill="production" data-i18n="skill.web">Web Design</span>
+                <span data-skill="process" data-i18n="skill.ux">UX Research</span>
+                <span data-skill="process" data-i18n="skill.pm">Project Management</span>
                 <span data-skill="data">PowerBI</span>
               </div>
             </a>
@@ -114,12 +119,12 @@
         </section>
 
         <section class="work-group" aria-labelledby="work-web">
-          <h2 id="work-web" class="section-title--texture">Design &amp; Web Development</h2>
+          <h2 id="work-web" class="section-title--texture" data-i18n="work.web">Design &amp; Web Development</h2>
           <div class="grid three cards-grid">
             <a class="project-card" href="marina-guranda-project.html">
               <div class="thumb thumb-marina"></div>
-              <h3>Designing and Building a Website and Webshop for French Teacher</h3>
-              <p class="project-desc">
+              <h3 data-i18n="work.marina.title">Designing and Building a Website and Webshop for French Teacher</h3>
+              <p class="project-desc" data-i18n="work.marina.desc">
                 Website, webshop, calendar, and back office for a French teacher. Designed in
                 Figma, then built with Figma MCP and Cursor.
               </p>
@@ -127,35 +132,37 @@
                 <span data-skill="production">Figma</span>
                 <span data-skill="ai">Cursor</span>
                 <span data-skill="ai">MCP</span>
-                <span data-skill="engineering">Web Dev</span>
+                <span data-skill="engineering" data-i18n="skill.webdev">Web Dev</span>
                 <span data-skill="engineering">Stripe</span>
               </div>
             </a>
             <a class="project-card" href="rotoy-project.html">
               <div class="thumb thumb-rotoy"></div>
-              <h3>Designing a Website and Webshop for EdTech Startup Rotoy ApS</h3>
-              <p class="project-desc">
+              <h3 data-i18n="work.rotoy.title">Designing a Website and Webshop for EdTech Startup Rotoy ApS</h3>
+              <p class="project-desc" data-i18n="work.rotoy.desc">
                 Marketing site and webshop experience for an EdTech startup. Clear
                 storytelling, product discovery, and a purchase flow parents can trust.
               </p>
               <div class="project-labels">
-                <span data-skill="production">Responsive Design</span>
-                <span data-skill="production">Visual Design &amp; Branding</span>
-                <span data-skill="engineering">Web Dev</span>
+                <span data-skill="production" data-i18n="skill.resp">Responsive Design</span>
+                <span data-skill="production" data-i18n="skill.brand">Visual Design &amp; Branding</span>
+                <span data-skill="engineering" data-i18n="skill.webdev">Web Dev</span>
+                <span data-skill="engineering">Stripe</span>
               </div>
             </a>
             <a class="project-card" href="makerspace-project.html">
               <div class="thumb thumb-makerspace"></div>
-              <h3>O'town Garage Makerspace Website Design</h3>
-              <p class="project-desc">
+              <h3 data-i18n="work.makerspace.title">O'town Garage Makerspace Website Design</h3>
+              <p class="project-desc" data-i18n="work.makerspace.desc">
                 Website design for a community makerspace. Tools, membership, and events
                 presented with a clear, welcoming brand and responsive UI.
               </p>
               <div class="project-labels">
-                <span data-skill="production">Web Design</span>
-                <span data-skill="production">Responsive Design</span>
-                <span data-skill="production">Brand &amp; UI</span>
-                <span data-skill="engineering">Web Dev</span>
+                <span data-skill="production" data-i18n="skill.web">Web Design</span>
+                <span data-skill="production" data-i18n="skill.resp">Responsive Design</span>
+                <span data-skill="production" data-i18n="skill.brandui">Brand &amp; UI</span>
+                <span data-skill="engineering" data-i18n="skill.webdev">Web Dev</span>
+                <span data-skill="engineering">Google Calendar</span>
               </div>
             </a>
           </div>
@@ -174,17 +181,17 @@
             height="114"
             decoding="async"
           />
-          <p class="site-footer__tagline">Turning complexity into clear experiences</p>
-          <p>© 2026 Octavia Sirbu - Senior Product Designer</p>
+          <p class="site-footer__tagline" data-i18n="footer.tagline">Turning complexity into clear experiences</p>
+          <p>© 2026 Octavia Sirbu - <span data-i18n="footer.role">Senior Product Designer</span></p>
         </div>
-        <nav class="site-footer__nav" aria-label="Main pages">
+        <nav class="site-footer__nav" aria-label="Main pages" data-i18n-aria="footer.navLabel">
           <ul class="site-footer__list">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="cv.html">CV</a></li>
-            <li><a href="work.html">Projects</a></li>
-            <li><a href="blog.html">Blog</a></li>
-            <li><a href="contact.html">Contact</a></li>
-            <li><a href="privacy.html">Privacy</a></li>
+            <li><a data-i18n="nav.home" href="index.html">Home</a></li>
+            <li><a data-i18n="nav.cv" href="cv.html">CV</a></li>
+            <li><a data-i18n="nav.projects" href="work.html">Projects</a></li>
+            <li><a data-i18n="nav.blog" href="blog.html">Blog</a></li>
+            <li><a data-i18n="nav.contact" href="contact.html">Contact</a></li>
+            <li><a data-i18n="nav.privacy" href="privacy.html">Privacy</a></li>
           </ul>
         </nav>
         <div class="site-footer__social">
@@ -202,12 +209,14 @@
               height="24"
               decoding="async"
             />
-            <span>My LinkedIn</span>
+            <span data-i18n="nav.linkedin">My LinkedIn</span>
           </a>
         </div>
       </div>
     </footer>
 
+    <script src="i18n.js?v=3"></script>
+    <script src="i18n-content.js?v=2"></script>
     <script src="script.js?v=footer-dog-1"></script>
   </body>
 </html>
