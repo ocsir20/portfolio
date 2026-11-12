@@ -6,8 +6,8 @@
     <link rel="icon" href="../assets/portfolio-logo.svg" type="image/svg+xml" />
     <title>We Didn't Add a Feature. We Removed a Step | Octavia Sirbu</title>
     <script src="../theme-init.js"></script>
-    <script src="../lang-init.js"></script>
-    <link rel="stylesheet" href="../styles.css?v=vis-50" />
+    <script src="../lang-init.js?v=2"></script>
+    <link rel="stylesheet" href="../styles.css?v=vis-52" />
   </head>
   <body class="page-blog">
     <header class="site-header">
@@ -22,6 +22,7 @@
             <li><a data-i18n="nav.cv" href="../cv.html">CV</a></li>
             <li><a data-i18n="nav.projects" href="../work.html">Projects</a></li>
             <li><a data-i18n="nav.blog" class="active" href="../blog.html">Blog</a></li>
+            <li><a data-i18n="nav.contact" href="../contact.html">Contact</a></li>
           </ul>
           <div class="nav-tools">
           <button
@@ -39,9 +40,18 @@
               <img src="../assets/icons/moon.svg" alt="" width="20" height="20" decoding="async" />
             </span>
           </button>
-          <div class="lang-toggle" role="group" data-i18n-aria="nav.lang">
-            <button type="button" class="lang-toggle__btn" data-lang-set="en" lang="en"><span class="lang-toggle__flag" aria-hidden="true">🇬🇧</span> EN</button>
-            <button type="button" class="lang-toggle__btn" data-lang-set="fr" lang="fr"><span class="lang-toggle__flag" aria-hidden="true">🇫🇷</span> FR</button>
+          <div class="lang-toggle">
+            <button type="button" class="lang-toggle__trigger" aria-expanded="false" aria-haspopup="listbox" data-i18n-aria="nav.lang">
+              <span class="lang-toggle__flag" data-lang-flag aria-hidden="true">🇬🇧</span>
+              <span class="lang-toggle__code" data-lang-code>EN</span>
+              <span class="lang-toggle__chevron" aria-hidden="true"></span>
+            </button>
+            <div class="lang-toggle__menu" role="listbox" hidden>
+              <button type="button" class="lang-toggle__option" role="option" data-lang-set="en" lang="en"><span class="lang-toggle__flag" aria-hidden="true">🇬🇧</span> EN</button>
+              <button type="button" class="lang-toggle__option" role="option" data-lang-set="fr" lang="fr"><span class="lang-toggle__flag" aria-hidden="true">🇫🇷</span> FR</button>
+              <button type="button" class="lang-toggle__option" role="option" data-lang-set="da" lang="da"><span class="lang-toggle__flag" aria-hidden="true">🇩🇰</span> DA</button>
+              <button type="button" class="lang-toggle__option" role="option" data-lang-set="ro" lang="ro"><span class="lang-toggle__flag" aria-hidden="true">🇷🇴</span> RO</button>
+            </div>
           </div>
           </div>
         </div>
@@ -263,7 +273,9 @@
         </div>
       </div>
     </footer>
-    <script src="../i18n.js?v=2"></script>
+    <script src="../i18n.js?v=8"></script>
+    <script src="../i18n-da.js?v=2"></script>
+    <script src="../i18n-ro.js?v=1"></script>
     <script src="../script.js"></script>
   </body>
 </html>

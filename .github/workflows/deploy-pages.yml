@@ -31,6 +31,7 @@ jobs:
 
       - name: Prepare site artifact
         run: |
+          python3 scripts/sync-lang-routes.py
           mkdir -p _site
           rsync -a \
             --exclude='.git' \

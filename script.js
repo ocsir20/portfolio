@@ -159,7 +159,9 @@ if (
       servicePanelProjectDesc.textContent = project.desc;
       servicePanelThumb.classList.remove(...thumbClasses);
       servicePanelThumb.classList.add(project.thumbClass);
-      servicePanelProject.href = project.href || "work.html";
+      servicePanelProject.href = window.portfolioI18n
+        ? window.portfolioI18n.localizeHref(project.href || "work.html")
+        : project.href || "work.html";
     }
   };
 
@@ -347,9 +349,7 @@ document.querySelectorAll("[data-more-projects]").forEach((root) => {
 
 /* Back-to-top control (all pages; icon path differs under /blogs/) */
 (function initBackToTop() {
-  const iconSrc = document.location.pathname.includes("/blogs/")
-    ? "../assets/icons/arrow-up-02.svg"
-    : "assets/icons/arrow-up-02.svg";
+  const iconSrc = "/assets/icons/arrow-up-02.svg";
 
   const btn = document.createElement("button");
   btn.type = "button";
@@ -434,16 +434,16 @@ document.querySelectorAll("[data-more-projects]").forEach((root) => {
         nav = document.createElement("div");
         nav.className = isHome ? "stack-card__stories" : "cv-card__stories";
         nav.setAttribute("role", "navigation");
-        nav.setAttribute(
-          "aria-label",
-          window.portfolioI18n
-            ? window.portfolioI18n.t(isHome ? "nav.homeSections" : "cv.sectionsNav")
-            : isHome
-              ? "Home sections"
-              : "CV sections"
-        );
         card.insertBefore(nav, card.firstChild);
       }
+      nav.setAttribute(
+        "aria-label",
+        window.portfolioI18n
+          ? window.portfolioI18n.t(isHome ? "nav.homeSections" : "cv.sectionsNav")
+          : isHome
+            ? "Home sections"
+            : "CV sections"
+      );
       nav.innerHTML = "";
       cards.forEach((target, index) => {
         const btn = document.createElement("button");
@@ -773,5 +773,90 @@ document.querySelectorAll("[data-more-projects]").forEach((root) => {
         img.replaceWith(svg);
       })
       .catch(() => {});
+  });
+})();
+
+(function initBlogFilters() {
+  const filters = document.querySelectorAll("[data-blog-filter]");
+  const cards = document.querySelectorAll(".blog-card[data-blog-cat]");
+  if (!filters.length || !cards.length) return;
+
+  const applyFilter = (value) => {
+    const all = !value || value === "all";
+    filters.forEach((btn) => {
+      const key = btn.getAttribute("data-blog-filter");
+      const on = all ? key === "all" : key === value;
+      btn.classList.toggle("is-active", on);
+      btn.setAttribute("aria-pressed", on ? "true" : "false");
+    });
+    cards.forEach((card) => {
+      const cats = (card.getAttribute("data-blog-cat") || "").split(/\s+/);
+      card.hidden = !all && !cats.includes(value);
+    });
+  };
+
+  filters.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      applyFilter(btn.getAttribute("data-blog-filter"));
+    });
+  });
+})();
+
+(function initContactForm() {
+  const form = document.querySelector(".contact-form");
+  const status = document.querySelector("#contactStatus");
+  if (!form || !status) return;
+
+  const showStatus = (kind, key) => {
+    status.hidden = false;
+    status.classList.remove("is-success", "is-error");
+    status.classList.add(kind === "success" ? "is-success" : "is-error");
+    status.setAttribute("data-i18n", key);
+    const fallback =
+      kind === "success"
+        ? "Thank you. I will reply as soon as I can."
+        : "The message could not be sent. Please try again, or email me directly.";
+    status.textContent = window.portfolioI18n ? window.portfolioI18n.t(key) || fallback : fallback;
+    status.scrollIntoView({ behavior: "smooth", block: "center" });
+  };
+
+  if (new URLSearchParams(window.location.search).get("sent") === "1") {
+    showStatus("success", "contact.thanks");
+  }
+
+  form.addEventListener("submit", async (event) => {
+    event.preventDefault();
+    const submit = form.querySelector('button[type="submit"]');
+    if (submit) submit.disabled = true;
+    status.hidden = true;
+
+    const controller = new AbortController();
+    const timeoutId = window.setTimeout(() => controller.abort(), 15000);
+
+    try {
+      const response = await fetch(form.action, {
+        method: "POST",
+        body: new FormData(form),
+        headers: { Accept: "application/json" },
+        signal: controller.signal,
+      });
+      let payload = null;
+      try {
+        payload = await response.json();
+      } catch (err) {
+        payload = null;
+      }
+      const failed =
+        !response.ok ||
+        (payload && (payload.success === false || payload.success === "false"));
+      if (failed) throw new Error("send failed");
+      form.reset();
+      showStatus("success", "contact.thanks");
+    } catch (err) {
+      showStatus("error", "contact.error");
+    } finally {
+      window.clearTimeout(timeoutId);
+      if (submit) submit.disabled = false;
+    }
   });
 })();

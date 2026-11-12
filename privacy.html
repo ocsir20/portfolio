@@ -6,8 +6,8 @@
     <link rel="icon" href="assets/portfolio-logo.svg" type="image/svg+xml" />
     <title data-i18n-page-title="privacy.pageTitle">Privacy | Octavia Sirbu</title>
     <script src="theme-init.js"></script>
-    <script src="lang-init.js"></script>
-    <link rel="stylesheet" href="styles.css?v=vis-50" />
+    <script src="lang-init.js?v=2"></script>
+    <link rel="stylesheet" href="styles.css?v=vis-52" />
   </head>
   <body class="page-legal">
     <header class="site-header">
@@ -22,6 +22,7 @@
             <li><a data-i18n="nav.cv" href="cv.html">CV</a></li>
             <li><a data-i18n="nav.projects" href="work.html">Projects</a></li>
             <li><a data-i18n="nav.blog" href="blog.html">Blog</a></li>
+            <li><a data-i18n="nav.contact" href="contact.html">Contact</a></li>
           </ul>
           <div class="nav-tools">
           <button
@@ -39,9 +40,18 @@
               <img src="assets/icons/moon.svg" alt="" width="20" height="20" decoding="async" />
             </span>
           </button>
-          <div class="lang-toggle" role="group" data-i18n-aria="nav.lang">
-            <button type="button" class="lang-toggle__btn" data-lang-set="en" lang="en"><span class="lang-toggle__flag" aria-hidden="true">🇬🇧</span> EN</button>
-            <button type="button" class="lang-toggle__btn" data-lang-set="fr" lang="fr"><span class="lang-toggle__flag" aria-hidden="true">🇫🇷</span> FR</button>
+          <div class="lang-toggle">
+            <button type="button" class="lang-toggle__trigger" aria-expanded="false" aria-haspopup="listbox" data-i18n-aria="nav.lang">
+              <span class="lang-toggle__flag" data-lang-flag aria-hidden="true">🇬🇧</span>
+              <span class="lang-toggle__code" data-lang-code>EN</span>
+              <span class="lang-toggle__chevron" aria-hidden="true"></span>
+            </button>
+            <div class="lang-toggle__menu" role="listbox" hidden>
+              <button type="button" class="lang-toggle__option" role="option" data-lang-set="en" lang="en"><span class="lang-toggle__flag" aria-hidden="true">🇬🇧</span> EN</button>
+              <button type="button" class="lang-toggle__option" role="option" data-lang-set="fr" lang="fr"><span class="lang-toggle__flag" aria-hidden="true">🇫🇷</span> FR</button>
+              <button type="button" class="lang-toggle__option" role="option" data-lang-set="da" lang="da"><span class="lang-toggle__flag" aria-hidden="true">🇩🇰</span> DA</button>
+              <button type="button" class="lang-toggle__option" role="option" data-lang-set="ro" lang="ro"><span class="lang-toggle__flag" aria-hidden="true">🇷🇴</span> RO</button>
+            </div>
           </div>
           </div>
         </div>
@@ -60,7 +70,7 @@
 
       <article class="container section">
         <div class="legal-content">
-        <p class="legal-updated" data-i18n="privacy.updated">Last updated: 9 November 2026</p>
+        <p class="legal-updated" data-i18n="privacy.updated">Last updated: 12 November 2026</p>
 
         <h2 data-i18n="privacy.h.who">Who is responsible</h2>
         <p data-i18n-html="privacy.p.who">
@@ -72,16 +82,16 @@
         <h2 data-i18n="privacy.h.what">What this site is</h2>
         <p data-i18n="privacy.p.what">
           octaviasirbu.com is a personal portfolio. It presents my CV, projects, and writing. It
-          does not have user accounts, a newsletter, a shop, or a contact form that stores messages
-          on this site.
+          does not have user accounts, a newsletter, or a shop. The contact form sends your message
+          to my email. It does not store messages on this site.
         </p>
 
         <h2 data-i18n="privacy.h.data">Data I receive from you</h2>
         <p data-i18n="privacy.p.data1">
-          I only receive personal data if you choose to contact me, for example by email or through
-          LinkedIn. That typically includes your name, email address, and whatever you write. I use
-          that information to reply and, if relevant, to continue a professional conversation. I do
-          not sell it or use it for advertising.
+          I only receive personal data if you choose to contact me, for example through the contact
+          form, by email, or through LinkedIn. That typically includes your name, email address, the
+          reason for your message, and whatever you write. I use that information to reply and, if
+          relevant, to continue a professional conversation. I do not sell it or use it for advertising.
         </p>
         <p data-i18n="privacy.p.data2">
           I keep correspondence as long as it is useful for that conversation, then delete it when
@@ -91,9 +101,10 @@
         <h2 data-i18n="privacy.h.browser">What stays in your browser</h2>
         <p data-i18n-html="privacy.p.browser1">
           The light and dark theme preference is saved in your browser with localStorage, under the
-          key <code>portfolio-theme</code>. Language preference uses <code>portfolio-lang</code>.
-          That stays on your device. I cannot read it. You can clear it by deleting site data in
-          your browser settings.
+          key <code>portfolio-theme</code>. The language follows the address: English has no prefix,
+          French uses <code>/fr</code>, Danish uses <code>/dk</code>, and Romanian uses
+          <code>/ro</code>. A language hint also uses <code>portfolio-lang</code>. That stays on your
+          device. I cannot read it. You can clear it by deleting site data in your browser settings.
         </p>
         <p data-i18n="privacy.p.browser2">
           This site does not set marketing cookies and does not use analytics tools such as Google
@@ -111,8 +122,10 @@
         <h2 data-i18n="privacy.h.fonts">Fonts and other services</h2>
         <p data-i18n="privacy.p.fonts1">
           Type is loaded from Google Fonts. Your browser may request those files from Google, which
-          can involve your IP address. If you follow a link to LinkedIn or another external site,
-          that site has its own privacy policy.
+          can involve your IP address. The contact form is sent through FormSubmit, which delivers
+          the message to my inbox and may process technical data such as IP address to send the
+          email. If you follow a link to LinkedIn or another external site, that site has its own
+          privacy policy.
         </p>
         <p data-i18n="privacy.p.fonts2">
           Videos and images on this portfolio are hosted with the site. Playing a film does not send
@@ -185,7 +198,9 @@
       </div>
     </footer>
 
-    <script src="i18n.js?v=2"></script>
+    <script src="i18n.js?v=8"></script>
+    <script src="i18n-da.js?v=2"></script>
+    <script src="i18n-ro.js?v=1"></script>
     <script src="script.js?v=cv-film-3"></script>
   </body>
 </html>

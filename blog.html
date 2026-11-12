@@ -6,8 +6,8 @@
     <link rel="icon" href="assets/portfolio-logo.svg" type="image/svg+xml" />
     <title>Blog | Octavia Sirbu</title>
     <script src="theme-init.js"></script>
-    <script src="lang-init.js"></script>
-    <link rel="stylesheet" href="styles.css?v=vis-50" />
+    <script src="lang-init.js?v=2"></script>
+    <link rel="stylesheet" href="styles.css?v=vis-55" />
   </head>
   <body class="page-blog">
     <header class="site-header">
@@ -22,6 +22,7 @@
             <li><a data-i18n="nav.cv" href="cv.html">CV</a></li>
             <li><a data-i18n="nav.projects" href="work.html">Projects</a></li>
             <li><a data-i18n="nav.blog" class="active" href="blog.html">Blog</a></li>
+            <li><a data-i18n="nav.contact" href="contact.html">Contact</a></li>
           </ul>
           <div class="nav-tools">
           <button
@@ -39,9 +40,18 @@
               <img src="assets/icons/moon.svg" alt="" width="20" height="20" decoding="async" />
             </span>
           </button>
-          <div class="lang-toggle" role="group" data-i18n-aria="nav.lang">
-            <button type="button" class="lang-toggle__btn" data-lang-set="en" lang="en"><span class="lang-toggle__flag" aria-hidden="true">🇬🇧</span> EN</button>
-            <button type="button" class="lang-toggle__btn" data-lang-set="fr" lang="fr"><span class="lang-toggle__flag" aria-hidden="true">🇫🇷</span> FR</button>
+          <div class="lang-toggle">
+            <button type="button" class="lang-toggle__trigger" aria-expanded="false" aria-haspopup="listbox" data-i18n-aria="nav.lang">
+              <span class="lang-toggle__flag" data-lang-flag aria-hidden="true">🇬🇧</span>
+              <span class="lang-toggle__code" data-lang-code>EN</span>
+              <span class="lang-toggle__chevron" aria-hidden="true"></span>
+            </button>
+            <div class="lang-toggle__menu" role="listbox" hidden>
+              <button type="button" class="lang-toggle__option" role="option" data-lang-set="en" lang="en"><span class="lang-toggle__flag" aria-hidden="true">🇬🇧</span> EN</button>
+              <button type="button" class="lang-toggle__option" role="option" data-lang-set="fr" lang="fr"><span class="lang-toggle__flag" aria-hidden="true">🇫🇷</span> FR</button>
+              <button type="button" class="lang-toggle__option" role="option" data-lang-set="da" lang="da"><span class="lang-toggle__flag" aria-hidden="true">🇩🇰</span> DA</button>
+              <button type="button" class="lang-toggle__option" role="option" data-lang-set="ro" lang="ro"><span class="lang-toggle__flag" aria-hidden="true">🇷🇴</span> RO</button>
+            </div>
           </div>
           </div>
         </div>
@@ -53,35 +63,42 @@
         <div class="container">
           <h1 data-i18n="blog.title">Blog</h1>
           <p class="intro" data-i18n="blog.intro">
-            Thoughts on UX strategy, interface design, and creating better digital
-            experiences.
+            I write about UX/UI design, using AI in product work, building for the web,
+            and European culture. The blog is only available in English at the moment.
           </p>
         </div>
       </section>
 
       <section class="container section">
+        <div class="blog-filters" role="group" aria-label="Filter posts" data-i18n-aria="blog.filters.label">
+          <button type="button" class="blog-filter is-active" data-blog-filter="all" data-i18n="blog.cat.all" aria-pressed="true">All</button>
+          <button type="button" class="blog-filter" data-blog-filter="ux" data-i18n="blog.cat.ux" aria-pressed="false">UX/UI Design</button>
+          <button type="button" class="blog-filter" data-blog-filter="ai" data-i18n="blog.cat.ai" aria-pressed="false">AI for Product</button>
+          <button type="button" class="blog-filter" data-blog-filter="web" data-i18n="blog.cat.web" aria-pressed="false">Web Dev</button>
+          <button type="button" class="blog-filter" data-blog-filter="culture" data-i18n="blog.cat.culture" aria-pressed="false">European Culture</button>
+        </div>
         <div class="grid three cards-grid">
-          <a class="blog-card" href="blogs/scandinavia-design-lessons.html">
+          <a class="blog-card" href="blogs/scandinavia-design-lessons.html" data-blog-cat="culture">
             <div class="thumb thumb-scandinavia-blog" role="presentation"></div>
             <h3>5 Things I Learned About Design From Living in Scandinavia for 12 Years</h3>
             <p>I’ve lived in Scandinavia for 12 years, and somewhere along the way, it changed the way I look at design.</p>
           </a>
-          <a class="blog-card" href="blogs/ai-workflow-saves-hours.html">
+          <a class="blog-card" href="blogs/ai-workflow-saves-hours.html" data-blog-cat="ai">
             <div class="thumb thumb-ai-workflow" role="presentation"></div>
             <h3>The AI Workflow That Saves Me Hours Every Week</h3>
             <p>From Condens insights to Figma Make, ChatGPT, Figma MCP, and Cursor. An iterative loop for product design.</p>
           </a>
-          <a class="blog-card" href="blogs/we-removed-a-step.html">
+          <a class="blog-card" href="blogs/we-removed-a-step.html" data-blog-cat="ux">
             <div class="thumb thumb-nabogo-ride-creation" role="presentation"></div>
             <h3>We Didn't Add a Feature. We Removed a Step</h3>
             <p>Sometimes the best UX decision isn't adding something new. It's taking something away.</p>
           </a>
-          <a class="blog-card" href="blogs/portfolio-ai-coded.html">
+          <a class="blog-card" href="blogs/portfolio-ai-coded.html" data-blog-cat="web ai">
             <div class="thumb thumb-portfolio" role="presentation"></div>
             <h3>Coded my portfolio with AI assistance</h3>
             <p>Building a case-study portfolio in HTML with Cursor. Structure, craft, and what stayed human-led.</p>
           </a>
-          <a class="blog-card" href="blogs/design-systems-scale.html">
+          <a class="blog-card" href="blogs/design-systems-scale.html" data-blog-cat="ux ai">
             <div class="thumb thumb-blog-design-systems" role="presentation"></div>
             <h3>Designing Scalable Design Systems in the Age of AI</h3>
             <p>Token-based design systems, AI-assisted workflows, and scaling UI for growing product teams.</p>
@@ -135,7 +152,9 @@
       </div>
     </footer>
 
-    <script src="i18n.js?v=2"></script>
-    <script src="script.js"></script>
+    <script src="i18n.js?v=11"></script>
+    <script src="i18n-da.js?v=2"></script>
+    <script src="i18n-ro.js?v=1"></script>
+    <script src="script.js?v=lang-path-4"></script>
   </body>
 </html>
