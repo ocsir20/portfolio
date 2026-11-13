@@ -2189,24 +2189,6 @@ pre {
   z-index: 1;
 }
 
-.thumb-airwallet-checkout {
-  background-color: #45404c;
-  background-image: url("assets/projects/nabogo/cover%20nbg.jpg");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-}
-
-/* Unlisted: Leading Product UX for a SaaS Platform Nabogo ApS (nbg-project.html) */
-a.project-card[href="nbg-project.html"],
-a.more-project-card[href="nbg-project.html"] {
-  display: none !important;
-}
-
-body.page-project--unlisted main {
-  display: none;
-}
-
 .thumb-nabogo-designsystem {
   background-color: #45404c;
   background-image: url("assets/projects/nabogo/nbg%20design%20system%20cover.jpg");
@@ -2931,6 +2913,105 @@ body.page-project--unlisted main {
 .project-page-content--makerspace .project-makerspace-figures {
   gap: 0;
   margin-bottom: 2rem;
+}
+
+.project-page-content--makerspace .project-makerspace-points {
+  margin: 0 0 1.5rem;
+  padding-left: 1.2rem;
+}
+
+.project-page-content--makerspace .project-makerspace-points li {
+  margin: 0 0 0.55rem;
+  line-height: 1.65;
+}
+
+.project-page-content--makerspace .project-makerspace-points li:last-child {
+  margin-bottom: 0;
+}
+
+.project-page-content--makerspace .project-makerspace-points--impact li {
+  margin-bottom: 0.85rem;
+}
+
+.project-page-content--makerspace .project-makerspace-points--impact strong {
+  color: var(--accent);
+  font-weight: 650;
+}
+
+.project-page-content--makerspace .project-makerspace-intro {
+  margin-bottom: 2.25rem;
+}
+
+.project-page-content--makerspace .project-makerspace-intro > h2:first-child {
+  margin-top: 0;
+}
+
+.project-page-content--makerspace .project-makerspace-role,
+.project-page-content--makerspace .project-makerspace-about {
+  display: grid;
+  gap: clamp(1.1rem, 3vw, 2rem);
+  align-items: center;
+  margin: 0 0 1.75rem;
+}
+
+.project-page-content--makerspace .project-makerspace-role {
+  grid-template-columns: minmax(0, 1fr) minmax(10.5rem, 15.5rem);
+}
+
+.project-page-content--makerspace .project-makerspace-about {
+  grid-template-columns: minmax(9.5rem, 15rem) minmax(0, 1fr);
+}
+
+.project-page-content--makerspace .project-makerspace-role__copy h2 {
+  margin-top: 0;
+}
+
+.project-page-content--makerspace .project-makerspace-role__copy .project-makerspace-points {
+  margin-bottom: 0;
+}
+
+.project-page-content--makerspace .project-makerspace-role__visual,
+.project-page-content--makerspace .project-makerspace-about__visual {
+  margin: 0;
+}
+
+.project-page-content--makerspace .project-makerspace-about__visual {
+  padding: 0.55rem 0.7rem;
+  background: #ffffff;
+  border-radius: 14px;
+}
+
+.project-page-content--makerspace .project-makerspace-role__portrait {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 18px;
+}
+
+.project-page-content--makerspace .project-makerspace-about__logo {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.project-page-content--makerspace .project-makerspace-about__copy {
+  margin: 0;
+}
+
+@media (max-width: 768px) {
+  .project-page-content--makerspace .project-makerspace-role,
+  .project-page-content--makerspace .project-makerspace-about {
+    grid-template-columns: 1fr;
+  }
+
+  .project-page-content--makerspace .project-makerspace-role__portrait {
+    max-width: 16rem;
+    margin-inline: auto;
+  }
+
+  .project-page-content--makerspace .project-makerspace-about__logo {
+    max-width: 16rem;
+  }
 }
 
 .project-page-content--marina .article-image {
