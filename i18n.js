@@ -613,7 +613,10 @@
 
     var nextField = document.querySelector(".contact-form input[name='_next']");
     if (nextField) {
-      nextField.value = location.origin + withCurrentLangPrefix("/contact.html", "?sent=1", "");
+      var nextPath = document.body.classList.contains("page-studio")
+        ? "/studio.html"
+        : "/contact.html";
+      nextField.value = location.origin + withCurrentLangPrefix(nextPath, "?sent=1", "");
     }
 
     rewriteInternalLinks();

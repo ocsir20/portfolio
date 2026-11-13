@@ -40,6 +40,12 @@
   try {
     lang = langFromPath(location.pathname);
     localStorage.setItem("portfolio-lang", lang);
+    if (location.hostname === "studio.octaviasirbu.com") {
+      var studioPath = stripLangPrefix(location.pathname);
+      if (studioPath === "/" || studioPath === "/index.html") {
+        location.replace(withLangPrefix(lang, "/studio.html", location.search, location.hash));
+      }
+    }
   } catch (e) {
     lang = "en";
   }

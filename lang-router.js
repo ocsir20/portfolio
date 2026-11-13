@@ -19,6 +19,9 @@
   var rest = path.slice(match[0].length) || "/";
   if (rest === "/" || rest === "") rest = "/index.html";
   else if (rest.charAt(rest.length - 1) === "/") rest += "index.html";
+  if (location.hostname === "studio.octaviasirbu.com" && rest === "/index.html") {
+    rest = "/studio.html";
+  }
 
   fetch(rest, { credentials: "same-origin" })
     .then(function (response) {

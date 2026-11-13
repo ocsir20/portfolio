@@ -7044,3 +7044,182 @@ html[data-theme="dark"] .balloon-dog__link img {
     transform: none;
   }
 }
+
+/* Studio landing (studio.octaviasirbu.com / studio.html) */
+.page-studio .studio-hero {
+  padding-top: 3.2rem;
+  padding-bottom: 2.6rem;
+}
+
+.page-studio .studio-hero h1 {
+  max-width: 18ch;
+  font-size: clamp(2rem, 4.6vw, 3.35rem);
+  line-height: 1.12;
+  letter-spacing: -0.02em;
+}
+
+.page-studio .studio-hero .intro {
+  max-width: 42rem;
+  margin-top: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.page-studio .nav-cta {
+  font-weight: 600;
+  color: var(--accent);
+}
+
+.page-studio .studio-lead {
+  max-width: 40rem;
+  margin-bottom: 1.5rem;
+}
+
+.page-studio .studio-trust__line {
+  margin: 0 0 1.5rem;
+  max-width: 44rem;
+  font-size: 1.05rem;
+  line-height: 1.55;
+  color: var(--muted);
+}
+
+.page-studio .studio-why__grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.page-studio .studio-why__card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 1.25rem 1.3rem 1.4rem;
+}
+
+.page-studio .studio-why__card--solution {
+  border-color: var(--border-strong);
+}
+
+.page-studio .studio-why__label {
+  margin: 0 0 0.35rem;
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.page-studio .studio-why__card h3 {
+  margin: 0 0 0.55rem;
+}
+
+.page-studio .studio-why__card p:last-child {
+  margin: 0;
+  color: var(--muted);
+}
+
+.page-studio .studio-why__points {
+  margin: 1.25rem 0 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 0.75rem;
+}
+
+.page-studio .studio-why__points li {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 0.9rem 1.05rem;
+  color: var(--muted);
+}
+
+.page-studio .studio-package {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 1.2rem 1.25rem 1.35rem;
+}
+
+.page-studio .studio-package--featured {
+  border-color: var(--border-strong);
+  box-shadow: 0 10px 28px var(--shadow);
+}
+
+.page-studio .studio-package__kicker {
+  margin: 0 0 0.3rem;
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.page-studio .studio-package h3 {
+  margin: 0 0 0.55rem;
+}
+
+.page-studio .studio-package p {
+  color: var(--muted);
+  margin: 0 0 0.85rem;
+}
+
+.page-studio .studio-package ul {
+  margin: 0;
+  padding-left: 1.1rem;
+  color: var(--text);
+}
+
+.page-studio .studio-package li + li {
+  margin-top: 0.35rem;
+}
+
+.page-studio .studio-process__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+  counter-reset: studio-step;
+}
+
+.page-studio .studio-process__list li {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 1.2rem 1.25rem 1.35rem;
+  counter-increment: studio-step;
+}
+
+.page-studio .studio-process__list h3 {
+  margin: 0 0 0.45rem;
+}
+
+.page-studio .studio-process__list h3::before {
+  content: counter(studio-step) ". ";
+  color: var(--accent);
+}
+
+.page-studio .studio-process__list p {
+  margin: 0;
+  color: var(--muted);
+}
+
+.page-studio .studio-book {
+  padding-bottom: 3rem;
+}
+
+.page-studio .studio-book h2 {
+  max-width: 18ch;
+}
+
+.page-studio .studio-form {
+  max-width: 40rem;
+}
+
+@media (max-width: 900px) {
+  .page-studio .studio-why__grid,
+  .page-studio .studio-process__list {
+    grid-template-columns: 1fr;
+  }
+}
