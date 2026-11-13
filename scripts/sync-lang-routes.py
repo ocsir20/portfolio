@@ -25,7 +25,11 @@ STUB = """<!DOCTYPE html>
 </html>
 """
 
-html_files = list(ROOT.glob("*.html")) + list((ROOT / "blogs").glob("*.html"))
+html_files = (
+    list(ROOT.glob("*.html"))
+    + list((ROOT / "blogs").glob("*.html"))
+    + list((ROOT / "studio").glob("*.html"))
+)
 written = 0
 for prefix in PREFIXES:
     for src in html_files:

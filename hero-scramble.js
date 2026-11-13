@@ -1,7 +1,5 @@
 (function initHeroScramble() {
-  const visual = document.querySelector(
-    ".home-stack > .stack-card.hero .hero-visual--portrait"
-  );
+  const visual = document.querySelector(".hero-visual--portrait");
   const canvas = visual && visual.querySelector(".hero-scramble");
   const portrait = visual && visual.querySelector(".hero-portrait-img");
   if (!visual || !canvas) return;

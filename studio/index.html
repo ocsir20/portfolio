@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Octavia Sirbu Studio</title>
+    <link rel="canonical" href="https://octaviasirbu.com/studio.html" />
+    <script>
+      (function () {
+        var path = location.pathname || "/";
+        var next = "/studio.html";
+        var prefixed = path.match(/^\/(fr|ro|dk)(?:\/|$)/);
+        if (prefixed) next = "/" + prefixed[1] + "/studio.html";
+        location.replace(next + (location.search || "") + (location.hash || ""));
+      })();
+    </script>
+    <meta http-equiv="refresh" content="0;url=/studio.html" />
+  </head>
+  <body>
+    <p><a href="/studio.html">Continue to the studio page</a></p>
+  </body>
+</html>
