@@ -2,6 +2,7 @@
   var KEY = "portfolio-shell";
   var CASE = /(marina-guranda-project|rotoy-project|makerspace-project)\.html/i;
   var BLOG_INDEX = /(^|\/)blog\.html$/i;
+  var PRIVACY = /(^|\/)privacy\.html$/i;
   var path = location.pathname || "";
   var inBlogPost = /\/blogs\//i.test(path);
   var fromParam = false;
@@ -12,9 +13,11 @@
   var isStudio = !!(body && body.classList.contains("page-studio"));
   var isCase = CASE.test(path);
   var isBlog = BLOG_INDEX.test(path) || inBlogPost || !!(body && body.classList.contains("page-blog"));
+  var isPrivacy = PRIVACY.test(path) || !!(body && body.classList.contains("page-legal"));
+  var keepStudio = isCase || isBlog || isPrivacy;
   var isPortfolioHub = !!(
     body &&
-    /page-home|page-work|page-cv|page-contact|page-legal/.test(body.className)
+    /page-home|page-work|page-cv|page-contact/.test(body.className)
   );
 
   function setShell(on) {
@@ -32,10 +35,10 @@
     }
   }
 
-  if (isStudio || ((isCase || isBlog) && fromParam)) setShell(true);
+  if (isStudio || (keepStudio && fromParam)) setShell(true);
   else if (isPortfolioHub) setShell(false);
 
-  if (!(isCase || isBlog) || (!fromParam && !hasShell())) return;
+  if (!keepStudio || (!fromParam && !hasShell())) return;
 
   var root = inBlogPost ? "../" : "";
 
@@ -78,7 +81,7 @@
   if (footerList) {
     footerList.innerHTML =
       '<li><a href="' + root + 'blog.html?from=studio" data-i18n="nav.blog">Blog</a></li>' +
-      '<li><a href="' + root + 'privacy.html" data-i18n="nav.privacy">Privacy</a></li>';
+      '<li><a href="' + root + 'privacy.html?from=studio" data-i18n="nav.privacy">Privacy</a></li>';
     var footerSocial = document.querySelector(".site-footer__social");
     if (footerSocial) footerSocial.remove();
   }
@@ -110,7 +113,8 @@
     }
     var stampCase = CASE.test(url.pathname);
     var stampBlog = BLOG_INDEX.test(url.pathname) || /\/blogs\//i.test(url.pathname);
-    if (!stampCase && !stampBlog) return;
+    var stampPrivacy = PRIVACY.test(url.pathname);
+    if (!stampCase && !stampBlog && !stampPrivacy) return;
     url.searchParams.set("from", "studio");
     anchor.setAttribute("href", toLocal(url));
   });
