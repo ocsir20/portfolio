@@ -9,7 +9,7 @@
     <link rel="canonical" href="https://octaviasirbu.com/studio.html" />
     <script src="theme-init.js"></script>
     <script src="lang-init.js?v=3"></script>
-    <link rel="stylesheet" href="styles.css?v=vis-83" />
+    <link rel="stylesheet" href="styles.css?v=vis-111" />
   </head>
   <body class="page-studio">
     <header class="site-header">
@@ -65,7 +65,7 @@
         <div class="hero-copy">
           <p class="tag studio-hero__label"><span data-i18n="studio.hero.tag">Independent designer &amp; developer</span></p>
           <h1 data-i18n="studio.hero.h1">Websites built with intention. Designed to move your business forward.</h1>
-          <p class="intro" data-i18n="studio.hero.sub">I design and build thoughtful, high-performing websites for freelancers and small businesses. Combining senior product design experience with hands-on development, I create clear, distinctive digital experiences that build trust and turn the right visitors into enquiries.</p>
+          <p class="intro" data-i18n="studio.hero.sub">I design and build thoughtful websites for freelancers and small businesses. You get senior product design and a site built by me, so visitors can quickly see what you do, feel confident in your work, and know how to get in touch.</p>
           <a class="btn" href="#book">☕ <span data-i18n="studio.hero.cta">Book a free chat</span></a>
           <p class="studio-hero__meta" data-i18n="studio.hero.meta">7+ years of experience · Lived in 4 countries · Working across Europe</p>
         </div>
@@ -85,7 +85,8 @@
         </div>
       </section>
 
-      <section class="container section studio-why" aria-labelledby="studio-why-heading">
+      <section class="section studio-why" aria-labelledby="studio-why-heading">
+        <div class="container">
         <div class="studio-why__intro">
           <figure class="studio-why__photo photo-wash">
             <img
@@ -120,6 +121,7 @@
             <p data-i18n="studio.why.c3.p">Unclear messaging and confusing user journeys can make it difficult for visitors to understand what you offer.</p>
           </article>
         </div>
+        </div>
       </section>
 
       <section class="container section studio-approach" id="approach" aria-labelledby="studio-approach-heading">
@@ -134,15 +136,15 @@
               <li data-i18n="studio.approach.i4">Performance and SEO fundamentals</li>
               <li data-i18n="studio.approach.i5">Direct communication throughout the project</li>
             </ul>
-            <p class="studio-approach__invest" data-i18n="studio.approach.invest">Typical project investment: €1,500 to €4,500</p>
+            <p class="studio-approach__invest" data-i18n-aria="studio.approach.invest">
+              <span class="studio-approach__invest-label" data-i18n="studio.approach.invest.label">Typical project investment</span>
+              <span class="studio-approach__invest-amt" data-i18n="studio.approach.invest.range">1,500 - 4,500 euros</span>
+            </p>
           </div>
           <div class="studio-approach__photo" data-studio-slides tabindex="0">
             <div class="studio-approach__viewport">
               <figure class="studio-approach__slide is-active" data-studio-slide>
                 <img src="assets/studio/approach-1-audience.jpg" alt="Target audience mapping" width="800" height="1200" loading="lazy" decoding="async" />
-              </figure>
-              <figure class="studio-approach__slide" data-studio-slide>
-                <img src="assets/studio/approach-2-ux.jpg" alt="Layout design and user experience components" width="800" height="1200" loading="lazy" decoding="async" />
               </figure>
               <figure class="studio-approach__slide" data-studio-slide>
                 <img src="assets/studio/approach-3-product.jpg" alt="Building a product on mobile" width="800" height="1200" loading="lazy" decoding="async" />
@@ -155,7 +157,6 @@
               <button type="button" class="studio-approach__dot is-active" data-studio-slide-dot aria-label="Slide 1"></button>
               <button type="button" class="studio-approach__dot" data-studio-slide-dot aria-label="Slide 2"></button>
               <button type="button" class="studio-approach__dot" data-studio-slide-dot aria-label="Slide 3"></button>
-              <button type="button" class="studio-approach__dot" data-studio-slide-dot aria-label="Slide 4"></button>
             </div>
           </div>
         </div>
@@ -211,47 +212,64 @@
         </div>
       </section>
 
-      <section class="container section studio-work" id="work" aria-labelledby="studio-work-heading">
+      <section class="section studio-work paper-grid" id="work" aria-labelledby="studio-work-heading">
+        <div class="container">
         <h2 id="studio-work-heading"><span data-i18n="studio.work.h">Thoughtful design. Practical results.</span></h2>
         <p class="intro studio-lead" data-i18n="studio.work.intro">A selection of websites and digital products I've designed and developed. Each project starts with understanding the business, its audience and what the experience needs to achieve.</p>
-        <div class="grid three cards-grid">
-          <a class="project-card" href="marina-guranda-project.html?from=studio">
-            <div class="thumb thumb-marina"></div>
-            <p class="studio-work__client">Marina Guranda</p>
-            <h3 data-i18n="studio.work.marina.h">A calm website for a French teacher</h3>
-            <p class="project-desc" data-i18n="studio.work.marina.p">A website for her teaching, courses and shop, with a calm structure and a clear path to get in touch.</p>
-            <div class="project-labels">
-              <span data-skill="production" data-i18n="studio.work.tag.site">Business website</span>
-              <span data-skill="engineering" data-i18n="studio.work.tag.shop">E-commerce</span>
-            </div>
-          </a>
-          <a class="project-card" href="rotoy-project.html?from=studio">
-            <div class="thumb thumb-rotoy"></div>
-            <p class="studio-work__client">Rotoy ApS</p>
-            <h3 data-i18n="studio.work.rotoy.h">Making an EdTech product easy to trust, then easy to buy</h3>
-            <p class="project-desc" data-i18n="studio.work.rotoy.p">EdTech story, product discovery, and a webshop flow families can complete on a phone.</p>
-            <div class="project-labels">
-              <span data-skill="production" data-i18n="studio.work.tag.site">Business website</span>
-              <span data-skill="engineering" data-i18n="studio.work.tag.shop">E-commerce</span>
-            </div>
-          </a>
-          <a class="project-card" href="makerspace-project.html?from=studio">
-            <div class="thumb thumb-makerspace"></div>
-            <p class="studio-work__client">O'town Garage</p>
-            <h3 data-i18n="studio.work.otown.h">A makerspace website that made membership easy to understand</h3>
-            <p class="project-desc" data-i18n="studio.work.otown.p">The site explains the space, membership and next steps clearly, so visitors can find answers without another round of emails.</p>
-            <div class="project-labels">
-              <span data-skill="production" data-i18n="studio.work.tag.site">Business website</span>
-            </div>
-          </a>
+        <div class="folder-shuffle" data-folder-shuffle>
+          <div class="folder-shuffle__stage">
+            <article class="project-card project-folder" data-folder>
+              <button type="button" class="studio-work__client project-folder__tab">Marina Guranda</button>
+              <a class="project-folder__sheet" href="marina-guranda-project.html?from=studio">
+                <div class="project-folder__photo">
+                  <div class="thumb thumb-marina"></div>
+                </div>
+                <h3 data-i18n="studio.work.marina.h">A calm website for a French teacher</h3>
+                <p class="project-desc" data-i18n="studio.work.marina.p">A website for her teaching, courses and shop, with a calm structure and a clear path to get in touch.</p>
+                <div class="project-labels">
+                  <span data-skill="production" data-i18n="studio.work.tag.site">Business website</span>
+                  <span data-skill="engineering" data-i18n="studio.work.tag.shop">E-commerce</span>
+                </div>
+              </a>
+            </article>
+            <article class="project-card project-folder" data-folder>
+              <button type="button" class="studio-work__client project-folder__tab">Rotoy ApS</button>
+              <a class="project-folder__sheet" href="rotoy-project.html?from=studio">
+                <div class="project-folder__photo">
+                  <div class="thumb thumb-rotoy"></div>
+                </div>
+                <h3 data-i18n="studio.work.rotoy.h">Making an EdTech product easy to trust, then easy to buy</h3>
+                <p class="project-desc" data-i18n="studio.work.rotoy.p">EdTech story, product discovery, and a webshop flow families can complete on a phone.</p>
+                <div class="project-labels">
+                  <span data-skill="production" data-i18n="studio.work.tag.site">Business website</span>
+                  <span data-skill="engineering" data-i18n="studio.work.tag.shop">E-commerce</span>
+                </div>
+              </a>
+            </article>
+            <article class="project-card project-folder" data-folder>
+              <button type="button" class="studio-work__client project-folder__tab">O'town Garage</button>
+              <a class="project-folder__sheet" href="makerspace-project.html?from=studio">
+                <div class="project-folder__photo">
+                  <div class="thumb thumb-makerspace"></div>
+                </div>
+                <h3 data-i18n="studio.work.otown.h">A makerspace website that made membership easy to understand</h3>
+                <p class="project-desc" data-i18n="studio.work.otown.p">The site explains the space, membership and next steps clearly, so visitors can find answers without another round of emails.</p>
+                <div class="project-labels">
+                  <span data-skill="production" data-i18n="studio.work.tag.site">Business website</span>
+                </div>
+              </a>
+            </article>
+          </div>
+        </div>
         </div>
       </section>
 
-      <section class="container section studio-quotes" aria-labelledby="studio-quotes-heading">
+      <section class="section studio-quotes quotes-board" aria-labelledby="studio-quotes-heading">
+        <div class="container">
         <h2 id="studio-quotes-heading"><span data-i18n="studio.t.h">Good work starts with good collaboration.</span></h2>
         <p class="intro studio-lead" data-i18n="studio.t.intro">From people behind the Rotoy shop and the O'town Garage site.</p>
         <div class="studio-quotes__grid">
-          <article class="card quote">
+          <article class="card quote quote-note">
             <p class="studio-quotes__project">Rotoy ApS</p>
             <p class="quote__text" data-i18n="q.chris">
               "Octavia brings strong product thinking, a clear UX vision, and is very effective at turning
@@ -275,7 +293,7 @@
               </div>
             </footer>
           </article>
-          <article class="card quote">
+          <article class="card quote quote-note">
             <p class="studio-quotes__project">O'town Garage</p>
             <p class="quote__text" data-i18n="q.axel">
               "I no longer have to repeat the info from our website. Octavia keeps the purpose of the product
@@ -300,6 +318,7 @@
             </footer>
           </article>
         </div>
+        </div>
       </section>
 
       <section class="container section studio-about" id="about" aria-labelledby="studio-about-heading">
@@ -312,16 +331,8 @@
             <p data-i18n="studio.about.p2">
               I have also worked with startups, universities and established companies, including Nabogo ApS, the University of Southern Denmark and Universal Robots.
             </p>
-            <ul class="studio-about__facts">
-              <li>
-                <span aria-hidden="true">📍</span>
-                <span data-i18n="studio.about.place">Lived in 4 countries. Working across Europe.</span>
-              </li>
-              <li>
-                <span aria-hidden="true">💬</span>
-                <span data-i18n="studio.about.langs">Languages: English, French, Romanian and Danish.</span>
-              </li>
-            </ul>
+            <p class="studio-about__facts" data-i18n="studio.about.place">Lived in 4 countries. Working across Europe.</p>
+            <p class="studio-about__facts" data-i18n="studio.about.langs">Languages: English, French, Romanian and Danish.</p>
             <a class="btn" href="#book"><span data-i18n="studio.about.cta">Let's work together</span></a>
           </div>
           <figure class="studio-about__photo photo-wash">
@@ -411,7 +422,7 @@
             </article>
             <article class="studio-steps__panel" id="studio-step-panel-4" role="tabpanel" data-studio-panel="4" aria-labelledby="studio-step-tab-4" hidden>
               <figure class="studio-steps__photo photo-wash">
-                <img src="assets/studio/process-4-test.jpg" alt="" width="1200" height="800" loading="lazy" decoding="async" />
+                <img src="assets/studio/process-4-test.jpg?v=2" alt="Two people reviewing a website together on a laptop" width="1024" height="682" loading="lazy" decoding="async" />
               </figure>
               <div class="studio-steps__copy">
                 <p class="studio-steps__meta" data-i18n="studio.process.4.meta">Review and refine</p>
@@ -437,56 +448,47 @@
         <h2 id="studio-book-heading"><span data-i18n="studio.book.h">Your next website starts with a conversation.</span></h2>
         <p class="intro studio-lead" data-i18n="studio.book.intro">Tell me a little about your business and what you'd like to build. We'll have a short chat, explore what's possible and see if we're a good fit.</p>
         <p id="contactStatus" class="contact-status" hidden role="status" aria-live="polite"></p>
-        <div class="studio-book__layout">
-        <form
-          class="contact-form studio-form"
-          action="https://formsubmit.co/ajax/b5319f7df923ab2decd4aa33cc4aa569"
-          method="POST"
-        >
-          <input type="hidden" name="_subject" value="New studio enquiry from octaviasirbu.com/studio.html" />
-          <input type="hidden" name="_template" value="table" />
-          <input type="hidden" name="_captcha" value="false" />
-          <input type="hidden" name="_url" value="https://octaviasirbu.com/studio.html" />
-          <input type="hidden" name="_next" value="https://octaviasirbu.com/studio.html?sent=1" />
-          <input type="hidden" name="reason" value="website-or-product" />
-          <input class="contact-form__honeypot" type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true" />
+        <div class="studio-form-folder">
+          <p class="project-folder__tab" data-i18n="studio.book.cta">Book a free chat</p>
+          <form
+            class="contact-form studio-form project-folder__sheet"
+            action="https://formsubmit.co/ajax/b5319f7df923ab2decd4aa33cc4aa569"
+            method="POST"
+          >
+            <input type="hidden" name="_subject" value="New studio enquiry from octaviasirbu.com/studio.html" />
+            <input type="hidden" name="_template" value="table" />
+            <input type="hidden" name="_captcha" value="false" />
+            <input type="hidden" name="_url" value="https://octaviasirbu.com/studio.html" />
+            <input type="hidden" name="_next" value="https://octaviasirbu.com/studio.html?sent=1" />
+            <input type="hidden" name="reason" value="website-or-product" />
+            <input class="contact-form__honeypot" type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true" />
 
-          <div class="contact-form__grid">
+            <div class="contact-form__grid">
+              <label class="contact-form__field">
+                <span data-i18n="contact.form.name">Name</span>
+                <input type="text" name="name" autocomplete="name" required placeholder="Your name" data-i18n-placeholder="contact.form.name.placeholder" />
+              </label>
+              <label class="contact-form__field">
+                <span data-i18n="contact.form.email">Email</span>
+                <input type="email" name="email" autocomplete="email" required placeholder="you@example.com" data-i18n-placeholder="contact.form.email.placeholder" />
+              </label>
+            </div>
             <label class="contact-form__field">
-              <span data-i18n="contact.form.name">Name</span>
-              <input type="text" name="name" autocomplete="name" required placeholder="Your name" data-i18n-placeholder="contact.form.name.placeholder" />
+              <span data-i18n="studio.form.package">Package</span>
+              <select name="package" required>
+                <option value="" disabled selected data-i18n="studio.form.package.placeholder">Choose a package</option>
+                <option value="starter" data-i18n="studio.form.package.starter">Starter: focused landing page</option>
+                <option value="growth" data-i18n="studio.form.package.growth">Growth: complete business website</option>
+                <option value="webshop" data-i18n="studio.form.package.webshop">E-commerce: online shop</option>
+                <option value="not-sure" data-i18n="studio.form.package.unsure">Not sure yet</option>
+              </select>
             </label>
             <label class="contact-form__field">
-              <span data-i18n="contact.form.email">Email</span>
-              <input type="email" name="email" autocomplete="email" required placeholder="you@example.com" data-i18n-placeholder="contact.form.email.placeholder" />
+              <span data-i18n="contact.form.message">Message</span>
+              <textarea name="message" rows="5" required placeholder="Any particular thing you'd like to talk about? Shoot me a message!" data-i18n-placeholder="studio.form.message.placeholder"></textarea>
             </label>
-          </div>
-          <label class="contact-form__field">
-            <span data-i18n="studio.form.package">Package</span>
-            <select name="package" required>
-              <option value="" disabled selected data-i18n="studio.form.package.placeholder">Choose a package</option>
-              <option value="starter" data-i18n="studio.form.package.starter">Starter: focused landing page</option>
-              <option value="growth" data-i18n="studio.form.package.growth">Growth: complete business website</option>
-              <option value="webshop" data-i18n="studio.form.package.webshop">E-commerce: online shop</option>
-              <option value="not-sure" data-i18n="studio.form.package.unsure">Not sure yet</option>
-            </select>
-          </label>
-          <label class="contact-form__field">
-            <span data-i18n="contact.form.message">Message</span>
-            <textarea name="message" rows="5" required placeholder="Any particular thing you'd like to talk about? Shoot me a message!" data-i18n-placeholder="studio.form.message.placeholder"></textarea>
-          </label>
-          <button class="btn" type="submit">☕ <span data-i18n="studio.hero.cta">Book a free chat</span></button>
-        </form>
-        <figure class="studio-book__photo photo-wash">
-          <img
-            src="assets/pictures/octavia-contact-portrait.jpg"
-            alt="Portrait of Octavia Sirbu"
-            width="1200"
-            height="1600"
-            loading="lazy"
-            decoding="async"
-          />
-        </figure>
+            <button class="btn" type="submit">☕ <span data-i18n="studio.hero.cta">Book a free chat</span></button>
+          </form>
         </div>
       </section>
     </main>
@@ -515,11 +517,11 @@
     </footer>
 
     <script src="studio-shell.js?v=5"></script>
-    <script src="i18n.js?v=17"></script>
+    <script src="i18n.js?v=19"></script>
     <script src="i18n-da.js?v=8"></script>
     <script src="i18n-ro.js?v=7"></script>
-    <script src="i18n-studio.js?v=21"></script>
+    <script src="i18n-studio.js?v=28"></script>
     <script src="hero-scramble.js?v=scramble-8"></script>
-    <script src="script.js?v=studio-slides-1"></script>
+    <script src="script.js?v=folder-shuffle-1"></script>
   </body>
 </html>

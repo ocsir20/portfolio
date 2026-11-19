@@ -195,6 +195,73 @@ if (
   }
 }
 
+document.querySelectorAll("[data-folder-shuffle]").forEach((root) => {
+  const folders = [...root.querySelectorAll("[data-folder]")];
+  if (folders.length < 2) return;
+
+  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  const layout = () => {
+    folders.forEach((folder, i) => {
+      folder.dataset.order = String(i);
+      folder.classList.toggle("is-front", i === 0);
+    });
+  };
+
+  const bringToFront = (folder) => {
+    const index = folders.indexOf(folder);
+    if (index <= 0) return;
+    folders.splice(index, 1);
+    folders.unshift(folder);
+    layout();
+  };
+
+  folders.forEach((folder) => {
+    const tab = folder.querySelector(".project-folder__tab");
+    const sheet = folder.querySelector(".project-folder__sheet");
+
+    if (tab) {
+      tab.addEventListener("click", (event) => {
+        event.preventDefault();
+        event.stopPropagation();
+        bringToFront(folder);
+      });
+    }
+
+    if (sheet) {
+      sheet.addEventListener("click", (event) => {
+        if (folder.dataset.order === "0") return;
+        event.preventDefault();
+        bringToFront(folder);
+      });
+    }
+  });
+
+  if (!reduceMotion) {
+    const stage = root.querySelector(".folder-shuffle__stage");
+    if (stage) {
+      let startX = 0;
+      stage.addEventListener("touchstart", (event) => {
+        startX = event.changedTouches[0].clientX;
+      }, { passive: true });
+      stage.addEventListener("touchend", (event) => {
+        const dx = event.changedTouches[0].clientX - startX;
+        if (Math.abs(dx) < 40) return;
+        if (dx < 0) {
+          const first = folders.shift();
+          folders.push(first);
+        } else {
+          const last = folders.pop();
+          folders.unshift(last);
+        }
+        layout();
+      }, { passive: true });
+    }
+  }
+
+  layout();
+});
+
 document.querySelectorAll("[data-studio-slides]").forEach((root) => {
   const slides = [...root.querySelectorAll("[data-studio-slide]")];
   const dots = [...root.querySelectorAll("[data-studio-slide-dot]")];
