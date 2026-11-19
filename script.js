@@ -12,10 +12,10 @@ const servicePanelThumb = document.querySelector("#servicePanelThumb");
 
 const serviceProjectMap = {
   "ai-design": {
-    title: "Coded my portfolio with AI assistance",
-    desc: "Building a case-study portfolio in HTML with Cursor. Structure, craft, and what stayed human-led.",
-    thumbClass: "thumb-portfolio",
-    href: "blogs/portfolio-ai-coded.html",
+    title: "The AI Workflow That Saves Me Hours Every Week",
+    desc: "From Condens insights to Figma Make, ChatGPT, Figma MCP, and Cursor. An iterative loop for product design.",
+    thumbClass: "thumb-ai-workflow",
+    href: "blogs/ai-workflow-saves-hours.html",
   },
   "ui-ai": {
     title: "AI-powered Design System for Nabogo ApS",
@@ -194,6 +194,131 @@ if (
     applyServiceTab(initial);
   }
 }
+
+document.querySelectorAll("[data-studio-slides]").forEach((root) => {
+  const slides = [...root.querySelectorAll("[data-studio-slide]")];
+  const dots = [...root.querySelectorAll("[data-studio-slide-dot]")];
+  if (slides.length < 2) return;
+
+  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const INTERVAL = 5200;
+  let index = 0;
+  let timer = null;
+  let startX = 0;
+  let dragging = false;
+
+  const show = (next) => {
+    index = (next + slides.length) % slides.length;
+    slides.forEach((slide, n) => {
+      const on = n === index;
+      slide.classList.toggle("is-active", on);
+      slide.setAttribute("aria-hidden", on ? "false" : "true");
+    });
+    dots.forEach((dot, n) => {
+      const on = n === index;
+      dot.classList.toggle("is-active", on);
+      dot.setAttribute("aria-current", on ? "true" : "false");
+    });
+  };
+
+  const stop = () => {
+    if (timer) {
+      window.clearInterval(timer);
+      timer = null;
+    }
+  };
+
+  const start = () => {
+    if (reduceMotion) return;
+    stop();
+    timer = window.setInterval(() => show(index + 1), INTERVAL);
+  };
+
+  dots.forEach((dot, n) => {
+    dot.addEventListener("click", () => {
+      show(n);
+      start();
+    });
+  });
+
+  const pointerX = (event) => {
+    if (event.changedTouches && event.changedTouches[0]) return event.changedTouches[0].clientX;
+    if (event.touches && event.touches[0]) return event.touches[0].clientX;
+    return event.clientX;
+  };
+
+  root.addEventListener("pointerdown", (event) => {
+    if (event.pointerType === "mouse" && event.button !== 0) return;
+    dragging = true;
+    startX = pointerX(event);
+    stop();
+    try {
+      root.setPointerCapture(event.pointerId);
+    } catch (err) {}
+  });
+
+  root.addEventListener("pointerup", (event) => {
+    if (!dragging) return;
+    dragging = false;
+    const dx = pointerX(event) - startX;
+    if (Math.abs(dx) > 40) show(index + (dx < 0 ? 1 : -1));
+    start();
+  });
+
+  root.addEventListener("pointercancel", () => {
+    dragging = false;
+    start();
+  });
+
+  root.addEventListener("keydown", (event) => {
+    if (event.key === "ArrowRight") {
+      event.preventDefault();
+      show(index + 1);
+      start();
+    } else if (event.key === "ArrowLeft") {
+      event.preventDefault();
+      show(index - 1);
+      start();
+    }
+  });
+
+  root.addEventListener("mouseenter", stop);
+  root.addEventListener("mouseleave", start);
+  root.addEventListener("focusin", stop);
+  root.addEventListener("focusout", start);
+
+  document.addEventListener("visibilitychange", () => {
+    if (document.hidden) stop();
+    else start();
+  });
+
+  show(0);
+  start();
+});
+
+document.querySelectorAll("[data-studio-steps]").forEach((root) => {
+  const tabs = [...root.querySelectorAll("[data-studio-step]")];
+  const panels = [...root.querySelectorAll("[data-studio-panel]")];
+  if (!tabs.length || !panels.length) return;
+
+  const showStep = (id) => {
+    tabs.forEach((tab) => {
+      const on = tab.getAttribute("data-studio-step") === id;
+      tab.classList.toggle("is-active", on);
+      tab.setAttribute("aria-selected", on ? "true" : "false");
+    });
+    panels.forEach((panel) => {
+      panel.hidden = panel.getAttribute("data-studio-panel") !== id;
+    });
+  };
+
+  tabs.forEach((tab) => {
+    tab.addEventListener("click", () => showStep(tab.getAttribute("data-studio-step")));
+  });
+
+  const current = tabs.find((tab) => tab.classList.contains("is-active"));
+  showStep((current && current.getAttribute("data-studio-step")) || "1");
+});
 
 document.querySelectorAll("[data-testimonials-carousel]").forEach((root) => {
   const track = root.querySelector(".testimonials-carousel__track");
