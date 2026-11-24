@@ -3,17 +3,17 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" href="assets/portfolio-logo.svg" type="image/svg+xml" />
+    <link rel="icon" href="assets/portfolio-logo.svg?v=5" type="image/svg+xml" />
     <title>Blog | Octavia Sirbu</title>
     <script src="theme-init.js"></script>
     <script src="lang-init.js?v=2"></script>
-    <link rel="stylesheet" href="styles.css?v=vis-130" />
+    <link rel="stylesheet" href="styles.css?v=vis-175" />
   </head>
   <body class="page-blog">
     <header class="site-header">
       <nav class="nav container">
         <a class="logo" href="index.html">
-          <span class="logo-mark" aria-hidden="true"><img class="logo-mark-img" src="assets/portfolio-logo.svg" alt="" width="130" height="114" decoding="async" /></span>
+          <span class="logo-mark" aria-hidden="true"><img class="logo-mark-img" src="assets/portfolio-logo.svg?v=5" alt="" width="130" height="114" decoding="async" /></span>
           <span class="logo-text">Octavia Sirbu</span>
         </a>
         <div class="nav-right">
@@ -63,27 +63,66 @@
           <button type="button" class="blog-filter" data-blog-filter="culture" data-i18n="blog.cat.culture" aria-pressed="false">European Culture</button>
         </div>
         <div class="grid three cards-grid">
-          <a class="blog-card" href="blogs/scandinavia-design-lessons.html" data-blog-cat="culture">
+          <a class="blog-card" data-reveal data-reveal-stagger href="blogs/five-second-test.html" data-blog-cat="ux" data-blog-studio-only>
+            <div class="thumb thumb-five-second" role="presentation"></div>
+            <h3>The 5-Second Test: What Customers Actually Notice When They Land on Your Site</h3>
+            <p>When someone clicks a link to your business, you have about five seconds. Here is how to see what they notice.</p>
+          </a>
+          <a class="blog-card" data-reveal data-reveal-stagger href="blogs/gdpr-legal-checklist.html" data-blog-cat="web" data-blog-studio-only>
+            <div class="thumb thumb-gdpr-checklist" role="presentation"></div>
+            <h3>The Simple GDPR and Legal Checklist Every European Small Business Website Needs</h3>
+            <p>Cookie banners, privacy pages, and footer details, in plain English, so your site looks professional and safe to work with.</p>
+          </a>
+          <a class="blog-card" data-reveal data-reveal-stagger href="blogs/scandinavia-design-lessons.html" data-blog-cat="culture">
             <div class="thumb thumb-scandinavia-blog" role="presentation"></div>
             <h3>5 Things I Learned About Design From Living in Scandinavia for 12 Years</h3>
             <p>I’ve lived in Scandinavia for 12 years, and somewhere along the way, it changed the way I look at design.</p>
           </a>
-          <a class="blog-card" href="blogs/ai-workflow-saves-hours.html" data-blog-cat="ai">
+          <a class="blog-card" data-reveal data-reveal-stagger href="blogs/ai-workflow-saves-hours.html" data-blog-cat="ai">
             <div class="thumb thumb-ai-workflow" role="presentation"></div>
             <h3>The AI Workflow That Saves Me Hours Every Week</h3>
             <p>From Condens insights to Figma Make, ChatGPT, Figma MCP, and Cursor. An iterative loop for product design.</p>
           </a>
-          <a class="blog-card" href="blogs/we-removed-a-step.html" data-blog-cat="ux">
+          <a class="blog-card" data-reveal data-reveal-stagger href="blogs/we-removed-a-step.html" data-blog-cat="ux">
             <div class="thumb thumb-nabogo-ride-creation" role="presentation"></div>
             <h3>We Didn't Add a Feature. We Removed a Step</h3>
             <p>Sometimes the best UX decision isn't adding something new. It's taking something away.</p>
           </a>
-          <a class="blog-card" href="blogs/design-systems-scale.html" data-blog-cat="ux ai">
+          <a class="blog-card" data-reveal data-reveal-stagger href="blogs/design-systems-scale.html" data-blog-cat="ux ai">
             <div class="thumb thumb-blog-design-systems" role="presentation"></div>
             <h3>Designing Scalable Design Systems in the Age of AI</h3>
             <p>Token-based design systems, AI-assisted workflows, and scaling UI for growing product teams.</p>
           </a>
         </div>
+      </section>
+
+      <section class="container section blog-newsletter" aria-labelledby="newsletter-heading">
+        <h2 id="newsletter-heading">A short note when I publish</h2>
+        <p>Occasional emails about websites for small businesses. No ads. Unsubscribe anytime.</p>
+        <form
+          class="newsletter-form"
+          action="https://buttondown.com/api/emails/embed-subscribe/octavia-ioana"
+          method="post"
+        >
+          <input type="hidden" name="embed" value="1" />
+          <input type="hidden" name="tag" value="blog" />
+          <label class="newsletter-form__field" for="bd-email">
+            <span>Email</span>
+            <input
+              id="bd-email"
+              type="email"
+              name="email"
+              autocomplete="email"
+              required
+              placeholder="you@example.com"
+            />
+          </label>
+          <label class="newsletter-form__consent">
+            <input type="checkbox" name="gdpr" value="yes" required />
+            <span>I agree to receive emails. You can unsubscribe anytime. See the <a href="privacy.html">privacy policy</a>.</span>
+          </label>
+          <button class="btn" type="submit">Subscribe</button>
+        </form>
       </section>
     </main>
 
@@ -92,7 +131,7 @@
         <div class="site-footer__brand">
           <img
             class="site-footer__logo"
-            src="assets/portfolio-logo.svg"
+            src="assets/portfolio-logo.svg?v=5"
             alt=""
             width="130"
             height="114"
@@ -133,11 +172,11 @@
       </div>
     </footer>
 
-    <script src="studio-shell.js?v=9"></script>
-    <script src="i18n.js?v=21"></script>
-    <script src="i18n-da.js?v=11"></script>
-    <script src="i18n-ro.js?v=10"></script>
-    <script src="i18n-studio.js?v=29"></script>
-    <script src="script.js?v=no-dark-1"></script>
+    <script src="studio-shell.js?v=11"></script>
+    <script src="i18n.js?v=24"></script>
+    <script src="i18n-da.js?v=14"></script>
+    <script src="i18n-ro.js?v=13"></script>
+    <script src="i18n-studio.js?v=42"></script>
+    <script src="script.js?v=motion-4"></script>
   </body>
 </html>

@@ -12,6 +12,7 @@
   var body = document.body;
   var isStudio = !!(body && body.classList.contains("page-studio"));
   var isMeeting = !!(body && body.classList.contains("page-meeting"));
+  var isStudioPost = !!(body && body.classList.contains("page-studio-blog-post"));
   var isCase = CASE.test(path);
   var isBlog = BLOG_INDEX.test(path) || inBlogPost || !!(body && body.classList.contains("page-blog"));
   var isPrivacy = PRIVACY.test(path) || !!(body && body.classList.contains("page-legal"));
@@ -36,10 +37,10 @@
     }
   }
 
-  if (isStudio || isMeeting || (keepStudio && fromParam)) setShell(true);
+  if (isStudio || isMeeting || isStudioPost || (keepStudio && fromParam)) setShell(true);
   else if (isPortfolioHub) setShell(false);
 
-  if (!keepStudio || (!fromParam && !hasShell())) return;
+  if (!isStudioPost && (!keepStudio || (!fromParam && !hasShell()))) return;
 
   var root = inBlogPost ? "../" : "";
 
@@ -64,7 +65,7 @@
       '<li><a href="' + root + 'studio.html#about" data-i18n="studio.nav.about">About</a></li>' +
       '<li><a href="' + root + 'studio.html#packages" data-i18n="studio.nav.packages">Packages</a></li>' +
       '<li><a href="' + root + 'studio.html#process" data-i18n="studio.nav.process">Process</a></li>' +
-      '<li><a class="nav-cta" href="' + root + 'studio.html#book" data-i18n="studio.nav.book">Book a chat</a></li>';
+      '<li><a class="nav-cta" href="' + root + 'studio.html#book" data-i18n="studio.nav.contact">Contact</a></li>';
   }
 
   var tagline = document.querySelector(".site-footer__tagline");
@@ -81,6 +82,7 @@
   var footerList = document.querySelector(".site-footer__list");
   if (footerList) {
     footerList.innerHTML =
+      '<li><a href="' + root + 'meeting/" data-i18n="studio.nav.book">Book a chat</a></li>' +
       '<li><a href="' + root + 'blog.html?from=studio" data-i18n="nav.blog">Blog</a></li>' +
       '<li><a href="' + root + 'privacy.html?from=studio" data-i18n="nav.privacy">Privacy</a></li>';
     var footerSocial = document.querySelector(".site-footer__social");

@@ -317,6 +317,8 @@ document.querySelectorAll("[data-studio-steps]").forEach((root) => {
   const panels = [...root.querySelectorAll("[data-studio-panel]")];
   if (!tabs.length || !panels.length) return;
 
+  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
   const showStep = (id) => {
     tabs.forEach((tab) => {
       const on = tab.getAttribute("data-studio-step") === id;
@@ -324,7 +326,9 @@ document.querySelectorAll("[data-studio-steps]").forEach((root) => {
       tab.setAttribute("aria-selected", on ? "true" : "false");
     });
     panels.forEach((panel) => {
-      panel.hidden = panel.getAttribute("data-studio-panel") !== id;
+      const on = panel.getAttribute("data-studio-panel") === id;
+      panel.hidden = !on;
+      panel.classList.toggle("is-in", on && !reduceMotion);
     });
   };
 
@@ -418,13 +422,122 @@ document.querySelectorAll("[data-more-projects]").forEach((root) => {
   });
 });
 
-/* Home page: scroll reveal, hero entrance, header shadow */
-(function initHomePage() {
-  if (!document.body.classList.contains("page-home")) return;
+/* Studio: highlight the nav link for the section in view */
+(function initStudioNavSpy() {
+  if (!document.body.classList.contains("page-studio")) return;
 
+  const nav = document.querySelector(".site-header .nav-links");
+  if (!nav) return;
+
+  const links = [...nav.querySelectorAll('a[href^="#"]')];
+  const items = links
+    .map((link) => {
+      const id = (link.getAttribute("href") || "").replace(/^#/, "");
+      const section = id ? document.getElementById(id) : null;
+      return section ? { link, section, id } : null;
+    })
+    .filter(Boolean);
+  if (!items.length) return;
+
+  const ordered = [...items].sort((a, b) => a.section.offsetTop - b.section.offsetTop);
+  const header = document.querySelector(".site-header");
+
+  const setActive = (id) => {
+    links.forEach((link) => {
+      const on = !!id && link.getAttribute("href") === "#" + id;
+      link.classList.toggle("active", on);
+      if (on) link.setAttribute("aria-current", "location");
+      else link.removeAttribute("aria-current");
+    });
+  };
+
+  const update = () => {
+    const offset = (header ? header.getBoundingClientRect().height : 76) + 20;
+    const y = window.scrollY + offset;
+    const atBottom =
+      window.scrollY + window.innerHeight >= document.documentElement.scrollHeight - 12;
+
+    let current = null;
+    if (atBottom) {
+      current = ordered[ordered.length - 1].id;
+    } else {
+      ordered.forEach((item) => {
+        if (item.section.offsetTop <= y) current = item.id;
+      });
+    }
+    setActive(current);
+  };
+
+  let raf = 0;
+  const onScroll = () => {
+    if (raf) return;
+    raf = window.requestAnimationFrame(() => {
+      raf = 0;
+      update();
+    });
+  };
+
+  links.forEach((link) => {
+    link.addEventListener("click", () => {
+      const id = (link.getAttribute("href") || "").replace(/^#/, "");
+      setActive(id);
+    });
+  });
+
+  window.addEventListener("scroll", onScroll, { passive: true });
+  window.addEventListener("resize", onScroll, { passive: true });
+  update();
+})();
+
+/* Studio: click a package card to select it and fill the booking form */
+(function initStudioPackages() {
+  if (!document.body.classList.contains("page-studio")) return;
+
+  const cards = Array.from(document.querySelectorAll(".studio-package[data-package]"));
+  const select = document.querySelector('.studio-form select[name="package"]');
+  if (!cards.length) return;
+
+  const setSelected = (value, syncSelect) => {
+    if (!value) return;
+    cards.forEach((card) => {
+      const on = card.getAttribute("data-package") === value;
+      card.classList.toggle("is-selected", on);
+      card.setAttribute("aria-checked", on ? "true" : "false");
+    });
+    if (syncSelect !== false && select) {
+      select.value = value;
+    }
+  };
+
+  cards.forEach((card) => {
+    const pick = () => setSelected(card.getAttribute("data-package"));
+    card.addEventListener("click", pick);
+    card.addEventListener("keydown", (event) => {
+      if (event.key === "Enter" || event.key === " ") {
+        event.preventDefault();
+        pick();
+      }
+    });
+  });
+
+  if (select) {
+    select.addEventListener("change", () => setSelected(select.value, false));
+  }
+
+  const initial = cards.find((card) => card.classList.contains("is-selected")) || cards[0];
+  setSelected(initial.getAttribute("data-package"));
+})();
+
+/* Scroll reveal, hero entrance, header shadow, progress, card tilt */
+(function initPageMotion() {
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   const revealEls = document.querySelectorAll("[data-reveal]");
   const header = document.querySelector(".site-header");
+
+  const progress = document.createElement("div");
+  progress.className = "scroll-progress";
+  progress.setAttribute("aria-hidden", "true");
+  document.body.prepend(progress);
 
   let litRaf = 0;
   const onScrollOrResize = () => {
@@ -434,14 +547,16 @@ document.querySelectorAll("[data-more-projects]").forEach((root) => {
       if (header) {
         header.classList.toggle("is-scrolled", window.scrollY > 12);
       }
+      const doc = document.documentElement;
+      const max = doc.scrollHeight - doc.clientHeight;
+      const p = max > 0 ? Math.min(1, window.scrollY / max) : 0;
+      progress.style.transform = "scaleX(" + p + ")";
     });
   };
 
   window.addEventListener("scroll", onScrollOrResize, { passive: true });
   window.addEventListener("resize", onScrollOrResize, { passive: true });
-  if (header) {
-    header.classList.toggle("is-scrolled", window.scrollY > 12);
-  }
+  onScrollOrResize();
 
   const revealNow = (el, delayMs = 0) => {
     window.setTimeout(() => {
@@ -485,6 +600,26 @@ document.querySelectorAll("[data-more-projects]").forEach((root) => {
   revealEls.forEach((el) => {
     if (el.hasAttribute("data-reveal-hero")) return;
     observer.observe(el);
+  });
+
+  const canHover = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+  if (!canHover) return;
+
+  document.querySelectorAll("[data-tilt]").forEach((el) => {
+    el.addEventListener("pointermove", (event) => {
+      const rect = el.getBoundingClientRect();
+      const px = (event.clientX - rect.left) / rect.width - 0.5;
+      const py = (event.clientY - rect.top) / rect.height - 0.5;
+      el.style.transform =
+        "perspective(900px) rotateY(" +
+        px * 7 +
+        "deg) rotateX(" +
+        -py * 6 +
+        "deg) translateY(-6px)";
+    });
+    el.addEventListener("pointerleave", () => {
+      el.style.transform = "";
+    });
   });
 })();
 
@@ -999,5 +1134,76 @@ document.querySelectorAll("[data-more-projects]").forEach((root) => {
       window.clearTimeout(timeoutId);
       if (submit) submit.disabled = false;
     }
+  });
+})();
+
+/* Message field: Web Speech API dictation (https://developer.mozilla.org/en-US/docs/Web/API/Web_Speech_API/Using_the_Web_Speech_API) */
+(function initSpeechMessage() {
+  const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+  const buttons = document.querySelectorAll("[data-speech-target]");
+  if (!buttons.length || !SpeechRecognition) return;
+
+  const langMap = { en: "en-US", fr: "fr-FR", da: "da-DK", ro: "ro-RO" };
+
+  const labelFor = (listening) => {
+    const key = listening ? "contact.form.speech.stop" : "contact.form.speech.start";
+    if (window.portfolioI18n) return window.portfolioI18n.t(key);
+    return listening ? "Stop dictation" : "Dictate message";
+  };
+
+  buttons.forEach((btn) => {
+    const field = document.getElementById(btn.getAttribute("data-speech-target"));
+    if (!field) return;
+
+    btn.hidden = false;
+    const recognition = new SpeechRecognition();
+    recognition.continuous = true;
+    recognition.interimResults = true;
+    recognition.maxAlternatives = 1;
+
+    let listening = false;
+    let committed = "";
+
+    const setListening = (on) => {
+      listening = on;
+      btn.classList.toggle("is-listening", on);
+      btn.setAttribute("aria-pressed", on ? "true" : "false");
+      btn.setAttribute("aria-label", labelFor(on));
+    };
+
+    recognition.addEventListener("start", () => setListening(true));
+    recognition.addEventListener("end", () => setListening(false));
+    recognition.addEventListener("error", () => setListening(false));
+    recognition.addEventListener("result", (event) => {
+      let finals = committed;
+      let interim = "";
+      for (let i = 0; i < event.results.length; i += 1) {
+        const piece = event.results[i][0].transcript.trim();
+        if (!piece) continue;
+        if (event.results[i].isFinal) {
+          finals = finals ? finals + " " + piece : piece;
+        } else {
+          interim = interim ? interim + " " + piece : piece;
+        }
+      }
+      field.value = interim ? (finals ? finals + " " + interim : interim) : finals;
+      if (!interim) committed = finals;
+    });
+
+    btn.addEventListener("click", (event) => {
+      event.preventDefault();
+      if (listening) {
+        recognition.stop();
+        return;
+      }
+      const htmlLang = (document.documentElement.lang || "en").slice(0, 2).toLowerCase();
+      recognition.lang = langMap[htmlLang] || "en-US";
+      committed = field.value.trim();
+      try {
+        recognition.start();
+      } catch (err) {
+        setListening(false);
+      }
+    });
   });
 })();
