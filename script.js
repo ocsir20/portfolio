@@ -1,4 +1,3 @@
-const themeToggle = document.querySelector("#themeToggle");
 const copyEmailCard = document.querySelector("#copyEmailCard");
 const copyFeedback = document.querySelector("#copyFeedback");
 const emailValue = document.querySelector("#emailValue");
@@ -42,56 +41,6 @@ const serviceProjectMap = {
     href: "rotoy-project.html",
   },
 };
-
-if (themeToggle) {
-  const themeScript = document.querySelector('script[src*="script.js"]');
-  const themeSoundBase = themeScript
-    ? new URL("assets/sounds/", new URL(".", themeScript.src))
-    : new URL("assets/sounds/", window.location.href);
-  const darkModeSound = new Audio(new URL("darkmode.mp3", themeSoundBase).href);
-  const lightModeSound = new Audio(new URL("lightmode.mp3", themeSoundBase).href);
-
-  const playThemeSound = (audio) => {
-    audio.currentTime = 0;
-    const play = audio.play();
-    if (play && typeof play.catch === "function") {
-      play.catch(() => {});
-    }
-  };
-
-  const syncThemeToggle = () => {
-    const isDark = document.documentElement.getAttribute("data-theme") === "dark";
-    const i18n = window.portfolioI18n;
-    const darkLabel = i18n ? i18n.t("theme.dark") : "Switch to dark mode";
-    const lightLabel = i18n ? i18n.t("theme.light") : "Switch to light mode";
-    themeToggle.setAttribute("aria-label", isDark ? lightLabel : darkLabel);
-    themeToggle.setAttribute("aria-pressed", isDark ? "true" : "false");
-  };
-
-  syncThemeToggle();
-
-  themeToggle.addEventListener("click", () => {
-    const isDark = document.documentElement.getAttribute("data-theme") === "dark";
-    if (isDark) {
-      document.documentElement.removeAttribute("data-theme");
-      playThemeSound(lightModeSound);
-      try {
-        localStorage.setItem("portfolio-theme", "light");
-      } catch (e) {
-        /* ignore */
-      }
-    } else {
-      document.documentElement.setAttribute("data-theme", "dark");
-      playThemeSound(darkModeSound);
-      try {
-        localStorage.setItem("portfolio-theme", "dark");
-      } catch (e) {
-        /* ignore */
-      }
-    }
-    syncThemeToggle();
-  });
-}
 
 if (copyEmailCard && copyFeedback && emailValue) {
   const emailText = emailValue.textContent.trim();

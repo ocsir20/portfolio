@@ -61,7 +61,7 @@
       "work.ds.desc": "Tokens, components, and Storybook documentation for a consistent product surface across teams.",
       "work.sdu.title": "University Intranet Re-design based on UX Insights",
       "work.sdu.desc": "Research-led intranet redesign for a large university. Clearer structure, navigation, and interfaces shaped by staff and student needs.",
-      "work.marina.title": "Designing and Building a Website and Webshop for French Teacher",
+      "work.marina.title": "An intuitive clean website for French teacher",
       "work.marina.desc": "Website, webshop, calendar, and back office for a French teacher. Designed in Figma, then built with Figma MCP and Cursor.",
       "work.rotoy.title": "Designing a Website and Webshop for EdTech Startup Rotoy ApS",
       "work.rotoy.desc": "Marketing site and webshop experience for an EdTech startup. Clear storytelling, product discovery, and a purchase flow parents can trust.",
@@ -87,8 +87,8 @@
       "cta.title": "Have a website in mind?",
       "cta.body": "I take work from visual identity to a live site: pages, copy, and the path to book or pay. Write to me and we can talk about yours.",
       "cta.button": "Contact me",
-      "marina.pageTitle": "Designing and Building a Website and Webshop for French Teacher | Octavia Sirbu",
-      "marina.h1": "Designing and Building a Website and Webshop for French Teacher",
+      "marina.pageTitle": "An intuitive clean website for French teacher | Octavia Sirbu",
+      "marina.h1": "An intuitive clean website for French teacher",
       "privacy.pageTitle": "Privacy | Octavia Sirbu",
       "privacy.h1": "Privacy",
       "privacy.intro": "This page explains what happens with your data when you use octaviasirbu.com, including the studio landing and the contact forms.",
@@ -103,7 +103,7 @@
       "privacy.p.data1": "I only receive personal data if you choose to contact me, for example through a form on this site, by email, or through LinkedIn. That typically includes your name, email address, the reason or package you selected, and whatever you write. I use that information to reply and, if relevant, to continue a professional conversation. I do not sell it or use it for advertising.",
       "privacy.p.data2": "I keep correspondence as long as it is useful for that conversation, then delete it when it is no longer needed, unless I have a legal reason to keep it longer.",
       "privacy.h.browser": "What stays in your browser",
-      "privacy.p.browser1": "The light and dark theme preference is saved in your browser with localStorage, under the key <code>portfolio-theme</code>. The language follows the address: English has no prefix, French uses <code>/fr</code>, Danish uses <code>/dk</code>, and Romanian uses <code>/ro</code>. A language hint also uses <code>portfolio-lang</code>. That stays on your device. I cannot read it. You can clear it by deleting site data in your browser settings.",
+      "privacy.p.browser1": "The language follows the address: English has no prefix, French uses <code>/fr</code>, Danish uses <code>/dk</code>, and Romanian uses <code>/ro</code>. A language hint also uses <code>portfolio-lang</code>. That stays on your device. I cannot read it. You can clear it by deleting site data in your browser settings.",
       "privacy.p.browser2": "This site does not set marketing cookies and does not use analytics tools such as Google Analytics, Hotjar, or Meta Pixel.",
       "privacy.h.host": "Hosting and technical data",
       "privacy.p.host": "The site is hosted on GitHub Pages. When you load a page, GitHub may process technical data such as IP address, browser type, and the pages requested, in order to deliver the site and keep it secure. That processing is done by GitHub as a service provider. See <a href=\"https://docs.github.com/en/site-policy/privacy-policies/github-privacy-statement\" target=\"_blank\" rel=\"noopener noreferrer\">GitHub's privacy statement</a>.",
@@ -198,7 +198,7 @@
       "work.ds.desc": "Tokens, composants et documentation Storybook pour une interface produit cohérente entre les équipes.",
       "work.sdu.title": "Refonte d'intranet universitaire fondée sur la recherche UX",
       "work.sdu.desc": "Refonte d'intranet menée par la recherche pour une grande université. Structure, navigation et interfaces plus claires, à partir des besoins du personnel et des étudiants.",
-      "work.marina.title": "Concevoir et développer un site et une boutique pour une professeure de français",
+      "work.marina.title": "Un site intuitif et épuré pour une professeure de français",
       "work.marina.desc": "Site, boutique, calendrier et back-office pour une professeure de français. Conçu dans Figma, puis développé avec Figma MCP et Cursor.",
       "work.rotoy.title": "Concevoir un site et une boutique pour la startup EdTech Rotoy ApS",
       "work.rotoy.desc": "Site marketing et parcours d'achat pour une startup EdTech. Récit clair, découverte du produit, et un flux d'achat auquel les parents peuvent se fier.",
@@ -224,8 +224,8 @@
       "cta.title": "Vous avez un site en tête ?",
       "cta.body": "Je mène le travail de l'identité visuelle jusqu'au site en ligne : pages, textes, et le chemin pour réserver ou payer. Écrivez-moi, on en parle.",
       "cta.button": "Contactez-moi",
-      "marina.pageTitle": "Concevoir et développer un site et une boutique pour une professeure de français | Octavia Sirbu",
-      "marina.h1": "Concevoir et développer un site et une boutique pour une professeure de français",
+      "marina.pageTitle": "Un site intuitif et épuré pour une professeure de français | Octavia Sirbu",
+      "marina.h1": "Un site intuitif et épuré pour une professeure de français",
       "privacy.pageTitle": "Confidentialité | Octavia Sirbu",
       "privacy.h1": "Confidentialité",
       "privacy.intro": "Cette page explique ce qui se passe avec vos données lorsque vous utilisez octaviasirbu.com, y compris la page studio et les formulaires de contact.",
@@ -240,7 +240,7 @@
       "privacy.p.data1": "Je ne reçois des données personnelles que si vous choisissez de me contacter, par un formulaire de ce site, par e-mail ou via LinkedIn par exemple. Cela inclut en général votre nom, votre adresse e-mail, le motif ou l'offre choisie, et ce que vous écrivez. Je m'en sers pour répondre et, le cas échéant, poursuivre un échange professionnel. Je ne les vends pas et je ne les utilise pas pour de la publicité.",
       "privacy.p.data2": "Je conserve la correspondance tant qu'elle est utile à cet échange, puis je la supprime lorsqu'elle n'est plus nécessaire, sauf obligation légale de la garder plus longtemps.",
       "privacy.h.browser": "Ce qui reste dans votre navigateur",
-      "privacy.p.browser1": "La préférence de thème clair ou sombre est enregistrée dans votre navigateur avec localStorage, sous la clé <code>portfolio-theme</code>. La langue suit l'adresse : l'anglais n'a pas de préfixe, le français utilise <code>/fr</code>, le danois <code>/dk</code> et le roumain <code>/ro</code>. Un indice de langue utilise aussi <code>portfolio-lang</code>. Cela reste sur votre appareil. Je ne peux pas le lire. Vous pouvez l'effacer en supprimant les données du site dans les réglages du navigateur.",
+      "privacy.p.browser1": "La langue suit l'adresse : l'anglais n'a pas de préfixe, le français utilise <code>/fr</code>, le danois <code>/dk</code> et le roumain <code>/ro</code>. Un indice de langue utilise aussi <code>portfolio-lang</code>. Cela reste sur votre appareil. Je ne peux pas le lire. Vous pouvez l'effacer en supprimant les données du site dans les réglages du navigateur.",
       "privacy.p.browser2": "Ce site ne dépose pas de cookies marketing et n'utilise pas d'outils d'analytics tels que Google Analytics, Hotjar ou Meta Pixel.",
       "privacy.h.host": "Hébergement et données techniques",
       "privacy.p.host": "Le site est hébergé sur GitHub Pages. Lorsque vous chargez une page, GitHub peut traiter des données techniques telles que l'adresse IP, le type de navigateur et les pages demandées, afin de servir le site et d'en assurer la sécurité. Ce traitement est effectué par GitHub en tant que prestataire. Voir la <a href=\"https://docs.github.com/en/site-policy/privacy-policies/github-privacy-statement\" target=\"_blank\" rel=\"noopener noreferrer\">déclaration de confidentialité de GitHub</a>.",
@@ -335,7 +335,7 @@
       "work.ds.desc": "Tokens, komponenter og Storybook-dokumentation, så produktfladen er ens på tværs af teams.",
       "work.sdu.title": "Redesign af universitetsintranet baseret på UX-indsigter",
       "work.sdu.desc": "Forskningsdrevet intranet-redesign for et stort universitet. Klarere struktur, navigation og interfaces formet af medarbejderes og studerendes behov.",
-      "work.marina.title": "Design og udvikling af website og webshop til en fransklærer",
+      "work.marina.title": "Et intuitivt og enkelt website til en fransklærer",
       "work.marina.desc": "Website, webshop, kalender og backoffice til en fransklærer. Designet i Figma og bygget med Figma MCP og Cursor.",
       "work.rotoy.title": "Design af website og webshop til EdTech-startuppen Rotoy ApS",
       "work.rotoy.desc": "Marketingsite og købsflow til en EdTech-startup. Klar fortælling, produktdiscovery og et købsflow, forældre kan stole på.",
@@ -361,8 +361,8 @@
       "cta.title": "Har du et website i tankerne?",
       "cta.body": "Jeg tager arbejdet fra visuel identitet til et live site: sider, tekster og vejen til at booke eller betale. Skriv til mig, så taler vi om dit.",
       "cta.button": "Kontakt mig",
-      "marina.pageTitle": "Design og udvikling af website og webshop til en fransklærer | Octavia Sirbu",
-      "marina.h1": "Design og udvikling af website og webshop til en fransklærer",
+      "marina.pageTitle": "Et intuitivt og enkelt website til en fransklærer | Octavia Sirbu",
+      "marina.h1": "Et intuitivt og enkelt website til en fransklærer",
       "privacy.pageTitle": "Privatliv | Octavia Sirbu",
       "privacy.h1": "Privatliv",
       "privacy.intro": "Denne side forklarer, hvad der sker med dine data, når du bruger octaviasirbu.com, herunder studio-siden og kontaktformularerne.",
@@ -377,7 +377,7 @@
       "privacy.p.data1": "Jeg modtager kun persondata, hvis du selv vælger at kontakte mig, for eksempel via en formular på dette site, e-mail eller LinkedIn. Det er typisk dit navn, din e-mailadresse, årsagen eller pakken du valgte, og det, du skriver. Jeg bruger det til at svare og, hvis det er relevant, fortsætte en faglig samtale. Jeg sælger det ikke og bruger det ikke til annoncering.",
       "privacy.p.data2": "Jeg gemmer korrespondance, så længe den er nyttig for den samtale, og sletter den bagefter, medmindre jeg har en juridisk grund til at gemme den længere.",
       "privacy.h.browser": "Hvad der bliver i din browser",
-      "privacy.p.browser1": "Valget mellem lys og mørk tilstand gemmes i din browser med localStorage under nøglen <code>portfolio-theme</code>. Sproget følger adressen: engelsk har intet præfiks, fransk bruger <code>/fr</code>, dansk <code>/dk</code> og rumænsk <code>/ro</code>. Et sproghint bruger også <code>portfolio-lang</code>. Det bliver på din enhed. Jeg kan ikke læse det. Du kan slette det ved at fjerne sitedata i browserens indstillinger.",
+      "privacy.p.browser1": "Sproget følger adressen: engelsk har intet præfiks, fransk bruger <code>/fr</code>, dansk <code>/dk</code> og rumænsk <code>/ro</code>. Et sproghint bruger også <code>portfolio-lang</code>. Det bliver på din enhed. Jeg kan ikke læse det. Du kan slette det ved at fjerne sitedata i browserens indstillinger.",
       "privacy.p.browser2": "Dette site sætter ikke marketingcookies og bruger ikke analytics-værktøjer som Google Analytics, Hotjar eller Meta Pixel.",
       "privacy.h.host": "Hosting og tekniske data",
       "privacy.p.host": "Sitet hostes på GitHub Pages. Når du indlæser en side, kan GitHub behandle tekniske data som IP-adresse, browsertype og de sider, der bliver bedt om, for at levere sitet og holde det sikkert. Den behandling sker hos GitHub som leverandør. Se <a href=\"https://docs.github.com/en/site-policy/privacy-policies/github-privacy-statement\" target=\"_blank\" rel=\"noopener noreferrer\">GitHubs privatlivserklæring</a>.",
@@ -472,7 +472,7 @@
       "work.ds.desc": "Token-uri, componente și documentație Storybook, ca interfața de produs să rămână consecventă între echipe.",
       "work.sdu.title": "Redesign de intranet universitar bazat pe insight-uri UX",
       "work.sdu.desc": "Redesign de intranet condus de cercetare pentru o universitate mare. Structură, navigare și interfețe mai clare, pornind de la nevoile personalului și ale studenților.",
-      "work.marina.title": "Design și dezvoltare de website și magazin pentru o profesoară de franceză",
+      "work.marina.title": "Un website intuitiv și curat pentru o profesoară de franceză",
       "work.marina.desc": "Website, magazin, calendar și back-office pentru o profesoară de franceză. Conceput în Figma, apoi construit cu Figma MCP și Cursor.",
       "work.rotoy.title": "Design de website și magazin pentru startup-ul EdTech Rotoy ApS",
       "work.rotoy.desc": "Site de marketing și flux de cumpărare pentru un startup EdTech. Poveste clară, descoperirea produsului și un checkout în care părinții pot avea încredere.",
@@ -498,8 +498,8 @@
       "cta.title": "Ai un website în minte?",
       "cta.body": "Duc munca de la identitate vizuală până la un site live: pagini, texte și drumul spre rezervare sau plată. Scrie-mi și vorbim despre al tău.",
       "cta.button": "Contactează-mă",
-      "marina.pageTitle": "Design și dezvoltare de website și magazin pentru o profesoară de franceză | Octavia Sirbu",
-      "marina.h1": "Design și dezvoltare de website și magazin pentru o profesoară de franceză",
+      "marina.pageTitle": "Un website intuitiv și curat pentru o profesoară de franceză | Octavia Sirbu",
+      "marina.h1": "Un website intuitiv și curat pentru o profesoară de franceză",
       "privacy.pageTitle": "Confidențialitate | Octavia Sirbu",
       "privacy.h1": "Confidențialitate",
       "privacy.intro": "Această pagină explică ce se întâmplă cu datele tale când folosești octaviasirbu.com, inclusiv pagina studio și formularele de contact.",
@@ -514,7 +514,7 @@
       "privacy.p.data1": "Primesc date personale doar dacă alegi să mă contactezi, de exemplu prin un formular de pe acest site, e-mail sau LinkedIn. De obicei includ numele, adresa de e-mail, motivul sau pachetul ales și ce scrii. Le folosesc ca să răspund și, dacă e relevant, să continuăm o conversație profesională. Nu le vând și nu le folosesc pentru publicitate.",
       "privacy.p.data2": "Păstrez corespondența cât e utilă acelei conversații, apoi o șterg când nu mai e nevoie, exceptând cazul în care am un motiv legal să o păstrez mai mult.",
       "privacy.h.browser": "Ce rămâne în browser",
-      "privacy.p.browser1": "Preferința de temă luminoasă sau întunecată e salvată în browser cu localStorage, sub cheia <code>portfolio-theme</code>. Limba urmează adresa: engleza n-are prefix, franceza folosește <code>/fr</code>, daneza <code>/dk</code> și româna <code>/ro</code>. Un indiciu de limbă folosește și <code>portfolio-lang</code>. Rămâne pe dispozitivul tău. Eu nu o pot citi. Poți să o ștergi din setările browserului, la datele site-ului.",
+      "privacy.p.browser1": "Limba urmează adresa: engleza n-are prefix, franceza folosește <code>/fr</code>, daneza <code>/dk</code> și româna <code>/ro</code>. Un indiciu de limbă folosește și <code>portfolio-lang</code>. Rămâne pe dispozitivul tău. Eu nu o pot citi. Poți să o ștergi din setările browserului, la datele site-ului.",
       "privacy.p.browser2": "Acest site nu pune cookie-uri de marketing și nu folosește instrumente de analytics precum Google Analytics, Hotjar sau Meta Pixel.",
       "privacy.h.host": "Hosting și date tehnice",
       "privacy.p.host": "Site-ul e găzduit pe GitHub Pages. Când încarci o pagină, GitHub poate prelucra date tehnice precum adresa IP, tipul de browser și paginile cerute, ca să livreze site-ul și să-l țină în siguranță. Prelucrarea e făcută de GitHub ca furnizor. Vezi <a href=\"https://docs.github.com/en/site-policy/privacy-policies/github-privacy-statement\" target=\"_blank\" rel=\"noopener noreferrer\">declarația de confidențialitate GitHub</a>.",
@@ -615,13 +615,6 @@
     if (pageTitle) {
       var titleValue = t(pageTitle.getAttribute("data-i18n-page-title"));
       if (titleValue) document.title = titleValue;
-    }
-
-    var themeBtn = document.querySelector("#themeToggle");
-    if (themeBtn) {
-      var isDark = document.documentElement.getAttribute("data-theme") === "dark";
-      themeBtn.setAttribute("aria-label", t(isDark ? "theme.light" : "theme.dark"));
-      themeBtn.setAttribute("title", t("theme.title"));
     }
 
     var topBtn = document.querySelector(".back-to-top");

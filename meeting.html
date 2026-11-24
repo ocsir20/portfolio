@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Book a 30-minute chat | Octavia Sirbu</title>
+    <link rel="canonical" href="https://octaviasirbu.com/meeting" />
+    <script>
+      (function () {
+        var path = location.pathname || "/";
+        var next = "/meeting/";
+        var prefixed = path.match(/^\/(fr|ro|dk)(?:\/|$)/);
+        if (prefixed) next = "/" + prefixed[1] + "/meeting/";
+        location.replace(next + (location.search || "") + (location.hash || ""));
+      })();
+    </script>
+    <meta http-equiv="refresh" content="0;url=/meeting/" />
+  </head>
+  <body>
+    <p><a href="/meeting/">Continue to book a chat</a></p>
+  </body>
+</html>

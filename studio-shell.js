@@ -11,6 +11,7 @@
   } catch (e) {}
   var body = document.body;
   var isStudio = !!(body && body.classList.contains("page-studio"));
+  var isMeeting = !!(body && body.classList.contains("page-meeting"));
   var isCase = CASE.test(path);
   var isBlog = BLOG_INDEX.test(path) || inBlogPost || !!(body && body.classList.contains("page-blog"));
   var isPrivacy = PRIVACY.test(path) || !!(body && body.classList.contains("page-legal"));
@@ -35,7 +36,7 @@
     }
   }
 
-  if (isStudio || (keepStudio && fromParam)) setShell(true);
+  if (isStudio || isMeeting || (keepStudio && fromParam)) setShell(true);
   else if (isPortfolioHub) setShell(false);
 
   if (!keepStudio || (!fromParam && !hasShell())) return;
