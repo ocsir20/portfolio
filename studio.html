@@ -3,13 +3,13 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" href="assets/portfolio-logo.svg?v=5" type="image/svg+xml" />
+    <link rel="icon" href="assets/portfolio-logo.svg?v=6" type="image/svg+xml" />
     <title data-i18n-page-title="studio.pageTitle">Independent Web Designer &amp; Developer in Paris | Octavia Sirbu</title>
     <meta name="description" content="Octavia Sirbu is an independent web designer and developer in Paris. Senior-built websites for businesses that work across Europe, in English, French, Romanian and Danish." />
     <link rel="canonical" href="https://octaviasirbu.com/studio.html" />
     <script src="theme-init.js"></script>
     <script src="lang-init.js?v=3"></script>
-    <link rel="stylesheet" href="styles.css?v=vis-175" />
+    <link rel="stylesheet" href="styles.css?v=vis-195" />
   </head>
   <body class="page-studio">
     <svg class="icon-sprite" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
@@ -80,7 +80,7 @@
     <header class="site-header">
       <nav class="nav container">
         <a class="logo" href="studio.html">
-          <span class="logo-mark" aria-hidden="true"><img class="logo-mark-img" src="assets/portfolio-logo.svg?v=5" alt="" width="130" height="114" decoding="async" /></span>
+          <span class="logo-mark" aria-hidden="true"><img class="logo-mark-img" src="assets/portfolio-logo.svg?v=6" alt="" width="130" height="114" decoding="async" /></span>
           <span class="logo-text">Octavia Sirbu</span>
         </a>
         <div class="nav-right">
@@ -111,26 +111,32 @@
     </header>
 
     <main>
-      <section class="hero container studio-hero">
-        <div class="hero-copy">
-          <p class="tag studio-hero__label" data-reveal data-reveal-hero><span data-i18n="studio.hero.tag">SENIOR PRODUCT DESIGNER & DEVELOPER</span></p>
-          <h1 data-reveal data-reveal-hero data-i18n="studio.hero.h1">I create websites that turn visitors into clients</h1>
-          <p class="intro" data-reveal data-reveal-hero data-i18n="studio.hero.sub">Senior product design and hands-on development, directly with me from start to finish. I craft distinctive websites that give your brand a clear identity and guide visitors straight to action.</p>
-          <a class="btn" data-reveal data-reveal-hero href="#book"><svg class="icon" aria-hidden="true"><use href="#icon-coffee"></use></svg> <span data-i18n="studio.hero.cta">Book a free chat</span></a>
-          <p class="studio-hero__meta" data-reveal data-reveal-hero data-i18n="studio.hero.meta">8+ years · Lived across Europe · Based in Paris, France</p>
-        </div>
-        <div class="hero-visual hero-visual--portrait studio-hero__visual" data-reveal data-reveal-hero>
-          <div class="portrait-frame">
-            <canvas class="hero-scramble" aria-hidden="true"></canvas>
-            <img
-              class="hero-portrait-img"
-              src="assets/octavia-portrait.png"
-              alt="Portrait of Octavia Sirbu"
-              width="800"
-              height="1000"
-              loading="eager"
-              decoding="async"
-            />
+      <section class="studio-hero studio-hero--video" aria-labelledby="studio-hero-heading">
+        <div class="studio-hero__stage" data-studio-hero-video>
+          <video
+            class="studio-hero__video is-active"
+            muted
+            playsinline
+            autoplay
+            preload="auto"
+            aria-hidden="true"
+          >
+            <source src="assets/studio/hero/01-desk-portrait.mp4" type="video/mp4" />
+          </video>
+          <video
+            class="studio-hero__video"
+            muted
+            playsinline
+            preload="auto"
+            aria-hidden="true"
+          ></video>
+          <div class="studio-hero__veil" aria-hidden="true"></div>
+          <div class="container studio-hero__copy">
+            <p class="tag studio-hero__label" data-reveal data-reveal-hero><span data-i18n="studio.hero.tag">SENIOR PRODUCT DESIGNER & DEVELOPER</span></p>
+            <h1 id="studio-hero-heading" data-reveal data-reveal-hero data-i18n="studio.hero.h1">I create websites that turn visitors into clients</h1>
+            <p class="intro" data-reveal data-reveal-hero data-i18n="studio.hero.sub">Senior product design and hands-on development, directly with me from start to finish. I craft distinctive websites that give your brand a clear identity and guide visitors straight to action.</p>
+            <a class="btn" data-reveal data-reveal-hero href="#book"><svg class="icon" aria-hidden="true"><use href="#icon-coffee"></use></svg> <span data-i18n="studio.hero.cta">Book a free chat</span></a>
+            <p class="studio-hero__meta" data-reveal data-reveal-hero data-i18n="studio.hero.meta">8+ years · Lived across Europe · Based in Paris, France</p>
           </div>
         </div>
       </section>
@@ -138,12 +144,12 @@
       <section class="section studio-why" aria-labelledby="studio-why-heading">
         <div class="container">
         <div class="studio-why__intro" data-reveal>
-          <figure class="studio-why__photo photo-wash">
+          <figure class="studio-why__photo">
             <img
-              src="assets/studio/why-meeting.jpg"
-              alt=""
-              width="1600"
-              height="900"
+              src="assets/studio/why-meeting.jpg?v=12"
+              alt="Portrait of Octavia Sirbu"
+              width="2880"
+              height="1620"
               loading="lazy"
               decoding="async"
             />
@@ -268,12 +274,22 @@
 
       <section class="section studio-work paper-grid" id="work" aria-labelledby="studio-work-heading">
         <div class="container">
-        <h2 id="studio-work-heading" data-reveal><span data-i18n="studio.work.h">Finalized Projects</span></h2>
+        <h2 id="studio-work-heading" data-reveal><span data-i18n="studio.work.h">Highlighted Projects</span></h2>
         <p class="intro studio-lead" data-i18n="studio.work.intro">Each one started with a bottleneck that the new website removed.</p>
-        <div class="folder-shuffle" data-folder-shuffle>
-          <div class="folder-shuffle__stage">
-            <article class="project-card project-folder" data-folder>
-              <button type="button" class="studio-work__client project-folder__tab">Marina Guranda</button>
+        <div class="studio-work__carousel" data-studio-work-carousel>
+          <button
+            type="button"
+            class="studio-work__arrow studio-work__arrow--prev"
+            data-studio-work-prev
+            aria-label="Previous projects"
+            data-i18n-aria="studio.work.prev"
+          >
+            &#8249;
+          </button>
+          <div class="studio-work__folders" tabindex="0" aria-label="Highlighted projects">
+            
+            <article class="project-card project-folder">
+              <p class="studio-work__client project-folder__tab">Marina Guranda</p>
               <a class="project-folder__sheet" href="marina-guranda-project.html?from=studio">
                 <div class="project-folder__photo">
                   <div class="thumb thumb-marina"></div>
@@ -286,8 +302,8 @@
                 </div>
               </a>
             </article>
-            <article class="project-card project-folder" data-folder>
-              <button type="button" class="studio-work__client project-folder__tab">Rotoy ApS</button>
+            <article class="project-card project-folder">
+              <p class="studio-work__client project-folder__tab">Rotoy ApS</p>
               <a class="project-folder__sheet" href="rotoy-project.html?from=studio">
                 <div class="project-folder__photo">
                   <div class="thumb thumb-rotoy"></div>
@@ -300,8 +316,22 @@
                 </div>
               </a>
             </article>
-            <article class="project-card project-folder" data-folder>
-              <button type="button" class="studio-work__client project-folder__tab">O'town Garage</button>
+            <article class="project-card project-folder">
+              <p class="studio-work__client project-folder__tab" title="University of Southern Denmark">SDU</p>
+              <a class="project-folder__sheet" href="sdu-intranet-project.html?from=studio">
+                <div class="project-folder__photo">
+                  <div class="thumb thumb-sdu"></div>
+                </div>
+                <h3 data-i18n="studio.work.sdu.h">A university intranet people could actually find</h3>
+                <p class="project-desc" data-i18n="studio.work.sdu.p">Before: staff could not find the services and tools they needed. After: a clearer structure, and a portal SDU still points to as a reference.</p>
+                <div class="project-labels">
+                  <span data-skill="production" data-i18n="studio.work.tag.web">Web Design</span>
+                  <span data-skill="process" data-i18n="studio.work.tag.cms">CMS management</span>
+                </div>
+              </a>
+            </article>
+            <article class="project-card project-folder">
+              <p class="studio-work__client project-folder__tab">O'town Garage</p>
               <a class="project-folder__sheet" href="makerspace-project.html?from=studio">
                 <div class="project-folder__photo">
                   <div class="thumb thumb-makerspace"></div>
@@ -310,10 +340,20 @@
                 <p class="project-desc" data-i18n="studio.work.otown.p">Before: people emailed to ask what membership actually meant. After: the site answers, so the team does not have to repeat it.</p>
                 <div class="project-labels">
                   <span data-skill="production" data-i18n="studio.work.tag.site">Growth website</span>
+                  <span data-skill="process" data-i18n="studio.work.tag.uxui">UX Design</span>
                 </div>
               </a>
             </article>
           </div>
+          <button
+            type="button"
+            class="studio-work__arrow studio-work__arrow--next"
+            data-studio-work-next
+            aria-label="Next projects"
+            data-i18n-aria="studio.work.next"
+          >
+            &#8250;
+          </button>
         </div>
         </div>
       </section>
@@ -368,6 +408,30 @@
               </div>
             </footer>
           </article>
+          <article class="card quote quote-note" data-reveal data-reveal-stagger>
+            <p class="studio-quotes__project">University of Southern Denmark</p>
+            <p class="quote__text" data-i18n="q.esben">
+              "The project demonstrated Octavia's UX professional know-how regarding user
+              research (interviews and workshops), translating user insights, designing
+              prototypes, and visual design. The resulting web intranet portal is today a widely accepted
+              reference project at SDU among reserchers and staff."
+            </p>
+            <footer class="quote__footer">
+              <img
+                class="quote__avatar"
+                src="assets/pictures/Esben.png"
+                alt="Esben Flindt"
+                width="48"
+                height="48"
+                loading="lazy"
+                decoding="async"
+              />
+              <div class="quote__byline">
+                <span class="quote__name">Esben Flindt</span>
+                <span class="quote__role" data-i18n="role.esben">Manager at the University of Southern Denmark</span>
+              </div>
+            </footer>
+          </article>
         </div>
         </div>
       </section>
@@ -375,12 +439,16 @@
       <section class="container section studio-about" id="about" aria-labelledby="studio-about-heading" data-reveal>
         <div class="studio-about__layout">
           <div class="studio-about__copy">
-            <h2 id="studio-about-heading"><span data-i18n="studio.about.h">Design thinking meets hands-on development</span></h2>
+            <h2 id="studio-about-heading"><span data-i18n="studio.about.h">About Octavia Sirbu</span></h2>
             <p class="intro studio-lead" data-i18n="studio.about.p1">
-              I design and build websites for small businesses and independent professionals. You work with me from first idea to launch: structure, design and development.
+              I design and build websites for small businesses and independent professionals. You work with me from first idea to launch: structure, content, design and branding, SEO and development.
             </p>
             <p data-i18n="studio.about.p2">
-              I have also worked with startups, universities and established companies, including Nabogo ApS, the University of Southern Denmark and Universal Robots.
+              Before becoming an independent designer and developer I worked in Product teams across startups, universities and established companies, including Nabogo ApS, BOSCH, the University of Southern Denmark and Universal Robots.
+              I've been collaborating with fellow designers, developers and product marketeers across Europe and US in high performing companies.
+            </p>
+            <p data-i18n="studio.about.p3">
+              Now I'm bringing the experience and know how from my corporate jobs into my independent projects. I'm here to help you create the best website for your business that brings results.
             </p>
             <p class="studio-about__facts" data-i18n="studio.about.place">Lived in 4 countries. Working across Europe.</p>
             <p class="studio-about__facts" data-i18n="studio.about.langs">Languages: English, French, Romanian and Danish.</p>
@@ -388,10 +456,10 @@
           </div>
           <figure class="studio-about__photo">
             <img
-              src="assets/pictures/octavia-profile-studio.png?v=3"
+              src="assets/studio/about-portrait.jpg?v=7"
               alt="Portrait of Octavia Sirbu"
-              width="960"
-              height="1200"
+              width="1536"
+              height="2048"
               loading="lazy"
               decoding="async"
             />
@@ -476,8 +544,8 @@
           </ol>
           <div class="studio-steps__stage">
             <article class="studio-steps__panel" id="studio-step-panel-1" role="tabpanel" data-studio-panel="1" aria-labelledby="studio-step-tab-1">
-              <figure class="studio-steps__photo photo-wash">
-                <img src="assets/studio/process-1-intro.jpg" alt="" width="1200" height="800" loading="lazy" decoding="async" />
+              <figure class="studio-steps__photo">
+                <img src="assets/studio/process-1-intro.jpg?v=4" alt="Octavia on a video call at her laptop" width="1200" height="800" loading="lazy" decoding="async" />
               </figure>
               <div class="studio-steps__copy">
                 <p class="studio-steps__meta" data-i18n="studio.process.1.meta">30 minutes</p>
@@ -486,8 +554,8 @@
               </div>
             </article>
             <article class="studio-steps__panel" id="studio-step-panel-2" role="tabpanel" data-studio-panel="2" aria-labelledby="studio-step-tab-2" hidden>
-              <figure class="studio-steps__photo photo-wash">
-                <img src="assets/studio/process-2-concept.jpg" alt="" width="1200" height="800" loading="lazy" decoding="async" />
+              <figure class="studio-steps__photo">
+                <img src="assets/studio/process-2-concept.jpg?v=5" alt="Designing a website layout on a laptop" width="1200" height="800" loading="lazy" decoding="async" />
               </figure>
               <div class="studio-steps__copy">
                 <p class="studio-steps__meta" data-i18n="studio.process.2.meta">Structure and design</p>
@@ -496,8 +564,8 @@
               </div>
             </article>
             <article class="studio-steps__panel" id="studio-step-panel-3" role="tabpanel" data-studio-panel="3" aria-labelledby="studio-step-tab-3" hidden>
-              <figure class="studio-steps__photo photo-wash">
-                <img src="assets/studio/process-3-build.jpg" alt="" width="1200" height="800" loading="lazy" decoding="async" />
+              <figure class="studio-steps__photo">
+                <img src="assets/studio/process-3-build.jpg?v=4" alt="Building a website in the code editor" width="1200" height="800" loading="lazy" decoding="async" />
               </figure>
               <div class="studio-steps__copy">
                 <p class="studio-steps__meta" data-i18n="studio.process.3.meta">Updates along the way</p>
@@ -506,8 +574,8 @@
               </div>
             </article>
             <article class="studio-steps__panel" id="studio-step-panel-4" role="tabpanel" data-studio-panel="4" aria-labelledby="studio-step-tab-4" hidden>
-              <figure class="studio-steps__photo photo-wash">
-                <img src="assets/studio/process-4-test.jpg?v=2" alt="Two people reviewing a website together on a laptop" width="1024" height="682" loading="lazy" decoding="async" />
+              <figure class="studio-steps__photo">
+                <img src="assets/studio/process-4-test.jpg?v=4" alt="Two people reviewing a website together on a laptop" width="1200" height="800" loading="lazy" decoding="async" />
               </figure>
               <div class="studio-steps__copy">
                 <p class="studio-steps__meta" data-i18n="studio.process.4.meta">Review and refine</p>
@@ -516,8 +584,8 @@
               </div>
             </article>
             <article class="studio-steps__panel" id="studio-step-panel-5" role="tabpanel" data-studio-panel="5" aria-labelledby="studio-step-tab-5" hidden>
-              <figure class="studio-steps__photo photo-wash">
-                <img src="assets/studio/process-5-live.jpg" alt="" width="1200" height="800" loading="lazy" decoding="async" />
+              <figure class="studio-steps__photo">
+                <img src="assets/studio/process-5-live.jpg?v=4" alt="" width="1200" height="800" loading="lazy" decoding="async" />
               </figure>
               <div class="studio-steps__copy">
                 <p class="studio-steps__meta" data-i18n="studio.process.5.meta">Hosting, SEO, handover</p>
@@ -599,7 +667,7 @@
         <div class="site-footer__brand">
           <img
             class="site-footer__logo"
-            src="assets/portfolio-logo.svg?v=5"
+            src="assets/portfolio-logo.svg?v=6"
             alt=""
             width="130"
             height="114"
@@ -622,8 +690,7 @@
     <script src="i18n.js?v=24"></script>
     <script src="i18n-da.js?v=14"></script>
     <script src="i18n-ro.js?v=13"></script>
-    <script src="i18n-studio.js?v=42"></script>
-    <script src="hero-scramble.js?v=scramble-8"></script>
-    <script src="script.js?v=motion-4"></script>
+    <script src="i18n-studio.js?v=49"></script>
+    <script src="script.js?v=motion-11"></script>
   </body>
 </html>

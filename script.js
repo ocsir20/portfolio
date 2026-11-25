@@ -422,6 +422,43 @@ document.querySelectorAll("[data-more-projects]").forEach((root) => {
   });
 });
 
+document.querySelectorAll("[data-studio-work-carousel]").forEach((root) => {
+  const track = root.querySelector(".studio-work__folders");
+  const prev = root.querySelector("[data-studio-work-prev]");
+  const next = root.querySelector("[data-studio-work-next]");
+  if (!track || !prev || !next) return;
+
+  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  const step = () => {
+    const card = track.querySelector(".project-folder");
+    const gap = parseFloat(getComputedStyle(track).columnGap || getComputedStyle(track).gap) || 24;
+    return (card ? card.getBoundingClientRect().width : 320) + gap;
+  };
+
+  const sync = () => {
+    const max = track.scrollWidth - track.clientWidth - 2;
+    const scrollable = max > 4;
+    root.classList.toggle("is-scrollable", scrollable);
+    prev.disabled = !scrollable || track.scrollLeft <= 2;
+    next.disabled = !scrollable || track.scrollLeft >= max;
+  };
+
+  prev.addEventListener("click", () => {
+    track.scrollBy({ left: -step(), behavior: reduceMotion ? "auto" : "smooth" });
+  });
+
+  next.addEventListener("click", () => {
+    track.scrollBy({ left: step(), behavior: reduceMotion ? "auto" : "smooth" });
+  });
+
+  track.addEventListener("scroll", sync, { passive: true });
+  window.addEventListener("resize", () => {
+    window.requestAnimationFrame(sync);
+  });
+  sync();
+});
+
 /* Studio: highlight the nav link for the section in view */
 (function initStudioNavSpy() {
   if (!document.body.classList.contains("page-studio")) return;
@@ -600,6 +637,29 @@ document.querySelectorAll("[data-more-projects]").forEach((root) => {
   revealEls.forEach((el) => {
     if (el.hasAttribute("data-reveal-hero")) return;
     observer.observe(el);
+  });
+
+  document.querySelectorAll(".studio-why__points").forEach((group) => {
+    const cards = [...group.querySelectorAll(".studio-why__card[data-reveal]")];
+    if (!cards.length) return;
+    cards.forEach((card) => observer.unobserve(card));
+    const play = () => {
+      cards.forEach((card, i) => {
+        card.style.setProperty("--reveal-delay", i * 320 + "ms");
+        card.classList.add("is-revealed");
+      });
+    };
+    const groupObs = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          play();
+          groupObs.unobserve(entry.target);
+        });
+      },
+      { threshold: 0.22, rootMargin: "0px 0px -10% 0px" }
+    );
+    groupObs.observe(group);
   });
 
   const canHover = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
@@ -1036,8 +1096,11 @@ document.querySelectorAll("[data-more-projects]").forEach((root) => {
         const styleEl = svg.querySelector("style");
         if (styleEl) styleEl.remove();
 
-        svg.querySelectorAll('path[fill="#BC6B46"], path[fill="#bc6b46"]').forEach((path) => {
-          path.classList.add("site-footer__logo-fill");
+        svg.querySelectorAll("path[fill]").forEach((path) => {
+          const fill = path.getAttribute("fill");
+          if (fill && fill.toLowerCase() !== "none") {
+            path.classList.add("site-footer__logo-fill");
+          }
         });
 
         svg.setAttribute("class", img.className);
@@ -1205,5 +1268,110 @@ document.querySelectorAll("[data-more-projects]").forEach((root) => {
         setListening(false);
       }
     });
+  });
+})();
+
+(function initStudioHeroVideo() {
+  const stage = document.querySelector("[data-studio-hero-video]");
+  if (!stage) return;
+
+  const layers = Array.from(stage.querySelectorAll(".studio-hero__video"));
+  if (layers.length < 2) return;
+
+  const clips = [
+    "assets/studio/hero/01-desk-portrait.mp4",
+    "assets/studio/hero/03-hands.mp4",
+    "assets/studio/hero/04-figma.mp4",
+    "assets/studio/hero/05-screen.mp4",
+    "assets/studio/hero/06-desk.mp4",
+  ];
+  const fadeMs = 1600;
+  const lead = 1.65;
+
+  let current = layers[0];
+  let incoming = layers[1];
+  let index = 0;
+  let swapping = false;
+
+  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+  const stopPlayback = () => {
+    layers.forEach((layer) => {
+      layer.pause();
+      layer.removeAttribute("autoplay");
+    });
+  };
+
+  const ready = (el) =>
+    new Promise((resolve) => {
+      if (el.readyState >= 3) {
+        resolve();
+        return;
+      }
+      const done = () => {
+        el.removeEventListener("canplaythrough", done);
+        el.removeEventListener("canplay", done);
+        resolve();
+      };
+      el.addEventListener("canplaythrough", done, { once: true });
+      el.addEventListener("canplay", done, { once: true });
+    });
+
+  const preloadNext = () => {
+    const nextSrc = clips[(index + 1) % clips.length];
+    if (incoming.dataset.src === nextSrc && incoming.readyState >= 2) return;
+    incoming.dataset.src = nextSrc;
+    incoming.src = nextSrc;
+  };
+
+  const swap = async () => {
+    if (swapping) return;
+    swapping = true;
+    const nextIndex = (index + 1) % clips.length;
+    const nextSrc = clips[nextIndex];
+    if (incoming.dataset.src !== nextSrc) {
+      incoming.dataset.src = nextSrc;
+      incoming.src = nextSrc;
+    }
+    await ready(incoming);
+    if (incoming.currentTime > 0.12) incoming.currentTime = 0.08;
+    try {
+      await incoming.play();
+    } catch (err) {
+      swapping = false;
+      return;
+    }
+    incoming.classList.add("is-active");
+    current.classList.remove("is-active");
+    window.setTimeout(() => {
+      current.pause();
+      const outgoing = current;
+      current = incoming;
+      incoming = outgoing;
+      index = nextIndex;
+      swapping = false;
+      preloadNext();
+    }, fadeMs);
+  };
+
+  if (reduceMotion.matches) {
+    stopPlayback();
+    return;
+  }
+
+  current.addEventListener("playing", preloadNext, { once: true });
+
+  layers.forEach((layer) => {
+    layer.addEventListener("timeupdate", () => {
+      if (layer !== current || swapping || !layer.duration) return;
+      if (layer.duration - layer.currentTime <= lead) swap();
+    });
+    layer.addEventListener("ended", () => {
+      if (layer === current) swap();
+    });
+  });
+
+  reduceMotion.addEventListener("change", (event) => {
+    if (event.matches) stopPlayback();
+    else current.play().catch(() => {});
   });
 })();
